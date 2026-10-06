@@ -1,0 +1,46 @@
+{
+  "name": "project-codex",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev:web\" \"npm run dev:api\"",
+    "dev:web": "npm run dev -w @project-codex/web",
+    "dev:api": "npm run dev -w @project-codex/api",
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "lint": "eslint apps --max-warnings 0",
+    "test": "npm run test --workspaces",
+    "test:e2e": "playwright test",
+    "db:migrate": "npm run db:migrate -w @project-codex/api",
+    "db:seed": "npm run db:seed -w @project-codex/api",
+    "admin:bootstrap": "npm run admin:bootstrap -w @project-codex/api",
+    "setup": "bash scripts/setup.sh",
+    "db:start": "bash scripts/local-db.sh",
+    "db:stop": "bash scripts/local-db.sh stop",
+    "services:start": "node scripts/services.mjs start",
+    "services:stop": "node scripts/services.mjs stop",
+    "smoke": "node scripts/smoke.mjs",
+    "verify:build": "node scripts/verify-build.mjs",
+    "format:check": "prettier --check apps tests scripts *.ts *.mjs *.json",
+    "check": "npm run lint && npm run typecheck && npm run build && npm test && npm run test:e2e && npm run verify:build"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/js": "^9.39.0",
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^24.0.0",
+    "concurrently": "^9.2.0",
+    "eslint": "^9.39.0",
+    "prettier": "^3.9.9",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^4.0.0"
+  }
+}
