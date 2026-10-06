@@ -9,6 +9,10 @@ Portfolio độc lập với **React 19 + TypeScript + Vite 8 + Tailwind CSS 4**
 | Memory Match | `/projects/memory-match` | 6/8/12 cặp, phục hồi sau reload, kết quả và leaderboard |
 | Control Center | `/projects/admin` | Đăng nhập, dashboard, CRUD/archive xe và quản lý yêu cầu |
 
+## Giao diện AutoHub
+
+AutoHub tham khảo bố cục marketplace của [Carmudi](https://www.carmudi.vn/): theme xanh/cam, header/footer riêng, bộ lọc bên trái trên desktop và thu gọn trên mobile, lựa chọn nhanh theo hãng, giá bán nổi bật và hướng dẫn mua xe. Danh sách, chi tiết và so sánh xe dùng cùng theme; giữ ảnh SVG nguyên bản. Bộ lọc nằm trong URL, có thể bỏ từng điều kiện hoặc xóa toàn bộ mà giữ thứ tự sắp xếp. Yêu thích, so sánh tối đa 3 xe và yêu cầu tư vấn/lái thử tiếp tục dùng các luồng hiện có.
+
 ## Setup trong cloud hiện tại
 
 Yêu cầu: Node.js **>=24**, npm, Debian 13/Linux với thư viện hệ thống PostgreSQL và Chromium tại `/usr/bin/chromium` (hoặc đặt `CHROMIUM_PATH` đến binary đã cài). Setup tải PostgreSQL từ Debian bằng APT có chữ ký và giải nén vào `.local`; không sửa PostgreSQL hệ thống.
@@ -53,7 +57,7 @@ Chạy lint → typecheck FE/API → build FE/API → unit/component/integration
 
 Playwright migrate/seed/bootstrap DB test, chạy/dọn API và web test. Không chạy đồng thời nhiều bộ integration trên cùng DB. Artifact mới ở `.local/logs`, `test-results`; dùng console reporter và tắt trace auth vì HTML step có thể chứa giá trị nhập mật khẩu.
 
-Kết quả trong [docs/verification.md](docs/verification.md): 23 API + 3 web, 10 E2E; Playwright + axe tại 360/768/1440px; build/startup thật. Scan tự động không thay cho đánh giá accessibility toàn diện bởi người dùng.
+Kết quả trong [docs/verification.md](docs/verification.md): nghiệm thu T01–T33 đạt 23 API + 3 web; cập nhật AutoHub ngày 2026-10-07 đạt 3 web và **12 E2E**, gồm Playwright + axe cho danh sách/chi tiết/so sánh tại 360/768/1440px và kiểm tra bản build chạy thực tế. Scan tự động không thay cho đánh giá accessibility toàn diện bởi người dùng.
 
 ## Bản build
 

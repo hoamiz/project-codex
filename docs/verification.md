@@ -59,3 +59,24 @@ Người dùng đã cho phép commit, tạo repository mới project-codex và p
 ## GitHub hoàn tất (2026-10-06)
 
 Repository https://github.com/hoamiz/project-codex đã được tạo bên ngoài, hiện public. API xác nhận quyền ghi và đã gửi đầy đủ 91 file. Git HTTPS trả lỗi401; dùng GitHub Git Data API với cơ chế xác thực sẵn có thay thế. Khởi tạo README thật rồi merge lịch sử; tree và commit được đối chiếu SHA với Git cục bộ, giữ các commit gốc18b7730/629a2c3. Cập nhật refs/heads/main không force, không ghi đè lịch sử người dùng. Sau khi hoàn tất, fetch và đối chiếu HEAD remote/local; .env và dữ liệu runtime vẫn được Git bỏ qua. Không có thay đổi logic ứng dụng hoặc deploy trong bước này.
+
+## AutoHub UI theo Carmudi — 2026-10-07
+
+Phạm vi: giao diện AutoHub tại `/projects/autohub`, trang chi tiết và so sánh; theme riêng, sidebar lọc desktop/panel mobile, lựa chọn hãng, bỏ từng điều kiện/xóa bộ lọc, thẻ xe, hướng dẫn và header/footer. Tham khảo HTML/CSS công khai của https://www.carmudi.vn/; giữ tên AutoHub, ảnh SVG nguyên bản và dữ liệu PostgreSQL/API hiện có. Không thay backend/schema/dependency.
+
+File chính: `apps/web/src/main.tsx`, `features/autohub.tsx`, `features/autohub-layout.tsx`, `features/autohub.css`, `tests/e2e/autohub.spec.ts`, `tests/e2e/usability.spec.ts`.
+
+| Kiểm tra đã chạy | Kết quả |
+| --- | --- |
+| `npm run lint` | Đạt, 0 warning |
+| `npm run typecheck -w @project-codex/web` và `npm run build -w @project-codex/web` | TypeScript và Vite build đạt; build chạy lại sau sửa hash |
+| `npm run test -w @project-codex/web` | 3/3 test, 2 file; 0 fail/skip |
+| `npm run test:e2e` | 12/12 đạt, 0 fail/skip; console log `.local/logs/autohub-e2e-final.log` |
+| `npm run verify:build` | Compiled API phục vụ React; ba demo render/reload, deep link, DB/HTTP, admin401, asset thiếu404 và cookie production qua proxy giả lập đạt; `.local/logs/autohub-build-runtime.log` |
+| `npm run format:check`, `git diff --check` | Đạt |
+
+Hai E2E mới kiểm tra chọn hãng nhanh/đồng bộ URL, bỏ filter, reset giữ sort/pageSize, tìm bằng form, lọc trạng thái, cuộn mục từ trang chi tiết và reload, mở panel mobile bằng bàn phím, lọc hãng/năm, xóa lọc và lưu yêu thích. Mở rộng ba E2E responsive hiện có để quét cả trang chi tiết và so sánh xe: **360/768/1440px**, không tràn ngang, không có violation trong bộ WCAG2A/AA/2.1AA đã scan. Panel mobile khi mở cũng được axe quét. Các luồng lead→admin, CRUD/archive, session, yêu thích/so sánh và game vẫn đạt.
+
+Lần đầu E2E đạt 11/12: liên kết hướng dẫn cuộn tới vị trí khi danh sách còn loading; khi xe xuất hiện, mục hướng dẫn bị đẩy xuống. Sửa effect để đợi dữ liệu xe và hãng trước khi cuộn, giữ assertion `toBeInViewport`; lần chạy cuối đạt 12/12. Đã xem screenshot desktop/mobile, danh sách, chi tiết, so sánh và hướng dẫn trong `.local/reference/` (artifact cục bộ bị Git bỏ qua). Scan tự động không thay cho nghiệm thu accessibility toàn diện bằng screen reader. Bộ API unit/integration không chạy lại trong thay đổi UI này; bằng chứng 23 API của T33 vẫn ở trên.
+
+README/checklist đã cập nhật. Nghiệm thu UI hoàn tất cục bộ; việc commit/push được giao trong yêu cầu GitHub tiếp theo của người dùng.

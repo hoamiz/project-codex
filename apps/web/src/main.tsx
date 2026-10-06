@@ -5,51 +5,59 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowUpRight, ArrowLeft, Layers } from 'lucide-react';
 import { Portfolio } from './features/portfolio';
 import { AutoHub, CarDetail, Compare } from './features/autohub';
+import { AutoHubHeader, AutoHubFooter } from './features/autohub-layout';
 import { MemoryMatch } from './features/memory-match';
 import { AdminLayout, Login } from './features/admin-auth';
 import { AdminCars } from './features/admin-cars';
 import { AdminLeads } from './features/admin-leads';
 import { Dashboard } from './features/admin-dashboard';
 import './styles.css';
+import './features/autohub.css';
 const client = new QueryClient({
   defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } },
 });
 function App() {
   const location = useLocation();
   const home = location.pathname === '/';
+  const autoHub =
+    location.pathname === '/projects/autohub' || location.pathname.startsWith('/projects/autohub/');
   return (
-    <>
+    <div className={autoHub ? 'autohub-page' : undefined}>
       <a className="skip-link" href="#main">
         Đến nội dung
       </a>
-      <header className="site-header">
-        <Link to="/" className="brand">
-          <span className="brand-icon">
-            <Layers size={19} />
-          </span>
-          project<span className="brand-light">codex</span>
-          <span className="brand-dot">.</span>
-        </Link>
-        <nav aria-label="Điều hướng chính">
-          {home ? (
-            <>
-              <a href="#projects">Project</a>
-              <span className="header-pill">
-                SẴN SÀNG KHÁM PHÁ <span className="status-dot" />
-              </span>
-            </>
-          ) : (
-            <>
-              <Link to="/">
-                <ArrowLeft size={14} />
-                Portfolio
-              </Link>
-              <Link to="/projects/autohub">AutoHub</Link>
-              <Link to="/projects/memory-match">Game</Link>
-            </>
-          )}
-        </nav>
-      </header>
+      {autoHub ? (
+        <AutoHubHeader />
+      ) : (
+        <header className="site-header">
+          <Link to="/" className="brand">
+            <span className="brand-icon">
+              <Layers size={19} />
+            </span>
+            project<span className="brand-light">codex</span>
+            <span className="brand-dot">.</span>
+          </Link>
+          <nav aria-label="Điều hướng chính">
+            {home ? (
+              <>
+                <a href="#projects">Project</a>
+                <span className="header-pill">
+                  SẴN SÀNG KHÁM PHÁ <span className="status-dot" />
+                </span>
+              </>
+            ) : (
+              <>
+                <Link to="/">
+                  <ArrowLeft size={14} />
+                  Portfolio
+                </Link>
+                <Link to="/projects/autohub">AutoHub</Link>
+                <Link to="/projects/memory-match">Game</Link>
+              </>
+            )}
+          </nav>
+        </header>
+      )}
       <main id="main">
         <Routes>
           <Route path="/" element={<Portfolio />} />
@@ -77,14 +85,18 @@ function App() {
           />
         </Routes>
       </main>
-      <footer className="site-footer">
-        <span>PROJECT CODEX · PORTFOLIO DEMO</span>
-        <Link to="/">
-          Thiết kế để trải nghiệm. <ArrowUpRight size={14} />
-        </Link>
-        <span>2026</span>
-      </footer>
-    </>
+      {autoHub ? (
+        <AutoHubFooter />
+      ) : (
+        <footer className="site-footer">
+          <span>PROJECT CODEX · PORTFOLIO DEMO</span>
+          <Link to="/">
+            Thiết kế để trải nghiệm. <ArrowUpRight size={14} />
+          </Link>
+          <span>2026</span>
+        </footer>
+      )}
+    </div>
   );
 }
 createRoot(document.getElementById('root')!).render(

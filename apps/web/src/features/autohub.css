@@ -1,0 +1,1110 @@
+/* Giới hạn theme trong AutoHub để portfolio, game và trang quản trị giữ giao diện riêng. */
+.autohub-page {
+  --ink: #17334f;
+  --muted: #586b7e;
+  --line: #dfe7ef;
+  --accent: #1a6fb7;
+  background: #f5f7fa;
+  color: var(--ink);
+}
+.autohub-page :focus-visible {
+  outline-color: #1a6fb7;
+}
+.autohub-page h1,
+.autohub-page h2,
+.autohub-page h3 {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+.autohub-page .eyebrow {
+  color: #386182;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+.autohub-page .btn {
+  min-height: 42px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 7px;
+}
+.autohub-page .btn-primary {
+  background: #ff9c00;
+  color: #17334f;
+}
+.autohub-page .btn-primary:hover:not(:disabled) {
+  background: #ffb333;
+}
+.autohub-page .btn-outline:hover:not(:disabled),
+.autohub-page .btn-ghost:hover:not(:disabled) {
+  background: #edf5fc;
+}
+.autohub-page input,
+.autohub-page select,
+.autohub-page textarea {
+  font-size: 13px;
+  min-height: 44px;
+}
+.autohub-page .badge {
+  background: #e5f3ea;
+  color: #21623d;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 5px;
+}
+.autohub-header {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.autohub-header-inner {
+  max-width: 1280px;
+  padding: 20px 32px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.autohub-brand {
+  display: inline-flex;
+  align-items: center;
+  color: #1a6fb7;
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -1.3px;
+  line-height: 1;
+}
+.autohub-brand > span:not(.autohub-brand-icon) {
+  color: #17334f;
+}
+.autohub-brand .autohub-brand-dot {
+  color: #c56a00;
+}
+.autohub-brand-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-right: 9px;
+  border-radius: 12px 12px 12px 3px;
+  background: #1a6fb7;
+  color: #fff;
+}
+.autohub-header nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  margin-right: auto;
+  margin-left: 44px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.autohub-header nav a,
+.autohub-portfolio {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.autohub-nav-cars {
+  color: #1a6fb7;
+}
+.autohub-portfolio {
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.autohub-page .auto-hero {
+  max-width: 1216px;
+  margin: 28px auto 0;
+  padding: 38px 44px;
+  border-radius: 15px;
+  background: linear-gradient(110deg, #edf5fc 30%, #e0edf8);
+  overflow: hidden;
+  grid-template-columns: 1.08fr 1fr;
+  gap: 0;
+}
+.auto-hero-copy {
+  position: relative;
+  z-index: 1;
+}
+.auto-hero-copy .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+}
+.auto-hero-copy .eyebrow > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c56900;
+  flex-shrink: 0;
+}
+.autohub-page .auto-hero h1 {
+  font-size: clamp(30px, 3.1vw, 44px);
+  line-height: 1.18;
+  margin: 16px 0;
+  letter-spacing: -1.5px;
+}
+.auto-hero h1 > span {
+  color: #1a6fb7;
+}
+.autohub-page .auto-hero p {
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+.auto-hero-guide {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 16px;
+}
+.auto-hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.auto-hero-visual img {
+  position: absolute;
+  width: 116%;
+  max-width: none;
+  right: -32px;
+  bottom: -15px;
+  mix-blend-mode: multiply;
+  mask-image:
+    linear-gradient(to right, transparent, #000 15%, #000 85%, transparent),
+    linear-gradient(to bottom, transparent 5%, #000 25%, #000 72%, transparent 95%);
+  mask-composite: intersect;
+}
+.auto-hero-orbit {
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  right: 24px;
+  border: 40px solid #c9e1f5;
+  border-radius: 50%;
+}
+.auto-hero-wordmark {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  font-size: clamp(38px, 5.7vw, 76px);
+  letter-spacing: -4px;
+  font-weight: 800;
+  color: #bad8ee;
+}
+.auto-hero-tag {
+  position: absolute;
+  right: 20px;
+  bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 4px 18px #17334f0d;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+.autohub-page .auto-benefits {
+  max-width: 1216px;
+  gap: 65px;
+  padding: 20px 24px;
+  color: #48637b;
+  border-top: 0;
+  font-size: 11px;
+  margin: auto;
+}
+.auto-benefits svg {
+  color: #1a6fb7;
+  flex-shrink: 0;
+}
+.auto-brands,
+.auto-buy-guide {
+  max-width: 1280px;
+  margin: auto;
+  padding: 28px 32px;
+}
+.auto-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.auto-section-heading h2 {
+  font-size: 19px;
+  margin: 0;
+}
+.auto-section-heading a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1a6fb7;
+  white-space: nowrap;
+}
+.auto-brand-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 5px 4px 10px;
+}
+.auto-brand-button {
+  flex: 1 0 102px;
+  min-height: 97px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.auto-brand-button > span {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #5d6f81;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+.auto-brand-button:hover,
+.auto-brand-button[aria-pressed='true'] {
+  border-color: #1a6fb7;
+  background: #f0f7fd;
+  color: #155e9c;
+}
+.auto-brand-button[aria-pressed='true'] > span {
+  background: #1a6fb7;
+  color: #fff;
+}
+.autohub-page .auto-catalog {
+  padding: 14px 32px 44px;
+}
+.auto-catalog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.auto-catalog-heading h2 {
+  font-size: 26px;
+  margin: 6px 0 0;
+}
+.auto-catalog-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.auto-catalog-layout {
+  display: grid;
+  grid-template-columns: 228px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.autohub-page .auto-filter-toggle {
+  display: none;
+}
+.auto-filter-panel {
+  position: sticky;
+  top: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+}
+.auto-filter-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+.auto-filter-title h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+.autohub-page .auto-filter-title .btn {
+  font-size: 10px;
+  padding: 5px 0;
+  min-height: 24px;
+  color: #1a6fb7;
+}
+.auto-filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 21px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.auto-filter-field select,
+.auto-filter-field input {
+  width: 100%;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 11px 10px;
+}
+.auto-filter-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  border-radius: 7px;
+  background: #f0f6fb;
+  padding: 14px;
+  color: #285677;
+}
+.auto-filter-tip strong {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.auto-filter-tip p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 0;
+}
+.auto-search {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+}
+.auto-search .search-box {
+  border: 0;
+  min-width: 0;
+  color: #6c8093;
+}
+.auto-search .search-box svg {
+  flex-shrink: 0;
+}
+.auto-search input {
+  font-size: 12px;
+}
+.auto-results-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 18px 0;
+  font-size: 12px;
+}
+.auto-results-toolbar p {
+  margin: 0;
+  color: var(--muted);
+}
+.auto-results-toolbar strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+.auto-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.auto-sort select {
+  min-height: 36px;
+  padding: 8px;
+  font-size: 11px;
+}
+.auto-active-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.auto-active-filters > button:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e6f1fa;
+  color: #155589;
+  border: 1px solid #c7dff1;
+  border-radius: 5px;
+  padding: 7px 9px;
+  font-size: 11px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.auto-active-filters svg {
+  flex-shrink: 0;
+}
+.autohub-page .auto-active-filters .btn {
+  min-height: 30px;
+  font-size: 11px;
+  color: #1a6fb7;
+}
+.autohub-page .car-grid {
+  gap: 16px;
+}
+.autohub-page .car-card {
+  border-radius: 9px;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+.autohub-page .car-card:hover {
+  box-shadow: 0 8px 24px #17334f10;
+  transform: translateY(-2px);
+}
+.autohub-page .car-image {
+  height: auto;
+  aspect-ratio: 1.63;
+}
+.autohub-page .car-image > .badge {
+  top: 12px;
+  left: 12px;
+  background: #fff;
+}
+.autohub-page .favorite-btn {
+  min-height: 34px;
+  width: 34px;
+  padding: 7px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px #17334f10;
+  color: #47647c;
+}
+.autohub-page .favorite-btn[aria-pressed='true'] {
+  color: #b62f48;
+  background: #fff0f2;
+}
+.autohub-page .car-copy {
+  padding: 16px;
+}
+.car-copy > .muted {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 500;
+}
+.autohub-page .car-copy h3 {
+  font-size: 19px;
+  margin: 8px 0 14px;
+  letter-spacing: -0.4px;
+}
+.car-copy h3 svg {
+  color: #5f7c95;
+}
+.autohub-page .car-spec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px 6px;
+  margin-bottom: 15px;
+  font-size: 10px;
+}
+.autohub-page .car-spec > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  white-space: nowrap;
+}
+.car-spec svg {
+  color: #71879b;
+  flex-shrink: 0;
+}
+.autohub-page .car-bottom {
+  border-color: var(--line);
+  padding-top: 11px;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.autohub-page .car-bottom strong {
+  font-size: 17px;
+  color: #b75000;
+  font-weight: 700;
+}
+.autohub-page .car-bottom .btn {
+  min-height: 28px;
+  padding: 5px 0;
+  gap: 5px;
+  color: #1a6fb7;
+  font-size: 10px;
+}
+.auto-buy-guide {
+  border-top: 1px solid var(--line);
+  padding-top: 34px;
+  padding-bottom: 44px;
+}
+.auto-buy-guide .auto-section-heading h2 {
+  margin-top: 7px;
+  font-size: 25px;
+}
+.auto-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+.auto-guide-grid article {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 22px;
+}
+.auto-guide-icon {
+  display: inline-flex;
+  padding: 12px;
+  border-radius: 10px;
+  background: #edf5fc;
+  color: #1a6fb7;
+  margin-bottom: 18px;
+}
+.auto-guide-number {
+  position: absolute;
+  right: 22px;
+  top: 26px;
+  color: #71859a;
+  font-size: 30px;
+  font-weight: 700;
+}
+.auto-guide-grid h3 {
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  margin-bottom: 9px;
+}
+.auto-guide-grid p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+.autohub-page .compare-dock {
+  border-top: 3px solid #1a6fb7;
+  box-shadow: 0 8px 40px #17334f24;
+}
+.compare-dock > span > svg {
+  color: #1a6fb7;
+}
+.compare-dock > span > span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.compare-dock small {
+  color: var(--muted);
+  font-size: 10px;
+}
+.autohub-page .notice {
+  background: #fff7e9;
+  border-color: #f3d9af;
+}
+.autohub-page .auto-detail,
+.autohub-page .auto-compare {
+  padding: 30px 32px 50px;
+}
+.autohub-page .back-link {
+  color: #1a6fb7;
+}
+.autohub-page .detail-grid {
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 32px;
+}
+.autohub-page .gallery-main {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.autohub-page .gallery-thumbs button[aria-pressed='true'] {
+  border-color: #1a6fb7;
+}
+.autohub-page .detail-grid > div:first-child h2 {
+  font-size: 24px;
+  margin-top: 28px;
+}
+.autohub-page .detail-grid > div:first-child > p:not(.small) {
+  font-size: 14px;
+  color: var(--muted);
+}
+.autohub-page .detail-info {
+  padding: 26px;
+  border-radius: 10px;
+}
+.autohub-page .detail-info h1 {
+  font-size: 36px;
+}
+.autohub-page .detail-price,
+.autohub-page .compare-price {
+  color: #b75000;
+  font-weight: 700;
+}
+.auto-detail-contact {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-top: 20px;
+}
+.auto-detail-contact svg {
+  color: #1a6fb7;
+  flex-shrink: 0;
+}
+.auto-detail-contact strong {
+  font-size: 12px;
+}
+.auto-detail-contact p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 5px 0 0;
+}
+.autohub-page .auto-compare h1 {
+  font-size: clamp(28px, 3.6vw, 44px);
+  margin: 12px 0 18px;
+}
+.autohub-page .compare-card {
+  border-radius: 10px;
+}
+.autohub-page .compare-card > img {
+  border-radius: 6px;
+}
+.autohub-page .compare-card h2 {
+  margin-top: 18px;
+  font-size: 21px;
+}
+.autohub-page .compare-price {
+  font-size: 21px;
+}
+.autohub-page .modal {
+  background: #fff;
+}
+.autohub-footer {
+  background: #103756;
+  color: #dce8f2;
+}
+.autohub-footer-inner {
+  max-width: 1280px;
+  padding: 34px 32px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.autohub-footer .autohub-brand,
+.autohub-footer .autohub-brand > span {
+  color: #fff;
+}
+.autohub-footer .autohub-brand > svg {
+  margin-right: 9px;
+  color: #ffaf32;
+}
+.autohub-footer p {
+  margin: 14px 0 7px;
+  font-size: 12px;
+}
+.autohub-footer small {
+  font-size: 10px;
+  color: #b9cddd;
+}
+.autohub-footer nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 11px;
+}
+.autohub-footer nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.autohub-footer-bottom {
+  border-top: 1px solid #ffffff20;
+  max-width: 1216px;
+  margin: auto;
+  padding: 18px 0 28px;
+  color: #b9cddd;
+  font-size: 10px;
+}
+@media (max-width: 1280px) {
+  .autohub-page .auto-hero {
+    margin-inline: 32px;
+  }
+  .autohub-footer-bottom {
+    margin-inline: 32px;
+  }
+}
+@media (max-width: 1050px) {
+  .autohub-header nav {
+    margin-left: 18px;
+    gap: 24px;
+  }
+  .autohub-page .auto-hero {
+    padding: 32px;
+  }
+  .auto-hero-guide {
+    display: flex;
+    margin: 14px 0 0;
+  }
+  .auto-hero-visual img {
+    right: -22px;
+    bottom: 10px;
+  }
+  .auto-hero-orbit {
+    width: 230px;
+    height: 230px;
+    right: 0;
+  }
+  .auto-hero-wordmark {
+    top: 22px;
+  }
+  .autohub-page .auto-benefits {
+    gap: 35px;
+  }
+  .autohub-page .car-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .auto-catalog-layout {
+    grid-template-columns: 208px minmax(0, 1fr);
+    gap: 18px;
+  }
+  .auto-catalog-note {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .autohub-header-inner {
+    padding: 16px 24px;
+  }
+  .autohub-header nav {
+    margin: 0 auto;
+  }
+  .autohub-header .autohub-nav-guide {
+    display: none;
+  }
+  .autohub-page .auto-hero {
+    margin-inline: 24px;
+    padding: 28px;
+  }
+  .auto-hero-tag {
+    display: none;
+  }
+  .auto-hero-visual img {
+    width: 132%;
+    bottom: 36px;
+    right: -32px;
+  }
+  .auto-hero-orbit {
+    width: 180px;
+    height: 180px;
+    border-width: 30px;
+  }
+  .autohub-page .auto-benefits {
+    gap: 22px;
+    font-size: 10px;
+  }
+  .auto-brands,
+  .auto-buy-guide,
+  .autohub-page .auto-catalog {
+    padding-inline: 24px;
+  }
+  .auto-catalog-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .autohub-page .auto-filter-toggle {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    margin-bottom: 16px;
+    background: #fff;
+  }
+  .auto-filter-toggle > svg:last-child {
+    margin-left: auto;
+    transition: transform 0.2s;
+  }
+  .auto-filter-toggle[aria-expanded='true'] > svg:last-child {
+    transform: rotate(90deg);
+  }
+  .auto-filter-toggle > span {
+    border-radius: 4px;
+    background: #e6f1fa;
+    color: #155589;
+    padding: 2px 6px;
+    font-size: 11px;
+  }
+  .auto-filter-panel {
+    display: none;
+    position: static;
+  }
+  .auto-filter-panel.is-open {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 18px;
+  }
+  .auto-filter-title {
+    grid-column: 1 / -1;
+  }
+  .auto-filter-tip {
+    display: none;
+  }
+  .auto-guide-grid {
+    gap: 12px;
+  }
+  .auto-guide-grid article {
+    padding: 16px;
+  }
+  .auto-guide-grid h3 {
+    line-height: 1.5;
+  }
+  .autohub-page .detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .autohub-page .compare-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 540px) {
+  .autohub-header-inner {
+    padding: 14px 18px;
+    gap: 12px;
+  }
+  .autohub-brand {
+    font-size: 25px;
+  }
+  .autohub-brand-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 7px;
+  }
+  .autohub-header nav {
+    display: none;
+  }
+  .autohub-portfolio {
+    border: 0;
+    padding: 8px 0;
+    font-size: 11px;
+  }
+  .autohub-page .auto-hero {
+    margin: 18px 16px 0;
+    padding: 25px 22px 0;
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 12px;
+  }
+  .auto-hero-copy .eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.6px;
+  }
+  .autohub-page .auto-hero h1 {
+    font-size: clamp(27px, 7.8vw, 37px);
+    letter-spacing: -1px;
+  }
+  .autohub-page .auto-hero p {
+    font-size: 12px;
+  }
+  .auto-hero p br {
+    display: none;
+  }
+  .auto-hero-guide {
+    display: flex;
+    font-size: 10px;
+    margin: 14px 0 0;
+  }
+  .auto-hero-visual {
+    height: 162px;
+    margin-top: 15px;
+  }
+  .auto-hero-visual img {
+    width: 118%;
+    bottom: -20px;
+    right: -16px;
+  }
+  .auto-hero-wordmark {
+    font-size: 44px;
+    letter-spacing: -2.5px;
+    top: 0;
+    right: 12px;
+  }
+  .auto-hero-orbit {
+    width: 150px;
+    height: 150px;
+    right: 32px;
+    border-width: 25px;
+  }
+  .autohub-page .auto-benefits {
+    margin: 0 16px;
+    padding: 15px 0;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: 9px;
+  }
+  .auto-benefits span {
+    max-width: 100px;
+    align-items: start;
+    gap: 5px;
+    line-height: 1.5;
+  }
+  .auto-benefits svg {
+    width: 15px;
+    height: 15px;
+  }
+  .auto-brands,
+  .auto-buy-guide,
+  .autohub-page .auto-catalog {
+    padding-inline: 18px;
+  }
+  .auto-brands {
+    padding-top: 22px;
+    padding-bottom: 24px;
+  }
+  .auto-section-heading h2 {
+    font-size: 16px;
+  }
+  .auto-section-heading a {
+    font-size: 10px;
+  }
+  .auto-brand-button {
+    flex-basis: 93px;
+    min-height: 90px;
+  }
+  .auto-catalog-heading h2 {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+  .auto-catalog-heading {
+    margin-bottom: 18px;
+  }
+  .autohub-page .auto-catalog {
+    padding-top: 6px;
+  }
+  .auto-search {
+    gap: 6px;
+    padding: 7px;
+  }
+  .auto-search .search-box {
+    padding-left: 5px;
+    gap: 7px;
+  }
+  .auto-search input {
+    font-size: 11px;
+    padding-right: 0;
+  }
+  .autohub-page .auto-search .btn {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+  .auto-search .btn svg {
+    display: none;
+  }
+  .auto-results-toolbar {
+    font-size: 11px;
+    gap: 8px;
+    margin-block: 16px;
+  }
+  .auto-sort > span {
+    display: none;
+  }
+  .auto-sort select {
+    max-width: 126px;
+  }
+  .auto-filter-panel.is-open {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .auto-filter-field:last-of-type {
+    margin-bottom: 0;
+  }
+  .autohub-page .car-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .autohub-page .car-image {
+    aspect-ratio: 1.8;
+  }
+  .autohub-page .car-spec {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 15px;
+    font-size: 11px;
+  }
+  .autohub-page .car-bottom strong {
+    font-size: 20px;
+  }
+  .auto-buy-guide .auto-section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+  .auto-buy-guide .auto-section-heading h2 {
+    font-size: 23px;
+    line-height: 1.4;
+  }
+  .auto-guide-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 20px;
+  }
+  .auto-guide-grid article {
+    padding: 20px;
+  }
+  .autohub-page .compare-dock {
+    width: calc(100% - 28px);
+    justify-content: space-between;
+    padding: 10px 12px;
+    gap: 8px;
+    bottom: 14px;
+  }
+  .compare-dock > span {
+    gap: 8px;
+    font-size: 11px;
+  }
+  .compare-dock small {
+    display: none;
+  }
+  .autohub-page .compare-dock .btn {
+    min-height: 38px;
+    font-size: 11px;
+    padding: 9px 11px;
+  }
+  .autohub-page .auto-detail,
+  .autohub-page .auto-compare {
+    padding: 25px 18px 38px;
+  }
+  .autohub-page .detail-info {
+    padding: 22px;
+  }
+  .autohub-page .auto-compare h1 {
+    line-height: 1.3;
+  }
+  .autohub-footer-inner {
+    padding: 30px 24px;
+    align-items: start;
+    flex-direction: column;
+  }
+  .autohub-footer-bottom {
+    margin-inline: 24px;
+    padding-bottom: 100px;
+  }
+}

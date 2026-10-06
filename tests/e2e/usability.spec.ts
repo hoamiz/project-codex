@@ -5,9 +5,16 @@ for (const width of [360, 768, 1440])
     await page.setViewportSize({ width, height: 900 });
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
+    const inventory = await (await page.request.get('/api/cars')).json();
+    const compareRoute = `/projects/autohub/compare?ids=${inventory.data
+      .slice(0, 3)
+      .map((car: { id: string }) => car.id)
+      .join(',')}`;
     for (const route of [
       '/',
       '/projects/autohub',
+      '/projects/autohub/cars/toyota-camry',
+      compareRoute,
       '/projects/memory-match',
       '/projects/admin/login',
     ]) {
@@ -15,6 +22,9 @@ for (const width of [360, 768, 1440])
       if (route === '/') await expect(page.locator('.project-card')).toHaveCount(3);
       if (route === '/projects/autohub')
         await expect(page.locator('.car-card').first()).toBeVisible();
+      if (route.includes('/autohub/cars/'))
+        await expect(page.locator('.detail-info')).toBeVisible();
+      if (route === compareRoute) await expect(page.locator('.compare-card')).toHaveCount(3);
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
         route,
