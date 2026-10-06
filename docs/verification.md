@@ -53,5 +53,4 @@ Publish/deploy và restore ở task mới chưa thực hiện; không thuộc ng
 
 ## Yêu cầu đẩy GitHub (2026-10-06)
 
-Người dùng đã cho phép commit, tạo repository mới project-codex và push. Kiểm tra source/tài liệu không chứa credential, database, node_modules hoặc build output; bằng chứng kiểm thử ở trên vẫn giữ nguyên. Account hiện tại là hoamiz; repo đích chưa tồn tại. GitHub từ chối tạo repository qua GraphQL và REST (403 Resource not accessible by integration). Commit main cục bộ được chuẩn bị để push sau khi có repo trống và quyền truy cập; đây là blocker từ GitHub, không phải sandbox auto-review.
-
+Người dùng đã cho phép commit, tạo repository mới project-codex và push. Kiểm tra source/tài liệu không chứa credential, database, node_modules hoặc build output; bằng chứng kiểm thử ở trên vẫn giữ nguyên. Account hiện tại là hoamiz; repo đích chưa tồn tại. GitHub từ chối tạo repository qua GraphQL và REST (403 Resource not accessible by integration). Toàn bộ source/tài liệu đã commit main cục bộ (root commit18b7730); origin trỏ tới https://github.com/hoamiz/project-codex.git. Cần repo trống và quyền truy cập để push; đây là blocker từ GitHub, không phải sandbox auto-review.

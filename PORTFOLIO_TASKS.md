@@ -14,7 +14,7 @@ Xây một website portfolio với ba demo hoạt động thật:
 
 Trang `/` giới thiệu chủ portfolio và hiển thị ba project. Giao diện dùng tiếng Việt, có đường quay về portfolio từ từng demo. Các thông tin cá nhân chưa được cung cấp dùng nội dung mẫu được ghi rõ trong cấu hình; không tự nhận kinh nghiệm hay thành tích.
 
-**Project:** `/workspace/project-codex`, một repository Git cục bộ mới. Frontend, backend, cấu hình và dữ liệu được tạo riêng trong project này. Không sao chép hoặc sửa mã, dependency, biến môi trường và dữ liệu từ các project khác. Chưa tạo repository GitHub hay cấu hình remote.
+**Project:** `/workspace/project-codex`, một repository Git cục bộ mới. Frontend, backend, cấu hình và dữ liệu được tạo riêng trong project này. Không sao chép hoặc sửa mã, dependency, biến môi trường và dữ liệu từ các project khác. Remote origin đã trỏ tới `https://github.com/hoamiz/project-codex.git`; GitHub chưa tạo repository do integration từ chối403.
 
 **Cách triển khai:** khởi tạo mới React + TypeScript + Vite + Tailwind tại `apps/web` và Node.js + Express + TypeScript tại `apps/api`. Root package có tên `project-codex`; dùng npm workspaces và một `package-lock.json` ở gốc. Hai ứng dụng được xây mới theo hợp đồng bên dưới.
 
@@ -285,7 +285,7 @@ Thứ tự mặc định: T01 → T02 → T03 → T04 → T05 → T06 → T07 �
 
 ## 6. Nhật ký task
 
-Hiện tại (2026-10-06): đã triển khai portfolio và ba demo, FE/API/PostgreSQL chạy thật. Nghiệm thu cuối: 23 API + 3 web + 10 E2E đạt, 0 fail/skip; lint/typecheck/build/format và compiled startup đạt. Setup/start tái chạy an toàn, cloud draft đã lưu; chưa publish/deploy/push hoặc tạo remote GitHub. Chi tiết file và kiểm tra: docs/verification.md.
+Hiện tại (2026-10-06): đã triển khai portfolio và ba demo, FE/API/PostgreSQL chạy thật. Nghiệm thu cuối: 23 API + 3 web + 10 E2E đạt, 0 fail/skip; lint/typecheck/build/format và compiled startup đạt. Setup/start tái chạy an toàn, cloud draft đã lưu; chưa publish/deploy/push; origin đã cấu hình, tạo repo GitHub đang bị403. Chi tiết file và kiểm tra: docs/verification.md.
 
 Mẫu thêm bản ghi sau mỗi lượt:
 
@@ -368,4 +368,4 @@ Task tiếp theo có đủ phụ thuộc:
 
 - T31 — hoàn thành: Nghiệm thu cuối cập nhật sau sửa retry: npm run check đạt lint/typecheck/build, API23+web3 và E2E10/10, compiled API/React SPA/cookie Secure proxy; reporter console chạy lạiE2E10/10. Bằng chứng đầy đủ docs/verification.md.
 
-- GitHub (2026-10-06) — theo yêu cầu riêng của người dùng: chuẩn bị toàn bộ source/tài liệu, kiểm tra 91 file không chứa secret/local database/dependency/build output. `gh api user` xác nhận hoamiz; repository project-codex chưa tồn tại. `gh repo create` bị GraphQL từ chối; REST POST user/repos trả403 Resource not accessible by integration. Chuẩn bị commit main cục bộ; chưa tạo remote/push vì quyền tạo repository bên ngoài bị chặn.
+- GitHub (2026-10-06) — theo yêu cầu riêng của người dùng: chuẩn bị toàn bộ source/tài liệu, kiểm tra 91 file không chứa secret/local database/dependency/build output. `gh api user` xác nhận hoamiz; repository project-codex chưa tồn tại. `gh repo create` bị GraphQL từ chối; REST POST user/repos trả403 Resource not accessible by integration. Đã commit toàn bộ main cục bộ, root commit18b7730; origin cấu hình tới https://github.com/hoamiz/project-codex.git. Chưa push vì quyền tạo repository bên ngoài bị chặn.

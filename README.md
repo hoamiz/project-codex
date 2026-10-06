@@ -84,4 +84,4 @@ Tài liệu: [web](apps/web/README.md), [API](apps/api/README.md), [kiến trúc
 
 ## Cloud
 
-T33 bổ sung setup/start riêng cho project-codex vào bản nháp `install_script`/`start_skill`, giữ cấu hình repository khác. Kiểm tra project này không gọi script của project cũ. Review/lưu và publish trong cài đặt môi trường khi muốn tái sử dụng snapshot. Chưa publish/deploy hoặc kiểm chứng restore ở task mới. Repository GitHub đích là `hoamiz/project-codex`; thao tác tạo repository hiện bị GitHub từ chối do quyền integration, mã nguồn được chuẩn bị để commit/push theo yêu cầu riêng của người dùng.
+T33 bổ sung setup/start riêng cho project-codex vào bản nháp `install_script`/`start_skill`, giữ cấu hình repository khác. Kiểm tra project này không gọi script của project cũ. Review/lưu và publish trong cài đặt môi trường khi muốn tái sử dụng snapshot. Chưa publish/deploy hoặc kiểm chứng restore ở task mới. Remote `origin` trỏ tới `https://github.com/hoamiz/project-codex.git`. Mã nguồn đã commit cục bộ theo yêu cầu người dùng; tạo repository GitHub bị từ chối403 do quyền integration, nên chưa push. Cần repository trống và quyền truy cập cho kết nối GitHub để tiếp tục.
