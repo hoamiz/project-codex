@@ -101,3 +101,5 @@ Tài liệu: [web](apps/web/README.md), [API](apps/api/README.md), [kiến trúc
 ## Cloud
 
 T33 bổ sung setup/start riêng cho project-codex vào bản nháp `install_script`/`start_skill`, giữ cấu hình repository khác. Kiểm tra project này không gọi script của project cũ. Review/lưu và publish trong cài đặt môi trường khi muốn tái sử dụng snapshot. Chưa publish/deploy hoặc kiểm chứng restore ở task mới. Remote `origin` trỏ tới `https://github.com/hoamiz/project-codex.git`; các lần cập nhật GitHub theo yêu cầu người dùng được ghi trong [nhật ký nghiệm thu](docs/verification.md). Repository public; cấu hình/secret/database cục bộ không được đưa lên GitHub.
+
+Room Studio 3D đã được cập nhật lên nhánh `main` ngày2026-10-07 theo yêu cầu riêng, commit tính năng `14886e2`. Source, migration002, lockfile, test và tài liệu đều có trên GitHub; các artifact cục bộ được loại trừ.
