@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowUpRight, ArrowLeft, Layers } from 'lucide-react';
 import { Portfolio } from './features/portfolio';
@@ -67,6 +67,20 @@ function App() {
           <Route path="/projects/autohub/cars/:slug" element={<CarDetail />} />
           <Route path="/projects/autohub/compare" element={<Compare />} />
           <Route path="/projects/memory-match" element={<MemoryMatch />} />
+          {/* Giữ URL rooms người dùng đã mở; replace tránh quay lại URL cũ khi bấm Back. */}
+          <Route
+            path="/projects/rooms"
+            element={
+              <Navigate
+                replace
+                to={{
+                  pathname: '/projects/room-studio',
+                  search: location.search,
+                  hash: location.hash,
+                }}
+              />
+            }
+          />
           <Route
             path="/projects/room-studio"
             element={

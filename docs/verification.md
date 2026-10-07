@@ -121,3 +121,9 @@ Bổ sung `003_room_portfolio.sql` đăng ký Room Studio bằng ON CONFLICT DO 
 Kiểm tra mục tiêu đạt8/8 (upgrade/public/database). `npm run check` đạt **28 API + 8 web + 19 E2E**, lint0 warning/typecheck/build/compiled startup/SPA/cookie/asset404 đạt; log `.local/logs/room-card-check.log`. E2E Room Studio giờ bắt đầu từ card portfolio, click mở đúng URL và renderer hoạt động. Format/diff check đạt. Browser dev xác nhận4 card và điều hướng Room Studio, screenshot `.local/reference/room-card-fixed.png`. README/API/kiến trúc và checklist đã cập nhật.
 
 Bản sửa `cea8b8d4a499bdb346a869ecee9b045dbab23e23` đã lên main của hoamiz/project-codex qua Git Data API, không force. Fetch/GET commit xác nhận tree/commit khớp cục bộ; scan110 file versioned không có local secret/artifact. Không triển khai website bên ngoài; bản chạy khác cần nhận code mới và khởi động lại API để tự áp dụng migration003.
+
+## URL rooms được người dùng bổ sung — 2026-10-07
+
+URL người dùng gửi sau kiểm tra C01–C03 là `/projects/rooms`, trước đó không được đăng ký và đi vào trang404; đây là vấn đề route riêng với trường hợp DB cũ đã tái hiện. Thêm alias chính xác bằng Navigate replace sang `/projects/room-studio`, giữ query/hash, không đổi URL metadata/card/API.
+
+Lint0 warning, web typecheck/build, format/diff check đạt. E2E mới trực tiếp mở `/projects/rooms?from=projects#room-preview`, xác nhận editor/renderer, URL giữ query/hash, reload hoạt động và Back trở về portfolio đạt1/1; log `.local/logs/rooms-alias-e2e.log`. Compiled build smoke quét thêm alias, chuyển đúng path, bốn demo/render/reload, lazy chunk/HTTP/DB/admin401/asset404/cookie đạt; `.local/logs/rooms-alias-build.log`. Không chạy lại API/unit trong sửa route này; không gộp test mới thành số đếm của bộ C03 trước đó. README và API contract đã ghi URL tương thích.

@@ -18,6 +18,8 @@ Chọn món trong danh sách rồi dùng phím mũi tên để dịch chuyển, 
 
 Nháp tự lưu trên trình duyệt. **Lưu & chia sẻ** tạo snapshot công khai trong PostgreSQL và URL `/projects/room-studio/view/:id` chỉ để xem; các chỉnh sửa sau cần lưu thành bản mới. Người xem có thể tạo bản sao để chỉnh mà giữ bản gốc. Hình học tạo trong code, không tải model/font bên ngoài. Three.js/React Three Fiber/Drei chỉ tải khi mở studio. Hợp đồng và checklist: [kế hoạch PJ4](docs/room-studio-plan.md).
 
+Đường dẫn `/projects/rooms` cũng được hỗ trợ và tự chuyển sang `/projects/room-studio`, giữ query/hash. Card Room Studio trên trang portfolio `/` dẫn tới URL chính này.
+
 ## Giao diện AutoHub
 
 AutoHub tham khảo bố cục marketplace của [Carmudi](https://www.carmudi.vn/): theme xanh/cam, header/footer riêng, bộ lọc bên trái trên desktop và thu gọn trên mobile, lựa chọn nhanh theo hãng, giá bán nổi bật và hướng dẫn mua xe. Danh sách, chi tiết và so sánh xe dùng cùng theme; giữ ảnh SVG nguyên bản. Bộ lọc nằm trong URL, có thể bỏ từng điều kiện hoặc xóa toàn bộ mà giữ thứ tự sắp xếp. Yêu thích, so sánh tối đa 3 xe và yêu cầu tư vấn/lái thử tiếp tục dùng các luồng hiện có.

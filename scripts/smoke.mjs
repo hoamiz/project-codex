@@ -63,11 +63,14 @@ export async function smoke(
       ['/projects/memory-match', 'Chậm lại.'],
       ['/projects/admin/login', 'Đăng nhập quản trị.'],
       ['/projects/room-studio', 'Room Studio 3D'],
+      ['/projects/rooms', 'Room Studio 3D'],
     ]) {
       await page.goto(webOrigin + route);
       await page.getByRole('heading').filter({ hasText: heading }).waitFor();
-      if (route === '/projects/room-studio')
+      if (route === '/projects/room-studio' || route === '/projects/rooms')
         await page.locator('.room-stage[data-ready="true"]').waitFor();
+      if (route === '/projects/rooms')
+        assert.equal(new URL(page.url()).pathname, '/projects/room-studio');
       await page.reload();
       await page.getByRole('heading').filter({ hasText: heading }).waitFor();
     }

@@ -413,6 +413,8 @@ GitHub PJ4 — hoàn thành theo yêu cầu riêng2026-10-07: commit tính năng
 
 ## Sửa card Room Studio bị thiếu — 2026-10-07
 
-- [x] C01 — Tái hiện DB cũ: server không seed trên DB đã migrate001/002 có3 metadata trả thiếu room-studio; test trước sửa thất bại đúng tại danh sách slug. DB môi trường hiện tại có4 metadata, chưa có URL của môi trường người dùng để đối chiếu trực tiếp.
+- [x] C01 — Tái hiện DB cũ: server không seed trên DB đã migrate001/002 có3 metadata trả thiếu room-studio; test trước sửa thất bại đúng tại danh sách slug. DB môi trường hiện tại có4 metadata. Khi kiểm tra ban đầu chưa có URL; sau đó người dùng bổ sung `/projects/rooms`, được xử lý riêng bên dưới.
 - [x] C02 — Bổ sung migration003 đăng ký metadata, startup migrate trước listen; giữ migration cũ và dữ liệu đã chỉnh. Hai test server thật trong schema test riêng và public/database test đạt8/8; không chạy seed trong fixture nâng cấp.
 - [x] C03 — Nghiệm thu card→room và hồi quy startup/build: `npm run check` đạt28 API + 8 web + 19 E2E, lint/typecheck/build/compiled SPA đạt; format và diff check đạt. Browser thực trên dev hiển thị4 card, nhấn Room Studio mở editor; screenshot `.local/reference/room-card-fixed.png`. Bản sửa `cea8b8d` đã lên main của hoamiz/project-codex; tree/commit đối chiếu đúng, không force và không có artifact/secret.
+
+- [x] C04 — URL `/projects/rooms`: sau khi nhận URL người dùng, xác định route này trước đây đi vào404. Thêm Navigate replace sang `/projects/room-studio`, giữ query/hash và URL card chính. E2E trực tiếp/reload/Back đạt1/1; lint/web typecheck/build, compiled smoke gồm alias4 demo/lazy bundle/cookie và format/diff check đạt. Không chạy lại unit/API trong thay đổi chỉ gồm route/frontend; kết quả C03 giữ nguyên.

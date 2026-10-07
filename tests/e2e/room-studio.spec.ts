@@ -29,6 +29,23 @@ async function scan(page: Page) {
   ).toEqual([]);
 }
 
+test('rooms alias opens the studio, preserves URL context, reloads and returns to portfolio', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await expect(page.locator('.project-card')).toHaveCount(4);
+  await page.goto('/projects/rooms?from=projects#room-preview');
+  await expect(page).toHaveURL(/\/projects\/room-studio\?from=projects#room-preview$/);
+  await expect(page.getByRole('heading', { name: 'Room Studio 3D', exact: true })).toBeVisible();
+  await expect(page.locator('.room-stage')).toHaveAttribute('data-ready', 'true');
+  await page.reload();
+  await expect(page).toHaveURL(/\/projects\/room-studio\?from=projects#room-preview$/);
+  await expect(page.locator('.room-stage')).toHaveAttribute('data-ready', 'true');
+  await page.goBack();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.locator('.project-room-studio')).toBeVisible();
+});
+
 test('WebGL drag commits one move, invalid placement preserves the draft, history and PNG work', async ({
   page,
 }) => {

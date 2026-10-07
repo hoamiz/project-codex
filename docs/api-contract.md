@@ -13,6 +13,8 @@ Routes FE: /, /projects/autohub, /projects/autohub/cars/:slug, /projects/autohub
 
 Room Studio thêm `/projects/room-studio` và `/projects/room-studio/view/:id` (UUID). Metadata portfolio hiện gồm4 slug: autohub, memory-match, admin, room-studio theo thứ tự này.
 
+Alias frontend `/projects/rooms` chuyển sang `/projects/room-studio`, giữ query/hash và thay entry history để Back quay lại trang trước. Alias không đổi URL metadata hoặc API `/rooms`.
+
 | Endpoint `/api` | Hợp đồng |
 | --- | --- |
 | `GET /rooms/catalog` | `{data:{room:{width:6,depth:5,snap:0.25,maxItems:24},items,palettes,starter}}` |
