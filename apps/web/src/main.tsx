@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -13,6 +13,8 @@ import { AdminLeads } from './features/admin-leads';
 import { Dashboard } from './features/admin-dashboard';
 import './styles.css';
 import './features/autohub.css';
+import { State } from './components/ui';
+const RoomStudio = lazy(() => import('./features/room-studio'));
 const client = new QueryClient({
   defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } },
 });
@@ -65,6 +67,22 @@ function App() {
           <Route path="/projects/autohub/cars/:slug" element={<CarDetail />} />
           <Route path="/projects/autohub/compare" element={<Compare />} />
           <Route path="/projects/memory-match" element={<MemoryMatch />} />
+          <Route
+            path="/projects/room-studio"
+            element={
+              <Suspense fallback={<State loading />}>
+                <RoomStudio />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/projects/room-studio/view/:id"
+            element={
+              <Suspense fallback={<State loading />}>
+                <RoomStudio />
+              </Suspense>
+            }
+          />
           <Route path="/projects/admin/login" element={<Login />} />
           <Route path="/projects/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />

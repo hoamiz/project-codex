@@ -4,15 +4,16 @@
 
 ## 1. Mục tiêu và cấu trúc dự án mới
 
-Xây một website portfolio với ba demo hoạt động thật:
+Website portfolio hiện có bốn demo hoạt động thật. T01–T33 bên dưới ghi phạm vi ba demo ban đầu; PJ4 được bổ sung theo R01–R07 ở cuối file và dùng làm tiêu chí hiện tại cho số project/route.
 
 | Project | URL chính | Nội dung |
 | --- | --- | --- |
 | AutoHub | `/projects/autohub` | Website bán xe, tìm kiếm, chi tiết, so sánh, yêu cầu tư vấn/lái thử |
 | Memory Match | `/projects/memory-match` | Game lật thẻ, ba độ khó, lưu kết quả, bảng xếp hạng |
 | Control Center | `/projects/admin` | Đăng nhập, quản lý xe, yêu cầu khách hàng, thống kê |
+| Room Studio 3D | `/projects/room-studio` | Custom phòng 3D, nội thất, màu/ánh sáng, lưu/chia sẻ và tạo bản sao |
 
-Trang `/` giới thiệu chủ portfolio và hiển thị ba project. Giao diện dùng tiếng Việt, có đường quay về portfolio từ từng demo. Các thông tin cá nhân chưa được cung cấp dùng nội dung mẫu được ghi rõ trong cấu hình; không tự nhận kinh nghiệm hay thành tích.
+Trang `/` giới thiệu chủ portfolio và hiển thị bốn project. Giao diện dùng tiếng Việt, có đường quay về portfolio từ từng demo. Các thông tin cá nhân chưa được cung cấp dùng nội dung mẫu được ghi rõ trong cấu hình; không tự nhận kinh nghiệm hay thành tích.
 
 **Project:** `/workspace/project-codex`, một repository Git cục bộ mới. Frontend, backend, cấu hình và dữ liệu được tạo riêng trong project này. Không sao chép hoặc sửa mã, dependency, biến môi trường và dữ liệu từ các project khác. Remote origin đã trỏ tới `https://github.com/hoamiz/project-codex.git`; Repository GitHub `hoamiz/project-codex` đã tồn tại và nhánh main đã nhận toàn bộ mã nguồn/tài liệu.
 
@@ -86,7 +87,7 @@ Không tạo folder rỗng chỉ để khớp sơ đồ. Tạo khi task cần.
 
 **Lead:** `id`, `carId`, `type`, `name`, `phone`, `email?`, `preferredAt?`, `message?`, `status`, `createdAt`, `updatedAt`, idempotency key duy nhất cho một lần gửi. `type`: `consultation`, `test_drive`; `status`: `new`, `in_progress`, `completed`, `cancelled`. Khi lái thử phải có ngày tương lai. Múi giờ nghiệp vụ mặc định `Asia/Ho_Chi_Minh`, hiển thị rõ trong form và dùng cho thống kê theo ngày; DB dùng `timestamptz`, API trả ISO timestamp.
 
-**Portfolio project:** seed đúng ba demo `autohub`, `memory-match`, `admin` trong database riêng. URL demo được lấy từ dữ liệu có whitelist route nội bộ.
+**Portfolio project:** seed bốn demo `autohub`, `memory-match`, `admin`, `room-studio` trong database riêng. URL demo được lấy từ dữ liệu có whitelist route nội bộ.
 
 **Auth:** một admin, password băm bằng Node `crypto.scrypt` với salt ngẫu nhiên; session lưu PostgreSQL, cookie HttpOnly, SameSite phù hợp và Secure khi production. Session secret lấy từ môi trường. Các thao tác ghi có kiểm tra CSRF/origin; frontend route guard chỉ hỗ trợ UX, backend luôn kiểm tra quyền.
 
@@ -379,3 +380,31 @@ Task tiếp theo có đủ phụ thuộc:
 - [x] **UI03 — Nghiệm thu:** lint, TypeScript/build FE, 3 web test, 12 E2E, format và compiled API/SPA đạt. Axe tại 360/768/1440px gồm danh sách, chi tiết, so sánh; panel lọc mobile mở được bằng bàn phím, không tràn ngang. Kết quả và file trong [docs/verification.md](docs/verification.md).
 
 Nhật ký: thay đổi `apps/web/src/main.tsx`, `features/autohub.tsx`, thêm `features/autohub-layout.tsx`/`autohub.css`, thêm `tests/e2e/autohub.spec.ts`, mở rộng `usability.spec.ts` và cập nhật README/nhật ký. Lần E2E đầu đạt 11/12, phát hiện cuộn tới hướng dẫn trước khi API hoàn thành khiến mục bị đẩy khỏi viewport; chuyển xử lý hash vào AutoHub và chờ cả danh sách/hãng tải xong. Chạy lại đạt 12/12, không bỏ test/assertion. Backend, schema và dependency không đổi. Nghiệm thu UI hoàn tất cục bộ trước khi người dùng yêu cầu cập nhật GitHub.
+
+## PJ4 — Room Studio 3D (2026-10-07)
+
+Phạm vi/hợp đồng và tiêu chí chi tiết: [docs/room-studio-plan.md](docs/room-studio-plan.md). Thực hiện R01–R07 theo phụ thuộc; ghi kết quả kiểm tra trước khi đánh dấu.
+
+- [x] R01 — Công cụ 3D và hợp đồng layout.
+- [x] R02 — Migration, catalog/API snapshot và test PostgreSQL.
+- [x] R03 — Phòng 3D, sáu model, camera/ánh sáng và fallback 2D.
+- [x] R04 — Editor, placement, history và lưu nháp.
+- [x] R05 — Lưu/chia sẻ, trang chỉ đọc và tạo bản sao.
+- [x] R06 — Project thứ tư trên portfolio, route lazy và smoke.
+- [x] R07 — Nghiệm thu, tài liệu và startup cloud.
+
+Nhật ký R01 đang thực hiện: đã kiểm tra working tree sạch, đọc cấu trúc app/schema/test; WebGL2 hoạt động trong Chromium mặc định. Dịch vụ/DB riêng khởi động và smoke ba demo cũ đạt. Cache npm mặc định nằm ngoài vùng ghi; chuyển cache sang `.local/npm-cache` trong project để cài dependency.
+
+R01 hoàn thành: Three0.186.1, React Three Fiber9.8.1, Drei10.7.9 và @types/three0.186 được cài trong workspace web, lockfile chung cập nhật; không cần đổi React19. Chromium WebGL2 thực hoạt động (mặc định và SwiftShader), max texture8192. Hợp đồng tại docs/room-studio-plan.md.
+
+R02 hoàn thành: migration002 mở whitelist URL và thêm room_designs, seed thêm PJ4; services/room.ts và routes/rooms.ts validate layout/catalog, snapshot immutable, key/hash và transaction lock. API typecheck đạt; `npm run test -w @project-codex/api -- --run test/rooms.test.ts test/public.test.ts test/database.test.ts`: 9/9 đạt. Dev migration/seed đạt, test kiểm tra tái chạy/rollback và giữ dữ liệu đã sửa; lưu/đọc DB thật, collision/bounds/duplicate/unknown kind/color/limit/snap, retry đồng thời201/200, conflict409, readonly/404 và Origin403. R03 tiếp tục.
+
+R03 hoàn thành: `features/room-studio/room-models.tsx`, `room-scene.tsx` dựng hình học nguyên bản, camera orthographic/OrbitControls, ngày/đêm và sơ đồ 2D. Web typecheck đạt. Chromium render WebGL thật không pageerror; đã xem screenshot desktop. E2E kéo bed bằng chuột, xoay camera làm ảnh PNG thay đổi, tải ảnh PNG hợp lệ và thiếu WebGL chuyển sang 2D đạt. Dùng PCFShadowMap hỗ trợ bởi Three hiện tại.
+
+R04 hoàn thành: editor/controller, `room-core.ts` và CSS responsive; 5/5 unit test (placement/collision/grid/bounds/limit, history/no-op/redo, draft validation/recovery, challenge). E2E undo một lần kéo, reject giữ draft, màu/ngày đêm/reload, reset xác nhận, keyboard xoay/dịch/xóa/undo/redo và challenge đạt. Comment tiếng Việt giải thích drag raycast/capture, validation, history, copy và key retry.
+
+R05 hoàn thành: `tests/e2e/room-studio.spec.ts` đạt 7/7, 0 skip; mất phản hồi sau khi server đã ghi rồi retry cùng key vẫn một row DB, URL/reload chỉ đọc, copy rồi sửa/reload không thay snapshot. API/catalog lỗi và storage bị chặn có đường retry/chỉnh tiếp; snapshot lỗi404 rõ ràng. Axe editor/panel/help/share tại360/768/1440 không violation, không tràn ngang. Lần đầu phát hiện nested-interactive do Canvas mang role img; sửa role group, giữ nguyên assertion và chạy lại đạt. Log `.local/logs/room-e2e.log`.
+
+R06 hoàn thành: portfolio4 card lấy từ API, minh họa SVG nguyên bản, route editor/view lazy và smoke4 demo/reload. `npm run check` đạt lint/typecheck/build, API26 + web8 và E2E19/19; compiled server/SPA/cookie/missing asset đạt. Manifest + request browser xác nhận bundle studio không tải trên portfolio, tải khi mở studio; các luồng ba demo cũ vẫn đạt. Log `.local/logs/room-check-final.log`.
+
+R07 hoàn thành: README root/web/API, kiến trúc, API contract và docs/verification.md đã cập nhật; format và git diff check đạt. Frozen-lockfile setup cài492 package, giữ fingerprint `.env` và số row dev4 project/12 xe/0 snapshot; owned stop/start + smoke4 demo đạt. Đã xem screenshot desktop/mobile và portfolio4 card; secret scan108 source/tài liệu đạt, local config/artifact bị Git bỏ qua. Cloud start_skill saved, requires_publish=true; đọc lại xác nhận nội dung đúng và install_script/repositories/network/secrets/runtime requirements giữ nguyên, legacy suffix giữ nguyên. Review/Save→Publish là thao tác lưu snapshot trong settings khi người dùng muốn, chưa publish/deploy/commit/push PJ4; chưa kiểm chứng restore task mới. Không còn blocker triển khai.

@@ -43,6 +43,15 @@ export async function seed(pool: Pool) {
       '/projects/admin',
       '/images/admin.svg',
     ],
+    [
+      'room-studio',
+      'Room Studio 3D',
+      'Một căn phòng. Vô vàn ý tưởng.',
+      'Thiết kế phòng 3D, sắp xếp nội thất và chia sẻ không gian của bạn.',
+      ['React Three Fiber', 'Three.js', 'PostgreSQL'],
+      '/projects/room-studio',
+      '/images/room-studio.svg',
+    ],
   ];
   for (const p of projects)
     await pool.query(

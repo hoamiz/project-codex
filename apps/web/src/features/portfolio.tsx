@@ -16,6 +16,12 @@ export const profile = {
   name: 'Project Codex',
   bio: 'Một portfolio demo khám phá giao diện, tương tác và dữ liệu. Thay thông tin này bằng phần giới thiệu của bạn.',
 };
+const categories: Record<string, string> = {
+  autohub: 'SẢN PHẨM / THƯƠNG MẠI',
+  'memory-match': 'TƯƠNG TÁC / TRÒ CHƠI',
+  admin: 'DỮ LIỆU / QUẢN TRỊ',
+  'room-studio': 'KHÔNG GIAN / SÁNG TẠO',
+};
 export function Portfolio() {
   const projects = useQuery({
     queryKey: ['portfolio'],
@@ -40,14 +46,14 @@ export function Portfolio() {
         </div>
         <div className="hero-line">
           <span>REACT / TYPESCRIPT / NODE.JS</span>
-          <span>SELECTED WORK · 01—03</span>
+          <span>SELECTED WORK · 01—04</span>
         </div>
       </section>
       <section id="projects" className="section">
         <div className="section-heading">
           <div>
             <div className="eyebrow">KHÁM PHÁ</div>
-            <h2>Ba project. Ba trải nghiệm.</h2>
+            <h2>Bốn project. Bốn trải nghiệm.</h2>
           </div>
           <span className="muted">Xây dựng cùng một nền tảng.</span>
         </div>
@@ -64,6 +70,8 @@ export function Portfolio() {
                 <div className="project-art">
                   {p.slug === 'autohub' ? (
                     <img src={p.imagePath} alt="Xe minh họa bộ sưu tập AutoHub" />
+                  ) : p.slug === 'room-studio' ? (
+                    <img src={p.imagePath} alt="Phòng minh họa với giường, bàn và cây xanh" />
                   ) : p.slug === 'memory-match' ? (
                     <div className="memory-art" aria-hidden="true">
                       {['✦', '◈', '◈', '✦', '✧', '✧'].map((s, j) => (
@@ -89,9 +97,7 @@ export function Portfolio() {
                   </span>
                 </div>
                 <div className="project-copy">
-                  <div className="eyebrow">
-                    {['SẢN PHẨM / THƯƠNG MẠI', 'TƯƠNG TÁC / TRÒ CHƠI', 'DỮ LIỆU / QUẢN TRỊ'][i]}
-                  </div>
+                  <div className="eyebrow">{categories[p.slug] || 'PROJECT'}</div>
                   <h3>{p.title}</h3>
                   <p>{p.summary}</p>
                   <div className="tag-row">

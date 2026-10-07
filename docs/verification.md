@@ -80,3 +80,28 @@ Hai E2E mới kiểm tra chọn hãng nhanh/đồng bộ URL, bỏ filter, reset
 Lần đầu E2E đạt 11/12: liên kết hướng dẫn cuộn tới vị trí khi danh sách còn loading; khi xe xuất hiện, mục hướng dẫn bị đẩy xuống. Sửa effect để đợi dữ liệu xe và hãng trước khi cuộn, giữ assertion `toBeInViewport`; lần chạy cuối đạt 12/12. Đã xem screenshot desktop/mobile, danh sách, chi tiết, so sánh và hướng dẫn trong `.local/reference/` (artifact cục bộ bị Git bỏ qua). Scan tự động không thay cho nghiệm thu accessibility toàn diện bằng screen reader. Bộ API unit/integration không chạy lại trong thay đổi UI này; bằng chứng 23 API của T33 vẫn ở trên.
 
 README/checklist đã cập nhật. Nghiệm thu UI hoàn tất cục bộ; việc commit/push được giao trong yêu cầu GitHub tiếp theo của người dùng.
+
+## Room Studio 3D — 2026-10-07
+
+Demo thứ tư trong cùng project-codex: editor `/projects/room-studio`, viewer `/projects/room-studio/view/:id`, sáu model hình học, màu/ánh sáng/camera, placement/grid/collision/history/draft, snapshot PostgreSQL public bất biến và copy. Phạm vi và task R01–R07 tại [kế hoạch Room Studio](room-studio-plan.md).
+
+| Kiểm tra | Kết quả |
+| --- | --- |
+| API migration/seed/typecheck và test rooms/public/database | 9/9 đạt; migration002 giữ migration001, whitelist4 URL; retry seed/migration và rollback giữ dữ liệu |
+| Web room-core unit | 5/5 đạt: grid/bounds/collision/rotation/limit, history có giới hạn/redo, draft hỏng/storage bị chặn, challenge |
+| Room Studio E2E riêng | 7/7 đạt; log `.local/logs/room-e2e.log` |
+| `npm run setup` với lockfile mới | npm ci đạt; cấu hình `.env` giữ nguyên hash, dev vẫn4 project/12 xe/0 snapshot như trước; migration/seed/bootstrap tái chạy an toàn |
+| Stop app rồi `services:start` | PostgreSQL/data giữ nguyên, API/web khởi động, JSON/DB/admin401 và4 demo render/reload đạt; `.local/logs/room-start-final.log` |
+| `npm run check` | Lint0 warning, typecheck/build FE/API, **26 API + 8 web**, **19 E2E**, 0 fail/skip; compiled API/SPA/cookie/missing asset đạt; `.local/logs/room-check-final.log` |
+
+Browser thao tác bằng chuột thật trên model giường: kéo từZ−1,25 đến0, snap đúng0,25m; vị trí ngoài phòng bị từ chối, draft giữ nguyên và undo một lần khôi phục cả lượt kéo. Bàn phím R/arrows/Delete/Ctrl+Z/Shift+Ctrl+Z, reset xác nhận, thêm món, màu/ngày đêm và reload giữ nháp đều đạt. Camera orbit làm ảnh xuất thay đổi; downloadPNG đúng signature và có nội dung, không sửa layout. Chromium dùng WebGL2 thật; không dùng ảnh giả để thay render3D.
+
+Luồng chia sẻ cố ý trả503 sau khi server đã ghi, retry cùng key vẫn một row; mở URL/reload đọc đúng snapshot, giao diện không có công cụ sửa. Tạo bản sao rồi thêm đồ/reload giữ bản nháp đã chỉnh, GET snapshot cũ không thay đổi. Tên có markup hiển thị text. API validation bao gồm kind/color/version/grid/bounds/collision/ID trùng/max24, concurrentretry201/200, conflict409, Origin403, missing404 và PATCH không tồn tại.
+
+Axe WCAG2A/AA/2.1AA tại360/768/1440px: editor, panel khi chọn đồ, help modal, viewer3D/2D không violation và không tràn ngang. Help đóng Escape/trả focus đúng. Storage hỏng hoặc bị chặn vẫn chỉnh trong phiên; catalog503/retry và snapshot404 có thông báo rõ. Test cố ý vô hiệu hóa WebGL xác nhận fallback2D vẫn chỉnh được; console error tạo context trong log thuộc trường hợp lỗi được kiểm thử này. Lần đầu axe phát hiện nested-interactive do Canvas mang role img, đã đổi thành group và chạy lại, không bỏ assertion. Chưa nghiệm thu toàn diện bằng screen reader hoặc thiết bị di động vật lý.
+
+Manifest của Vite và request browser trên bản build xác nhận chunk studio không tải khi mở portfolio, chỉ tải khi vào Room Studio. Compiled SPA phục vụ URL trực tiếp và reload; API/asset thiếu404, admin401 và production cookie qua proxy giả lập tiếp tục đạt. Ba demo cũ/AutoHub UI không có regression trong bộ19 E2E.
+
+File mới chính: `apps/api/db/migrations/002_room_studio.sql`, `services/room.ts`, `routes/rooms.ts`, `test/rooms.test.ts`; `apps/web/src/features/room-studio/`; `tests/e2e/room-studio.spec.ts`; SVG nguyên bản và docs. Comment tiếng Việt giải thích validation/collision/raycast/capture/history/draft/transaction/retry/copy. `.local/reference/` giữ screenshot desktop/mobile; artifact runtime/test bị Git bỏ qua. Thay đổi PJ4 chưa commit/push/deploy trong yêu cầu này.
+
+Format check/git diff check đạt sau căn format route mới; không thay logic sau bộ check cuối. Secret scan108 source/tài liệu đạt. Cloud tool xác nhận start_skill `status=saved`, `requires_publish=true`; đọc lại xác nhận persistence và giữ nguyên install_script, repository membership, network, secret bindings/runtime requirements, legacy suffix. Hướng dẫn mới ghi bốn demo, startup, layout API, WebGL/2D, 26 API + 8 web + 19 E2E và trạng thái Git thực tế. Draft chưa tự áp dụng/publish; Review/Save rồi Publish trong cài đặt môi trường khi cần snapshot. Restore ở task mới chưa kiểm chứng. R01–R07 đã hoàn thành, không còn blocker.

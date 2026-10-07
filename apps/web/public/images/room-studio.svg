@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-labelledby="title">
+  <title id="title">Một góc bình yên — Room Studio 3D</title>
+  <rect width="800" height="420" fill="#eee8f3"/>
+  <ellipse cx="400" cy="355" rx="250" ry="30" fill="#ddd3e5"/>
+  <path d="M155 265 400 380 645 265 400 145Z" fill="#c9a580"/>
+  <path d="m155 265 245 115v12L155 277zm245 115 245-115v12L400 392Z" fill="#b98f66"/>
+  <path d="M155 265V95L400 205v175Z" fill="#dce4d4"/>
+  <path d="M400 205 645 95v170L400 380Z" fill="#e8eddf"/>
+  <path d="m155 253 245 115 245-115v12L400 380 155 265Z" fill="#fff7e9"/>
+  <path d="m155 95 245 110L645 95 400 0Z" fill="none"/>
+  <path d="m154 95 246 110L645 95" fill="none" stroke="#f7f5ef" stroke-width="6"/>
+  <path d="m475 185 95-43v66l-95 44Z" fill="#b9cfcd" stroke="#f9f8f1" stroke-width="8"/>
+  <path d="m522 164 0 66" stroke="#f9f8f1" stroke-width="5"/>
+  <path d="m181 141 35 16v49l-35-16Z" fill="#f7f1e8" stroke="#c3a081" stroke-width="4"/>
+  <ellipse cx="198" cy="174" rx="10" ry="14" fill="#cbbda4"/>
+  <ellipse cx="396" cy="320" rx="83" ry="35" fill="#f4eee2"/>
+  <path d="m235 225 92-41 108 50-92 44Z" fill="#fdfaf1"/>
+  <path d="m235 225 108 53v32l-108-51Zm108 53 92-44v32l-92 44Z" fill="#c09d75"/>
+  <path d="m242 222 85-38 101 47-85 39Z" fill="#a9ba9d"/>
+  <path d="m327 184 101 47v-37l-101-46Z" fill="#a1b594"/>
+  <path d="m288 198 36-16 37 17-36 17Zm44 20 36-16 37 17-36 17Z" fill="#fffcf5"/>
+  <path d="m466 253 106-49 55 25-105 50Z" fill="#d9b58b"/>
+  <path d="m478 260 0 49m130-74v47m-83-11v49" stroke="#bd916c" stroke-width="10"/>
+  <path d="m500 225 35-16v-29l-35 16Z" fill="#d6e1e0" stroke="#859a9b" stroke-width="3"/>
+  <path d="m440 282 42-19 27 13-42 19Z" fill="#af9ac0"/>
+  <path d="m440 282 27 13v-39l-27-13Z" fill="#c5b3d2"/>
+  <path d="m448 290v26m52-33v25" stroke="#b0906e" stroke-width="6"/>
+  <ellipse cx="599" cy="270" rx="19" ry="9" fill="#b9936f"/>
+  <path d="m580 270 5 25q14 12 28 0l5-25Z" fill="#cbb392"/>
+  <path d="M599 275v-48" stroke="#7e8e6d" stroke-width="5"/>
+  <ellipse cx="588" cy="244" rx="13" ry="21" transform="rotate(-25 588 244)" fill="#8ca17b"/>
+  <ellipse cx="607" cy="231" rx="12" ry="22" transform="rotate(15 607 231)" fill="#a1b58c"/>
+  <ellipse cx="611" cy="253" rx="13" ry="18" transform="rotate(35 611 253)" fill="#7c956b"/>
+  <ellipse cx="199" cy="269" rx="18" ry="8" fill="#cbbb96"/>
+  <path d="M199 263v-74" stroke="#c4ae7c" stroke-width="5"/>
+  <path d="m186 177-9 27q22 15 44 0l-9-27Z" fill="#e6cf9d"/>
+</svg>

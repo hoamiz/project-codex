@@ -26,7 +26,7 @@ export function carJson(r: Record<string, unknown>) {
 }
 publicRouter.get('/portfolio/projects', async (_req, res) => {
   const result = await pool.query(
-    "SELECT slug,title,summary,description,stack,url,image_path AS \"imagePath\" FROM portfolio_projects ORDER BY CASE slug WHEN 'autohub' THEN 1 WHEN 'memory-match' THEN 2 ELSE 3 END",
+    "SELECT slug,title,summary,description,stack,url,image_path AS \"imagePath\" FROM portfolio_projects ORDER BY CASE slug WHEN 'autohub' THEN 1 WHEN 'memory-match' THEN 2 WHEN 'admin' THEN 3 WHEN 'room-studio' THEN 4 ELSE 5 END,slug",
   );
   res.json({ data: result.rows });
 });
