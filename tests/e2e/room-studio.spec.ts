@@ -35,7 +35,13 @@ test('WebGL drag commits one move, invalid placement preserves the draft, histor
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.setViewportSize({ width: 1440, height: 1100 });
-  await openStudio(page);
+  await page.goto('/');
+  const card = page.locator('.project-room-studio');
+  await expect(card).toBeVisible();
+  await expect(card).toHaveAttribute('href', '/projects/room-studio');
+  await card.click();
+  await expect(page).toHaveURL(/\/projects\/room-studio$/);
+  await expect(page.locator('.room-stage')).toHaveAttribute('data-ready', 'true');
   await expect(page.locator('.room-stage')).toHaveAttribute('data-renderer', 'webgl');
   const box = (await page.locator('.room-canvas canvas').boundingBox())!;
   // Chiếu tọa độ model bằng camera mặc định; thao tác bằng chuột thật, không gọi callback React.

@@ -45,6 +45,8 @@ npm run services:start
 
 Helper chỉ dừng process mình tạo còn đúng identity; không xóa dữ liệu. Start cũng khởi động lại DB đã dừng. Local trust auth chỉ dành cho instance phát triển bind loopback, không dùng cho database public/production.
 
+API chạy các migration chưa áp dụng trước khi mở cổng. Khi cập nhật từ bản chỉ có ba project, migration003 bổ sung card Room Studio mà không cần seed lại và không ghi đè metadata đã chỉnh. Migration lỗi thì API dừng khởi động; kiểm tra bằng `npm run db:migrate`.
+
 Muốn chạy foreground, dừng dịch vụ background rồi dùng `npm run db:start` và `npm run dev`. Có thể chạy từng workspace với `dev:web` và `dev:api`. Vite proxy `/api` nên cookie cùng origin. Cổng test riêng: web **5174**, API **4110**; kiểm tra build dùng **4111**.
 
 ## Database và admin

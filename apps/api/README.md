@@ -9,3 +9,5 @@ Endpoint/lỗi: [API contract](../../docs/api-contract.md). Admin mutations cầ
 `npm run test -w @project-codex/api` dùng TEST_DATABASE_URL, migrate/seed fixture và dọn ID riêng. Game không có endpoint tiết lộ deck; chỉ test đọc fixture DB trực tiếp. Dashboard đếm theo ngày gửi UTC+7, 7 ngày gồm bucket 0, không tính doanh thu.
 
 Room Studio: catalog/validation tại `services/room.ts`, GET catalog/GET snapshot/POST snapshot tại `routes/rooms.ts`, bảng JSONB `room_designs` qua migration002. POST public cần Origin hợp lệ và UUID `Idempotency-Key`, giới hạn30/15 phút/IP. Validation strict, tối đa24 món và không chồng lấn/ra ngoài phòng; retry khóa theo key rồi so sánh hash. Không có endpoint sửa bản chia sẻ. `rooms.test.ts` kiểm tra DB thật và retry đồng thời.
+
+Server áp dụng migration trước listen, kể cả khi chạy source/dev hoặc dist/start. Migration003 thêm metadata Room Studio khi nâng cấp DB cũ, ON CONFLICT giữ bản ghi đã chỉnh. `portfolio-upgrade.test.ts` tạo schema test riêng với001/002 và metadata cũ, khởi động server thật không seed, kiểm tra API trả4 project và giữ dữ liệu.
