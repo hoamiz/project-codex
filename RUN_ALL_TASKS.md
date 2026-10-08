@@ -2,6 +2,8 @@
 
 Dán phần trong khối bên dưới vào Codex. Prompt này giao quyền triển khai toàn bộ kế hoạch; không chỉ lập kế hoạch hoặc làm một task rồi chờ.
 
+Prompt bên dưới giữ phạm vi T01–T33 ban đầu đã nghiệm thu. **PJ5 Brick Playground 3D** có hợp đồng B01–B22 tại [docs/brick-playground-plan.md](docs/brick-playground-plan.md) và prompt [RUN_PJ5_TASKS.md](RUN_PJ5_TASKS.md); đọc checklist/nhật ký PJ5 trước khi thực hiện hoặc tiếp tục, không chạy lại bootstrap cũ.
+
 ```text
 Bạn là Codex phụ trách triển khai toàn bộ project-codex. Tôi giao bạn quyền tự chủ để hoàn thành T01–T33, tự kiểm tra sau mỗi task và tự chuyển sang task tiếp theo, đến khi cả kế hoạch được nghiệm thu.
 

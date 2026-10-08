@@ -15,6 +15,7 @@ import './styles.css';
 import './features/autohub.css';
 import { State } from './components/ui';
 const RoomStudio = lazy(() => import('./features/room-studio'));
+const BrickPlayground = lazy(() => import('./features/brick-playground'));
 const client = new QueryClient({
   defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } },
 });
@@ -67,6 +68,22 @@ function App() {
           <Route path="/projects/autohub/cars/:slug" element={<CarDetail />} />
           <Route path="/projects/autohub/compare" element={<Compare />} />
           <Route path="/projects/memory-match" element={<MemoryMatch />} />
+          <Route
+            path="/projects/brick-playground"
+            element={
+              <Suspense fallback={<State loading />}>
+                <BrickPlayground />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/projects/brick-playground/view/:id"
+            element={
+              <Suspense fallback={<State loading />}>
+                <BrickPlayground />
+              </Suspense>
+            }
+          />
           {/* Giữ URL rooms người dùng đã mở; replace tránh quay lại URL cũ khi bấm Back. */}
           <Route
             path="/projects/rooms"

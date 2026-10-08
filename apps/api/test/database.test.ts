@@ -52,5 +52,5 @@ test('seed is idempotent and preserves edited records', async () => {
   } finally {
     await pool.query("UPDATE cars SET description=$1 WHERE slug='toyota-camry'", [original]);
   }
-  expect((await pool.query('SELECT count(*) FROM portfolio_projects')).rows[0].count).toBe('4');
+  expect((await pool.query('SELECT count(*) FROM portfolio_projects')).rows[0].count).toBe('5');
 });

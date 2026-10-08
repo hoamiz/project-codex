@@ -255,6 +255,9 @@ main {
   background: #e6ebe5;
   overflow: hidden;
 }
+.project-brick-playground .project-art {
+  background: #e8eef5;
+}
 .project-art > img {
   height: 100%;
   width: 100%;

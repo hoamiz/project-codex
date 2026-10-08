@@ -17,6 +17,15 @@ export const examples = [
 export async function seed(pool: Pool) {
   const projects = [
     [
+      'brick-playground',
+      'Brick Playground 3D',
+      'Từng viên gạch. Một thế giới mới.',
+      'Lắp gạch 3D, chọn màu, kéo thả và chia sẻ công trình của bạn.',
+      ['React Three Fiber', 'Three.js', 'PostgreSQL'],
+      '/projects/brick-playground',
+      '/images/brick-playground.svg',
+    ],
+    [
       'autohub',
       'AutoHub',
       'Tìm chiếc xe dành cho bạn.',

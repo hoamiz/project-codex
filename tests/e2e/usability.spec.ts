@@ -19,7 +19,7 @@ for (const width of [360, 768, 1440])
       '/projects/admin/login',
     ]) {
       await page.goto(route);
-      if (route === '/') await expect(page.locator('.project-card')).toHaveCount(4);
+      if (route === '/') await expect(page.locator('.project-card')).toHaveCount(5);
       if (route === '/projects/autohub')
         await expect(page.locator('.car-card').first()).toBeVisible();
       if (route.includes('/autohub/cars/'))

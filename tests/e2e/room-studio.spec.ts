@@ -33,7 +33,7 @@ test('rooms alias opens the studio, preserves URL context, reloads and returns t
   page,
 }) => {
   await page.goto('/');
-  await expect(page.locator('.project-card')).toHaveCount(4);
+  await expect(page.locator('.project-card')).toHaveCount(5);
   await page.goto('/projects/rooms?from=projects#room-preview');
   await expect(page).toHaveURL(/\/projects\/room-studio\?from=projects#room-preview$/);
   await expect(page.getByRole('heading', { name: 'Room Studio 3D', exact: true })).toBeVisible();

@@ -4,7 +4,7 @@
 
 ## 1. Mục tiêu và cấu trúc dự án mới
 
-Website portfolio hiện có bốn demo hoạt động thật. T01–T33 bên dưới ghi phạm vi ba demo ban đầu; PJ4 được bổ sung theo R01–R07 ở cuối file và dùng làm tiêu chí hiện tại cho số project/route.
+Website portfolio hiện có năm demo hoạt động thật. T01–T33 ghi phạm vi ba demo ban đầu; PJ4 theo R01–R07 và PJ5 Brick Playground 3D theo B01–B22 ở cuối file. Tiêu chí hiện tại là năm card lấy từ DB, mỗi demo có URL riêng; bằng chứng mới ghi trong nhật ký PJ5 và docs/verification.md.
 
 | Project | URL chính | Nội dung |
 | --- | --- | --- |
@@ -12,8 +12,9 @@ Website portfolio hiện có bốn demo hoạt động thật. T01–T33 bên d�
 | Memory Match | `/projects/memory-match` | Game lật thẻ, ba độ khó, lưu kết quả, bảng xếp hạng |
 | Control Center | `/projects/admin` | Đăng nhập, quản lý xe, yêu cầu khách hàng, thống kê |
 | Room Studio 3D | `/projects/room-studio` | Custom phòng 3D, nội thất, màu/ánh sáng, lưu/chia sẻ và tạo bản sao |
+| Brick Playground 3D | `/projects/brick-playground` | Catalog gạch/màu, lắp3D, kéo thùng rác, Undo/Redo, nháp/lưu/chia sẻ |
 
-Trang `/` giới thiệu chủ portfolio và hiển thị bốn project. Giao diện dùng tiếng Việt, có đường quay về portfolio từ từng demo. Các thông tin cá nhân chưa được cung cấp dùng nội dung mẫu được ghi rõ trong cấu hình; không tự nhận kinh nghiệm hay thành tích.
+Trang `/` giới thiệu chủ portfolio và hiển thị năm project. Giao diện dùng tiếng Việt, có đường quay về portfolio từ từng demo. Các thông tin cá nhân chưa được cung cấp dùng nội dung mẫu được ghi rõ trong cấu hình; không tự nhận kinh nghiệm hay thành tích.
 
 **Project:** `/workspace/project-codex`, một repository Git cục bộ mới. Frontend, backend, cấu hình và dữ liệu được tạo riêng trong project này. Không sao chép hoặc sửa mã, dependency, biến môi trường và dữ liệu từ các project khác. Remote origin đã trỏ tới `https://github.com/hoamiz/project-codex.git`; Repository GitHub `hoamiz/project-codex` đã tồn tại và nhánh main đã nhận toàn bộ mã nguồn/tài liệu.
 
@@ -63,6 +64,8 @@ project-codex/
           autohub/
           admin/
           memory-match/
+          room-studio/
+          brick-playground/
         lib/             # API client, tiện ích
     api/
       src/
@@ -87,7 +90,7 @@ Không tạo folder rỗng chỉ để khớp sơ đồ. Tạo khi task cần.
 
 **Lead:** `id`, `carId`, `type`, `name`, `phone`, `email?`, `preferredAt?`, `message?`, `status`, `createdAt`, `updatedAt`, idempotency key duy nhất cho một lần gửi. `type`: `consultation`, `test_drive`; `status`: `new`, `in_progress`, `completed`, `cancelled`. Khi lái thử phải có ngày tương lai. Múi giờ nghiệp vụ mặc định `Asia/Ho_Chi_Minh`, hiển thị rõ trong form và dùng cho thống kê theo ngày; DB dùng `timestamptz`, API trả ISO timestamp.
 
-**Portfolio project:** seed bốn demo `autohub`, `memory-match`, `admin`, `room-studio` trong database riêng. URL demo được lấy từ dữ liệu có whitelist route nội bộ.
+**Portfolio project:** seed năm demo `autohub`, `memory-match`, `admin`, `room-studio`, `brick-playground` trong database riêng. URL demo được lấy từ dữ liệu có whitelist route nội bộ; migration003/004 tự thêm card khi nâng cấp, không cần seed.
 
 **Auth:** một admin, password băm bằng Node `crypto.scrypt` với salt ngẫu nhiên; session lưu PostgreSQL, cookie HttpOnly, SameSite phù hợp và Secure khi production. Session secret lấy từ môi trường. Các thao tác ghi có kiểm tra CSRF/origin; frontend route guard chỉ hỗ trợ UX, backend luôn kiểm tra quyền.
 
@@ -418,3 +421,103 @@ GitHub PJ4 — hoàn thành theo yêu cầu riêng2026-10-07: commit tính năng
 - [x] C03 — Nghiệm thu card→room và hồi quy startup/build: `npm run check` đạt28 API + 8 web + 19 E2E, lint/typecheck/build/compiled SPA đạt; format và diff check đạt. Browser thực trên dev hiển thị4 card, nhấn Room Studio mở editor; screenshot `.local/reference/room-card-fixed.png`. Bản sửa `cea8b8d` đã lên main của hoamiz/project-codex; tree/commit đối chiếu đúng, không force và không có artifact/secret.
 
 - [x] C04 — URL `/projects/rooms`: sau khi nhận URL người dùng, xác định route này trước đây đi vào404. Thêm Navigate replace sang `/projects/room-studio`, giữ query/hash và URL card chính. E2E trực tiếp/reload/Back đạt1/1; lint/web typecheck/build, compiled smoke gồm alias4 demo/lazy bundle/cookie và format/diff check đạt. Không chạy lại unit/API trong thay đổi chỉ gồm route/frontend; kết quả C03 giữ nguyên.
+
+## PJ5 — Brick Playground 3D (2026-10-08)
+
+Phạm vi, hợp đồng, file, phụ thuộc và kiểm tra cụ thể: [docs/brick-playground-plan.md](docs/brick-playground-plan.md). Prompt thực hiện/tiếp tục: [RUN_PJ5_TASKS.md](RUN_PJ5_TASKS.md). Các checkbox dưới đây là checklist duy nhất cho B01–B22; nhật ký sau mỗi task ghi kiểm tra thực, không dùng kết quả T/R/C làm bằng chứng cho B.
+
+| Task | Công việc | Phụ thuộc |
+| --- | --- | --- |
+| B01 | Kiểm kê và chốt hợp đồng | Không |
+| B02 | Catalog, kiểu dữ liệu và fixture | B01 |
+| B03 | Core placement, support và settle | B02 |
+| B04 | Validation phía server | B02, B03 |
+| B05 | Migration, snapshot table, metadata nâng cấp | B01, B04 |
+| B06 | API catalog | B02, B04 |
+| B07 | Service snapshot PostgreSQL, concurrent retry | B04, B05 |
+| B08 | API lưu/đọc, origin, giới hạn request | B06, B07 |
+| B09 | Shell editor, route và catalog thật | B06 |
+| B10 | Chân đế, model gạch và camera3D | B02, B09 |
+| B11 | Chọn màu, spawn và selection | B03, B09, B10 |
+| B12 | Kéo thả, snap, chồng gạch và hủy kéo | B03, B11 |
+| B13 | Giỏ rác và xóa | B12 |
+| B14 | Xoay, đổi màu, nhân bản và clear | B11, B12, B13 |
+| B15 | History và command thống nhất | B12, B13, B14 |
+| B16 | Lưu và phục hồi nháp | B04, B15 |
+| B17 | Lưu/chia sẻ, chỉ đọc và tạo bản sao | B08, B10, B16 |
+| B18 | Keyboard, mobile, fallback và PNG | B14, B15, B16, B17 |
+| B19 | Card thứ năm và điều hướng portfolio | B05, B17, B18 |
+| B20 | E2E các luồng PJ5 | B11–B19 |
+| B21 | Startup, compiled build và hồi quy | B19, B20 |
+| B22 | Nghiệm thu, tài liệu và nhật ký cuối | B01–B21 |
+
+- [x] B01 — Kiểm kê và chốt hợp đồng.
+- [x] B02 — Catalog, kiểu dữ liệu và fixture.
+- [x] B03 — Core placement và settle.
+- [x] B04 — Validation phía server.
+- [x] B05 — Migration, snapshot table và metadata nâng cấp.
+- [x] B06 — API catalog.
+- [x] B07 — Service lưu/đọc snapshot PostgreSQL.
+- [x] B08 — API lưu/đọc, origin và giới hạn request.
+- [x] B09 — Shell editor, route và tải catalog thật.
+- [x] B10 — Chân đế, model gạch và camera3D.
+- [x] B11 — Chọn màu, spawn và selection.
+- [x] B12 — Kéo thả, snap, chồng gạch và hủy kéo.
+- [x] B13 — Giỏ rác và xóa.
+- [x] B14 — Xoay, đổi màu, nhân bản và clear.
+- [x] B15 — History và command thống nhất.
+- [x] B16 — Tự lưu và phục hồi nháp.
+- [x] B17 — Lưu/chia sẻ, trang chỉ đọc và tạo bản sao.
+- [x] B18 — Keyboard, mobile, fallback và PNG.
+- [x] B19 — Card thứ năm và điều hướng portfolio.
+- [x] B20 — E2E các luồng PJ5.
+- [x] B21 — Startup, compiled build và hồi quy.
+- [x] B22 — Nghiệm thu, tài liệu và nhật ký cuối.
+
+Nhật ký lập kế hoạch (2026-10-08): đã tạo task B01–B22 theo yêu cầu phân rã công việc, hợp đồng catalog/layout/placement/API và prompt chạy riêng; README/RUN_ALL_TASKS có link PJ5. Kiểm tra tài liệu đạt:22 task đúng thứ tự, bảng phụ thuộc khớp kế hoạch và không có vòng/forward dependency,22 checkbox chưa đánh dấu,24 link cục bộ tồn tại và code fence cân bằng; log `.local/logs/brick-plan-review.log`. Prettier check hai file mới và `git diff --check` đạt. Chưa thực hiện task triển khai, thêm dependency, migration, API hoặc UI PJ5; không chạy test ứng dụng trong thay đổi chỉ gồm tài liệu và không đánh dấu B01 vì chỉ mới đọc repo để lập kế hoạch.
+
+B01 — hoàn thành (2026-10-08): AGENTS/checklist/hợp đồng đã đọc; migration kế tiếp004, route mới không xung đột; React19/Three/Fiber/Drei hiện có. Typecheck FE/API đạt, service start khôi phục DB/dev/test và smoke bốn demo/DB/401/direct reload đạt. Log brick-baseline-type.log và brick-baseline-start.log. Không sửa bootstrap/dữ liệu cũ.
+
+B02 — hoàn thành (2026-10-08): Catalog10 loại/8 màu và kiểu layout trong services/brick-geometry.ts, FE re-export cùng module thuần; fixture tower/catalog riêng cho test. Typecheck FE/API đạt (brick-b02.log), runtime sẽ lấy catalog API ở B09.
+
+B03 — hoàn thành (2026-10-08): Core hình học thuần và brick-core.test.ts:7/7 web test đạt cho10 loại/4 góc, collision/bounds/nonfinite/support, stack48, fullplate/150, settle tháp/bridge/order independence, strict draft và history. Không mutate fixture. Log brick-b03.log.
+
+B04 — hoàn thành (2026-10-08): services/bricks.ts strict Zod/normalize và per-brick issues dùng geometry chung; bricks-validation.test.ts2/2 đạt gồm fixture FE/API, field thừa, ID trùng, kind/color/rotation/float/NaN/limits/bounds/unsupported. Log brick-b04.log.
+
+B05 — hoàn thành (2026-10-08): Migration004 thêm whitelist/table/card bằng ON CONFLICT và seed5 giữ metadata. Database/public/upgrade test10/10 đạt:DB mới/lặp/rollback, startup DB3/4 project không seed, giữ title Room/Brick đã chỉnh và SQL CHECK. Các migration001–003 giữ nguyên. Log brick-b05.log.
+
+B06 — hoàn thành (2026-10-08): Router GET /api/bricks/catalog nối app, response dùng đúng catalog validator; Supertest catalog10/8/base và unknown JSON404 đạt1/1 (brick-b06.log). Không đổi endpoint cũ.
+
+B07 — hoàn thành (2026-10-08): Service save/read canonical sort/hash, advisory transaction theo key; DB thật2/2 test đạt cho concurrent retry/reorder một row, conflict giữ snapshot, constraint failure rollback/release và retry sau lỗi. Schema test riêng được dọn. Log brick-b07.log.
+
+B08 — hoàn thành (2026-10-08): POST/GET snapshot và origin/rate/body limit nối API. Supertest4/4 đạt:catalog, DB roundtrip/concurrent201/200/conflict/immutable404, forged placement/key/origin400/403, body413 và save429 trong khi catalog/Room vẫn200. Log brick-b08.log. Lỗi body quá lớn có JSON413 an toàn.
+
+B09 — hoàn thành (2026-10-08): Editor shell/route lazy/catalog API thật và CSS riêng; build/typecheck web đạt, Playwright catalog direct URL + API503→retry + màu8/loại10 đạt1/1. Logs brick-b09-build.log/brick-b09-e2e.log. Renderer và commands tiếp tục B10.
+
+B10 — đang làm (2026-10-08): brick-models/scene/viewport: geometry10 loại, base1024 nút instanced, cache/dispose, orbit/zoom/reset/PNG và fallback. Web build/typecheck đạt; E2E WebGL thật/camera ảnh thay đổi/PNG/3 vòng route không pageerror đạt1/1. Screenshot brick-baseplate.png đã xem. 150 gạch sẽ nghiệm thu ở B18/B20 khi editor xong.
+
+B10 — hoàn thành (2026-10-08): Renderer/geometry/camera/PNG/lifecycle và150 gạch WebGL thật đạt; camera-fix1/1 và max renderer1/1, không pageerror. Đổi mode giữ Canvas/camera; chỉ remount để phục hồi fallback, sửa CSS canvas đầy kích thước. Cache/instancing/dispose giữ nguyên. Logs brick-camera-fix.log và brick-b10-b13.log.
+
+B11 — hoàn thành (2026-10-08): E2E spawn10 loại đúng màu đã chọn, ID riêng/selection, đổi màu catalog không đổi gạch cũ và max150 giữ layout đạt; core7/7 lại đạt. Log brick-b10-b13.log. Runtime không dùng fixture.
+
+B12 — hoàn thành (2026-10-08): Pointer thật kéo2×2 vào ô12/12 rồi chồng y3 đạt; outside/ESC/pointercancel giữ nháp, một Undo/Redo khôi phục vị trí. Native capture/raycast/snap và camera kết thúc kéo dùng lại; log brick-b10-b13.log, core7/7 đạt.
+
+B13 — hoàn thành (2026-10-08): Pointer thật hover/drop rác ưu tiên placement; xóa chân tháp còn2 tầng y0/3, một Undo trả toàn bộ. Escape và thả ngoài mép rác không xóa; base không có command xóa. E2E đạt trong brick-b10-b13.log.
+
+B14 — hoàn thành (2026-10-08): E2E rotation bounds/recolor/duplicate/clear đạt; xoay2×4 tại mép bị từ chối giữ góc, đặt/xoay hợp lệ90, duplicate ID mới giữ màu/góc; clear hủy/confirm và Undo/Redo đúng. Log brick-b14-b16.log.
+
+B15 — hoàn thành (2026-10-08): History core7/7 và browser drag/trash/rotation đạt:50 command, no-op, invalid/cancel không thêm bước; settle/delete/clear một Undo; edit mới xóa redo. Logs brick-core-latest.log, brick-b10-b13.log, brick-b14-b16.log.
+
+B16 — hoàn thành (2026-10-08): Nháp key riêng validate/restore; browser full128 khối không spawn, corrupt JSON về đế trống, title nhập chưa hợp lệ không ghi nháp, reload giữ layout/title và quota vẫn chỉnh được đạt. Core recovery7/7. Log brick-b14-b16.log.
+
+B17 — hoàn thành (2026-10-08): Save/share/viewer/copy E2E1/1 đạt với PostgreSQL thật: response mất sau201 rồi retry cùngkey200 vẫn1row; viewer direct/reload chỉ đọc giữ nháp; cancel/confirm copy rồi sửa/reload không đổi snapshot; lưu bản sửa key mới và404 rõ. Log brick-b17.log. Fixture rows dọn theo key.
+
+B18 — hoàn thành (2026-10-08): Bàn phím/fallback thiếuWebGL, contextlost→2D→recover và touch thật CDP kéo/rác đạt3/3. Responsive/axe editor/panel/viewer/2D tại360/768/1440 đạt3/3 sau sửa role group cho sơ đồ (giữ assertion). PNG/orbit/lifecycle và150 đã đạt B10. Screenshot desktop/mobile đã xem. Logs brick-b18.log và brick-b18-responsive.log.
+
+B19 — hoàn thành (2026-10-08): Portfolio5 card vớiSVG nguyên bản/category/số đếm mới, route editor/viewer/back; E2E card thứ5→editor→spawn→Back đạt1/1. Public/upgrade10/10 ở B05 đã kiểm tra startup DB3/4 không seed và giữ metadata chỉnh; cập nhật count5 của hồi quy cũ, giữ alias Room Studio. Log brick-b19-e2e.log.
+
+B20 — hoàn thành (2026-10-08): Bộ PJ5 E2E16/16 đạt toàn lượt (brick-b20.log):card/catalog/camera/150/alltypes/drag/trash/history/draft/share/keyboard/contextlost/touch/axe3 viewport. Bổ sung lưu DB trong fallback và storage get/set bị chặn đạt2/2 (brick-fallback-save.log); suite hiện có17 case, toàn suite mới sẽ chạy ở B22. Không skip/fixture runtime/debug endpoint; cleanup snapshots theo key.
+
+B21 — hoàn thành (2026-10-08): Build/verify:build đạt: HTTP/DB/admin401, năm demo và viewer direct/reload, lazy manifest/network, SPA/API/asset404/cookie production. Frozen npm ci setup + owned stop/start + start lặp đạt; đối chiếu hash .env và toàn bộ row bảy bảng trước/sau giữ nguyên (5 project/12 xe/1 admin, snapshot/lead/result0). Logs brick-b21-build/compiled/setup/start/repeat. Upgrade startup không seed 4 kịch bản đã đạt ở B05; không sửa migration001–003 hoặc reset DB.
+
+B22 — hoàn thành (2026-10-08): Nghiệm thu npm run check toàn bộ đạt38 API+15 web+37 E2E (17PJ5),0 fail/skip; lint0 warning/typecheck/build/compiled smoke đạt. Format/diff/staged diff đạt, scan131 file versioned/staged không có secret/artifact. README root/web/API, architecture/API contract/verification và trạng thái5 project cập nhật; review JSDoc logic cần thiết đã làm. Setup/config/data preserved ở B21 và xác nhận lại sau check. Cloud start_skill saved/re-read đúng, các trường và legacy suffix giữ nguyên; chưa publish/deploy/restore task mới. Không còn blocker; chuyển commit/push theo yêu cầu người dùng.

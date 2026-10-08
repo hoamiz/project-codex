@@ -9,6 +9,7 @@ import { gameRouter } from './routes/game.js';
 import { adminRouter } from './routes/admin.js';
 import { leadsRouter } from './routes/leads.js';
 import { roomsRouter } from './routes/rooms.js';
+import { bricksRouter } from './routes/bricks.js';
 import { errorHandler } from './errors.js';
 import { config } from './config.js';
 export const app = express();
@@ -21,7 +22,16 @@ app.get('/api/health', async (_req, res) => {
   res.json({ data: { status: 'ok' } });
 });
 app.use(sessionMiddleware);
-app.use('/api', publicRouter, leadsRouter, authRouter, adminRouter, gameRouter, roomsRouter);
+app.use(
+  '/api',
+  publicRouter,
+  leadsRouter,
+  authRouter,
+  adminRouter,
+  gameRouter,
+  roomsRouter,
+  bricksRouter,
+);
 const webDist = fileURLToPath(new URL('../../web/dist', import.meta.url));
 app.use(express.static(webDist, { index: false }));
 /** Chỉ route trang mới dùng SPA fallback; API và asset thiếu vẫn trả404. */

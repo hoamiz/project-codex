@@ -14,7 +14,7 @@ test('customer creates lead, admin updates it, session survives reload and logou
 }) => {
   const name = `E2E Customer ${Date.now()}`;
   await page.goto('/');
-  await expect(page.locator('.project-card')).toHaveCount(4);
+  await expect(page.locator('.project-card')).toHaveCount(5);
   await expect(page.locator('.project-room-studio')).toHaveAttribute(
     'href',
     '/projects/room-studio',

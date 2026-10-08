@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+ <defs><pattern id="studs" width="22" height="14" patternUnits="userSpaceOnUse"><ellipse cx="11" cy="7" rx="5" ry="3" fill="#93b49e" stroke="#759984" stroke-width=".7"/></pattern></defs>
+ <rect width="640" height="400" fill="#e8eef5"/>
+ <circle cx="520" cy="73" r="39" fill="#f7dc8b"/>
+ <path d="M114 240 312 128 542 255 344 369Z" fill="#668d75"/>
+ <path d="M114 230 312 118 542 245 344 359Z" fill="#aac6b2"/>
+ <path d="M114 230 312 118 542 245 344 359Z" fill="url(#studs)"/>
+ <g transform="translate(0 -10)"><path d="M218 223 319 167 405 215 305 274Z" fill="#558bcf"/><path d="M218 223 305 274 305 311 218 260Z" fill="#315f97"/><path d="M305 274 405 215 405 252 305 311Z" fill="#244d80"/>
+ <g fill="#669adc" stroke="#3d77bc" stroke-width="1.5"><ellipse cx="274" cy="215" rx="17" ry="9"/><ellipse cx="310" cy="194" rx="17" ry="9"/><ellipse cx="310" cy="237" rx="17" ry="9"/><ellipse cx="346" cy="216" rx="17" ry="9"/></g></g>
+ <g><path d="M354 179 426 138 483 170 412 213Z" fill="#f8d569"/><path d="M354 179 412 213 412 250 354 216Z" fill="#d9ad3d"/><path d="M412 213 483 170 483 207 412 250Z" fill="#c19629"/><g fill="#ffe38f" stroke="#d9ad3d"><ellipse cx="395" cy="175" rx="14" ry="7"/><ellipse cx="430" cy="155" rx="14" ry="7"/><ellipse cx="420" cy="190" rx="14" ry="7"/><ellipse cx="455" cy="170" rx="14" ry="7"/></g></g>
+ <g><path d="M361 142 404 118 449 143 406 170Z" fill="#eb7d73"/><path d="M361 142 406 170 406 206 361 179Z" fill="#cc5955"/><path d="M406 170 449 143 449 179 406 206Z" fill="#ac4448"/><ellipse cx="404" cy="143" rx="17" ry="9" fill="#fba094" stroke="#cc5955"/></g>
+ <g fill="#315f97" font-family="sans-serif"><text x="48" y="58" font-size="12" letter-spacing="3">BRICK / BUILD / REPEAT</text><text x="48" y="83" font-size="10" letter-spacing="1">A LITTLE ROOM FOR BIG IDEAS.</text></g>
+ <path d="m78 291 7 12 14 2-10 10 2 15-13-7-13 7 2-15-10-10 14-2Z" fill="#f3ca68"/>
+</svg>

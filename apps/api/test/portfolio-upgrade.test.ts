@@ -24,9 +24,9 @@ async function stop(child: ChildProcess) {
   }
 }
 
-test.each([false, true])(
-  'startup upgrades a three-project database and preserves metadata (existing room: %s)',
-  async (existingRoom) => {
+test.each(['three', 'four', 'edited-room', 'edited-brick'])(
+  'startup upgrades an older database without seed and preserves metadata (%s)',
+  async (stage) => {
     const schema = `portfolio_upgrade_${randomUUID().replaceAll('-', '')}`;
     const dir = await mkdtemp(`${tmpdir()}/project-codex-upgrade-`);
     const database = new URL(process.env.TEST_DATABASE_URL!);
@@ -35,7 +35,11 @@ test.each([false, true])(
     let child: ChildProcess | undefined;
     try {
       await pool.query(`CREATE SCHEMA "${schema}"`);
-      for (const name of ['001_initial.sql', '002_room_studio.sql'])
+      for (const name of [
+        '001_initial.sql',
+        '002_room_studio.sql',
+        ...(stage === 'three' ? [] : ['003_room_portfolio.sql']),
+      ])
         await copyFile(new URL(`../db/migrations/${name}`, import.meta.url), `${dir}/${name}`);
       await migrate(isolated, dir);
       for (const slug of ['autohub', 'memory-match', 'admin'])
@@ -48,16 +52,16 @@ test.each([false, true])(
           `/projects/${slug}`,
           '/images/car-1.svg',
         ]);
-      if (existingRoom)
-        await isolated.query('INSERT INTO portfolio_projects VALUES($1,$2,$3,$4,$5,$6,$7)', [
-          'room-studio',
-          'Phòng của tôi',
-          'Summary đã chỉnh',
-          'Description đã chỉnh',
-          ['Three.js'],
-          '/projects/room-studio',
-          '/images/room-studio.svg',
-        ]);
+      if (stage === 'edited-room')
+        await isolated.query(
+          "UPDATE portfolio_projects SET title='Phòng của tôi' WHERE slug='room-studio'",
+        );
+      if (stage === 'edited-brick') {
+        await migrate(isolated);
+        await isolated.query(
+          "UPDATE portfolio_projects SET title='Gạch của tôi' WHERE slug='brick-playground'",
+        );
+      }
       const before = (await isolated.query('SELECT * FROM portfolio_projects ORDER BY slug')).rows;
       let stderr = '';
       child = spawn(
@@ -95,20 +99,29 @@ test.each([false, true])(
         'memory-match',
         'admin',
         'room-studio',
+        'brick-playground',
       ]);
       expect(data.find((project: { slug: string }) => project.slug === 'room-studio').url).toBe(
         '/projects/room-studio',
       );
+      expect(
+        data.find((project: { slug: string }) => project.slug === 'brick-playground').url,
+      ).toBe('/projects/brick-playground');
       const after = (await isolated.query('SELECT * FROM portfolio_projects ORDER BY slug')).rows;
       for (const original of before)
         expect(after.find((row) => row.slug === original.slug)).toEqual(original);
       expect(
         (
           await isolated.query(
-            "SELECT count(*) FROM schema_migrations WHERE name='003_room_portfolio.sql'",
+            "SELECT count(*) FROM schema_migrations WHERE name='004_brick_playground.sql'",
           )
         ).rows[0].count,
       ).toBe('1');
+      await expect(
+        isolated.query(
+          "INSERT INTO brick_designs(title,layout,idempotency_key,payload_hash) VALUES('x','{}',gen_random_uuid(),repeat('a',64))",
+        ),
+      ).rejects.toThrow();
       await migrate(isolated);
       expect(
         (await isolated.query("SELECT count(*) FROM portfolio_projects WHERE slug='room-studio'"))

@@ -21,6 +21,7 @@ const categories: Record<string, string> = {
   'memory-match': 'TƯƠNG TÁC / TRÒ CHƠI',
   admin: 'DỮ LIỆU / QUẢN TRỊ',
   'room-studio': 'KHÔNG GIAN / SÁNG TẠO',
+  'brick-playground': 'LẮP GHÉP / SÂN CHƠI 3D',
 };
 export function Portfolio() {
   const projects = useQuery({
@@ -46,14 +47,14 @@ export function Portfolio() {
         </div>
         <div className="hero-line">
           <span>REACT / TYPESCRIPT / NODE.JS</span>
-          <span>SELECTED WORK · 01—04</span>
+          <span>SELECTED WORK · 01—05</span>
         </div>
       </section>
       <section id="projects" className="section">
         <div className="section-heading">
           <div>
             <div className="eyebrow">KHÁM PHÁ</div>
-            <h2>Bốn project. Bốn trải nghiệm.</h2>
+            <h2>Năm project. Năm trải nghiệm.</h2>
           </div>
           <span className="muted">Xây dựng cùng một nền tảng.</span>
         </div>
@@ -72,6 +73,11 @@ export function Portfolio() {
                     <img src={p.imagePath} alt="Xe minh họa bộ sưu tập AutoHub" />
                   ) : p.slug === 'room-studio' ? (
                     <img src={p.imagePath} alt="Phòng minh họa với giường, bàn và cây xanh" />
+                  ) : p.slug === 'brick-playground' ? (
+                    <img
+                      src={p.imagePath}
+                      alt="Chân đế và các viên gạch nhiều màu trong Brick Playground"
+                    />
                   ) : p.slug === 'memory-match' ? (
                     <div className="memory-art" aria-hidden="true">
                       {['✦', '◈', '◈', '✦', '✧', '✧'].map((s, j) => (

@@ -29,6 +29,12 @@ export const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
     return;
   }
   const code = (err as { code?: string }).code;
+  if ((err as { type?: string }).type === 'entity.too.large') {
+    res
+      .status(413)
+      .json({ error: { code: 'PAYLOAD_TOO_LARGE', message: 'Dữ liệu gửi lên quá lớn.' } });
+    return;
+  }
   if (code === '23505') {
     res.status(409).json({ error: { code: 'CONFLICT', message: 'Dữ liệu đã tồn tại.' } });
     return;
