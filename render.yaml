@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: project-codex-api
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeployTrigger: 'off'
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATABASE_SSL
+        value: verify-full
+      - key: DATABASE_POOL_MAX
+        value: '5'
+      - key: TRUST_PROXY
+        value: gateway
+      - key: DATABASE_URL
+        sync: false
+      - key: EXPECTED_DATABASE_NAME
+        sync: false
+      - key: WEB_ORIGIN
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: API_PROXY_SECRET
+        sync: false

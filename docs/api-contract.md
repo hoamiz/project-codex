@@ -2,6 +2,8 @@
 
 Dùng hợp đồng model trong PORTFOLIO_TASKS.md. Prefix `/api`; dữ liệu `{ data }`, danh sách `{ data, pagination: { page, pageSize, total, totalPages } }`, lỗi `{ error: { code, message, fields? } }`. Validation 400, auth 401, forbidden 403, missing 404, conflict 409, body quá32KB413, rate limit 429, database unavailable 503; không trả stack trace.
 
+Deploy Vercel/Render dùng gateway server giữ token/IP platform; browser tiếp tục `/api` cùng origin. Render direct requests thiếu gateway token403, ngoại trừ GET `/health` public/no-store. Khi gateway gửi token vào health, token sai cũng403; health ready chỉ khi DB query đạt và trảJSON200 `{data:{status:'ok'}}`. HTML200 từ hosting/network/503 không là readiness; frontend tự chờ/refetch đọc với giới hạn, không tự gửi lại mutation. Gateway chuyển cookie/Origin/CSRF/idempotency/game tokens một lần, reject path/body/method/redirect sai và giữ status/error API.
+
 - GET /health; GET /portfolio/projects.
 - GET /cars: search, brand, minPrice, maxPrice, year, status, sort, page, pageSize; GET /cars/brands; GET /cars/by-ids?ids=...; GET /cars/:slug.
 - POST /leads: Idempotency-Key, carId, type, name, phone, email?, preferredAt?, message?.

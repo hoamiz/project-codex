@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci --include=dev --no-audit --no-fund",
+  "buildCommand": "npm run build",
+  "outputDirectory": "apps/web/dist",
+  "regions": ["sin1"],
+  "functions": { "api/proxy.mjs": { "maxDuration": 60 } },
+  "routes": [
+    { "src": "^/api/(.*)$", "dest": "/api/proxy.mjs?__codex_path=$1" },
+    { "handle": "filesystem" },
+    { "src": "^/(?:assets|images)/.*$", "status": 404 },
+    { "src": "^/.*\\.(?:js|css|svg|png|jpg|jpeg|webp|woff2?|ico|json|map)$", "status": 404 },
+    { "src": "^/.*$", "dest": "/index.html" }
+  ]
+}

@@ -12,15 +12,26 @@ import { roomsRouter } from './routes/rooms.js';
 import { bricksRouter } from './routes/bricks.js';
 import { errorHandler } from './errors.js';
 import { config } from './config.js';
+import { proxyBoundary } from './services/proxy-boundary.js';
 export const app = express();
 app.disable('x-powered-by');
-// Chỉ tin reverse proxy loopback khi được cấu hình, để cookie Secure hoạt động sau HTTPS termination.
+// Gateway xác thực và sanitize forwarded headers trước session/limiter; dev mặc định không trust proxy.
 app.set('trust proxy', config.trustProxy);
 app.use(express.json({ limit: '32kb' }));
-app.get('/api/health', async (_req, res) => {
-  await pool.query('SELECT 1');
-  res.json({ data: { status: 'ok' } });
-});
+app.get(
+  '/api/health',
+  (req, res, next) => {
+    if (config.proxySecret && req.get('X-Codex-Proxy-Token'))
+      return proxyBoundary(config.proxySecret)(req, res, next);
+    next();
+  },
+  async (_req, res) => {
+    res.set('Cache-Control', 'no-store');
+    await pool.query('SELECT 1');
+    res.json({ data: { status: 'ok' } });
+  },
+);
+app.use('/api', proxyBoundary(config.proxySecret));
 app.use(sessionMiddleware);
 app.use(
   '/api',

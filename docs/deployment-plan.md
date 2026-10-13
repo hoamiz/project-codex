@@ -1,8 +1,6 @@
 # Kế hoạch deploy project-codex
 
-Ngày2026-10-09. Đây là kế hoạch đưa portfolio và năm demo lên website công khai. Chưa sửa runtime, tạo tài nguyên trả phí, đổi DNS hoặc deploy. Checklist duy nhất: mục Deploy trong [PORTFOLIO_TASKS.md](../PORTFOLIO_TASKS.md). Prompt thực hiện: [RUN_DEPLOY_TASKS.md](../RUN_DEPLOY_TASKS.md).
-
-Lựa chọn hiện tại của người dùng: **chỉ xem kế hoạch trước, chưa chọn nhà cung cấp**. D01 chưa chốt; Railway dưới đây là phương án tham khảo, không được tự chọn để triển khai.
+Hợp đồng/task lập ngày2026-10-09; ngày2026-10-13 người dùng giao triển khai và push GitHub, chọn **Vercel + Render Free + Neon Free**. Production code/config/container và UI hồi phục đã triển khai và kiểm tra; public hosting chưa tạo do credential còn thiếu. Checklist duy nhất: mục Deploy trong [PORTFOLIO_TASKS.md](../PORTFOLIO_TASKS.md). Prompt tiếp tục: [RUN_DEPLOY_TASKS.md](../RUN_DEPLOY_TASKS.md), thao tác và hạn chế thực tế: [deployment-runbook](deployment-runbook.md).
 
 ## Kiến trúc đề xuất
 
@@ -21,7 +19,7 @@ Có một môi trường staging riêng để thử cập nhật; staging/prod k
 
 ### Nhánh có màn hình chờ khi backend ngủ
 
-Yêu cầu bổ sung ngày2026-10-09: giao diện thông báo trong lúc dịch vụ khởi động và tự mở website khi sẵn sàng. Đây là thiết kế bổ sung, chưa triển khai và không chốt nhà cung cấp.
+Yêu cầu bổ sung ngày2026-10-09 đã được triển khai trong lượt2026-10-13: frontend độc lập, màn hình chờ/bannerruntime, health timeout/retry/offline và bảo toàn form/draft. Các tiêu chí bên dưới giữ làm hợp đồng; test thực/các bước public chưa chạy ghi trong checklist/verification.
 
 Để màn hình chờ xuất hiện ngay, **React/HTML/CSS phải được phục vụ từ hosting tĩnh/CDN độc lập với Node.js đang ngủ**. Nếu toàn bộ HTML vẫn do Express trên Render Free phục vụ, người truy cập đầu tiên có thể thấy trang chờ của Render trước khi JavaScript của project chạy; thêm loading component vào app không giải quyết được giai đoạn đó.
 
@@ -44,7 +42,7 @@ Hành vi dự kiến:
 
 Màn hình có `role=status`/aria-live phù hợp, nút retry dùng bàn phím, hỗ trợ reduced motion và360/768/1440px. `/api/health` vẫn kiểm tra DB thật, vì Node mở cổng chưa đủ chứng minh ứng dụng dùng được. Poll chỉ diễn ra khi có người đang truy cập/chờ; không tạo job nền để giữ hosting miễn phí luôn thức.
 
-Phần triển khai gắn vào D03 (proxy/auth/health), D06 (frontend static/rewrite), D07 (bootstrap/poll/recovery và test), D10 (nghiệm thu trên HTTPS), D12 (origin/domain). File dự kiến: `apps/web/src/components/service-readiness.tsx`, hook trạng thái kết nối và config hosting tĩnh theo D01. Test bắt buộc: ready ngay,503→ready, response HTML200, timeout/offline/quá hạn, cleanup/no overlap/no reload loop; giữ deep link và nháp/form khi mất API; auth và lưu snapshot qua proxy. Tất cả hiện là tiêu chí chưa chạy.
+Phần triển khai gắn vào D03 (proxy/auth/health), D06 (frontend static/rewrite), D07 (bootstrap/poll/recovery và test), D10 (nghiệm thu trên HTTPS), D12 (origin/domain). File đã có: `apps/web/src/components/service-readiness.tsx`, controller `apps/web/src/lib/service-readiness.ts`, config Vercel/Render và proxy server. Unit/E2E/container đã thử ready/503→ready/HTML200/timeout/offline/quá hạn/cleanup/no overlap/no reload loop, giữ deep link/nháp/form và auth/snapshot qua proxy. Chỉ phần provider HTTPS/cold start/staging/production thật còn chưa chạy do thiếu credential; bằng chứng cụ thể trong verification.
 
 | Đường dẫn public                                                        | Nội dung                                           |
 | ----------------------------------------------------------------------- | -------------------------------------------------- |
@@ -69,6 +67,8 @@ Dự trù **10–20USD/tháng** cho app+DB là ước tính tham khảo của ph
 
 ## Những điểm cần sửa từ mã hiện tại
 
+Bảng ghi findings ở baseline `ec257c6` trước triển khai. Các thay đổi production tương ứng đã có code và test trong lượt2026-10-13; cấu hình/provider acceptance trên website public vẫn chờ D09–D14.
+
 | File/hành vi đã đối chiếu                                      | Ảnh hưởng                                                  | Việc cần làm                                                                                              |
 | -------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `apps/api/src/server.ts` bind `127.0.0.1`                      | Ingress container không gọi được app                       | `HOST` có kiểm tra; dev giữ loopback, container dùng `0.0.0.0` và `PORT` của hosting                      |
@@ -83,17 +83,17 @@ Express đã có SPA fallback, API/asset404 và startup migration có checksum/l
 
 ## Cấu hình đích
 
-| Biến                            | Vai trò                                                                                              |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `NODE_ENV=production`           | Cookie Secure và hành vi production                                                                  |
-| `HOST=0.0.0.0`                  | Listener trong container, sau D03                                                                    |
-| `PORT`                          | Hosting cấp; không hardcode5173/4100 trong production                                                |
-| `DATABASE_URL`                  | Secret kết nối tới đúng PostgreSQL của môi trường                                                    |
-| `EXPECTED_DATABASE_NAME`        | Biến dự kiến sau D02: tên DB phải khớp URL, kể cả tên mặc định provider; dev/test vẫn có guard riêng |
-| `WEB_ORIGIN`                    | Origin HTTPS chính, không có path/dấu `/` cuối                                                       |
-| `SESSION_SECRET`                | Secret ngẫu nhiên riêng mỗi môi trường, ổn định qua restart                                          |
-| `TRUST_PROXY`                   | Giá trị được kiểm tra theo topology/provider sau D03                                                 |
-| `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Chỉ cấp cho job bootstrap một lần; không đưa vào React hoặc log                                      |
+| Biến                            | Vai trò                                                                                   |
+| ------------------------------- | ----------------------------------------------------------------------------------------- |
+| `NODE_ENV=production`           | Cookie Secure và hành vi production                                                       |
+| `HOST=0.0.0.0`                  | Listener trong container, sau D03                                                         |
+| `PORT`                          | Hosting cấp; không hardcode5173/4100 trong production                                     |
+| `DATABASE_URL`                  | Secret kết nối tới đúng PostgreSQL của môi trường                                         |
+| `EXPECTED_DATABASE_NAME`        | Tên DB production phải khớp URL, kể cả tên mặc định provider; dev/test vẫn có guard riêng |
+| `WEB_ORIGIN`                    | Origin HTTPS chính, không có path/dấu `/` cuối                                            |
+| `SESSION_SECRET`                | Secret ngẫu nhiên riêng mỗi môi trường, ổn định qua restart                               |
+| `TRUST_PROXY`                   | Giá trị được kiểm tra theo topology/provider sau D03                                      |
+| `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Chỉ cấp cho job bootstrap một lần; không đưa vào React hoặc log                           |
 
 Không cấp `TEST_DATABASE_URL` vào app production. CI/test có DB và secret riêng. Domain/PORT là cấu hình thường; connection URL/session/password dùng secret manager của hosting. Thay session secret sẽ làm mất hiệu lực session đang có, nên không tạo lại mỗi deploy.
 
@@ -221,4 +221,4 @@ Hoàn tất khi có URL HTTPS public, năm demo và DB production hoạt động
 - [PostgreSQL](https://docs.railway.com/guides/postgresql).
 - [Backups](https://docs.railway.com/reference/backups).
 
-Thay đổi lượt này chỉ là kế hoạch/tài liệu. Không chạy lại test ứng dụng hoặc tự thay cấu hình cloud vì runtime không đổi. Kiểm tra links, checklist/phụ thuộc, code fence, format file mới và diff trước khi bàn giao.
+Nhật ký lập kế hoạch2026-10-09 và triển khai2026-10-13 được giữ riêng trong checklist. Kết quả unit/API/E2E/container và các bước provider chưa chạy không được gộp; xem verification/runbook. Public staging/production và backup provider cần credential/runtime evidence, không hoàn thành bằng manifest hoặc test localhost.

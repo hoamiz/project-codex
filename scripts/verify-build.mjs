@@ -30,6 +30,8 @@ const child = spawn(process.execPath, ['apps/api/dist/server.js'], {
     NODE_ENV: 'production',
     WEB_ORIGIN: 'http://127.0.0.1:4111',
     TRUST_PROXY: 'loopback',
+    ALLOW_LOCAL_HTTP: '1',
+    EXPECTED_DATABASE_NAME: new URL(process.env.DATABASE_URL).pathname.slice(1),
   },
   stdio: ['ignore', fd, fd],
 });

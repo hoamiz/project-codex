@@ -1,8 +1,6 @@
 # Prompt thực hiện deploy project-codex
 
-Ngày2026-10-09: D01–D14 đang là kế hoạch, chưa triển khai. Hợp đồng/phương án ở [docs/deployment-plan.md](docs/deployment-plan.md); checklist duy nhất ở mục Deploy trong [PORTFOLIO_TASKS.md](PORTFOLIO_TASKS.md).
-
-Người dùng hiện chỉ xem kế hoạch, chưa chọn nhà cung cấp. Chỉ dùng prompt bên dưới khi có yêu cầu triển khai mới; không coi lựa chọn xem kế hoạch là giao chạy D01–D14.
+Người dùng đã giao triển khai và push GitHub ngày2026-10-13, chọn **Vercel + Render Free + Neon Free**. Code/UI/config đã triển khai; đọc checklist/evidence để tiếp tục, không bootstrap lại. Hợp đồng ở [deployment-plan](docs/deployment-plan.md), thao tác ở [runbook](docs/deployment-runbook.md); checklist duy nhất ở mục Deploy trong [PORTFOLIO_TASKS.md](PORTFOLIO_TASKS.md).
 
 Đây là prompt để dùng khi người dùng giao triển khai; bản thân file không cấp quyền tạo tài nguyên trả phí, deploy hoặc đổi DNS.
 
@@ -14,7 +12,7 @@ Tôi giao quyền tự chủ sửa code/config/container/CI, test, chẩn đoán
 
 Trước khi tạo dịch vụ trả phí hoặc đổi DNS, xác nhận thông tin hosting/budget/domain và quyền tương ứng đã có trong phiên. Nếu chưa có, tiếp tục các bước code/test độc lập, ghi blocker đúng task và yêu cầu thông tin/quyền thật sự còn thiếu. Không coi quyền GitHub là quyền hosting, không hỏi secret trong chat. Kiểm tra binding/CLI sẵn có trước khi yêu cầu kết nối tài khoản; dùng secret manager cho DATABASE_URL/SESSION_SECRET/admin bootstrap.
 
-Đích là một Node service phục vụ React build và /api cùng origin, một PostgreSQL production riêng và staging/DB riêng để thử trước. Nhà cung cấp chưa được chọn; Railway chỉ là phương án tham khảo. D01 phải chốt nhà cung cấp trước các task phụ thuộc và không tự chọn thay người dùng. Giữ cookie HTTPS/CSRF/Origin, test guard project_codex_test, migration checksum/lock/transaction và SPA/API/asset404. Không dùng .env hay database dev làm production.
+Đích đã chốt: frontend static+gateway trên Vercel, NodeDocker RenderFree, PostgreSQL NeonFree, staging/prod riêng. Giữ cookie cùng origin frontend/HTTPS/CSRF/Origin, test guard project_codex_test, migration checksum/lock/transaction và SPA/API/asset404. Không dùng .env hay database dev làm production. Credential requirements VERCEL_TOKEN/RENDER_API_KEY/NEON_API_KEY đã saved; kiểm tra runtime/operation trước khi yêu cầu lại. Khi thiếu quyền, hoàn thành phần độc lập và ghi blocker, không đánh dấu public task đã xong.
 
 Nếu chọn hosting có backend tự ngủ và yêu cầu màn hình chờ, chốt nhánh frontend tĩnh/CDN độc lập ở D01. Proxy /api qua origin frontend để giữ auth; không coi loading component do Node đang ngủ phục vụ là giải pháp. Xây màn hình chờ/poll health có timeout/no-cache, chỉ sẵn sàng với200 JSON data.status=ok; tự chuyển state/refetch đọc khi ready, giữ pathname/query/hash/draft/form. Có timeout tổng/retry/offline/cleanup, không reload lặp hoặc tự replay mutations. Hợp đồng và test nằm ở mục nhánh màn hình chờ của deployment-plan, tích hợp D03/D06/D07/D10/D12.
 

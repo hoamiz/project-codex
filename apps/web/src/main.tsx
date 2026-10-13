@@ -14,6 +14,7 @@ import { Dashboard } from './features/admin-dashboard';
 import './styles.css';
 import './features/autohub.css';
 import { State } from './components/ui';
+import { ServiceReadiness } from './components/service-readiness';
 const RoomStudio = lazy(() => import('./features/room-studio'));
 const BrickPlayground = lazy(() => import('./features/brick-playground'));
 const client = new QueryClient({
@@ -152,7 +153,9 @@ createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
       <BrowserRouter>
-        <App />
+        <ServiceReadiness>
+          <App />
+        </ServiceReadiness>
       </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>,

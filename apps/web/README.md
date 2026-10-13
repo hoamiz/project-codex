@@ -2,6 +2,8 @@
 
 React 19/TypeScript, Vite 8, Tailwind 4, React Router và TanStack Query. Từ project root sau setup: `npm run dev:web` (5173); cần API ở 4100. Vite proxy `/api` đến `API_TARGET` hoặc loopback 4100. Routes/hướng dẫn đầy đủ nằm trong [root README](../../README.md).
 
+Frontend deploy tĩnh trên Vercel với same-origin gateway `api/proxy.mjs`; server function giữ secret/upstream URL, React không có credential. `components/service-readiness.tsx` và `lib/service-readiness.ts` gate kết nối đầu, health JSON200/no-cache/timeout/retry/offline, sau ready giữ App mounted và chỉ refetch read queries khi hồi phục. `lib/api.ts` báo network/HTML/503 bằng event; không replay mutation hoặc hard reload. Banner giữ draft/form, auth401 vẫn xử lý đúng session. Test unit/controller và browser cold/timeout/offline/preserve/axe ở360/768/1440. Deployment/biến/first boot: [runbook](../../docs/deployment-runbook.md).
+
 Build: `npm run build -w @project-codex/web`; output `dist`. Express phục vụ build và SPA fallback. Không đặt secret trong `VITE_*`. API client gửi cookie cùng origin, CSRF cho admin mutations, giữ lỗi theo field; session 401 làm sạch cache và về login.
 
 `npm run test -w @project-codex/web`: component/storage test jsdom. Playwright ở root kiểm tra luồng thật và accessibility. Profile tại `src/features/portfolio.tsx`; ảnh SVG có nguồn trong `public/images/SOURCES.md`.

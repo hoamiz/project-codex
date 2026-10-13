@@ -11,12 +11,24 @@ try {
   await pool.end();
   process.exit(1);
 }
-const server = app.listen(config.port, '127.0.0.1', () =>
+const server = app.listen(config.port, config.host, () =>
   console.log(`Project Codex API listening on ${config.port}`),
 );
-for (const event of ['SIGINT', 'SIGTERM'])
-  process.on(event, () =>
-    server.close(() => {
-      void pool.end().then(() => process.exit(0));
-    }),
-  );
+let shuttingDown = false;
+/** Dừng nhận request và chờ pool drain; deadline hữu hạn cho hosting đổi release kể cả còn socket treo. */
+function shutdown() {
+  if (shuttingDown) return;
+  shuttingDown = true;
+  const deadline = setTimeout(() => {
+    server.closeAllConnections();
+    process.exit(1);
+  }, config.shutdownTimeoutMs);
+  deadline.unref();
+  server.close(() => {
+    void pool.end().then(() => {
+      clearTimeout(deadline);
+      process.exit(0);
+    });
+  });
+}
+for (const event of ['SIGINT', 'SIGTERM']) process.on(event, shutdown);

@@ -89,6 +89,8 @@ Nghiệm thu PJ4 Room Studio ngày2026-10-07: `npm run check` đạt **26 API + 
 
 Nghiệm thu PJ5 ngày2026-10-08: `npm run check` đạt **38 API + 15 web + 37 E2E**,0 fail/skip; lint/typecheck/build/format và compiled smoke đạt. Trong đó17 E2E PJ5 bao phủ150 gạch, drag/stack/trash/settle, camera/PNG, history/draft, API retry/share/copy, keyboard/touch/2D và axe360/768/1440; các demo cũ tiếp tục đạt. Setup/restart/start lặp giữ hash cấu hình và dữ liệu trong bảy bảng phát triển.
 
+Nghiệm thu code deploy/hồi phục ngày2026-10-13: `npm run check` đạt **48 API +25 web +45 E2E**,0 fail/skip; proxy/routing deploy5/5 và Docker/PG17 TLS/firstBoot/HTTPS/session-restart/dump-restore đạt. Đây là kiểm tra development/container, public staging/production còn chờ token hosting; [verification](docs/verification.md) ghi chi tiết và hạn chế.
+
 ## Bản build
 
 ```bash
@@ -116,9 +118,13 @@ Sửa `profile` trong `apps/web/src/features/portfolio.tsx` để cá nhân hóa
 
 Tài liệu: [web](apps/web/README.md), [API](apps/api/README.md), [kiến trúc](docs/architecture.md), [API contract](docs/api-contract.md), [prompt chạy task](RUN_ALL_TASKS.md).
 
-Kế hoạch lên website public: [deploy D01–D14](docs/deployment-plan.md), [prompt thực hiện deploy](RUN_DEPLOY_TASKS.md). Kiến trúc đề xuất là một Node service phục vụ React/API chung origin và một PostgreSQL, có staging, CI, HTTPS, backup/restore và rollback. Người dùng hiện chỉ xem kế hoạch, chưa chọn nhà cung cấp; Railway là phương án tham khảo. Cần chỉnh listener/config DB/trust proxy trước khi deploy. Publish snapshot môi trường Codex không thay thế website public.
+Deploy đã được giao ngày2026-10-13 theo **Vercel + Render Free + Neon Free**: frontend tĩnh và gateway `/api` trên Vercel, API Docker trên Render, PostgreSQL có TLS trên Neon. Code production/config/proxy, Dockerfile, Vercel/Render manifests, CI, compiled initialization và màn hình hồi phục đã triển khai. Hướng dẫn thao tác: [deployment runbook](docs/deployment-runbook.md); [task D01–D14](docs/deployment-plan.md), [prompt tiếp tục](RUN_DEPLOY_TASKS.md) và [trạng thái/nghiệm thu](PORTFOLIO_TASKS.md).
 
-Nếu dùng BE miễn phí tự ngủ, kế hoạch có nhánh frontend tĩnh/CDN độc lập để hiện màn hình chờ ngay, kiểm tra health rồi tự mở đúng trang khi sẵn sàng. Proxy API giữ cùng origin; có giới hạn chờ/retry và bảo toàn form/nháp. Nhánh này mới là thiết kế, chưa có UI/runtime triển khai.
+Màn hình chờ tải độc lập với Node: health JSON200/DB thật, timeout8 giây/request, retry+jitter, tổng120 giây và nút Thử lại. Sẵn sàng thì tự mở đúng URL; sau khi vào app, banner mất kết nối giữ form/nháp và chỉ refetch đọc, không tự gửi lại lệnh ghi. Có offline, cleanup và reduced motion; ready không ping nền. UI này đã có test browser, không còn là thiết kế.
+
+Các lệnh bổ sung: `npm run test:deploy`, `npm run verify:container`, `npm run db:initialize` với production env riêng sau build, và `npm run smoke:deploy -- https://your-real-frontend.vercel.app` cho URL đã deploy. Mẫu biến không secret: `.env.production.example`. `INITIALIZE_DEMO=1` hỗ trợ first boot trên Render Free; sau bootstrap bỏ flag/admin keys rồi redeploy. API production không đọc `.env` dev.
+
+Website public chưa xuất bản vì `VERCEL_TOKEN`, `RENDER_API_KEY`, `NEON_API_KEY` chưa được cấp trong runtime. Các yêu cầu đã lưu qua environment Settings; GitHub access không thay thế quyền hosting. D09–D14 giữ pending đến khi staging/production và backup provider có bằng chứng. Publish snapshot môi trường Codex không thay thế deploy website.
 
 ## Cloud
 

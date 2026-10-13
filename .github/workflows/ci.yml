@@ -1,0 +1,54 @@
+name: Verify project-codex
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: codex
+          POSTGRES_PASSWORD: ci-isolated-fixture
+          POSTGRES_DB: project_codex_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://codex:ci-isolated-fixture@127.0.0.1:5432/project_codex_test
+      TEST_DATABASE_URL: postgresql://codex:ci-isolated-fixture@127.0.0.1:5432/project_codex_test
+      WEB_ORIGIN: http://localhost:5173
+      ADMIN_EMAIL: ci@project-codex.test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Generate isolated test secrets
+        run: |
+          python3 - <<'PY'
+          import os,secrets
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              for name in ['SESSION_SECRET','ADMIN_PASSWORD']:
+                  f.write(name+'='+secrets.token_hex(32)+'\n')
+          PY
+      - run: npm ci --include=dev --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Set Chromium path
+        run: node --input-type=module -e "import {chromium} from '@playwright/test';import {appendFileSync} from 'node:fs';appendFileSync(process.env.GITHUB_ENV,'CHROMIUM_PATH='+chromium.executablePath()+'\n')"
+      - run: npm run check
+      - run: npm run format:check
+      - run: npm run test:deploy
+      - run: npm run verify:container

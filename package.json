@@ -28,7 +28,11 @@
     "services:stop": "node scripts/services.mjs stop",
     "smoke": "node scripts/smoke.mjs",
     "verify:build": "node scripts/verify-build.mjs",
-    "format:check": "prettier --check apps tests scripts *.ts *.mjs *.json",
+    "test:deploy": "node --test tests/deploy/*.test.mjs",
+    "verify:container": "node scripts/verify-container.mjs",
+    "smoke:deploy": "node scripts/smoke-deploy.mjs",
+    "db:initialize": "node apps/api/dist/scripts/initialize.js",
+    "format:check": "prettier --check apps api tests scripts .github render.yaml *.ts *.mjs *.json",
     "check": "npm run lint && npm run typecheck && npm run build && npm test && npm run test:e2e && npm run verify:build"
   },
   "devDependencies": {

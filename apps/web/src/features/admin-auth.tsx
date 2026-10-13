@@ -9,7 +9,7 @@ import {
   ShieldCheck,
   ArrowUpRight,
 } from 'lucide-react';
-import { api, setCsrf } from '../lib/api';
+import { api, ApiError, setCsrf } from '../lib/api';
 import { Button, Field, State } from '../components/ui';
 interface Auth {
   email: string;
@@ -47,8 +47,12 @@ export function AdminLayout() {
     },
   });
   if (me.isPending) return <State loading />;
-  if (me.isError)
-    return <Navigate to="/projects/admin/login" state={{ from: location.pathname }} replace />;
+  if (me.isError && !me.data) {
+    if (me.error instanceof ApiError && me.error.status === 401)
+      return <Navigate to="/projects/admin/login" state={{ from: location.pathname }} replace />;
+    return <State error={me.error} onRetry={() => void me.refetch()} />;
+  }
+  if (!me.data) return <State loading />;
   return (
     <div className="admin-shell">
       <aside className="admin-sidebar">
@@ -137,7 +141,7 @@ export function Login() {
       <div className="login-form">
         <span className="eyebrow">CHÀO MỪNG TRỞ LẠI</span>
         <h2>Đăng nhập quản trị.</h2>
-        <p className="muted small">Sử dụng tài khoản admin đã được khởi tạo cục bộ.</p>
+        <p className="muted small">Sử dụng tài khoản admin của website.</p>
         <form
           className="form-stack"
           onSubmit={(e) => {

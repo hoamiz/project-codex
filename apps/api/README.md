@@ -2,6 +2,10 @@
 
 Express 5/TypeScript, pg, Zod, session PostgreSQL, scrypt và rate limit. Root `.env` đọc im lặng; không dùng cấu hình dự án khác. DB phải tên `project_codex_dev` hoặc `project_codex_test`. API mặc định bind loopback 4100. Xem [root README](../../README.md) để setup DB/admin.
 
+Production không đọc `.env` dev. `services/runtime-config.ts` validate HOST/PORT/HTTPS origin/secret và tên DB khớp `EXPECTED_DATABASE_NAME`, hỗ trợ tên provider như `neondb`; dev/test giữ guard. Container bind0.0.0.0/PORT hosting. Remote PostgreSQL verify-full, poolmax5/timeout và CA riêng nếu cần; tham số URL không ghi đè SSL thành insecure. `TRUST_PROXY=gateway` yêu cầu shared secret để `proxy-boundary.ts` xác thực và sanitize IP/HTTPS trước cookie/limiter; direct Render API bị403, health public/no-store/DB-backed. Với health mang token, token sai cũng bị từ chối.
+
+Docker runtime chỉ production deps và compiled scripts, không cầntsx. `node apps/api/dist/scripts/initialize.js` migrate/seed/admin một lần và tái chạy giữ dữ liệu/password. First boot `INITIALIZE_DEMO=1` qua entrypoint; API process bỏ bootstrap credentials, operator xóa flag/admin keys khỏi hosting sau đó. Shutdown SIGTERM có deadline. Runbook và trạng thái public: [deployment](../../docs/deployment-runbook.md).
+
 Từ root: `npm run dev:api`, `npm run db:migrate`, `npm run db:seed`, `npm run admin:bootstrap`. Build: `npm run build -w @project-codex/api`; chạy `npm run start -w @project-codex/api` (cần React build khi phục vụ UI). Khi đóng gói, giữ `db/migrations` cùng compiled API.
 
 Endpoint/lỗi: [API contract](../../docs/api-contract.md). Admin mutations cần session, Origin, CSRF; cập nhật dùng version. Cookie HttpOnly/SameSite=Lax/Secure production. `TRUST_PROXY=loopback` chỉ cho HTTPS reverse proxy được tin trên loopback. Theo IP: login 10/15 phút, lead 20/15 phút, tạo phiên game 80/giờ.

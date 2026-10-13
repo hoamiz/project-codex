@@ -524,7 +524,7 @@ B22 — hoàn thành (2026-10-08): Nghiệm thu npm run check toàn bộ đạt3
 
 ## Deploy website — kế hoạch2026-10-09
 
-Hợp đồng/phương án và tiêu chí: [docs/deployment-plan.md](docs/deployment-plan.md). Prompt thực hiện khi được giao: [RUN_DEPLOY_TASKS.md](RUN_DEPLOY_TASKS.md). **Chỉ xem kế hoạch, chưa chọn nhà cung cấp hoặc triển khai/deploy** theo phản hồi người dùng. Kiến trúc đề xuất Node/React cùng origin + PostgreSQL, staging tách biệt; Railway là phương án tham khảo. Đây là checklist duy nhất D01–D14; D01 chưa chốt, chỉ đánh dấu sau khi có kiểm tra thực.
+Hợp đồng/phương án và tiêu chí: [docs/deployment-plan.md](docs/deployment-plan.md). Prompt thực hiện khi được giao: [RUN_DEPLOY_TASKS.md](RUN_DEPLOY_TASKS.md). **Đã được giao triển khai ngày2026-10-13**; người dùng chọn Vercel + Render Free + Neon Free. Quyền GitHub đã dùng được; quyền hosting còn thiếu trong runtime và đã lưu yêu cầu credential qua settings. Kiến trúc đề xuất Node/React cùng origin + PostgreSQL, staging tách biệt, frontend Vercel tĩnh + gateway cùng origin và màn hình hồi phục. Đây là checklist duy nhất D01–D14; chỉ đánh dấu sau khi có kiểm tra thực.
 
 | Task | Phạm vi | Phụ thuộc |
 | --- | --- | --- |
@@ -543,13 +543,13 @@ Hợp đồng/phương án và tiêu chí: [docs/deployment-plan.md](docs/deploy
 | D13 | Release production | D10–D12, quyền deploy đích |
 | D14 | Monitor và bàn giao | D13 |
 
-- [ ] D01 — Chốt hosting, phạm vi và ngân sách.
-- [ ] D02 — Cấu hình production có kiểm tra.
-- [ ] D03 — Listener, proxy và cookie HTTPS.
-- [ ] D04 — Kết nối PostgreSQL production.
-- [ ] D05 — Migration, seed và admin trong bản build.
-- [ ] D06 — Docker image và cấu hình hosting.
-- [ ] D07 — Smoke dành cho website đã deploy.
+- [x] D01 — Chốt hosting, phạm vi và ngân sách.
+- [x] D02 — Cấu hình production có kiểm tra.
+- [x] D03 — Listener, proxy và cookie HTTPS.
+- [x] D04 — Kết nối PostgreSQL production.
+- [x] D05 — Migration, seed và admin trong bản build.
+- [x] D06 — Docker image và cấu hình hosting.
+- [x] D07 — Smoke dành cho website đã deploy.
 - [ ] D08 — CI và release theo commit.
 - [ ] D09 — Tạo staging và kết nối GitHub.
 - [ ] D10 — Nghiệm thu staging đầy đủ.
@@ -563,3 +563,23 @@ Yêu cầu bổ sung màn hình chờ (2026-10-09): nếu backend tự ngủ, d�
 Nhật ký lập kế hoạch (2026-10-09): đối chiếu source/config/scripts ởec257c6 và tài liệu Railway chính thức; ghi ba blocker code trước production (listener loopback, tên DB dev/test, trust proxy loopback), DB/TLS/pool và smoke chỉ-local. Tạo14 task theo phụ thuộc, tiêu chí và kiểm tra; link README và prompt deploy. Kiểm tra đạt:14 heading đúng thứ tự,14 checkbox chưa đánh dấu, phụ thuộc không tham chiếu task về sau,27 link cục bộ/code fence hợp lệ và bốn compiled script path tồn tại; Prettier hai file mới và git diff check đạt. Chỉ thay tài liệu, chưa chạy task D, tạo hosting/DB/domain, đổi runtime/cloud draft, commit/push hoặc deploy; không chạy lại test ứng dụng vì source/runtime không đổi.
 
 Chuẩn bị sync GitHub (2026-10-13), theo yêu cầu người dùng:4 file tài liệu gồm kế hoạch14 task, nhánh màn hình chờ/auto recovery, prompt, checklist và link README. Kiểm tra lại Prettier,27 link/code fence, phụ thuộc/task pending, diff/staged diff đạt; scan133 file versioned/staged không có secret cục bộ hoặc artifact runtime. Fetch xác nhận main không có thay đổi bên ngoài trước commit. Source/runtime không đổi nên không chạy lại test ứng dụng; chưa chọn hosting, triển khai UI chờ hoặc deploy. Commit/push được giao trong lượt này; báo cáo cuối xác nhận SHA/ref/tree sau khi sync thành công.
+
+D01 — hoàn thành (2026-10-13): Vercel/frontend static+function, RenderFree/NodeDocker, NeonFree/PostgreSQL17 đã được người dùng chọn; budget0USD trong hạn mức, domain platform trước/custom chưa cần. Scope staging/production riêng, seed5 card/12 xe/admin riêng; không tạo paid service. Chưa có VERCEL_TOKEN/RENDER_API_KEY/NEON_API_KEY trong process hoặc config local; cloud requirements saved/re-read đủ3 tên, GitHub repo secrets metadata403. Git ls-remote main aa83ed0 và smoke5 demo baseline đạt. Không dùng dữ liệu/config repo khác.
+
+D02 — hoàn thành (2026-10-13): runtime-config strict HOST/PORT/HTTPS origin/secret/EXPECTED_DATABASE_NAME; production không đọc .env dev, testguard giữ nguyên. API typecheck và runtime-config/proxy tests10/10 đạt (deploy-d02-test.log). Invalid origin/DB/secret/port/proxy/TLS bị chặn, URL/password không vào exception.
+
+D03 — hoàn thành (2026-10-13): Gateway Vercel xác thực shared secret, lấy IP platform và thay forwarded headers trước session/limiter; trực tiếp Render thiếu key403, health public no-store. Proxy route/query/body/cookie/CSRF/idempotency chuyển đúng một lần; SSRF/traversal/oversize/redirect/timeout bị chặn. Proxy/node manifest5/5; DockerHTTPS thực cookie Secure/HttpOnly/SameSite và session sau restart đạt. Shutdown có deadline. Provider edge thật chờ quyền ở D09/D10.
+
+D04 — hoàn thành (2026-10-13): Poolmax5/idle10s/connect5s, TLSverify-full enforced remote và bỏ URL SSL overrides. Container PostgreSQL17 có CA/SAN, CA đúng kết nối được, CA sai initialize trảnonzero; không tắt certificate validation. DB/app cô lập riêng, health queryDB thật. Neon public connection chưa chạy do thiếu APIkey ở D09.
+
+D05 — hoàn thành (2026-10-13): Compiled initialize/migrate/seed/admin trong image không cầntsx; job initialize chạy2lần giữ5 card/12xe và hashadmin gốc. Runtime không giữ ADMIN_PASSWORD sau job, prod config không đọc .envdev. Migration001–004 unchanged. Docker saurestart session và snapshot còn; backuprestore counts/checksum/rowdigests đạt (deploy-container-final.log).
+
+D06 — hoàn thành (2026-10-13): Docker đa stage Node24 pinned official digest, npmci frozen/non-root/runtimeprod deps/SQL+FE artifacts; ownership manifests sửa sau test phát hiện permission. Vercel static routing/proxy/APIasset404/SPA, Renderfree blueprint autoDeployoff, productionenvsample khôngsecret. Docker build/HTTPSfivedemo/direct/reload/alias/viewers đạt. Cloud build dùngproxy+CA mount chỉ lúcnpmci; runtime không chứa buildCA. Cache nằm.local, không sửaHOME. Log deploy-container-final.log.
+
+D07 — hoàn thành (2026-10-13): Read-only smoke-deploy không cầnDBcredential, chỉ HTTPS public (cert exception duy nhất fixtureloopback tự ký). UI readiness gate ban đầu, bannerruntime giữcomponent/form/draft; pollhealth8s/request/120s tổng, jitter/no-cache/JSON200, offline/retry/cleanup/noreloadloop/noreplaymutations. Webunit10/10, E2E8/8 gồm deep link/HTML200/timeout/nativeoffline/Bricksaveonce/axe360/768/1440 đạt; Docker public-style smoke5 demos+viewers đạt. Logs deploy-ui-unit/recovery-e2e/container-final.
+
+D08 — đang làm (2026-10-13): CI GitHubActions đã tạo với Node24/PGtest/Chromium, check/format/deploytests/container; full check hiện tại sẽ chạy trước commit. CI trên GitHub chưa chạy vì workflow chưa push; không dùng local check thay bằng chứng CI ngoài.
+
+D09–D14 — chờ quyền bên ngoài: hostingAPIkeys chưa được cấp runtime; chưa có URL staging/production, DNS hoặc provider backup/rollback evidence. Backuprestore TLS trên DBcontainer riêng đã thử ở D06, không đánh dấu nghiệm thu staging/public hoặc retention/SLA production từ kết quả local. Tiếp tục các kiểm tra/tài liệu/Git được giao.
+
+Nghiệm thu code/hồi phục (2026-10-13): npm run check toàn bộ48 API+25 web+45 E2E,0 fail/skip; lint/typecheck/build/compiled đạt. Node deploy/proxy/routing5/5 và format đạt. Docker firstBoot mới chạy initialize có kiểm soát, API process không nhận ADMIN_PASSWORD; session/snapshot còn sau restart, backuprestore so full rowdigest sáu bảng/checksum và counts5/12/1/1/4 đạt (deploy-container-firstboot.log). Mẫu production khôngsecret, migration001–004/lockfile giữ nguyên, dev hash .env/bảy bảng giữ nguyên. Đã xem screenshot UIwaiting desktop1440/mobile360. Official Vercel schema có mixed dialect (declaredDraft4 nhưng exclusiveMinimum dạngDraft7); check_schema và config validation đầy đủ bằngDraft7 đạt, routing/proxy functionaltests đạt. Chưa dùng kết quả này thay deploy provider thật.
