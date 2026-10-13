@@ -550,7 +550,7 @@ Hợp đồng/phương án và tiêu chí: [docs/deployment-plan.md](docs/deploy
 - [x] D05 — Migration, seed và admin trong bản build.
 - [x] D06 — Docker image và cấu hình hosting.
 - [x] D07 — Smoke dành cho website đã deploy.
-- [ ] D08 — CI và release theo commit.
+- [x] D08 — CI và release theo commit.
 - [ ] D09 — Tạo staging và kết nối GitHub.
 - [ ] D10 — Nghiệm thu staging đầy đủ.
 - [ ] D11 — Backup, restore và rollback.
@@ -583,3 +583,7 @@ D08 — đang làm (2026-10-13): CI GitHubActions đã tạo với Node24/PGtest
 D09–D14 — chờ quyền bên ngoài: hostingAPIkeys chưa được cấp runtime; chưa có URL staging/production, DNS hoặc provider backup/rollback evidence. Backuprestore TLS trên DBcontainer riêng đã thử ở D06, không đánh dấu nghiệm thu staging/public hoặc retention/SLA production từ kết quả local. Tiếp tục các kiểm tra/tài liệu/Git được giao.
 
 Nghiệm thu code/hồi phục (2026-10-13): npm run check toàn bộ48 API+25 web+45 E2E,0 fail/skip; lint/typecheck/build/compiled đạt. Node deploy/proxy/routing5/5 và format đạt. Docker firstBoot mới chạy initialize có kiểm soát, API process không nhận ADMIN_PASSWORD; session/snapshot còn sau restart, backuprestore so full rowdigest sáu bảng/checksum và counts5/12/1/1/4 đạt (deploy-container-firstboot.log). Mẫu production khôngsecret, migration001–004/lockfile giữ nguyên, dev hash .env/bảy bảng giữ nguyên. Đã xem screenshot UIwaiting desktop1440/mobile360. Official Vercel schema có mixed dialect (declaredDraft4 nhưng exclusiveMinimum dạngDraft7); check_schema và config validation đầy đủ bằngDraft7 đạt, routing/proxy functionaltests đạt. Chưa dùng kết quả này thay deploy provider thật.
+
+D08 — hoàn thành (2026-10-13): commit tính năng584e8b45894312f7337c8ba84493324ef1d30d05 đã lênmain, ref/tree khớp vàworkingtreeclean. GitHubActions run38347799525 conclusion=success: frozen npmci/Node24/PG17/Chromium, check48API+25web+45E2E,format,deploy5/5 vàcontainerTLS/firstBoot/HTTPS/restoređạt. CI push/PR đã hoạt động; chọnreleaseSHA đãcheck, RenderautoDeployoff vàpromotionthủcôngsauCIgreen. Repo merge/protection settings giữ nguyên. URLhttps://github.com/hoamiz/project-codex/actions/runs/38347799525; logprivate.local/logs/deploy-github-ci.log.
+
+D09–D14 vẫnchờ: runtimeVERCEL_TOKEN/RENDER_API_KEY/NEON_API_KEY vắng; requests đãsaved trongenvironmentSettings. Chưa tạoresource/providerAPI/chưaURLpublic hoặcbackup/restoreprovider. UI/config/image/code đã lênGitHub; phầnpublic phải tiếp tục saucấpquyền, khôngđánhdấu từCI/container.
