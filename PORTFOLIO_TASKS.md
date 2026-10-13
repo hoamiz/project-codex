@@ -521,3 +521,45 @@ B20 — hoàn thành (2026-10-08): Bộ PJ5 E2E16/16 đạt toàn lượt (brick
 B21 — hoàn thành (2026-10-08): Build/verify:build đạt: HTTP/DB/admin401, năm demo và viewer direct/reload, lazy manifest/network, SPA/API/asset404/cookie production. Frozen npm ci setup + owned stop/start + start lặp đạt; đối chiếu hash .env và toàn bộ row bảy bảng trước/sau giữ nguyên (5 project/12 xe/1 admin, snapshot/lead/result0). Logs brick-b21-build/compiled/setup/start/repeat. Upgrade startup không seed 4 kịch bản đã đạt ở B05; không sửa migration001–003 hoặc reset DB.
 
 B22 — hoàn thành (2026-10-08): Nghiệm thu npm run check toàn bộ đạt38 API+15 web+37 E2E (17PJ5),0 fail/skip; lint0 warning/typecheck/build/compiled smoke đạt. Format/diff/staged diff đạt, scan131 file versioned/staged không có secret/artifact. README root/web/API, architecture/API contract/verification và trạng thái5 project cập nhật; review JSDoc logic cần thiết đã làm. Setup/config/data preserved ở B21 và xác nhận lại sau check. Cloud start_skill saved/re-read đúng, các trường và legacy suffix giữ nguyên; chưa publish/deploy/restore task mới. Không còn blocker; chuyển commit/push theo yêu cầu người dùng.
+
+## Deploy website — kế hoạch2026-10-09
+
+Hợp đồng/phương án và tiêu chí: [docs/deployment-plan.md](docs/deployment-plan.md). Prompt thực hiện khi được giao: [RUN_DEPLOY_TASKS.md](RUN_DEPLOY_TASKS.md). **Chỉ xem kế hoạch, chưa chọn nhà cung cấp hoặc triển khai/deploy** theo phản hồi người dùng. Kiến trúc đề xuất Node/React cùng origin + PostgreSQL, staging tách biệt; Railway là phương án tham khảo. Đây là checklist duy nhất D01–D14; D01 chưa chốt, chỉ đánh dấu sau khi có kiểm tra thực.
+
+| Task | Phạm vi | Phụ thuộc |
+| --- | --- | --- |
+| D01 | Hosting, scope, budget và domain | Không |
+| D02 | Production config có kiểm tra | D01 |
+| D03 | Listener/proxy/cookie HTTPS | D02 |
+| D04 | Kết nối PostgreSQL production | D02 |
+| D05 | Compiled migration/seed/admin | D02,D04 |
+| D06 | Docker image/hosting config | D03–D05 |
+| D07 | Smoke website deploy | D06 |
+| D08 | CI/release theo commit | D06,D07 |
+| D09 | Tạo staging/kết nối GitHub | D08, quyền hosting/billing |
+| D10 | Nghiệm thu staging | D09 |
+| D11 | Backup/restore/rollback | D10 |
+| D12 | Origin/domain/HTTPS chính | D10, quyền DNS nếu custom |
+| D13 | Release production | D10–D12, quyền deploy đích |
+| D14 | Monitor và bàn giao | D13 |
+
+- [ ] D01 — Chốt hosting, phạm vi và ngân sách.
+- [ ] D02 — Cấu hình production có kiểm tra.
+- [ ] D03 — Listener, proxy và cookie HTTPS.
+- [ ] D04 — Kết nối PostgreSQL production.
+- [ ] D05 — Migration, seed và admin trong bản build.
+- [ ] D06 — Docker image và cấu hình hosting.
+- [ ] D07 — Smoke dành cho website đã deploy.
+- [ ] D08 — CI và release theo commit.
+- [ ] D09 — Tạo staging và kết nối GitHub.
+- [ ] D10 — Nghiệm thu staging đầy đủ.
+- [ ] D11 — Backup, restore và rollback.
+- [ ] D12 — Domain chính và HTTPS.
+- [ ] D13 — Release production.
+- [ ] D14 — Vận hành và tài liệu bàn giao.
+
+Yêu cầu bổ sung màn hình chờ (2026-10-09): nếu backend tự ngủ, dùng frontend tĩnh/CDN độc lập + proxy API để giao diện xuất hiện trước khi BE thức. Poll health có timeout/no-cache, kiểm tra200 JSON/DB thật, tự chuyển sang đúng trang/refetch dữ liệu khi ready; retry/offline/quá hạn và giữ form/nháp, không replay mutations. Hợp đồng và tiêu chí mới ở deployment-plan, gắn vào D01/D03/D06/D07/D10/D12; chưa triển khai hoặc chốt provider. D01–D14 vẫn chưa đánh dấu. Kiểm tra tài liệu đạt:14 task pending,27 link cục bộ/code fence và hợp đồng chờ có timeout/HTML200/no replay; Prettier hai file mới và git diff check đạt. Source/runtime không đổi, chưa chạy test UI chức năng này.
+
+Nhật ký lập kế hoạch (2026-10-09): đối chiếu source/config/scripts ởec257c6 và tài liệu Railway chính thức; ghi ba blocker code trước production (listener loopback, tên DB dev/test, trust proxy loopback), DB/TLS/pool và smoke chỉ-local. Tạo14 task theo phụ thuộc, tiêu chí và kiểm tra; link README và prompt deploy. Kiểm tra đạt:14 heading đúng thứ tự,14 checkbox chưa đánh dấu, phụ thuộc không tham chiếu task về sau,27 link cục bộ/code fence hợp lệ và bốn compiled script path tồn tại; Prettier hai file mới và git diff check đạt. Chỉ thay tài liệu, chưa chạy task D, tạo hosting/DB/domain, đổi runtime/cloud draft, commit/push hoặc deploy; không chạy lại test ứng dụng vì source/runtime không đổi.
+
+Chuẩn bị sync GitHub (2026-10-13), theo yêu cầu người dùng:4 file tài liệu gồm kế hoạch14 task, nhánh màn hình chờ/auto recovery, prompt, checklist và link README. Kiểm tra lại Prettier,27 link/code fence, phụ thuộc/task pending, diff/staged diff đạt; scan133 file versioned/staged không có secret cục bộ hoặc artifact runtime. Fetch xác nhận main không có thay đổi bên ngoài trước commit. Source/runtime không đổi nên không chạy lại test ứng dụng; chưa chọn hosting, triển khai UI chờ hoặc deploy. Commit/push được giao trong lượt này; báo cáo cuối xác nhận SHA/ref/tree sau khi sync thành công.

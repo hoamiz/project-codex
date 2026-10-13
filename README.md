@@ -116,6 +116,10 @@ Sửa `profile` trong `apps/web/src/features/portfolio.tsx` để cá nhân hóa
 
 Tài liệu: [web](apps/web/README.md), [API](apps/api/README.md), [kiến trúc](docs/architecture.md), [API contract](docs/api-contract.md), [prompt chạy task](RUN_ALL_TASKS.md).
 
+Kế hoạch lên website public: [deploy D01–D14](docs/deployment-plan.md), [prompt thực hiện deploy](RUN_DEPLOY_TASKS.md). Kiến trúc đề xuất là một Node service phục vụ React/API chung origin và một PostgreSQL, có staging, CI, HTTPS, backup/restore và rollback. Người dùng hiện chỉ xem kế hoạch, chưa chọn nhà cung cấp; Railway là phương án tham khảo. Cần chỉnh listener/config DB/trust proxy trước khi deploy. Publish snapshot môi trường Codex không thay thế website public.
+
+Nếu dùng BE miễn phí tự ngủ, kế hoạch có nhánh frontend tĩnh/CDN độc lập để hiện màn hình chờ ngay, kiểm tra health rồi tự mở đúng trang khi sẵn sàng. Proxy API giữ cùng origin; có giới hạn chờ/retry và bảo toàn form/nháp. Nhánh này mới là thiết kế, chưa có UI/runtime triển khai.
+
 ## Cloud
 
 T33 bổ sung setup/start riêng cho project-codex vào bản nháp `install_script`/`start_skill`, giữ cấu hình repository khác. Kiểm tra project này không gọi script của project cũ. Review/lưu và publish trong cài đặt môi trường khi muốn tái sử dụng snapshot. Chưa publish/deploy hoặc kiểm chứng restore ở task mới. Remote `origin` trỏ tới `https://github.com/hoamiz/project-codex.git`; các lần cập nhật GitHub theo yêu cầu người dùng được ghi trong [nhật ký nghiệm thu](docs/verification.md). Repository public; cấu hình/secret/database cục bộ không được đưa lên GitHub.
