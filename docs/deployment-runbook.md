@@ -47,7 +47,7 @@ Job compiled được gọi từ root image/workspace có env production riêng:
 node apps/api/dist/scripts/initialize.js
 ```
 
-Lệnh validate admin trước ghi, migration001–004 có lock/checksum/transaction, seed chỉ thêm dữ liệu thiếu, admin ON CONFLICT không đổi password đã có. Không sửa SQL migration đã áp dụng. Không chạy test/E2E vào production.
+Lệnh validate admin trước ghi, migration001–005 có lock/checksum/transaction, seed chỉ thêm dữ liệu thiếu, admin ON CONFLICT không đổi password đã có. Không sửa SQL migration đã áp dụng. Không chạy test/E2E vào production.
 
 Render Free không hỗ trợ đủ cơ chế shell/pre-deploy của gói trả phí. Có first boot trong `docker-entrypoint.sh`: cấp `INITIALIZE_DEMO=1` cùng admin keys một lần, initialization lỗi thì API không mở; job thành công thì entrypoint `unset` admin keys và `exec` API, server process không nhận password bootstrap. Xóa flag/admin keys ở Render sau lần đầu và redeploy. Nếu flag chưa xóa, rerun vẫn idempotent nhưng operator phải hoàn tất bước cleanup cấu hình. Không giữ tài khoản/mật khẩu phát triển trong production.
 
@@ -66,7 +66,7 @@ npm run test:deploy
 npm run verify:container
 ```
 
-`verify:container` tạo image/database/network tên UUID riêng, HTTPS frontend tĩnh và PostgreSQL TLS với CA fixture. Thử CA đúng/sai, initialize hai lần, gateway/direct403, Secure cookie, cả5 demo/alias/viewers, session/snapshot sau restart, dump/restore sang DB mới và so row digest/checksum. Không reset DB dev. Cuối lượt chỉ thu hồi container/network/image do mình tạo; key/env fixture bị xóa, backup test còn ở `.local` bị Git bỏ qua. Frontend certificate self-signed chỉ được bỏ kiểm tra trong fixture loopback; DB certificate vẫn verify thật, smoke public HTTPS không có cờ insecure.
+`verify:container` tạo image/database/network tên UUID riêng, HTTPS frontend tĩnh và PostgreSQL TLS với CA fixture. Thử CA đúng/sai, initialize hai lần, gateway/direct403, Secure cookie, cả6 demo/alias/viewers và audio tiếng Việt, session/snapshot sau restart, dump/restore sang DB mới và so row digest/checksum. Không reset DB dev. Cuối lượt chỉ thu hồi container/network/image do mình tạo; key/env fixture bị xóa, backup test còn ở `.local` bị Git bỏ qua. Frontend certificate self-signed chỉ được bỏ kiểm tra trong fixture loopback; DB certificate vẫn verify thật, smoke public HTTPS không có cờ insecure.
 
 Docker/buildx cache dùng `.local/docker` khi HOME cloud chỉ đọc. Helper truyền proxy mạng sẵn có bằng predefined build args và public CA qua BuildKit secret mount trong bước npm ci; không tắt TLS/integrity, không đưa CA build/credential vào runtime image. Node24 base image pin digest đã pull từ Docker Hub chính thức. Runtime chạy user `node`, manifest/output ownership đúng và dependency production.
 

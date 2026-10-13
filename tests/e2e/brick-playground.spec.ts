@@ -69,11 +69,11 @@ async function scan(page: Page) {
     result.violations.map((v) => ({ id: v.id, targets: v.nodes.map((n) => n.target) })),
   ).toEqual([]);
 }
-test('fifth portfolio card opens the real editor and Back restores all five cards', async ({
+test('fifth portfolio card opens the real editor and Back restores all six cards', async ({
   page,
 }) => {
   await page.goto('/');
-  await expect(page.locator('.project-card')).toHaveCount(5);
+  await expect(page.locator('.project-card')).toHaveCount(6);
   const card = page.locator('.project-brick-playground');
   await expect(card).toHaveAttribute('href', '/projects/brick-playground');
   await card.click();
@@ -82,7 +82,7 @@ test('fifth portfolio card opens the real editor and Back restores all five card
   expect((await draft(page)).bricks).toHaveLength(1);
   await page.goBack();
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.locator('.project-card')).toHaveCount(5);
+  await expect(page.locator('.project-card')).toHaveCount(6);
 });
 test('catalog direct URL and API failure retry use real data', async ({ page }) => {
   await page.route('**/api/bricks/catalog', (route) =>

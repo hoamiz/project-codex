@@ -6,26 +6,26 @@
 
 [Checklist](../PORTFOLIO_TASKS.md) ghi kết quả sau mỗi task. Bảng bổ sung file và ánh xạ kiểm tra thực tế; bộ cuối xác minh lại sau khi nối toàn ứng dụng.
 
-| Task | File chính | Kiểm tra đã chạy |
-| --- | --- | --- |
-| T01 | docs architecture/API | Runtime, DB riêng current_database(),1 |
-| T02 | web package, Vite/TS, main.tsx | FE typecheck/build, router/dev browser |
-| T03 | API config/server/app | Typecheck/build, health, compiled startup |
-| T04–T05 | migrations.ts, 001_initial.sql | database.test: idempotent/rollback/constraint/FK |
-| T06 | seed.ts, public/images | Seed hai lần: 3 project/12 xe, giữ chỉnh sửa |
-| T07 | components/ui.tsx/styles | ui.test: focus/Escape/pagination |
-| T08–T09 | public routes/portfolio.tsx | public.test; browser card/navigation; E2E 3 card |
-| T10–T11 | public routes/autohub.tsx | API filter/sort/page/empty/archived; browser query; E2E filter/reload |
-| T12–T13 | detail/by-ids/gallery | API detail/404/giá number; browser gallery/URL |
-| T14–T15 | leads route/lead-form.tsx | leads.test: validation/idempotency; E2E form/DB |
-| T16 | storage/compare UI | Browser limit3/favorite; E2E persistence/compare/reload |
-| T17–T18 | auth/password/bootstrap/UI | admin.test/password.test; E2E login/reload/logout/expire |
-| T19–T21 | admin cars route/UI | API CRUD/409/archive giữ lead; E2E form/giá/public/archive |
-| T22–T23 | admin leads route/UI | API filter/status/conflict/contact giữ nguyên; E2E detail/update/DB |
-| T24–T25 | stats route/dashboard | API UTC+7/7 bucket/zero; browser dashboard/axe |
-| T26 | services/game.ts | game.test: 3 độ khó/match/mismatch/lượt/server clock |
-| T27–T28 | game routes/UI | API token/expire/concurrent409/hidden faces; E2E keyboard/reload/cooldown/finish |
-| T29–T30 | results/leaderboard/UI | API finish/unique/idempotent/ranking; E2E nickname escape/lưu/reload |
+| Task    | File chính                     | Kiểm tra đã chạy                                                                 |
+| ------- | ------------------------------ | -------------------------------------------------------------------------------- |
+| T01     | docs architecture/API          | Runtime, DB riêng current_database(),1                                           |
+| T02     | web package, Vite/TS, main.tsx | FE typecheck/build, router/dev browser                                           |
+| T03     | API config/server/app          | Typecheck/build, health, compiled startup                                        |
+| T04–T05 | migrations.ts, 001_initial.sql | database.test: idempotent/rollback/constraint/FK                                 |
+| T06     | seed.ts, public/images         | Seed hai lần: 3 project/12 xe, giữ chỉnh sửa                                     |
+| T07     | components/ui.tsx/styles       | ui.test: focus/Escape/pagination                                                 |
+| T08–T09 | public routes/portfolio.tsx    | public.test; browser card/navigation; E2E 3 card                                 |
+| T10–T11 | public routes/autohub.tsx      | API filter/sort/page/empty/archived; browser query; E2E filter/reload            |
+| T12–T13 | detail/by-ids/gallery          | API detail/404/giá number; browser gallery/URL                                   |
+| T14–T15 | leads route/lead-form.tsx      | leads.test: validation/idempotency; E2E form/DB                                  |
+| T16     | storage/compare UI             | Browser limit3/favorite; E2E persistence/compare/reload                          |
+| T17–T18 | auth/password/bootstrap/UI     | admin.test/password.test; E2E login/reload/logout/expire                         |
+| T19–T21 | admin cars route/UI            | API CRUD/409/archive giữ lead; E2E form/giá/public/archive                       |
+| T22–T23 | admin leads route/UI           | API filter/status/conflict/contact giữ nguyên; E2E detail/update/DB              |
+| T24–T25 | stats route/dashboard          | API UTC+7/7 bucket/zero; browser dashboard/axe                                   |
+| T26     | services/game.ts               | game.test: 3 độ khó/match/mismatch/lượt/server clock                             |
+| T27–T28 | game routes/UI                 | API token/expire/concurrent409/hidden faces; E2E keyboard/reload/cooldown/finish |
+| T29–T30 | results/leaderboard/UI         | API finish/unique/idempotent/ranking; E2E nickname escape/lưu/reload             |
 
 ## T31–T32
 
@@ -55,7 +55,6 @@ Publish/deploy và restore ở task mới chưa thực hiện; không thuộc ng
 
 Người dùng đã cho phép commit, tạo repository mới project-codex và push. Kiểm tra source/tài liệu không chứa credential, database, node_modules hoặc build output; bằng chứng kiểm thử ở trên vẫn giữ nguyên. Account hiện tại là hoamiz; repo đích chưa tồn tại. GitHub từ chối tạo repository qua GraphQL và REST (403 Resource not accessible by integration). Toàn bộ source/tài liệu đã commit main cục bộ (root commit18b7730); origin trỏ tới https://github.com/hoamiz/project-codex.git. Cần repo trống và quyền truy cập để push; đây là blocker từ GitHub, không phải sandbox auto-review.
 
-
 ## GitHub hoàn tất (2026-10-06)
 
 Repository https://github.com/hoamiz/project-codex đã được tạo bên ngoài, hiện public. API xác nhận quyền ghi và đã gửi đầy đủ 91 file. Git HTTPS trả lỗi401; dùng GitHub Git Data API với cơ chế xác thực sẵn có thay thế. Khởi tạo README thật rồi merge lịch sử; tree và commit được đối chiếu SHA với Git cục bộ, giữ các commit gốc18b7730/629a2c3. Cập nhật refs/heads/main không force, không ghi đè lịch sử người dùng. Sau khi hoàn tất, fetch và đối chiếu HEAD remote/local; .env và dữ liệu runtime vẫn được Git bỏ qua. Không có thay đổi logic ứng dụng hoặc deploy trong bước này.
@@ -66,14 +65,14 @@ Phạm vi: giao diện AutoHub tại `/projects/autohub`, trang chi tiết và s
 
 File chính: `apps/web/src/main.tsx`, `features/autohub.tsx`, `features/autohub-layout.tsx`, `features/autohub.css`, `tests/e2e/autohub.spec.ts`, `tests/e2e/usability.spec.ts`.
 
-| Kiểm tra đã chạy | Kết quả |
-| --- | --- |
-| `npm run lint` | Đạt, 0 warning |
-| `npm run typecheck -w @project-codex/web` và `npm run build -w @project-codex/web` | TypeScript và Vite build đạt; build chạy lại sau sửa hash |
-| `npm run test -w @project-codex/web` | 3/3 test, 2 file; 0 fail/skip |
-| `npm run test:e2e` | 12/12 đạt, 0 fail/skip; console log `.local/logs/autohub-e2e-final.log` |
-| `npm run verify:build` | Compiled API phục vụ React; ba demo render/reload, deep link, DB/HTTP, admin401, asset thiếu404 và cookie production qua proxy giả lập đạt; `.local/logs/autohub-build-runtime.log` |
-| `npm run format:check`, `git diff --check` | Đạt |
+| Kiểm tra đã chạy                                                                   | Kết quả                                                                                                                                                                             |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run lint`                                                                     | Đạt, 0 warning                                                                                                                                                                      |
+| `npm run typecheck -w @project-codex/web` và `npm run build -w @project-codex/web` | TypeScript và Vite build đạt; build chạy lại sau sửa hash                                                                                                                           |
+| `npm run test -w @project-codex/web`                                               | 3/3 test, 2 file; 0 fail/skip                                                                                                                                                       |
+| `npm run test:e2e`                                                                 | 12/12 đạt, 0 fail/skip; console log `.local/logs/autohub-e2e-final.log`                                                                                                             |
+| `npm run verify:build`                                                             | Compiled API phục vụ React; ba demo render/reload, deep link, DB/HTTP, admin401, asset thiếu404 và cookie production qua proxy giả lập đạt; `.local/logs/autohub-build-runtime.log` |
+| `npm run format:check`, `git diff --check`                                         | Đạt                                                                                                                                                                                 |
 
 Hai E2E mới kiểm tra chọn hãng nhanh/đồng bộ URL, bỏ filter, reset giữ sort/pageSize, tìm bằng form, lọc trạng thái, cuộn mục từ trang chi tiết và reload, mở panel mobile bằng bàn phím, lọc hãng/năm, xóa lọc và lưu yêu thích. Mở rộng ba E2E responsive hiện có để quét cả trang chi tiết và so sánh xe: **360/768/1440px**, không tràn ngang, không có violation trong bộ WCAG2A/AA/2.1AA đã scan. Panel mobile khi mở cũng được axe quét. Các luồng lead→admin, CRUD/archive, session, yêu thích/so sánh và game vẫn đạt.
 
@@ -85,14 +84,14 @@ README/checklist đã cập nhật. Nghiệm thu UI hoàn tất cục bộ; vi�
 
 Demo thứ tư trong cùng project-codex: editor `/projects/room-studio`, viewer `/projects/room-studio/view/:id`, sáu model hình học, màu/ánh sáng/camera, placement/grid/collision/history/draft, snapshot PostgreSQL public bất biến và copy. Phạm vi và task R01–R07 tại [kế hoạch Room Studio](room-studio-plan.md).
 
-| Kiểm tra | Kết quả |
-| --- | --- |
-| API migration/seed/typecheck và test rooms/public/database | 9/9 đạt; migration002 giữ migration001, whitelist4 URL; retry seed/migration và rollback giữ dữ liệu |
-| Web room-core unit | 5/5 đạt: grid/bounds/collision/rotation/limit, history có giới hạn/redo, draft hỏng/storage bị chặn, challenge |
-| Room Studio E2E riêng | 7/7 đạt; log `.local/logs/room-e2e.log` |
-| `npm run setup` với lockfile mới | npm ci đạt; cấu hình `.env` giữ nguyên hash, dev vẫn4 project/12 xe/0 snapshot như trước; migration/seed/bootstrap tái chạy an toàn |
-| Stop app rồi `services:start` | PostgreSQL/data giữ nguyên, API/web khởi động, JSON/DB/admin401 và4 demo render/reload đạt; `.local/logs/room-start-final.log` |
-| `npm run check` | Lint0 warning, typecheck/build FE/API, **26 API + 8 web**, **19 E2E**, 0 fail/skip; compiled API/SPA/cookie/missing asset đạt; `.local/logs/room-check-final.log` |
+| Kiểm tra                                                   | Kết quả                                                                                                                                                           |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| API migration/seed/typecheck và test rooms/public/database | 9/9 đạt; migration002 giữ migration001, whitelist4 URL; retry seed/migration và rollback giữ dữ liệu                                                              |
+| Web room-core unit                                         | 5/5 đạt: grid/bounds/collision/rotation/limit, history có giới hạn/redo, draft hỏng/storage bị chặn, challenge                                                    |
+| Room Studio E2E riêng                                      | 7/7 đạt; log `.local/logs/room-e2e.log`                                                                                                                           |
+| `npm run setup` với lockfile mới                           | npm ci đạt; cấu hình `.env` giữ nguyên hash, dev vẫn4 project/12 xe/0 snapshot như trước; migration/seed/bootstrap tái chạy an toàn                               |
+| Stop app rồi `services:start`                              | PostgreSQL/data giữ nguyên, API/web khởi động, JSON/DB/admin401 và4 demo render/reload đạt; `.local/logs/room-start-final.log`                                    |
+| `npm run check`                                            | Lint0 warning, typecheck/build FE/API, **26 API + 8 web**, **19 E2E**, 0 fail/skip; compiled API/SPA/cookie/missing asset đạt; `.local/logs/room-check-final.log` |
 
 Browser thao tác bằng chuột thật trên model giường: kéo từZ−1,25 đến0, snap đúng0,25m; vị trí ngoài phòng bị từ chối, draft giữ nguyên và undo một lần khôi phục cả lượt kéo. Bàn phím R/arrows/Delete/Ctrl+Z/Shift+Ctrl+Z, reset xác nhận, thêm món, màu/ngày đêm và reload giữ nháp đều đạt. Camera orbit làm ảnh xuất thay đổi; downloadPNG đúng signature và có nội dung, không sửa layout. Chromium dùng WebGL2 thật; không dùng ảnh giả để thay render3D.
 
@@ -132,16 +131,16 @@ Lint0 warning, web typecheck/build, format/diff check đạt. E2E mới trực t
 
 PJ5 trong cùng repository: editor `/projects/brick-playground`, viewer `/projects/brick-playground/view/:id` và card thứ năm từ PostgreSQL. Catalog10 loại/8 màu, đế32×32,150 gạch/cao48plate; chọn màu/click spawn, drag snap/stack, thả thùng rác, rotate/recolor/duplicate, settle/UndoRedo50, nháp, camera/PNG và snapshot/copy. Hợp đồng/task B01–B22 ở [kế hoạch](brick-playground-plan.md), bằng chứng mỗi task ở [checklist](../PORTFOLIO_TASKS.md). Không thêm dependency hay sửa lockfile; tái dùng Three/Fiber/Drei hiện có.
 
-| Kiểm tra đã chạy | Kết quả thực |
-| --- | --- |
-| Geometry/history/draft unit PJ5 | 7/7:10 loại×4 rotation, half-open contact/bounds/collision/support, max height/count, spawnfull, settle tower/bridge/order, corrupt/unknown kind, history50/redo |
-| API validation + service + routes PJ5 | 8/8: strict/normalization, transaction/concurrent retry/rollback, roundtrip, read-only,400/403/404/409/413/429; DB thật |
-| Database/public/upgrade có PJ5 | 10/10: migration/seed repeatability và rollback/constraints; bốn kịch bản startup từ3/4 project hoặc metadata Room/Brick đã chỉnh, không seed và không ghi đè |
-| PJ5 E2E |17/17 trong bộ cuối: WebGL/pointer/touch/keyboard,150 gạch, draft/storage, API retry/share/copy, contextlost/fallback và axe; không skip |
-| `npm run check` | Lint0 warning, typecheck/build FE/API, **38 API +15 web +37 E2E**,0 fail/skip; `.local/logs/brick-check-final.log` |
-| `npm run build` + `npm run verify:build` | Năm demo, viewer bất biến, direct/reload, alias Room, lazy manifest/network, HTTP/DB/admin401/SPA/API404/asset404 và cookie production qua proxy giả lập đạt |
+| Kiểm tra đã chạy                                | Kết quả thực                                                                                                                                                           |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Geometry/history/draft unit PJ5                 | 7/7:10 loại×4 rotation, half-open contact/bounds/collision/support, max height/count, spawnfull, settle tower/bridge/order, corrupt/unknown kind, history50/redo       |
+| API validation + service + routes PJ5           | 8/8: strict/normalization, transaction/concurrent retry/rollback, roundtrip, read-only,400/403/404/409/413/429; DB thật                                                |
+| Database/public/upgrade có PJ5                  | 10/10: migration/seed repeatability và rollback/constraints; bốn kịch bản startup từ3/4 project hoặc metadata Room/Brick đã chỉnh, không seed và không ghi đè          |
+| PJ5 E2E                                         | 17/17 trong bộ cuối: WebGL/pointer/touch/keyboard,150 gạch, draft/storage, API retry/share/copy, contextlost/fallback và axe; không skip                               |
+| `npm run check`                                 | Lint0 warning, typecheck/build FE/API, **38 API +15 web +37 E2E**,0 fail/skip; `.local/logs/brick-check-final.log`                                                     |
+| `npm run build` + `npm run verify:build`        | Năm demo, viewer bất biến, direct/reload, alias Room, lazy manifest/network, HTTP/DB/admin401/SPA/API404/asset404 và cookie production qua proxy giả lập đạt           |
 | `npm run setup`, owned stop/start rồi start lặp | Frozen npm ci/migrate/seed/bootstrap và readiness đạt; hash `.env` cùng row fingerprints bảy bảng giữ nguyên;5 project/12 xe/1 admin/0 lead/result/Room/Brick snapshot |
-| Format + staged diff + scan | `npm run format:check`, check hai tài liệu PJ5 mới, `git diff --check`/staged diff đạt;131 file staged/versioned không chứa secret cục bộ hoặc artifact runtime |
+| Format + staged diff + scan                     | `npm run format:check`, check hai tài liệu PJ5 mới, `git diff --check`/staged diff đạt;131 file staged/versioned không chứa secret cục bộ hoặc artifact runtime        |
 
 Browser dùng model thật: kéo lên mặt trên tạo đúng tầng, drag vượt đế/va chạm bị từ chối, Escape/pointercancel không đổi nháp. Thùng rác được kiểm tra bằng vùng DOM thật; kéo bỏ gạch nền hạ cả tháp, Undo khôi phục cả lượt, thả sát ngoài/cancel không xóa. Spawn dùng màu catalog đã chọn và không đổi màu gạch khác; đủ150 hoặc đế đầy báo rõ và không sửa layout. Rotation/recolor/duplicate/form tọa độ, clear cancel/confirm và history/redo sau lệnh mới đều đạt.
 
@@ -161,15 +160,15 @@ Cloud `start_skill` đã lưu và đọc lại đúng: năm demo/PJ5, migration0
 
 Người dùng giao triển khai theo D01–D14 và push, chọn **Vercel + Render Free + Neon Free**. Frontend static+Node Function gateway, RenderDocker API, Neon PostgreSQL17/SSL và màn hình readiness đã có code/config/test. D01–D07 hoàn tất phần chuẩn bị/kiểm tra cục bộ; D08 cần workflow chạy trên GitHub; D09–D14 chưa nghiệm thu public do quyền hosting thiếu. [Runbook](deployment-runbook.md) ghi từng thao tác và giới hạn free plans.
 
-| Kiểm tra thực hiện | Kết quả |
-| --- | --- |
-| Runtime config + proxy boundary API |10/10: guard dev/test/prod, HOST/PORT/origin/secret/name/TLS, missing/wrong proxy token và sanitize IP/protocol; typecheck đạt |
-| Readiness/controller/API client web |10/10: no background polling, sequential retry/deadline/abort/generation, late response, offline/visibility/dispose, no refetch loop, HTML/network và không replay mutation |
-| Gateway/routing deploy tests |5/5 với HTTP server thật: path/query/body/cookie/Set-Cookie/CSRF/key một lượt, fixed upstream, reject traversal/internal-path ambiguity/body limit/method/redirect/timeouts; Vercel API/SPA/asset404 routing |
-| Recovery E2E riêng |8/8: deep link, HTML200,120s/Thử lại, native offline/online, login form và Brick draft/editor giữ nguyên sau failedsave; POST một lần; axe360/768/1440 |
-| `npm run check` | Lint0 warning/typecheck/build, **48 API +25 web +45 E2E**,0 fail/skip; compiled five-demo/lazy/SPA/APIasset404/cookie đạt; `.local/logs/deploy-check-final.log` |
+| Kiểm tra thực hiện                       | Kết quả                                                                                                                                                                                                                                                                                                                                              |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Runtime config + proxy boundary API      | 10/10: guard dev/test/prod, HOST/PORT/origin/secret/name/TLS, missing/wrong proxy token và sanitize IP/protocol; typecheck đạt                                                                                                                                                                                                                       |
+| Readiness/controller/API client web      | 10/10: no background polling, sequential retry/deadline/abort/generation, late response, offline/visibility/dispose, no refetch loop, HTML/network và không replay mutation                                                                                                                                                                          |
+| Gateway/routing deploy tests             | 5/5 với HTTP server thật: path/query/body/cookie/Set-Cookie/CSRF/key một lượt, fixed upstream, reject traversal/internal-path ambiguity/body limit/method/redirect/timeouts; Vercel API/SPA/asset404 routing                                                                                                                                         |
+| Recovery E2E riêng                       | 8/8: deep link, HTML200,120s/Thử lại, native offline/online, login form và Brick draft/editor giữ nguyên sau failedsave; POST một lần; axe360/768/1440                                                                                                                                                                                               |
+| `npm run check`                          | Lint0 warning/typecheck/build, **48 API +25 web +45 E2E**,0 fail/skip; compiled five-demo/lazy/SPA/APIasset404/cookie đạt; `.local/logs/deploy-check-final.log`                                                                                                                                                                                      |
 | `npm run verify:container` sau firstBoot | Image non-root Node24 pinned digest, PG17 TLS đúngCA và rejectCA sai, compiled initialize2lần + firstBoot giữ metadata/hashadmin, API process không có ADMIN_PASSWORD, gateway403/HTTPS cookie,5 demo/direct/reload/alias/viewers, session/snapshot sau restart, dump/restore rows/counts/checksum đạt; `.local/logs/deploy-container-firstboot.log` |
-| Format/schema/data preservation | Format/diff đạt; Vercel published schema check_schema/config đầy đủ vớiDraft7 đạt (provider declaredDraft4 có mixed exclusiveMinimum); root lockfile/migration001–004 unchanged. Hash.env và rowfingerprints7 bảng dev giữ nguyên5 project/12xe/1admin/0lead/result/Room/Brick snapshot |
+| Format/schema/data preservation          | Format/diff đạt; Vercel published schema check_schema/config đầy đủ vớiDraft7 đạt (provider declaredDraft4 có mixed exclusiveMinimum); root lockfile/migration001–004 unchanged. Hash.env và rowfingerprints7 bảng dev giữ nguyên5 project/12xe/1admin/0lead/result/Room/Brick snapshot                                                              |
 
 Màn hình chờ thực hiện trước mount app, nên React/HTML/CSS từ Vercel xuất hiện khi backend còn ngủ. Health kiểm tra DB thật và JSON200/no-cache, không chấp nhận trangHTML200 của hosting. Timeout8s/request, retry5s+jitter và tổng120s; quá hạn/offline có hướng xử lý, ready tự mở đúng path/query/hash. Sau lần vào app, banner giữ component/history/form/draft, hồi phục chỉ refetch active read queries; endpoint validation/401 vẫn theo nghiệp vụ. Không hard reload, replayPOST/PATCH/DELETE hoặc ping nền giữ service thức. Cooldown ngăn health/refetch lỗi endpoint gây vòng lặp.
 
@@ -194,3 +193,26 @@ Commit tính năng `584e8b45894312f7337c8ba84493324ef1d30d05` đã push nativeGi
 Workflow mới [run38347799525](https://github.com/hoamiz/project-codex/actions/runs/38347799525) đã chạy thật trên GitHub và `conclusion=success` ở đúngfeatureSHA. Node24/PG17/Chromium,frozeninstall,lint/typecheck/build,48API+25web+45E2E,format,5deploytests vàDockerTLS/invalidCA/firstBoot/gateway/HTTPS/sessionrestart/restoređạt. Log được đọcqua quyền GitHubhiện có, chỉ lưu.local/logs/deploy-github-ci.log. D08 đã hoàn thànhworkflow/CI,promotion theoSHA đãcheck; repo protection settings khôngđổi.
 
 D01–D08 đã cócode/config/testvàCI; D09–D14 cònblocked bởicredentialhostingchưa được cấp runtime. Đãsavedrequirements baAPIkeysecure trongsettings; khôngdùngGitHubtokenthayhosting vàkhôngsửdụngtokenchat. Chưacreate/publishstaging/prod/chưaURLwebsitepublic/chưanativeNeonretention/restore/rollback. Runbook/checklistcungcấpbước tiếp tục rõ; userauthorizationdeploy/push còn hiệu lực khiquyền được cấp. Commitnhật ký kếtiếp chỉthaydocs,sourceđãCI xanhởfeatureSHA vẫngiữnguyên.
+
+## PJ6 — Bé vui học chữ (2026-10-13)
+
+Route `/projects/vietnamese-alphabet`, card thứ sáu từ PostgreSQL.29 chữ đúng thứ tự, fontNunito tự host có Vietnamese/Latin vàOFL,29 SVG minh họa riêng,29 MP3giọng Hoài My vi-VN tốc độ-15%. Transcript/thời lượng/SHA256 trong manifest; tên chữ (bê/xê…), rồi từ ví dụ. Highlight bỏ dấu thanh nhưng giữ dấu chữ. Gợi ý nghe lại/bật tắt tiếng/ngẫu nhiên đã liệt kê trước triển khai, chưa đưa vào phạm vi chính. [Kế hoạch A01–A08](vietnamese-alphabet-plan.md) và [nhật ký](../PORTFOLIO_TASKS.md).
+
+| Kiểm tra                 | Kết quả thực tế                                                                                                                                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Vitest PJ6 và toàn web   | 9/9 mới, toàn web34/34 đạt; timer3s từ ended, cancel/race, lỗi/timeout/retry,29 chữ/ví dụ/checksum/asset                                                                                         |
+| API/database/upgrade     | 12/12 mục tiêu; toàn API50/50 đạt, DB fixture ba/bốn/năm project không seed và metadata Room/Brick/Alphabet đã chỉnh giữ nguyên                                                                  |
+| Playwright PJ6           | 10/10 đạt59,4s;29 audio thật decode có mẫu âm, cùng origin, đọc native/timing/loadslow/retry/keyboard/focus/hidden/unmount/card/direct/reload                                                    |
+| Responsive/accessibility | Axe board+popup360/768/1440 đạt, không overflow; popup giữa màn hình, reduced motion và vòng Tab; screenshots desktop/mobile/popup đã xem                                                        |
+| Build/lint/type/format   | Các workspace đạt; format/diff check đạt. Bundle PJ6 khoảng10,8KBJS+10,5KBCSS, lazy; audio chỉ tải khi bấm thẻ                                                                                   |
+| Routing/gateway          | Node deploy5/5 đạt; MP3/font thiếu trả404 trước SPA, audio hiện có phục vụ đúng MIME                                                                                                             |
+| Docker/HTTPS/restore     | Exit0: non-root/pinnedNode24, TLS CA đúng-sai, compiled initialize2lần, gateway/cookie/sáu demo+voice, restart giữ session/snapshot vàrestore6card/12xe/1Room/1Brick/5migration cùng row digests |
+| Full regression/compiled | npm run check exit0:50 API+34 web+55 E2E (4,4phút),0fail/skip, lint/type/build vàcompiled6demo/alias/lazy/direct/reload/SPA/APIasset404 đạt                                                      |
+
+Logs riêng: `.local/logs/pj6-e2e-final.log`, `pj6-container-final.log`, `pj6-check-final.log`, `pj6-deploy-tests.log`, `pj6-format.log`, `pj6-services.log`. Lỗi initial importJSONNode24/pathassetjsdom, vòng Tab/dialogCSS phạm vi vàMIMEfixture được chẩn đoán/sửa, kiểm lại toàn assertion; không force click/bỏ test hoặc tắtTLS.
+
+Migration005 thêm whitelist/card ON CONFLICT;001–004 vàlockfile giữ nguyên. Hash.env,5 card ban đầu và6 bảng dữ liệu khác đối chiếu trước/sau giữ nguyên, PJ6 là card mới duy nhất. Scan233 file tracked/new không chứa secret/artifact. Npm không thêm dependency; công cụ tạo media chỉ ở.local và không cần để build/chạy ứng dụng.
+
+Giọng là audio tiếng Việt tổng hợp tĩnh, không phụ thuộc voice cài trên máy hoặc gọiTTS runtime; kiểm thử decoder/playback trên Chromium. Chưa đánh giá nghe chủ quan bởi người thật hoặc chạy trên thiết bịSafari/iOS/Android thật. D09–D14 hosting và URL public vẫn là bước riêng; các kiểm tra local/container không tạo release website.
+
+Cloud start_skill đã saved/re-read đúng cho6 demo/PJ6, migration005 và workflow/test hiện tại; install_script/repositories/network/secret/runtime requirements cùng legacy suffix giữ nguyên. Draft requires_publish=true, chưa publish môi trường hoặc deploy public.

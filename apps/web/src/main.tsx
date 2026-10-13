@@ -17,20 +17,22 @@ import { State } from './components/ui';
 import { ServiceReadiness } from './components/service-readiness';
 const RoomStudio = lazy(() => import('./features/room-studio'));
 const BrickPlayground = lazy(() => import('./features/brick-playground'));
+const VietnameseAlphabet = lazy(() => import('./features/vietnamese-alphabet'));
 const client = new QueryClient({
   defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } },
 });
 function App() {
   const location = useLocation();
   const home = location.pathname === '/';
+  const alphabet = location.pathname === '/projects/vietnamese-alphabet';
   const autoHub =
     location.pathname === '/projects/autohub' || location.pathname.startsWith('/projects/autohub/');
   return (
-    <div className={autoHub ? 'autohub-page' : undefined}>
+    <div className={autoHub ? 'autohub-page' : alphabet ? 'alphabet-shell' : undefined}>
       <a className="skip-link" href="#main">
         Đến nội dung
       </a>
-      {autoHub ? (
+      {alphabet ? null : autoHub ? (
         <AutoHubHeader />
       ) : (
         <header className="site-header">
@@ -69,6 +71,14 @@ function App() {
           <Route path="/projects/autohub/cars/:slug" element={<CarDetail />} />
           <Route path="/projects/autohub/compare" element={<Compare />} />
           <Route path="/projects/memory-match" element={<MemoryMatch />} />
+          <Route
+            path="/projects/vietnamese-alphabet"
+            element={
+              <Suspense fallback={<State loading />}>
+                <VietnameseAlphabet />
+              </Suspense>
+            }
+          />
           <Route
             path="/projects/brick-playground"
             element={
@@ -135,7 +145,7 @@ function App() {
           />
         </Routes>
       </main>
-      {autoHub ? (
+      {alphabet ? null : autoHub ? (
         <AutoHubFooter />
       ) : (
         <footer className="site-footer">

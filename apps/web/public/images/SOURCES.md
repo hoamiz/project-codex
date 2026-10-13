@@ -3,3 +3,5 @@ Các SVG được vẽ riêng cho project-codex bằng hình học vector. Khôn
 `room-studio.svg` là minh họa phòng vẽ riêng bằng SVG. Các model Room Studio 3D cũng được dựng bằng hình học trong code, không dùng asset bên ngoài.
 
 `brick-playground.svg` là minh họa chân đế và gạch nhiều màu vẽ riêng. Model/nút của Brick Playground dựng từ geometry trong code, không dùng model/logo bên ngoài.
+
+`vietnamese-alphabet.svg` và29 SVG trong `alphabet/` là minh họa vector vẽ riêng cho PJ6: ca, cặp sách, con vật/đồ vật/cây/quả tương ứng từng từ ví dụ. Không dùng emoji hệ điều hành, ảnh tải ngoài hoặc logo hãng.

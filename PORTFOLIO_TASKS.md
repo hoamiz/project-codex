@@ -587,3 +587,26 @@ Nghiệm thu code/hồi phục (2026-10-13): npm run check toàn bộ48 API+25 w
 D08 — hoàn thành (2026-10-13): commit tính năng584e8b45894312f7337c8ba84493324ef1d30d05 đã lênmain, ref/tree khớp vàworkingtreeclean. GitHubActions run38347799525 conclusion=success: frozen npmci/Node24/PG17/Chromium, check48API+25web+45E2E,format,deploy5/5 vàcontainerTLS/firstBoot/HTTPS/restoređạt. CI push/PR đã hoạt động; chọnreleaseSHA đãcheck, RenderautoDeployoff vàpromotionthủcôngsauCIgreen. Repo merge/protection settings giữ nguyên. URLhttps://github.com/hoamiz/project-codex/actions/runs/38347799525; logprivate.local/logs/deploy-github-ci.log.
 
 D09–D14 vẫnchờ: runtimeVERCEL_TOKEN/RENDER_API_KEY/NEON_API_KEY vắng; requests đãsaved trongenvironmentSettings. Chưa tạoresource/providerAPI/chưaURLpublic hoặcbackup/restoreprovider. UI/config/image/code đã lênGitHub; phầnpublic phải tiếp tục saucấpquyền, khôngđánhdấu từCI/container.
+
+## PJ6 — Bé vui học chữ (2026-10-13)
+
+Yêu cầu:29 chữ tiếng Việt, card chữ hoa/thường và minh họa ví dụ quen thuộc, popup đọc chữ + ví dụ bằng tiếng Việt và tự đóng3 giây sau đọc xong. Gợi ý nghe lại/bật tắt âm/thẻ ngẫu nhiên đã liệt kê trước khi triển khai; giữ là tùy chọn. Phạm vi/task/tiêu chí trong [kế hoạch PJ6](docs/vietnamese-alphabet-plan.md).
+
+- [x] A01 — Dữ liệu29 chữ/ví dụ và quy tắc highlight dấu tiếng Việt.
+- [x] A02 — Minh họa, font và29 bản đọc tiếng Việt tự host.
+- [x] A03 — Playback/controller,3 giây sau ended và cancel/retry.
+- [x] A04 — Grid/popup, UI tươi sáng, responsive và focus.
+- [x] A05 — Card thứ sáu, migration/seed/route và upgrade DB cũ.
+- [x] A06 — E2E âm thanh native và giao diện/axe.
+- [x] A07 — Kiểm tra hồi quy, compiled/deploy smoke6 demo.
+- [x] A08 — Tài liệu, nhật ký và nghiệm thu.
+
+Baseline: Git main78606b2 clean; services:start smoke5 demo/viewer đạt. Snapshot row fingerprints5 card/6 bảng dữ liệu vàhash.env được ghi trước migration. Hoài My tiếng Việt tạo được sample qua proxyHTTPS có xác minh chứng chỉ; package tạo âm thanh nằm trong.local, không thêm dependency/lockfile vào ứng dụng.
+
+A01–A03 — hoàn thành (2026-10-13): dữ liệu29 chữ đúng thứ tự, highlight bỏ riêng dấu thanh;29 SVG nguyên bản/fontNunito Vietnamese+Latin/OFL và29 MP3Hoài My vi-VN tốc độ-15% có transcript/duration/SHA256. Vitest PJ6 đạt9/9; toàn web34/34 đạt. NativeAudio decoder trong E2E đã decode29 file có mẫu âm hữu hiệu, không request ngoài origin. Controller kiểm tra thời gian3s sau ended, loading/playing không đóng sớm, cancel/race/error/timeout/retry. Lỗi ban đầu importJSONNode24/pathasset jsdom được sửa bằng import attribute và path filesystem; test rerun đạt, không bỏ assertion.
+
+A04–A06 — hoàn thành (2026-10-13): popup giữa màn hình, focus/Tab/Escape/backdrop, tự đóng sau audio, hủy khi hidden/unmount. E2E PJ6 cuối10/10 đạt59,4s, gồm decode29 MP3 thật, ended/timing, tải chậm/lỗi/retry,6 card/direct/reload vàaxe360/768/1440 (pj6-e2e-final.log). Lỗi vòng Tab và rule CSS áp nhầm trang được sửa rồi kiểm lại đầy đủ, không force click/bỏ test. API/database/upgrade12/12 đạt với schema ba/bốn/năm project và metadata đã chỉnh; migration005 idempotent/whitelist,001–004 vàlockfile không sửa. SVG/font/ảnh desktop/mobile/popup đã xem trực quan.
+
+Docker/deploy tại A07: node deploy5/5 đạt; verify:container cuối exit0, image non-root/TLS CA đúng-sai/initialize2 lần, HTTPS gateway/cookie/sáu demo/voice, session/snapshot restart vàdumprestore6|12|1|1|5 đạt (pj6-container-final.log). Fixture frontend bổ sung MIMEaudio/mpeg/font/woff2 sau khi smoke phát hiện thiếu; assertion audio vàTLS giữ nguyên. Full check hồi quy đang chạy trước khi đánh dấu A07/A08.
+
+A07–A08 — hoàn thành (2026-10-13): npm run check exit0,50API+34web+55E2E (4,4phút),0fail/skip; lint/type/build/compiled6demo/alias/SPA/APIasset404/lazy đạt (pj6-check-final.log). Format/deploy5/5/containerTLS/HTTPS/restore đã đạt; Markdown47 link cục bộ/fence đạt, scan233tracked/new không secret/artifact. Sau toàn lượt,hash.env/5cardcũ/6bảngpersistent giữ nguyên,001–004/rootlockfile unchanged. READMEroot/web/API,architecture/runbook/verification cập nhật. Cloud start_skill saved/re-read đúng6demo/PJ6/migration005; install/repositories/network/secrets/runtime requirements/legacy suffix giữ nguyên, chưa publish. A01–A08 đạt nghiệm thu trongworkspace; lượt này chưa commit/push/public deploy. Chưa nghe đánh giá chủ quan hoặc test thiết bịSafari/iOS/Android thật; audio native/decoder/timing đã kiểm trênChromium.

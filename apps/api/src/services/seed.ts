@@ -17,6 +17,15 @@ export const examples = [
 export async function seed(pool: Pool) {
   const projects = [
     [
+      'vietnamese-alphabet',
+      'Bé vui học chữ',
+      'Chữ nhỏ. Thế giới to.',
+      'Khám phá29 chữ cái tiếng Việt qua hình minh họa và giọng đọc thân thiện.',
+      ['React', 'TypeScript', 'Vietnamese audio'],
+      '/projects/vietnamese-alphabet',
+      '/images/vietnamese-alphabet.svg',
+    ],
+    [
       'brick-playground',
       'Brick Playground 3D',
       'Từng viên gạch. Một thế giới mới.',

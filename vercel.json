@@ -9,8 +9,8 @@
   "routes": [
     { "src": "^/api/(.*)$", "dest": "/api/proxy.mjs?__codex_path=$1" },
     { "handle": "filesystem" },
-    { "src": "^/(?:assets|images)/.*$", "status": 404 },
-    { "src": "^/.*\\.(?:js|css|svg|png|jpg|jpeg|webp|woff2?|ico|json|map)$", "status": 404 },
+    { "src": "^/(?:assets|images|audio|fonts)/.*$", "status": 404 },
+    { "src": "^/.*\\.(?:js|css|svg|png|jpg|jpeg|webp|woff2?|mp3|ico|json|map)$", "status": 404 },
     { "src": "^/.*$", "dest": "/index.html" }
   ]
 }

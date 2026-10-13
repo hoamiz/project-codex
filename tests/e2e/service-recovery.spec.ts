@@ -47,7 +47,7 @@ test('HTTP200 hosting HTML does not enter the app before real health JSON', asyn
   await expect(page.getByRole('status')).toContainText('Đang chuẩn bị dữ liệu');
   await expect(page.locator('.project-card')).toHaveCount(0);
   ready = true;
-  await expect(page.locator('.project-card')).toHaveCount(5);
+  await expect(page.locator('.project-card')).toHaveCount(6);
 });
 test('bounded wait exposes retry and a fresh attempt recovers without reload loops', async ({
   page,
@@ -69,7 +69,7 @@ test('bounded wait exposes retry and a fresh attempt recovers without reload loo
   await expect(page.getByRole('heading', { name: 'Chưa kết nối được dịch vụ.' })).toBeVisible();
   ready = true;
   await page.getByRole('button', { name: 'Thử lại', exact: true }).click();
-  await expect(page.locator('.project-card')).toHaveCount(5);
+  await expect(page.locator('.project-card')).toHaveCount(6);
   expect(documents).toBe(1);
 });
 test('real browser offline/online preserves login form and does not replay mutations', async ({

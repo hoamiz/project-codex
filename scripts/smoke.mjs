@@ -26,6 +26,7 @@ export async function smoke(
     'brick-playground',
     'memory-match',
     'room-studio',
+    'vietnamese-alphabet',
   ]);
   const cars = await json('/cars');
   assert(Array.isArray(cars.data));
@@ -81,7 +82,7 @@ export async function smoke(
     page.on('pageerror', (error) => errors.push(error.message));
     await page.goto(webOrigin);
     await page.locator('.project-card').last().waitFor();
-    assert.equal(await page.locator('.project-card').count(), 5);
+    assert.equal(await page.locator('.project-card').count(), 6);
     if (roomChunk) assert(!assets.has(roomChunk), 'Portfolio must not load the 3D bundle');
     for (const chunk of [...brickChunks, ...threeChunks])
       assert(!assets.has(chunk), 'Portfolio must not load PJ5/Three bundle');
@@ -92,6 +93,7 @@ export async function smoke(
       ['/projects/room-studio', 'Room Studio 3D'],
       ['/projects/rooms', 'Room Studio 3D'],
       ['/projects/brick-playground', 'Brick Playground'],
+      ['/projects/vietnamese-alphabet', 'Chữ nhỏ.'],
     ]) {
       await page.goto(webOrigin + route);
       await page.getByRole('heading').filter({ hasText: heading }).waitFor();
@@ -101,6 +103,8 @@ export async function smoke(
         assert.equal(new URL(page.url()).pathname, '/projects/room-studio');
       if (route === '/projects/brick-playground')
         await page.locator('.brick-stage[data-ready="true"]').waitFor();
+      if (route === '/projects/vietnamese-alphabet')
+        assert.equal(await page.locator('.alphabet-card').count(), 29);
       await page.reload();
       await page.getByRole('heading').filter({ hasText: heading }).waitFor();
       if (route === '/projects/brick-playground')
@@ -139,7 +143,7 @@ export async function smoke(
     }
   }
   console.log(
-    'HTTP/DB, admin 401, five rendered demos, immutable PJ5 viewer, lazy bundles and direct reload verified.',
+    'HTTP/DB, admin 401, six rendered demos, immutable PJ5 viewer, lazy bundles and direct reload verified.',
   );
 }
 if (process.argv[1] && import.meta.url === new URL(process.argv[1], 'file:').href) {

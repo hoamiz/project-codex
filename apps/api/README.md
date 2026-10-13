@@ -1,5 +1,7 @@
 # API
 
+PJ6 không có endpoint hoặc bảng dữ liệu trẻ. Migration005 mở whitelist `/projects/vietnamese-alphabet` và đăng ký card thứ sáu bằng ON CONFLICT DO NOTHING; seed cũng thêm khi thiếu. Thứ tự API đặt Alphabet sau Brick Playground. Nâng cấp DB5 project không cần seed và giữ metadata đã chỉnh; âm thanh/minh họa là asset tĩnh trong web build. Migration001–004 giữ nguyên.
+
 Express 5/TypeScript, pg, Zod, session PostgreSQL, scrypt và rate limit. Root `.env` đọc im lặng; không dùng cấu hình dự án khác. DB phải tên `project_codex_dev` hoặc `project_codex_test`. API mặc định bind loopback 4100. Xem [root README](../../README.md) để setup DB/admin.
 
 Production không đọc `.env` dev. `services/runtime-config.ts` validate HOST/PORT/HTTPS origin/secret và tên DB khớp `EXPECTED_DATABASE_NAME`, hỗ trợ tên provider như `neondb`; dev/test giữ guard. Container bind0.0.0.0/PORT hosting. Remote PostgreSQL verify-full, poolmax5/timeout và CA riêng nếu cần; tham số URL không ghi đè SSL thành insecure. `TRUST_PROXY=gateway` yêu cầu shared secret để `proxy-boundary.ts` xác thực và sanitize IP/HTTPS trước cookie/limiter; direct Render API bị403, health public/no-store/DB-backed. Với health mang token, token sai cũng bị từ chối.
@@ -18,4 +20,4 @@ Brick Playground: `services/brick-geometry.ts` chứa catalog/kiểu/geometry th
 
 `bricks-validation.test.ts`, `bricks-service.test.ts`, `bricks.test.ts` kiểm tra schema, database thật, concurrency, rollback/retry và HTTP errors/rate limit. SQL luôn tham số hóa; snapshot không chứa camera/selection/history/key.
 
-Server áp dụng migration trước listen, kể cả source/dev hoặc dist/start. Migration003 thêm Room Studio,004 thêm Brick Playground, ON CONFLICT giữ metadata đã chỉnh. `portfolio-upgrade.test.ts` tạo schema fixture từ bản ba/bốn project hoặc metadata Room/Brick đã chỉnh, khởi động server thật không seed, kiểm tra API trả5 project và giữ dữ liệu. Migration001–003 không bị sửa trong PJ5.
+Server áp dụng migration trước listen, kể cả source/dev hoặc dist/start. Migration003 thêm Room Studio,004 thêm Brick Playground,005 thêm Bé vui học chữ, ON CONFLICT giữ metadata đã chỉnh. `portfolio-upgrade.test.ts` tạo schema fixture từ bản ba/bốn/năm project hoặc metadata Room/Brick/Alphabet đã chỉnh, khởi động server thật không seed, kiểm tra API trả6 project và giữ dữ liệu. Migration001–003 không bị sửa trong PJ5.

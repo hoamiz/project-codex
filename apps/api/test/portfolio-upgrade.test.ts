@@ -24,7 +24,7 @@ async function stop(child: ChildProcess) {
   }
 }
 
-test.each(['three', 'four', 'edited-room', 'edited-brick'])(
+test.each(['three', 'four', 'five', 'edited-room', 'edited-brick', 'edited-alphabet'])(
   'startup upgrades an older database without seed and preserves metadata (%s)',
   async (stage) => {
     const schema = `portfolio_upgrade_${randomUUID().replaceAll('-', '')}`;
@@ -39,6 +39,9 @@ test.each(['three', 'four', 'edited-room', 'edited-brick'])(
         '001_initial.sql',
         '002_room_studio.sql',
         ...(stage === 'three' ? [] : ['003_room_portfolio.sql']),
+        ...(['five', 'edited-brick', 'edited-alphabet'].includes(stage)
+          ? ['004_brick_playground.sql']
+          : []),
       ])
         await copyFile(new URL(`../db/migrations/${name}`, import.meta.url), `${dir}/${name}`);
       await migrate(isolated, dir);
@@ -57,9 +60,14 @@ test.each(['three', 'four', 'edited-room', 'edited-brick'])(
           "UPDATE portfolio_projects SET title='Phòng của tôi' WHERE slug='room-studio'",
         );
       if (stage === 'edited-brick') {
-        await migrate(isolated);
         await isolated.query(
           "UPDATE portfolio_projects SET title='Gạch của tôi' WHERE slug='brick-playground'",
+        );
+      }
+      if (stage === 'edited-alphabet') {
+        await migrate(isolated);
+        await isolated.query(
+          "UPDATE portfolio_projects SET title='Chữ của bé' WHERE slug='vietnamese-alphabet'",
         );
       }
       const before = (await isolated.query('SELECT * FROM portfolio_projects ORDER BY slug')).rows;
@@ -100,6 +108,7 @@ test.each(['three', 'four', 'edited-room', 'edited-brick'])(
         'admin',
         'room-studio',
         'brick-playground',
+        'vietnamese-alphabet',
       ]);
       expect(data.find((project: { slug: string }) => project.slug === 'room-studio').url).toBe(
         '/projects/room-studio',
@@ -107,16 +116,24 @@ test.each(['three', 'four', 'edited-room', 'edited-brick'])(
       expect(
         data.find((project: { slug: string }) => project.slug === 'brick-playground').url,
       ).toBe('/projects/brick-playground');
+      expect(
+        data.find((project: { slug: string }) => project.slug === 'vietnamese-alphabet').url,
+      ).toBe('/projects/vietnamese-alphabet');
       const after = (await isolated.query('SELECT * FROM portfolio_projects ORDER BY slug')).rows;
       for (const original of before)
         expect(after.find((row) => row.slug === original.slug)).toEqual(original);
       expect(
         (
           await isolated.query(
-            "SELECT count(*) FROM schema_migrations WHERE name='004_brick_playground.sql'",
+            "SELECT count(*) FROM schema_migrations WHERE name='005_vietnamese_alphabet.sql'",
           )
         ).rows[0].count,
       ).toBe('1');
+      await expect(
+        isolated.query(
+          "UPDATE portfolio_projects SET url='/projects/not-registered' WHERE slug='vietnamese-alphabet'",
+        ),
+      ).rejects.toThrow();
       await expect(
         isolated.query(
           "INSERT INTO brick_designs(title,layout,idempotency_key,payload_hash) VALUES('x','{}',gen_random_uuid(),repeat('a',64))",

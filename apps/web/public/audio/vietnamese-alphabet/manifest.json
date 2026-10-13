@@ -1,0 +1,183 @@
+{
+  "language": "vi-VN",
+  "voice": "vi-VN-HoaiMyNeural",
+  "rate": "-15%",
+  "created": "2026-10-13",
+  "source": "Microsoft Edge Read Aloud; generated with edge-tts 7.3.0",
+  "clips": [
+    {
+      "id": "a",
+      "transcript": "Chữ a. Ví dụ, cái ca.",
+      "durationSeconds": 3.408,
+      "sha256": "d2b52fd2a22e389f4b9e63798278a13d72eb8a1f2a8ed6282a19fe920a068016"
+    },
+    {
+      "id": "a-breve",
+      "transcript": "Chữ á. Ví dụ, cặp sách.",
+      "durationSeconds": 3.24,
+      "sha256": "daa0c17d39e76f0df042021768ac45f72073799f444d8d88bb4aa8710f08bc9e"
+    },
+    {
+      "id": "a-circumflex",
+      "transcript": "Chữ ớ. Ví dụ, con gấu.",
+      "durationSeconds": 3.48,
+      "sha256": "83fd0cc98673c220268580414310802eae0e4e92c63ae4dfaef2248d857e9653"
+    },
+    {
+      "id": "b",
+      "transcript": "Chữ bê. Ví dụ, con bò.",
+      "durationSeconds": 4.344,
+      "sha256": "d0d4b2f7b2a65c961cef312ba61686ea4b2c2c3d2333583865ccab9c8d8048ff"
+    },
+    {
+      "id": "c",
+      "transcript": "Chữ xê. Ví dụ, con cá.",
+      "durationSeconds": 4.392,
+      "sha256": "ab47cba1a2a73f306f453457f7b2f95c0ff6b77475c762d6fb3ddba918a9fc2a"
+    },
+    {
+      "id": "d",
+      "transcript": "Chữ dê. Ví dụ, dưa hấu.",
+      "durationSeconds": 4.344,
+      "sha256": "79ed3703f87e5425e0610fe55d76db02ab45042c650cb9de862f41acede0f889"
+    },
+    {
+      "id": "d-stroke",
+      "transcript": "Chữ đê. Ví dụ, cái đèn.",
+      "durationSeconds": 4.272,
+      "sha256": "cc815156d87029b9fa5c2bed59fb34da112c6982854ba03c4b56f268ab647dc0"
+    },
+    {
+      "id": "e",
+      "transcript": "Chữ e. Ví dụ, con ve.",
+      "durationSeconds": 3.408,
+      "sha256": "5f81e985fbe668ce2cf4672cb04afebcbe642d8239f86d6a5b4af56f43d3f634"
+    },
+    {
+      "id": "e-circumflex",
+      "transcript": "Chữ ê. Ví dụ, con dê.",
+      "durationSeconds": 3.408,
+      "sha256": "013974be7c67aa6ce375db9c38810bd92d57646583015604c2d42eca3eda1d4c"
+    },
+    {
+      "id": "g",
+      "transcript": "Chữ giê. Ví dụ, con gà.",
+      "durationSeconds": 4.392,
+      "sha256": "3cdf3ab3ac086433523984030fd4321ceb95b44ad0eb8a5b9597c38f8b63556f"
+    },
+    {
+      "id": "h",
+      "transcript": "Chữ hát. Ví dụ, con hổ.",
+      "durationSeconds": 4.344,
+      "sha256": "9afffbb57da70c4eae8089fbcd5522f8a2e7254b7addec0b98e685fd65fe2ecc"
+    },
+    {
+      "id": "i",
+      "transcript": "Chữ i ngắn. Ví dụ, con chim.",
+      "durationSeconds": 4.656,
+      "sha256": "e66ff85e70a85c08c47aea89d958199e0b259023786fdcba7e047d06d4fcde25"
+    },
+    {
+      "id": "k",
+      "transcript": "Chữ ca. Ví dụ, cái kẹo.",
+      "durationSeconds": 4.344,
+      "sha256": "45da6ba11d16ab2d21e70ddce5dd09db8f4ba5cebfc7ce91a6de262b320f91a2"
+    },
+    {
+      "id": "l",
+      "transcript": "Chữ e lờ. Ví dụ, con lợn.",
+      "durationSeconds": 4.824,
+      "sha256": "9b9b69631a9a34fdf466f92421b2839633304535d5df39beba1eecf672196a68"
+    },
+    {
+      "id": "m",
+      "transcript": "Chữ em mờ. Ví dụ, con mèo.",
+      "durationSeconds": 4.8,
+      "sha256": "0283ac77cc61f58a3e64a41cb2b20f246984f96f92cb2362c34fa5e99145f012"
+    },
+    {
+      "id": "n",
+      "transcript": "Chữ en nờ. Ví dụ, cái nón.",
+      "durationSeconds": 4.752,
+      "sha256": "7c0a83bbf3b6ffe1cd32079e0fcb8f115c113e618ac944ba4ae0f8886600658d"
+    },
+    {
+      "id": "o",
+      "transcript": "Chữ o. Ví dụ, con ong.",
+      "durationSeconds": 3.384,
+      "sha256": "d23f005f3f6a95b480ebfc637af748af313260e5d70d6c1e57ed638606ab2785"
+    },
+    {
+      "id": "o-circumflex",
+      "transcript": "Chữ ô. Ví dụ, cái ô.",
+      "durationSeconds": 3.408,
+      "sha256": "5066c8c41a9ab35573c01517327deadccfdab9fc5855b173ecf92d615f9f532b"
+    },
+    {
+      "id": "o-horn",
+      "transcript": "Chữ ơ. Ví dụ, lá cờ.",
+      "durationSeconds": 3.504,
+      "sha256": "7a9ae0740d73acb8a6a5f2888d4db6b2315990a2d58a30a0ee23420cbccc51d5"
+    },
+    {
+      "id": "p",
+      "transcript": "Chữ pê. Ví dụ, cục pin.",
+      "durationSeconds": 4.296,
+      "sha256": "db66bc93c8ede4d7c9f11a1fa5222f3e039448637f7c9a3c0d3bd0cf64c22edd"
+    },
+    {
+      "id": "q",
+      "transcript": "Chữ quy. Ví dụ, quả quýt.",
+      "durationSeconds": 4.272,
+      "sha256": "d65ef0e6b44038219843801da8767d1a11c1005a07f2b913320956f2d0b0b808"
+    },
+    {
+      "id": "r",
+      "transcript": "Chữ e rờ. Ví dụ, con rùa.",
+      "durationSeconds": 4.824,
+      "sha256": "888982d0a964bed5d5d84d274535641f18d997df52f0d26b7480d4500ccb5dee"
+    },
+    {
+      "id": "s",
+      "transcript": "Chữ ét. Ví dụ, con sóc.",
+      "durationSeconds": 4.2,
+      "sha256": "899b748538260e4fbb907a47c6f1316b055997bd03bc213fb5cced9b7f816e66"
+    },
+    {
+      "id": "t",
+      "transcript": "Chữ tê. Ví dụ, con thỏ.",
+      "durationSeconds": 4.416,
+      "sha256": "59b2500594f758633cee82b66133be5e4537f789c4c6833a195ce6ebddb6c5d0"
+    },
+    {
+      "id": "u",
+      "transcript": "Chữ u. Ví dụ, con cua.",
+      "durationSeconds": 3.408,
+      "sha256": "0353c9054a58f1f9bf1a357e184f832ef626debbdf4cdd9b03c5f83c27c109e9"
+    },
+    {
+      "id": "u-horn",
+      "transcript": "Chữ ư. Ví dụ, sư tử.",
+      "durationSeconds": 3.456,
+      "sha256": "b1d793bc0a829402eca51a9d6ea7589b13508c8481d127c73e3dc472eda5a935"
+    },
+    {
+      "id": "v",
+      "transcript": "Chữ vê. Ví dụ, con vịt.",
+      "durationSeconds": 4.2,
+      "sha256": "a3711248b17009e149598339e88a88a96f0b901b57848a579e84f22bbec32c2d"
+    },
+    {
+      "id": "x",
+      "transcript": "Chữ ích. Ví dụ, xe đạp.",
+      "durationSeconds": 4.08,
+      "sha256": "16bec8c6bf78ab8c5ef0390f44efe27ec9c905b082fa9ae1011d1497f04768fe"
+    },
+    {
+      "id": "y",
+      "transcript": "Chữ i dài. Ví dụ, cái cây.",
+      "durationSeconds": 4.632,
+      "sha256": "384abfd10db36f6f40304d4c37bdac2e1287aa1416ddf1f3dd651e0ba2a143eb"
+    }
+  ]
+}

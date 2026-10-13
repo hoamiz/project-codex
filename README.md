@@ -2,14 +2,21 @@
 
 Portfolio độc lập với **React 19 + TypeScript + Vite 8 + Tailwind CSS 4**, **Node.js + Express 5** và **PostgreSQL 17**. Tiến độ T01–T33 nằm trong [PORTFOLIO_TASKS.md](PORTFOLIO_TASKS.md).
 
-| Trang | Đường dẫn | Chức năng |
-| --- | --- | --- |
-| Portfolio | `/` | Giới thiệu, stack và năm project từ PostgreSQL |
-| AutoHub | `/projects/autohub` | Lọc/chi tiết xe, yêu thích, so sánh tối đa 3 xe, tư vấn/lái thử |
-| Memory Match | `/projects/memory-match` | 6/8/12 cặp, phục hồi sau reload, kết quả và leaderboard |
-| Control Center | `/projects/admin` | Đăng nhập, dashboard, CRUD/archive xe và quản lý yêu cầu |
-| Room Studio 3D | `/projects/room-studio` | Custom phòng 3D, nội thất, màu/ánh sáng, lưu và chia sẻ |
-| Brick Playground 3D | `/projects/brick-playground` | Lắp gạch, chọn màu, kéo thả/xếp chồng, thùng rác và chia sẻ |
+| Trang               | Đường dẫn                       | Chức năng                                                       |
+| ------------------- | ------------------------------- | --------------------------------------------------------------- |
+| Portfolio           | `/`                             | Giới thiệu, stack và sáu project từ PostgreSQL                  |
+| AutoHub             | `/projects/autohub`             | Lọc/chi tiết xe, yêu thích, so sánh tối đa 3 xe, tư vấn/lái thử |
+| Memory Match        | `/projects/memory-match`        | 6/8/12 cặp, phục hồi sau reload, kết quả và leaderboard         |
+| Control Center      | `/projects/admin`               | Đăng nhập, dashboard, CRUD/archive xe và quản lý yêu cầu        |
+| Room Studio 3D      | `/projects/room-studio`         | Custom phòng 3D, nội thất, màu/ánh sáng, lưu và chia sẻ         |
+| Brick Playground 3D | `/projects/brick-playground`    | Lắp gạch, chọn màu, kéo thả/xếp chồng, thùng rác và chia sẻ     |
+| Bé vui học chữ      | `/projects/vietnamese-alphabet` | 29 chữ tiếng Việt, minh họa và popup đọc chữ/từ ví dụ           |
+
+## Bé vui học chữ
+
+PJ6 có **29 chữ cái tiếng Việt** đúng thứ tự, chữ hoa/thường bằng font Nunito vui nhộn và29 minh họa SVG tương ứng con vật/đồ vật quen thuộc. Chạm thẻ mở popup ở giữa; giọng nữ **Hoài My (vi-VN)** đọc tên chữ và từ ví dụ, như a–cái ca, ă–cặp sách, â–con gấu. Chữ đang học được tô nổi bật trong từ, giữ dấu chữ và bỏ riêng dấu thanh khi đối chiếu.
+
+Popup tự đóng **3 giây sau khi audio đọc xong**, trả focus về thẻ. Đóng bằng nút/Escape/chạm nền sẽ dừng đọc; rời trang hoặc ẩn tab cũng hủy audio/timer. Tải chậm hay bị chặn phát giữ popup và cho thử lại. Âm thanh, ảnh và font tự host; không cần giọng tiếng Việt cài trên máy, micro hay tài khoản. Đọc tên chữ (bê/xê…), không phải bài luyện ghép âm. Nội dung/nguồn asset và tiêu chí: [kế hoạch PJ6](docs/vietnamese-alphabet-plan.md), `public/audio/vietnamese-alphabet/manifest.json` và các fileSOURCES. Ý tưởng nghe lại/bật tắt tiếng/ngẫu nhiên đã được liệt kê trước khi triển khai, để phiên bản tiếp theo.
 
 ## Room Studio 3D
 
@@ -47,7 +54,7 @@ npm run services:start
 
 `setup` dùng `npm ci`, tạo `.env` quyền `600` chỉ khi chưa tồn tại, khởi động DB riêng, migration, seed và bootstrap admin. Secret/password phát triển được tạo ngẫu nhiên; xem tài khoản trong `.env` bằng editor cục bộ, không chia sẻ file. `.env.example` không chứa secret; không dùng file mẫu với secret trống để chạy app.
 
-`services:start` chạy FE **5173**, API **4100** và PostgreSQL **55434**, ghi PID/command/thời điểm tạo process vào `.local/services.json`, log vào `.local/logs`. Readiness kiểm tra JSON từ DB, quyền admin, năm demo và viewer PJ5 render trong Chromium, gồm reload URL trực tiếp và lazy bundle. Snapshot smoke được dọn theo key riêng. Nếu cổng bị process khác chiếm, script báo lỗi và giữ process đó.
+`services:start` chạy FE **5173**, API **4100** và PostgreSQL **55434**, ghi PID/command/thời điểm tạo process vào `.local/services.json`, log vào `.local/logs`. Readiness kiểm tra JSON từ DB, quyền admin, sáu demo và viewer PJ5 render trong Chromium, gồm reload URL trực tiếp và lazy bundle. Snapshot smoke được dọn theo key riêng. Nếu cổng bị process khác chiếm, script báo lỗi và giữ process đó.
 
 ```bash
 npm run smoke
@@ -58,7 +65,7 @@ npm run services:start
 
 Helper chỉ dừng process mình tạo còn đúng identity; không xóa dữ liệu. Start cũng khởi động lại DB đã dừng. Local trust auth chỉ dành cho instance phát triển bind loopback, không dùng cho database public/production.
 
-API chạy các migration chưa áp dụng trước khi mở cổng. Migration003 bổ sung card Room Studio; migration004 thêm bảng snapshot/card Brick Playground. DB ba/bốn project được nâng cấp mà không cần seed lại và không ghi đè metadata đã chỉnh. Migration lỗi thì API dừng khởi động; kiểm tra bằng `npm run db:migrate`.
+API chạy các migration chưa áp dụng trước khi mở cổng. Migration003 bổ sung card Room Studio; migration004 thêm bảng snapshot/card Brick Playground; migration005 thêm card Bé vui học chữ. DB ba/bốn/năm project được nâng cấp mà không cần seed lại và không ghi đè metadata đã chỉnh. Migration lỗi thì API dừng khởi động; kiểm tra bằng `npm run db:migrate`.
 
 Muốn chạy foreground, dừng dịch vụ background rồi dùng `npm run db:start` và `npm run dev`. Có thể chạy từng workspace với `dev:web` và `dev:api`. Vite proxy `/api` nên cookie cùng origin. Cổng test riêng: web **5174**, API **4110**; kiểm tra build dùng **4111**.
 
@@ -66,7 +73,7 @@ Muốn chạy foreground, dừng dịch vụ background rồi dùng `npm run db:
 
 - Dev: `project_codex_dev`; test: `project_codex_test`. Runner kiểm tra tên DB và chỉ dùng URL test; dọn fixture theo ID, không reset dev.
 - `npm run db:migrate`: SQL transaction, advisory lock, lịch sử/checksum; tái chạy an toàn. Không sửa migration đã áp dụng; thêm migration mới.
-- `npm run db:seed`: thêm 5 project/12 xe chưa có, giữ dữ liệu đã chỉnh. Không tự tạo lead hay password cố định.
+- `npm run db:seed`: thêm 6 project/12 xe chưa có, giữ dữ liệu đã chỉnh. Không tự tạo lead hay password cố định.
 - `npm run admin:bootstrap`: thêm admin từ `ADMIN_EMAIL`/`ADMIN_PASSWORD`, không ghi đè tài khoản đã tồn tại. Password lưu hash scrypt. Thêm tài khoản dev khác bằng email/password mới rồi bootstrap; đổi `.env` không tự đổi password trong DB.
 - Giá là số nguyên VND. Thống kê/lái thử theo `Asia/Ho_Chi_Minh` (UTC+7), timestamp lưu UTC.
 - Lead dùng `Idempotency-Key` để retry không nhân đôi. Game tính từ state server, token riêng, transaction lock và unique kết quả/phiên.
@@ -105,7 +112,7 @@ Production cần cấu hình riêng, secret mạnh, DB có xác thực, `NODE_EN
 ## Cấu trúc và nội dung
 
 ```text
-apps/web/src/features/       Portfolio, AutoHub, game, admin, room-studio/, brick-playground/
+apps/web/src/features/       Portfolio, AutoHub, game, admin, room-studio/, brick-playground/, vietnamese-alphabet/
 apps/web/public/images/     SVG nguyên bản và SOURCES.md
 apps/api/src/routes/        REST API public/auth/admin/game/rooms/bricks
 apps/api/src/services/      Game, room, brick geometry/validation, migration, seed, password

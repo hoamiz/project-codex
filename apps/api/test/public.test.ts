@@ -9,7 +9,7 @@ beforeAll(async () => {
   await seed(pool);
 });
 afterAll(() => pool.end());
-test('portfolio has exactly five registered routes', async () => {
+test('portfolio has exactly six registered routes', async () => {
   const r = await request(app).get('/api/portfolio/projects');
   expect(r.status).toBe(200);
   expect(r.body.data.map((p: { slug: string }) => p.slug)).toEqual([
@@ -18,6 +18,7 @@ test('portfolio has exactly five registered routes', async () => {
     'admin',
     'room-studio',
     'brick-playground',
+    'vietnamese-alphabet',
   ]);
   expect(r.body.data.every((p: { url: string }) => p.url.startsWith('/projects/'))).toBe(true);
 });

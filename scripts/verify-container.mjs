@@ -166,6 +166,8 @@ try {
           js: 'text/javascript',
           css: 'text/css',
           svg: 'image/svg+xml',
+          mp3: 'audio/mpeg',
+          woff2: 'font/woff2',
           json: 'application/json',
         }[ext] || 'application/octet-stream',
       );
@@ -227,7 +229,7 @@ try {
   const before = fingerprint();
   initialize();
   assert.equal(fingerprint(), before, 'Bootstrap must preserve existing password/data');
-  assert(before.startsWith('5|12|'));
+  assert(before.startsWith('6|12|'));
   // Chứng minh CA sai bị từ chối; không chuyển rejectUnauthorized=false để tiếp tục.
   const bad = spawnSync(
     'docker',
@@ -367,7 +369,7 @@ try {
   const counts = (name) =>
     docker('exec', db, 'psql', '-U', 'codex', '-d', name, '-Atqc', sql).toString().trim();
   assert.equal(counts('project_codex_restore'), counts('project_codex_verify'));
-  assert.equal(counts('project_codex_restore'), '5|12|1|1|4');
+  assert.equal(counts('project_codex_restore'), '6|12|1|1|5');
   for (const table of [
     'schema_migrations',
     'portfolio_projects',
@@ -397,7 +399,7 @@ try {
     );
   }
   console.log(
-    'Container verified: non-root Node24, TLS/invalid CA, compiled initialization twice, gateway/HTTPS cookie, five demos/viewers, session/snapshot restart, isolated dump/restore.',
+    'Container verified: non-root Node24, TLS/invalid CA, compiled initialization twice, gateway/HTTPS cookie, six demos/viewers, session/snapshot restart, isolated dump/restore.',
   );
 } finally {
   if (http) await http.dispose();
