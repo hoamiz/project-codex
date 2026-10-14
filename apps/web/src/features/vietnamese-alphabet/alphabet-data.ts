@@ -3,8 +3,10 @@ import catalog from './alphabet.json' with { type: 'json' };
 export const alphabet = catalog;
 export type Letter = (typeof alphabet)[number];
 export const illustrationUrl = (letter: Letter) => `/images/alphabet/${letter.id}.svg`;
-export const audioUrl = (letter: Letter) => `/audio/vietnamese-alphabet/${letter.id}.mp3`;
-export const spokenText = (letter: Letter) => `Chữ ${letter.spokenName}. Ví dụ, ${letter.example}.`;
+// Đổi revision khi thay lời đọc để trình duyệt không phát lại file audio cũ từ cache.
+export const audioUrl = (letter: Letter) => `/audio/vietnamese-alphabet/${letter.id}.mp3?v=3`;
+/** Đọc âm học vần: c/k/q cùng âm cờ, i/y cùng âm i; không thêm tên chữ hay lời dẫn. */
+export const spokenText = (letter: Letter) => `${letter.sound}. ${letter.example}.`;
 
 /** Bỏ riêng dấu thanh; giữ breve/circumflex/horn để không nhầm a/ă/â hoặc o/ô/ơ. */
 export function withoutTone(text: string) {

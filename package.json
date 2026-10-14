@@ -10,7 +10,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "concurrently -k \"npm run dev:web\" \"npm run dev:api\"",
+    "dev": "npm run db:start && concurrently -k \"npm run dev:web\" \"npm run dev:api\"",
     "dev:web": "npm run dev -w @project-codex/web",
     "dev:api": "npm run dev -w @project-codex/api",
     "build": "npm run build --workspaces",

@@ -216,3 +216,15 @@ Migration005 thêm whitelist/card ON CONFLICT;001–004 vàlockfile giữ nguyê
 Giọng là audio tiếng Việt tổng hợp tĩnh, không phụ thuộc voice cài trên máy hoặc gọiTTS runtime; kiểm thử decoder/playback trên Chromium. Chưa đánh giá nghe chủ quan bởi người thật hoặc chạy trên thiết bịSafari/iOS/Android thật. D09–D14 hosting và URL public vẫn là bước riêng; các kiểm tra local/container không tạo release website.
 
 Cloud start_skill đã saved/re-read đúng cho6 demo/PJ6, migration005 và workflow/test hiện tại; install_script/repositories/network/secret/runtime requirements cùng legacy suffix giữ nguyên. Draft requires_publish=true, chưa publish môi trường hoặc deploy public.
+
+### Lời đọc PJ6 rút gọn (2026-10-14)
+
+29 bản đọc được tạo lại thành tên chữ, khoảng nghỉ, rồi từ: `a. cái ca.`, không có “Chữ”/“Ví dụ”. Hoài My vi-VN vàtốc độ-15% giữ nguyên; manifest có transcript/checksum/duration mới vàrevision2, audioUrl thêm?v=2 để bỏ cache cũ. Nội dung ngắn hơn (1,968–3,552s); bound thời lượng test đổi từ2 xuống1s, vẫn kiểm đủ29MP3/SHA256/transcript/decoder vàmẫu âm hữu hiệu.
+
+UnitPJ6 **9/9**, PlaywrightPJ6 **10/10** (57,1s), lint0 warning/webtype/build/format/diff đạt. Native ended vẫn đóng đúng3s, retry lỗi/tải chậm vàaxe360/768/1440 đạt. Logs `.local/logs/pj6-short-voice-unit.log`, `pj6-short-voice-e2e.log`, `pj6-short-voice-build.log`. Config/dữ liệu cũ giữ nguyên; không đổi API/database/container hoặc UI/controller, nên không chạy lại bộ hồi quy/Docker/API ngoài phạm vi audio.
+
+### Âm học vần PJ6 (2026-10-14)
+
+Theo yêu cầu mới,29 chữ dùng âm học vần (a, á, ớ, bờ, cờ, dờ, đờ…), không dùng tên chữ. c/k/q cùng âm cờ vài/y cùng âm i. Ví dụ `bờ. con bò.`, `cờ. con cá.`, `đờ. cái đèn.`; tiếp tục không đọc “Chữ” hoặc “Ví dụ”. Catalog sound/manifest readingMode=phonics/revision3 được cập nhật;19 MP3 mới và10 nguyên âm phù hợp giữ nguyên có transcript/duration/SHA256 đã kiểm. AudioURLv3 bỏ cache bản tên chữ.
+
+UnitPJ6 **9/9** kiểm đầy đủ bảng âm vàlời đọcbờ-conbò; E2E **10/10** (59,4s) decode29audio thực, playbacknative thẻb vàđóng3s sauended, lỗi/retry/keyboard/hidden/axe360/768/1440 đạt. Lint0 warning/webtype/build/format/diff đạt; logs `.local/logs/pj6-phonics-unit.log`, `pj6-phonics-e2e.log`, `pj6-phonics-build.log`. Row fingerprints/config cũ giữ nguyên. Không thay BE/schema/container hoặcUI/controller; không dùng kết quả A08 toàn bộ để thay bằng chứng kiểm lại âm đọc này.

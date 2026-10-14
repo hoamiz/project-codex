@@ -17,8 +17,12 @@ Route `/projects/vietnamese-alphabet`, card thứ sáu trong portfolio. Phạm v
 
 ## Nội dung và âm thanh
 
-Tên chữ được đọc bằng tiếng Việt (ví dụ a, á, ớ, bê, xê…), sau đó đọc rõ từ ví dụ. Các âm thanh tĩnh tự host dùng cùng giọng Việt, tốc độ chậm vừa phải. Không dùng giọng tiếng Anh nếu trình duyệt thiếu tiếng Việt. Ví dụ a–cái ca, ă–cặp sách, â–con gấu, b–con bò. Tô nổi bật chữ trong ví dụ sau khi bỏ dấu thanh, giữ dấu chữ (ă, â, ê, ô, ơ, ư).
+Âm học vần được đọc bằng tiếng Việt (ví dụ a, á, ớ, bờ, cờ, dờ, đờ…), sau đó đọc rõ từ ví dụ. Các âm thanh tĩnh tự host dùng cùng giọng Việt, tốc độ chậm vừa phải. Không dùng giọng tiếng Anh nếu trình duyệt thiếu tiếng Việt. Ví dụ a–cái ca, ă–cặp sách, â–con gấu, b–con bò. Tô nổi bật chữ trong ví dụ sau khi bỏ dấu thanh, giữ dấu chữ (ă, â, ê, ô, ơ, ư).
 
 `play()` được gọi trực tiếp từ hành động của người dùng để hỗ trợ chính sách autoplay trên mobile. Hủy audio và timer khi đóng, đổi thẻ, rời trang hoặc ẩn tab. Tải chậm/thất bại giữ thẻ và cho thử lại; không giả lập đọc xong. Chỉ `ended` hợp lệ của audio hiện tại mới bắt đầu3 giây. Không yêu cầu micro, tài khoản, lưu dữ liệu trẻ hoặc dịch vụ TTS bên ngoài khi sử dụng.
 
 Nguồn dữ liệu: `features/vietnamese-alphabet/alphabet.json`; ảnh/audio/font trong `public/`. Bằng chứng test và giới hạn được ghi trong `docs/verification.md` sau khi chạy.
+
+Cập nhật lời đọc (2026-10-14): mỗi clip chỉ đọc âm học vần, nghỉ ngắn, rồi từ; không đọc “Chữ” hoặc “Ví dụ”. Ví dụ `a. cái ca.` tương ứng “a — cái ca”. Giữ giọng Hoài My/tốc độ-15% và thời gian đóng3s sau ended. URL audio revision3 làm mới cache khi thay lời đọc.
+
+Điều chỉnh âm đọc theo yêu cầu (2026-10-14): toàn bộ29 chữ dùng sound học vần, không dùng tên chữ bê/xê/giê/hát/ca… c/k/q cùng âm cờ, i/y cùng âm i; q thường xuất hiện với u trong từ nhưng thẻ hiện tại là chữ q riêng. Không thêm “Chữ”/“Ví dụ” vào audio.

@@ -86,7 +86,7 @@ test('all29 bundled Vietnamese recordings really decode and illustrations/font l
   );
   expect(decoded).toHaveLength(29);
   for (const clip of decoded) {
-    expect(clip.duration, clip.id).toBeGreaterThan(2);
+    expect(clip.duration, clip.id).toBeGreaterThan(1);
     expect(clip.duration, clip.id).toBeLessThan(15);
     expect(clip.audible, clip.id).toBe(true);
   }
@@ -115,12 +115,12 @@ test('real Vietnamese audio plays once; popup stays during reading and closes3 s
 }) => {
   await trackAudio(page);
   await page.goto(path);
-  const card = page.getByRole('button', { name: 'Học chữ ă: cặp sách', exact: true });
+  const card = page.getByRole('button', { name: 'Học chữ b: con bò', exact: true });
   await card.click();
-  const dialog = page.getByRole('dialog', { name: 'Chữ ă — cặp sách', exact: true });
+  const dialog = page.getByRole('dialog', { name: 'Chữ b — con bò', exact: true });
   await expect(dialog).toBeVisible();
   await expect(dialog.getByRole('status')).toContainText('Cùng nghe');
-  await expect(dialog.locator('mark').first()).toHaveText('ặ');
+  await expect(dialog.locator('mark').first()).toHaveText('b');
   await expect(dialog.getByRole('status')).toContainText('đóng sau 3 giây');
   const endedAt = await page.evaluate(() => window.alphabetEndedAt);
   expect(endedAt).toBeGreaterThan(0);
@@ -144,7 +144,7 @@ test('slow audio does not start the close timer while loading', async ({ page })
   const held = new Promise<void>((resolve) => {
     allow = resolve;
   });
-  await page.route('**/audio/vietnamese-alphabet/a.mp3', async (route) => {
+  await page.route('**/audio/vietnamese-alphabet/a.mp3*', async (route) => {
     await held;
     await route.continue();
   });
@@ -164,14 +164,14 @@ test('failed audio keeps the card open and retry plays the same Vietnamese clip'
   page,
 }) => {
   await trackAudio(page);
-  await page.route('**/audio/vietnamese-alphabet/m.mp3', (route) => route.abort('failed'));
+  await page.route('**/audio/vietnamese-alphabet/m.mp3*', (route) => route.abort('failed'));
   await page.goto(path);
   await page.getByRole('button', { name: 'Học chữ m: con mèo', exact: true }).click();
   const dialog = page.getByRole('dialog');
   await expect(dialog.getByRole('alert')).toContainText('Chưa phát được');
   await page.waitForTimeout(3500);
   await expect(dialog).toBeVisible();
-  await page.unroute('**/audio/vietnamese-alphabet/m.mp3');
+  await page.unroute('**/audio/vietnamese-alphabet/m.mp3*');
   await dialog.getByRole('button', { name: 'Thử phát lại' }).click();
   await expect(dialog.getByRole('status')).toContainText('Cùng nghe');
   await expect(dialog.getByRole('status')).toContainText('đóng sau 3 giây');
