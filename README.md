@@ -18,7 +18,7 @@ Lời đọc chỉ gồm âm học vần rồi từ, như **“a — cái ca”*
 
 PJ6 có **29 chữ cái tiếng Việt** đúng thứ tự, chữ hoa/thường bằng font Nunito vui nhộn và29 minh họa SVG tương ứng con vật/đồ vật quen thuộc. Chạm thẻ mở popup ở giữa; giọng nữ **Hoài My (vi-VN)** đọc âm học vần và từ ví dụ, như a–cái ca, ă–cặp sách, â–con gấu. Chữ đang học được tô nổi bật trong từ, giữ dấu chữ và bỏ riêng dấu thanh khi đối chiếu.
 
-Popup tự đóng **3 giây sau khi audio đọc xong**, trả focus về thẻ. Đóng bằng nút/Escape/chạm nền sẽ dừng đọc; rời trang hoặc ẩn tab cũng hủy audio/timer. Tải chậm hay bị chặn phát giữ popup và cho thử lại. Âm thanh, ảnh và font tự host; không cần giọng tiếng Việt cài trên máy, micro hay tài khoản. Đọc âm như a, á, ớ, bờ, cờ, dờ, đờ; i/y cùng âm i và c/k/q cùng âm cờ. Nội dung/nguồn asset và tiêu chí: [kế hoạch PJ6](docs/vietnamese-alphabet-plan.md), `public/audio/vietnamese-alphabet/manifest.json` và các fileSOURCES. Ý tưởng nghe lại/bật tắt tiếng/ngẫu nhiên đã được liệt kê trước khi triển khai, để phiên bản tiếp theo.
+Popup tự đóng **3 giây sau khi audio đọc xong**, trả focus về thẻ. Đóng bằng nút/Escape/chạm nền sẽ dừng đọc; rời trang hoặc ẩn tab cũng hủy audio/timer. Tải chậm hay bị chặn phát giữ popup và cho thử lại. Âm thanh, ảnh và font tự host; không cần giọng tiếng Việt cài trên máy, micro hay tài khoản. Đọc âm như a, á, ớ, bờ, cờ, dờ, đờ; i/y cùng âm i; k đọc ca, q đọc cu theo lựa chọn của người dùng. Nội dung/nguồn asset và tiêu chí: [kế hoạch PJ6](docs/vietnamese-alphabet-plan.md), `public/audio/vietnamese-alphabet/manifest.json` và các fileSOURCES. Ý tưởng nghe lại/bật tắt tiếng/ngẫu nhiên đã được liệt kê trước khi triển khai, để phiên bản tiếp theo.
 
 ## Room Studio 3D
 

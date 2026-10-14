@@ -20,7 +20,7 @@ test('exactly29 Vietnamese letters in order, unique files, familiar examples con
     'gờ',
     'hờ',
     'i',
-    'cờ',
+    'ca',
     'lờ',
     'mờ',
     'nờ',
@@ -28,7 +28,7 @@ test('exactly29 Vietnamese letters in order, unique files, familiar examples con
     'ô',
     'ơ',
     'pờ',
-    'cờ',
+    'cu',
     'rờ',
     'sờ',
     'tờ',
@@ -78,6 +78,18 @@ test('every illustration/audio exists with matching Vietnamese transcript and in
   expect(manifest.clips.find((clip: { id: string }) => clip.id === 'b').transcript).toBe(
     'bờ. con bò.',
   );
+  for (const [id, expected] of [
+    ['h', 'hờ. con hổ.'],
+    ['k', 'ca. cái kẹo.'],
+    ['q', 'cu. quả quýt.'],
+    ['s', 'sờ. con sóc.'],
+    ['x', 'xờ. xe đạp.'],
+  ]) {
+    const clip = manifest.clips.find((item: { id: string }) => item.id === id);
+    expect(clip.transcript).toBe(expected);
+    expect(clip.pauseMs).toBe(400);
+    if (['h', 's', 'x'].includes(id)) expect(clip.soundRate).toBe('-30%');
+  }
   expect(manifest.clips.map((x: { id: string }) => x.id)).toEqual(alphabet.map((x) => x.id));
   expect(readdirSync(media).filter((x) => x.endsWith('.mp3'))).toHaveLength(29);
   for (const [i, letter] of alphabet.entries()) {

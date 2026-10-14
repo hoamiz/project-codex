@@ -4,7 +4,11 @@
   "voice": "vi-VN-HoaiMyNeural",
   "rate": "-15%",
   "created": "2026-10-14",
-  "revision": 3,
+  "revision": 4,
+  "pronunciationOverrides": {
+    "k": "ca",
+    "q": "cu"
+  },
   "source": "Microsoft Edge Read Aloud; generated with edge-tts 7.3.0",
   "clips": [
     {
@@ -70,8 +74,13 @@
     {
       "id": "h",
       "transcript": "hờ. con hổ.",
-      "durationSeconds": 3.24,
-      "sha256": "2baea3e6c819bfd4180892158c46406b060016b5dcfb7cc9519d32a64cdfd59f"
+      "durationSeconds": 4.2,
+      "sha256": "ca7f85f35f4e6066e46bf9264dcbbd38c29a785cdf3408384d60baa1ccb92d65",
+      "soundRate": "-30%",
+      "soundVolume": "+10%",
+      "exampleRate": "-15%",
+      "pauseMs": 400,
+      "synthesis": "separate sound and example"
     },
     {
       "id": "i",
@@ -81,9 +90,14 @@
     },
     {
       "id": "k",
-      "transcript": "cờ. cái kẹo.",
-      "durationSeconds": 3.144,
-      "sha256": "3fb485bc74ee4146ea2b59c7da31c9e007d2785ff07c71a77286953395327b81"
+      "transcript": "ca. cái kẹo.",
+      "durationSeconds": 4.2,
+      "sha256": "68273bb3a0ec647d4f722c45c01953483d12d6212f1e6de4571b613e8acd4644",
+      "soundRate": "-15%",
+      "soundVolume": "+10%",
+      "exampleRate": "-15%",
+      "pauseMs": 400,
+      "synthesis": "separate sound and example"
     },
     {
       "id": "l",
@@ -129,9 +143,14 @@
     },
     {
       "id": "q",
-      "transcript": "cờ. quả quýt.",
-      "durationSeconds": 3.096,
-      "sha256": "1073fb2a0e6b1716318bd784ad5fcadd4a5cd1ff31fd380cd11ed0ef808b2910"
+      "transcript": "cu. quả quýt.",
+      "durationSeconds": 4.2,
+      "sha256": "fed8a9aa6878aae608cb4a1f01e826f7c944a92a2bd4e1a5e4a4c1a780f34e9b",
+      "soundRate": "-15%",
+      "soundVolume": "+10%",
+      "exampleRate": "-15%",
+      "pauseMs": 400,
+      "synthesis": "separate sound and example"
     },
     {
       "id": "r",
@@ -142,8 +161,13 @@
     {
       "id": "s",
       "transcript": "sờ. con sóc.",
-      "durationSeconds": 3.12,
-      "sha256": "c9287df4d74826dfae412fb8a7f1bd4be2b318959b652cced00c4e3594b3b805"
+      "durationSeconds": 4.2,
+      "sha256": "418d8aa7c978edb84b92bb03816a5617fe24d007dd6a328e9d232050a60a0d6a",
+      "soundRate": "-30%",
+      "soundVolume": "+10%",
+      "exampleRate": "-15%",
+      "pauseMs": 400,
+      "synthesis": "separate sound and example"
     },
     {
       "id": "t",
@@ -172,8 +196,13 @@
     {
       "id": "x",
       "transcript": "xờ. xe đạp.",
-      "durationSeconds": 3.144,
-      "sha256": "269573b5deac7583b1db99cbaf1fe84b81867d92706964ac84f71ed0faaa4146"
+      "durationSeconds": 4.2,
+      "sha256": "0e76aeb09b48810383c41659960b553a078adb26e71c6f7d73c0392a7c6cad4e",
+      "soundRate": "-30%",
+      "soundVolume": "+10%",
+      "exampleRate": "-15%",
+      "pauseMs": 400,
+      "synthesis": "separate sound and example"
     },
     {
       "id": "y",

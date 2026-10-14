@@ -23,6 +23,8 @@ Route `/projects/vietnamese-alphabet`, card thứ sáu trong portfolio. Phạm v
 
 Nguồn dữ liệu: `features/vietnamese-alphabet/alphabet.json`; ảnh/audio/font trong `public/`. Bằng chứng test và giới hạn được ghi trong `docs/verification.md` sau khi chạy.
 
-Cập nhật lời đọc (2026-10-14): mỗi clip chỉ đọc âm học vần, nghỉ ngắn, rồi từ; không đọc “Chữ” hoặc “Ví dụ”. Ví dụ `a. cái ca.` tương ứng “a — cái ca”. Giữ giọng Hoài My/tốc độ-15% và thời gian đóng3s sau ended. URL audio revision3 làm mới cache khi thay lời đọc.
+Cập nhật lời đọc (2026-10-14): mỗi clip chỉ đọc âm học vần, nghỉ ngắn, rồi từ; không đọc “Chữ” hoặc “Ví dụ”. Ví dụ `a. cái ca.` tương ứng “a — cái ca”. Giữ giọng Hoài My/tốc độ-15% và thời gian đóng3s sau ended. URL audio revision4 làm mới cache khi thay lời đọc.
 
-Điều chỉnh âm đọc theo yêu cầu (2026-10-14): toàn bộ29 chữ dùng sound học vần, không dùng tên chữ bê/xê/giê/hát/ca… c/k/q cùng âm cờ, i/y cùng âm i; q thường xuất hiện với u trong từ nhưng thẻ hiện tại là chữ q riêng. Không thêm “Chữ”/“Ví dụ” vào audio.
+Điều chỉnh âm đọc theo yêu cầu (2026-10-14): 29 chữ dùng bảng sound đã chốt; k đọc ca, q đọc cu theo yêu cầu mới, i/y cùng âm i. Không thêm “Chữ”/“Ví dụ” vào audio.
+
+Cải thiện h/k/q/s/x (2026-10-14): hờ, ca, cu, sờ, xờ. Tách âm đầu và từ minh họa để giữ cách phát âm độc lập; h/s/x dùng-30% vàâm đầu+10% volume, nghỉ thêm400ms trước từ. Năm clip mới,24 clip giữ nguyên; ghi thông số vàchecksum trong manifestrevision4.

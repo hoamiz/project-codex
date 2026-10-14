@@ -228,3 +228,9 @@ UnitPJ6 **9/9**, PlaywrightPJ6 **10/10** (57,1s), lint0 warning/webtype/build/fo
 Theo yêu cầu mới,29 chữ dùng âm học vần (a, á, ớ, bờ, cờ, dờ, đờ…), không dùng tên chữ. c/k/q cùng âm cờ vài/y cùng âm i. Ví dụ `bờ. con bò.`, `cờ. con cá.`, `đờ. cái đèn.`; tiếp tục không đọc “Chữ” hoặc “Ví dụ”. Catalog sound/manifest readingMode=phonics/revision3 được cập nhật;19 MP3 mới và10 nguyên âm phù hợp giữ nguyên có transcript/duration/SHA256 đã kiểm. AudioURLv3 bỏ cache bản tên chữ.
 
 UnitPJ6 **9/9** kiểm đầy đủ bảng âm vàlời đọcbờ-conbò; E2E **10/10** (59,4s) decode29audio thực, playbacknative thẻb vàđóng3s sauended, lỗi/retry/keyboard/hidden/axe360/768/1440 đạt. Lint0 warning/webtype/build/format/diff đạt; logs `.local/logs/pj6-phonics-unit.log`, `pj6-phonics-e2e.log`, `pj6-phonics-build.log`. Row fingerprints/config cũ giữ nguyên. Không thay BE/schema/container hoặcUI/controller; không dùng kết quả A08 toàn bộ để thay bằng chứng kiểm lại âm đọc này.
+
+### Làm rõ h/k/q/s/x (2026-10-14)
+
+Theo yêu cầu, h=hờ, k=ca, q=cu, s=sờ, x=xờ. Tạo lại5audio bằng cách đọc âm đầu riêng rồi từ minh họa, ghép thêm400ms nghỉ; âm đầu h/s/x-30%, k/q vàtừ-15%, âm đầu+10% volume. Không cắt đầu clip để tránh mất fricative h/s/x. Peak phần âm đầu-7,3 đến-3,9dB, không clipping.24audio khác giữ nguyên/checksum; manifest ghi thông số/revision4/overridekq, URL?v=4 làm mới cache.
+
+Vitest **9/9**, Playwright **14/14** (1,5phút) đạt:5caseplaybacknative h/k/q/s/x và3s sauended, decode29clip, tải chậm/errorretry, keyboard/focus/hidden/unmount vàaxe360/768/1440. Lint0 warning/webtype/build/format/diff đạt. DBlocal ban đầu tắt gâyECONNREFUSED trước khi test chạy; khởi động bằngdb:start vàrerunexit0. Dữ liệu/config cũ đối chiếu giữ nguyên. Logs `.local/logs/pj6-clear-voice-unit.log`, `pj6-clear-voice-e2e.log`, `pj6-clear-voice-build.log`. Không thay BE/schema/UI/controller; kiểm tra máy không thay đánh giá nghe trực tiếp của người dùng.

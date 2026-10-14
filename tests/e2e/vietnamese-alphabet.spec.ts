@@ -110,34 +110,42 @@ test('all29 bundled Vietnamese recordings really decode and illustrations/font l
   expect(remote).toEqual([]);
 });
 
-test('real Vietnamese audio plays once; popup stays during reading and closes3 seconds after native ended', async ({
-  page,
-}) => {
-  await trackAudio(page);
-  await page.goto(path);
-  const card = page.getByRole('button', { name: 'Học chữ b: con bò', exact: true });
-  await card.click();
-  const dialog = page.getByRole('dialog', { name: 'Chữ b — con bò', exact: true });
-  await expect(dialog).toBeVisible();
-  await expect(dialog.getByRole('status')).toContainText('Cùng nghe');
-  await expect(dialog.locator('mark').first()).toHaveText('b');
-  await expect(dialog.getByRole('status')).toContainText('đóng sau 3 giây');
-  const endedAt = await page.evaluate(() => window.alphabetEndedAt);
-  expect(endedAt).toBeGreaterThan(0);
-  await page.waitForTimeout(1400);
-  await expect(dialog).toBeVisible();
-  await expect(dialog).not.toBeVisible();
-  const after = await page.evaluate(() => ({
-    now: performance.now(),
-    audios: window.alphabetTestAudios.length,
-    paused: window.alphabetTestAudios[0].paused,
-  }));
-  expect(after.now - endedAt).toBeGreaterThanOrEqual(2900);
-  expect(after.now - endedAt).toBeLessThan(5500);
-  expect(after.audios).toBe(1);
-  expect(after.paused).toBe(true);
-  await expect(card).toBeFocused();
-});
+for (const letter of alphabet.filter((item) => ['h', 'k', 'q', 's', 'x'].includes(item.id))) {
+  test(`native ${letter.letter} audio plays once and closes3 seconds after ended`, async ({
+    page,
+  }) => {
+    await trackAudio(page);
+    await page.goto(path);
+    const card = page.getByRole('button', {
+      name: `Học chữ ${letter.letter}: ${letter.example}`,
+      exact: true,
+    });
+    await card.click();
+    const dialog = page.getByRole('dialog', {
+      name: `Chữ ${letter.letter} — ${letter.example}`,
+      exact: true,
+    });
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByRole('status')).toContainText('Cùng nghe');
+    await expect(dialog.locator('mark').first()).toHaveText(letter.letter);
+    await expect(dialog.getByRole('status')).toContainText('đóng sau 3 giây');
+    const endedAt = await page.evaluate(() => window.alphabetEndedAt);
+    expect(endedAt).toBeGreaterThan(0);
+    await page.waitForTimeout(1400);
+    await expect(dialog).toBeVisible();
+    await expect(dialog).not.toBeVisible();
+    const after = await page.evaluate(() => ({
+      now: performance.now(),
+      audios: window.alphabetTestAudios.length,
+      paused: window.alphabetTestAudios[0].paused,
+    }));
+    expect(after.now - endedAt).toBeGreaterThanOrEqual(2900);
+    expect(after.now - endedAt).toBeLessThan(5500);
+    expect(after.audios).toBe(1);
+    expect(after.paused).toBe(true);
+    await expect(card).toBeFocused();
+  });
+}
 
 test('slow audio does not start the close timer while loading', async ({ page }) => {
   let allow!: () => void;
