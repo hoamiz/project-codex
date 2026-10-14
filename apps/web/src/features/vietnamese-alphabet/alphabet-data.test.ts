@@ -88,8 +88,15 @@ test('every illustration/audio exists with matching Vietnamese transcript and in
     const clip = manifest.clips.find((item: { id: string }) => item.id === id);
     expect(clip.transcript).toBe(expected);
     expect(clip.pauseMs).toBe(400);
-    if (['h', 's', 'x'].includes(id)) expect(clip.soundRate).toBe('-30%');
   }
+  // Hoài My đọc "hờ" ở -30% nghe gần "hà"; giữ tốc độ -15% như các chữ khác.
+  expect(manifest.clips.find((clip: { id: string }) => clip.id === 'h').soundRate).toBe('-15%');
+  // TTS đọc "sờ" gần như không có âm xát (nghe thành "trờ"); "sở" cho tiếng "sh" đúng.
+  expect(manifest.clips.find((clip: { id: string }) => clip.id === 's').soundText).toBe('sở');
+  // Hoài My đọc "xờ" chỉ còn "ờ"; phần âm x lấy từ Google TTS có âm xát s thật.
+  expect(manifest.clips.find((clip: { id: string }) => clip.id === 'x').soundSource).toMatch(
+    /gTTS/,
+  );
   expect(manifest.clips.map((x: { id: string }) => x.id)).toEqual(alphabet.map((x) => x.id));
   expect(readdirSync(media).filter((x) => x.endsWith('.mp3'))).toHaveLength(29);
   for (const [i, letter] of alphabet.entries()) {

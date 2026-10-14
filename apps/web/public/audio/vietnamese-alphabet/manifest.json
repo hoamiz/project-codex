@@ -4,12 +4,12 @@
   "voice": "vi-VN-HoaiMyNeural",
   "rate": "-15%",
   "created": "2026-10-14",
-  "revision": 4,
+  "revision": 7,
   "pronunciationOverrides": {
     "k": "ca",
     "q": "cu"
   },
-  "source": "Microsoft Edge Read Aloud; generated with edge-tts 7.3.0",
+  "source": "Microsoft Edge Read Aloud; generated with edge-tts 7.3.0 (x sound: Google Translate TTS via gTTS 2.5.4)",
   "clips": [
     {
       "id": "a",
@@ -75,9 +75,10 @@
       "id": "h",
       "transcript": "hờ. con hổ.",
       "durationSeconds": 4.2,
-      "sha256": "ca7f85f35f4e6066e46bf9264dcbbd38c29a785cdf3408384d60baa1ccb92d65",
-      "soundRate": "-30%",
-      "soundVolume": "+10%",
+      "sha256": "79a9b44cc582a37889b8ab4c9a48b9d381566e8fd9582a66b0facc223653086e",
+      "soundRate": "-15%",
+      "soundVolume": "+0%",
+      "normalizedPeakDb": -6,
       "exampleRate": "-15%",
       "pauseMs": 400,
       "synthesis": "separate sound and example"
@@ -162,9 +163,10 @@
       "id": "s",
       "transcript": "sờ. con sóc.",
       "durationSeconds": 4.2,
-      "sha256": "418d8aa7c978edb84b92bb03816a5617fe24d007dd6a328e9d232050a60a0d6a",
-      "soundRate": "-30%",
-      "soundVolume": "+10%",
+      "sha256": "a604da5277a56a0de77598f16c822de886d7ba0e55394bc86779def8929a5441",
+      "soundText": "sở",
+      "soundRate": "-15%",
+      "soundVolume": "+0%",
       "exampleRate": "-15%",
       "pauseMs": 400,
       "synthesis": "separate sound and example"
@@ -196,10 +198,9 @@
     {
       "id": "x",
       "transcript": "xờ. xe đạp.",
-      "durationSeconds": 4.2,
-      "sha256": "0e76aeb09b48810383c41659960b553a078adb26e71c6f7d73c0392a7c6cad4e",
-      "soundRate": "-30%",
-      "soundVolume": "+10%",
+      "durationSeconds": 3.36,
+      "sha256": "976a96339816d4f30e87aefdc97359463ba69675912356f63485e9772c0198f2",
+      "soundSource": "Google Translate TTS via gTTS 2.5.4, vi, slow",
       "exampleRate": "-15%",
       "pauseMs": 400,
       "synthesis": "separate sound and example"

@@ -4,7 +4,7 @@ export const alphabet = catalog;
 export type Letter = (typeof alphabet)[number];
 export const illustrationUrl = (letter: Letter) => `/images/alphabet/${letter.id}.svg`;
 // Đổi revision khi thay lời đọc để trình duyệt không phát lại file audio cũ từ cache.
-export const audioUrl = (letter: Letter) => `/audio/vietnamese-alphabet/${letter.id}.mp3?v=4`;
+export const audioUrl = (letter: Letter) => `/audio/vietnamese-alphabet/${letter.id}.mp3?v=7`;
 /** Dùng bảng âm đã chốt với người dùng: k đọc ca, q đọc cu; không thêm lời dẫn. */
 export const spokenText = (letter: Letter) => `${letter.sound}. ${letter.example}.`;
 
