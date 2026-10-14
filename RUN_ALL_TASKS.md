@@ -1,5 +1,7 @@
 # Prompt chạy toàn bộ task của project-codex
 
+**PJ7 Scan Studio 3D** có [kế hoạch S01–S24](docs/scan-studio-plan.md) và [prompt triển khai riêng](RUN_PJ7_TASKS.md). Khi được giao làm PJ7, dùng prompt riêng và tiếp tục checklist hiện tại. PJ7 tập trung vào vật thể chính trong một ảnh, crop/mask trước khi gửi AI. Việc lập kế hoạch chưa cho phép gọi AI trả phí hoặc chạy lại bootstrap T01–T33.
+
 Dán phần trong khối bên dưới vào Codex. Prompt này giao quyền triển khai toàn bộ kế hoạch; không chỉ lập kế hoạch hoặc làm một task rồi chờ.
 
 Prompt bên dưới giữ phạm vi T01–T33 ban đầu đã nghiệm thu. **PJ5 Brick Playground 3D** có hợp đồng B01–B22 tại [docs/brick-playground-plan.md](docs/brick-playground-plan.md) và prompt [RUN_PJ5_TASKS.md](RUN_PJ5_TASKS.md); đọc checklist/nhật ký PJ5 trước khi thực hiện hoặc tiếp tục, không chạy lại bootstrap cũ.

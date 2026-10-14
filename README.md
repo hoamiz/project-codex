@@ -12,6 +12,10 @@ Portfolio độc lập với **React 19 + TypeScript + Vite 8 + Tailwind CSS 4**
 | Brick Playground 3D | `/projects/brick-playground`    | Lắp gạch, chọn màu, kéo thả/xếp chồng, thùng rác và chia sẻ     |
 | Bé vui học chữ      | `/projects/vietnamese-alphabet` | 29 chữ tiếng Việt, minh họa và popup đọc chữ/từ ví dụ           |
 
+## PJ7 — Scan Studio 3D (kế hoạch)
+
+PJ7 **Scan Studio 3D** đang ở bước lập kế hoạch: một ảnh → chọn vật thể chính/tách nền → tạo model 3D → xem và tải GLB. Có 24 task tại [kế hoạch PJ7](docs/scan-studio-plan.md), [checklist](PORTFOLIO_TASKS.md) và [prompt triển khai](RUN_PJ7_TASKS.md). Portfolio hiện có sáu demo; card, route và API PJ7 sẽ được thêm khi triển khai. AI dựng model cần dịch vụ hoặc GPU phù hợp; hosting FE/BE/DB miễn phí không cung cấp sẵn khả năng này.
+
 ## Bé vui học chữ
 
 Lời đọc chỉ gồm âm học vần rồi từ, như **“a — cái ca”**, không đọc lời dẫn “Chữ” hoặc “Ví dụ”. Khi cập nhật âm thanh, revision trong URL được tăng để trình duyệt tải bản mới.

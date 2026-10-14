@@ -618,3 +618,34 @@ A07–A08 — hoàn thành (2026-10-13): npm run check exit0,50API+34web+55E2E (
 Dev script — hoàn thành (2026-10-14): theo yêu cầu, rootdev chạy npm run db:start && concurrently -k FE/API. npmrun db:start exit0 xác nhận project_codex_dev/test sẵn sàng; JSON/Prettier/diff check đạt. FE/API commands vàdependencies/lockfile không đổi. README hướng dẫn npmdev tự khởi động DB; không chạy lại bộ test ứng dụng cho thay đổi một dòng script. Người dùng giao sync toàn bộ thay đổi voice/A09/A10 vàdev lênGitHub.
 
 - [x] A11 — Cải thiện h/k/q/s/x (2026-10-14): đọc hờ/ca/cu/sờ/xờ theo yêu cầu. Năm clip được tạo lại bằng hai đoạn âm+từ riêng, nghỉ thêm400ms; h/s/x âm đầu-30%, k/q vàtừ-15%, âm đầu+10% volume. Không cắt đầu fricative/tiếng thở, kiểm peak phần âm đầu-7,3 đến-3,9dB không clipping.24clip còn lại/checksum giữ nguyên. Manifestv4/cacheURLv4 mới; unit9/9, E2E14/14 (1,5phút) có5nativeplayback/3s sauended,29decode/retry/keyboard/hidden/axe3viewport đạt; lint0/webtype/build/format/diff đạt. Browser startup ban đầu bịECONNREFUSED doDBlocal tắt; db:start phục hồi vàtest lại exit0. Các fingerprints dữ liệu/config cũ giữ nguyên. Logs pj6-clear-voice-unit/e2e/build; không đổi BE/schema/UI/controller.
+
+## PJ7 — Scan Studio 3D (kế hoạch 2026-10-14)
+
+Người dùng yêu cầu plan ảnh thành model 3D và xác nhận chỉ tập trung phần chính của ảnh. MVP đề xuất một ảnh/vật thể, crop/mask/tách nền trước khi gửi AI; phần khuất do AI suy đoán. [Kế hoạch và task PJ7](docs/scan-studio-plan.md), [prompt thực hiện khi được giao](RUN_PJ7_TASKS.md). Đây là checklist S01–S24; tất cả chưa triển khai, chỉ kiểm tra tài liệu. Provider/quota/storage chưa chốt, ngân sách mặc định 0; không gọi AI hoặc tạo dịch vụ trong lượt lập kế hoạch.
+
+- [ ] S01 — Phạm vi và vật thể chính.
+- [ ] S02 — Provider, storage và ngân sách.
+- [ ] S03 — Contract và state thuần.
+- [ ] S04 — Migration và seed.
+- [ ] S05 — Auth, quota và ngân sách.
+- [ ] S06 — Storage adapter và config.
+- [ ] S07 — Upload và kiểm PNG.
+- [ ] S08 — AI adapter.
+- [ ] S09 — Tạo job và idempotency.
+- [ ] S10 — Worker và khôi phục.
+- [ ] S11 — Nhập và kiểm GLB.
+- [ ] S12 — Status, lịch sử và expiry API.
+- [ ] S13 — Giao diện chọn ảnh.
+- [ ] S14 — Crop và mask vật thể.
+- [ ] S15 — Submit, tiến trình và restore.
+- [ ] S16 — Viewer GLB.
+- [ ] S17 — Tải model.
+- [ ] S18 — Lịch sử và chia sẻ.
+- [ ] S19 — Card thứ bảy và routes.
+- [ ] S20 — Responsive, a11y và hiệu năng.
+- [ ] S21 — Unit, API và E2E.
+- [ ] S22 — Kiểm nghiệm model AI thật.
+- [ ] S23 — CI, compiled và startup.
+- [ ] S24 — Nghiệm thu và tài liệu.
+
+Nhật ký lập kế hoạch PJ7 (2026-10-14): đã ghi yêu cầu vật thể chính, crop/mask/xem trước PNG và chỉ gửi phần chọn cho AI; kiến trúc job bất đồng bộ, storage riêng, GLB và ngân sách mặc định 0. Tạo 24 task S01–S24 với phụ thuộc, tiêu chí và prompt; tất cả chưa triển khai. Kiểm 42 link cục bộ, code fence và đồ thị phụ thuộc; Prettier và git diff --check đạt. Đã đọc tài liệu công khai Meshy/Tripo/TRELLIS.2/COLMAP; chưa xác minh giá/quota/tài khoản hoặc gọi AI. Chỉ sửa tài liệu; không sửa source/dependencies/database/migrations, không chạy tests ứng dụng hoặc commit/push PJ7.
