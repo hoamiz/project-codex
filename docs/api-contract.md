@@ -42,3 +42,5 @@ Chuẩn hóa title/màu/UUID và sort brick theoUUID trước hash; đổi thứ
 ## Bé vui học tập (PJ7)
 
 GET /portfolio/projects có thêm card thứ bảy kids-learning, URL /projects/kids-learning và image /images/kids-learning.svg. Migration006 mở whitelist, giữ metadata cũ và không yêu cầu seed lại khi nâng cấp DB sáu project. Các route con /projects/kids-learning/matching và /projects/kids-learning/tracing thuộc React SPA; không có endpoint gửi/chấm nét hoặc lưu hồ sơ trẻ. Asset MP3/SVG/font thiếu vẫn trả404, không trả HTML fallback. Sticker/âm thanh lưu trên thiết bị, không đồng bộ với API.
+
+Bài 3 `/projects/kids-learning/number-search` và Bài 4 `/projects/kids-learning/hide-and-seek` là route SPA cục bộ của cùng card kids-learning. Khoảng số, số đã tìm, chủ đề và vị trí hình chỉ ở bộ nhớ trình duyệt; không có API upload, hồ sơ trẻ hoặc ghi tiến độ mới.

@@ -8,12 +8,19 @@ import { createTrace, tracePoints, gradeTrace } from './tracing-core';
 import type { Level } from './lessons';
 
 describe('L01 lesson contract', () => {
-  test('keeps four meaningful pairs, three paths and Easy default independent of range', () => {
+  test('keeps eleven meaningful pairs, three paths and Easy default independent of range', () => {
     expect(companions.map((c) => [c.id, c.destination])).toEqual([
       ['bee', 'flower'],
       ['dog', 'bone'],
       ['cow', 'grass'],
       ['child', 'house'],
+      ['rabbit', 'carrot'],
+      ['cat', 'fish'],
+      ['duck', 'pond'],
+      ['bird', 'nest'],
+      ['car', 'house'],
+      ['school-child', 'school'],
+      ['cyclist', 'park'],
     ]);
     expect(patterns).toEqual(['straight', 'zigzag', 'wave']);
     expect(levels.easy.tolerance).toBeGreaterThan(levels.medium.tolerance);
@@ -71,10 +78,10 @@ describe('L13 trace state and obsolete callbacks', () => {
 
 describe('L11 bounded reproducible tracing templates', () => {
   test('all pairs/patterns/variants fit both mobile and desktop with fixed endpoints', () => {
-    for (let c = 0; c < 4; c++)
+    for (let c = 0; c < companions.length; c++)
       for (let p = 0; p < 3; p++)
         for (let v = 0; v < 2; v++) {
-          const sequence = [(c + 0.1) / 4, (p + 0.1) / 3, (v + 0.1) / 2];
+          const sequence = [(c + 0.1) / companions.length, (p + 0.1) / 3, (v + 0.1) / 2];
           let i = 0;
           const round = createTrace('easy', () => sequence[i++]);
           expect(round.companion).toBe(companions[c]);

@@ -256,3 +256,24 @@ Bằng chứng tương tác: kiểm45 khoảng số, quy tắc ô sửa sau/draf
 Các lỗi đã chẩn đoán: SVG đo trước khi mount/letterbox được sửa bằng đo sau render và viewBox đúng; hai màu nhãn thiếu contrast được tăng tương phản. Testdatabase cũ kỳ vọng6card đã đổi đúng7, vẫn assert exact count. Một lần Vite reload khi chỉnh README trong lúc E2E làm mất đề; dừng chỉnh source khi chạy và case lặp3 lần đều đạt. Testaudio ban đầu đọc trước commit/cleanup đã đổi chờ menu và pause<1s; không nới đến lúc clip tự kết thúc. SmokeVite nhận HTML fallback200 cho Accept*/*; request media dùng audio/mpeg để nhận404, còn smoke production vẫn giữ kiểm404 mặc định. Không bỏ assertion, reset dữ liệu, tắt TLS/checksum hoặc dùng stub runtime.
 
 Cloud start_skill đã lưu/đọc lại đúng7demo/PJ7/migration006; install_script, network, secret requirements và legacy suffix giữ nguyên. Không thay dependency hoặc lockfile, không gọi API trả phí. Chưa chạy GitHubActions cho thay đổi chưa push, chưa public deploy/publish snapshot hoặc thử khôi phục trên cloud task mới. Chưa thử Safari/iOS/Android/bút phần cứng thật và chưa nghe đánh giá chủ quan trên các thiết bị đó. Kết quả Chromium/CDP không thay bằng chứng thiết bị thật.
+
+## PJ7 — Hoạt cảnh chậm và Bài 3/4 (2026-10-15)
+
+Bài 2 có 11 cặp nhân vật–đích, gồm đủ ô tô gia đình–nhà, bạn nhỏ–trường học, chim–tổ và bé đạp xe–công viên. Nhân vật đi theo nét đã chấm đúng, làm mượt bằng đường bậc hai trong 7,2 giây, tăng/giảm tốc êm rồi hành động ở đích 2,4 giây. Giảm nhún, thêm bước chân/cánh bay/bánh xe phù hợp; bỏ tim nhấp nháy. Resize giữ timeline, cả di chuyển/động tác tạm dừng khi ẩn trang. Nét trả về cũng đổi hệ tọa độ theo độ rộng mới, vẫn giữ nét gốc để chấm.
+
+Bài 3 tìm số có ba bản sao mỗi số, đen ban đầu, tìm tăng dần và đổi sang màu cố định khi đúng. Giữ form/preset/quy tắc start/end; chúc mừng 4,2 giây đủ nghe rồi chuyển số, gợi ý không tính hộ. Bài 4 gồm năm chủ đề, 24 hình và năm tranh nền SVG riêng; mỗi màn năm hình, vị trí theo địa hình và che một phần bằng lá/cỏ/đá. Chọn thẻ rồi tìm trong tranh, khóa hình đúng, gợi ý, Màn tiếp ngẫu nhiên tránh lặp chủ đề trước. Hướng dẫn mẫu, giọng Việt và sticker một lần/round dùng chung; không thêm API, DB hoặc dữ liệu trẻ.
+
+| Kiểm tra thực hiện | Kết quả | Bằng chứng cục bộ (Git bỏ qua) |
+| --- | --- | --- |
+| Toàn web unit/component sau thay đổi cuối | 88/88, gồm 45 khoảng tìm số, thứ tự/nhấp lặp/callback cũ, năm chủ đề, vị trí/asset và pause/cleanup timer | .local/logs/pj7-discovery-unit-final.log |
+| E2E hoạt cảnh trước khi thêm Bài 3/4 | 48/48 (7,7 phút), ma trận cặp cũ + bảy cặp mới, audio/keyboard/touch/axe | .local/logs/pj7-journeys-e2e-final.log |
+| E2E Bài 3/4 sau chỉnh UI | 12/12 (52,5 giây), hoàn thành số/cảnh thật, range/preset, hint, hidden/tutorial/hủy timer, chọn thẻ/sai/khóa/màn random, touch/keyboard, axe/44 px ở 360/768/1440 | .local/logs/pj7-discovery-e2e-final.log |
+| Hồi quy phần bị ảnh hưởng sau tích hợp | 8/8 (56,2 giây), card/routes/lazy, nét thực/resize và đường trả về, hidden/touch/unmount, bút bàn phím, audio/mute và axe ba kích thước | .local/logs/pj7-discovery-regression-final.log |
+| Âm thanh | 52 MP3 native AudioContext decode có mẫu âm, playback thực; transcript/duration/SHA256/revision 3 đạt. 43 clip mới trong lượt này; chín MP3 ban đầu giữ nguyên, không TTS runtime | Unit/audio E2E và manifest.json |
+| Lint/typecheck/format/build/deploy manifest | Đạt; cả hai workspace build, 5/5 routing/gateway tests | Lệnh nghiệm thu trong phiên |
+| npm run verify:build sau nguồn cuối | Bảy demo, năm URL PJ7, direct/reload/lazy, media MIME/API/asset 404 và SPA/auth đạt | .local/logs/pj7-discovery-compiled-final.log |
+| Xem UI và bảo toàn | Đã xem 11 hoạt cảnh, năm cảnh khám phá và số đen/đổi màu ở mobile; dữ liệu/cấu hình cũ, migrations và root lockfile giữ nguyên; secret/artifact scan đạt | .local/pj7/*.png, preserve.mjs, scan.mjs |
+
+Lỗi đã sửa: phép đo native cho thấy nét sau resize còn tọa độ cũ (mép 862 thay vì 510); dùng cùng phép đổi tọa độ cho animation và nét trả về, E2E kiểm lại tọa độ thực đạt. Kiểm pause đợi Animation.ready để loại frame đang chờ, không nới assertion. Helper test số ban đầu dùng nth trên danh sách bị rút gọn sau mỗi lần tìm, được sửa sang danh sách ô ổn định; chọn chủ đề dùng role/name của combobox. Đã dừng batch lỗi và chạy lại đủ 12 test. Axe phát hiện nhãn chủ đề contrast 4,4:1, đã tối màu; xem ảnh phát hiện font button bị font:inherit ghi đè, đã sửa độ ưu tiên CSS và thêm kiểm font thực ≥40 px. Giữ đầy đủ assertion, không ép state hoàn thành hoặc bỏ case.
+
+Không chạy lại toàn bộ API/container vì không thay API, SQL, dependency hoặc cấu hình container; compiled smoke đã kiểm bảy demo. Bộ 48 E2E được ghi ở thời điểm trước Bài 3/4, không thay bằng chứng cho 12 + 8 test sau tích hợp. Giới hạn vẫn là Chromium/CDP; chưa thử Safari/iOS/Android hoặc bút phần cứng thật, chưa đánh giá nghe chủ quan trên các thiết bị đó. Chưa commit/push/deploy các cập nhật này.

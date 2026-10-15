@@ -113,6 +113,8 @@ export async function smoke(
       ['/projects/kids-learning', 'Chơi một chút.'],
       ['/projects/kids-learning/matching', 'Nối số với hình'],
       ['/projects/kids-learning/tracing', 'Đồ nét vui nhộn'],
+      ['/projects/kids-learning/number-search', 'Tìm số sắc màu'],
+      ['/projects/kids-learning/hide-and-seek', 'Trốn tìm kỳ thú'],
     ]) {
       await page.goto(webOrigin + route);
       await page.getByRole('heading').filter({ hasText: heading }).waitFor();

@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { companions } from './lessons';
+import { discoveryVoiceIds } from './discovery-lessons';
 export const voiceIds = [
   'matching',
-  'bee',
-  'dog',
-  'cow',
-  'child',
+  ...companions.map((companion) => companion.id),
   'success',
   'retry',
   'complete',
   'tracing',
+  ...discoveryVoiceIds,
 ] as const;
 export const soundKey = 'project-codex:kids-learning:sound:v1';
 interface Voice extends EventTarget {

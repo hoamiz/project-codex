@@ -3,6 +3,9 @@ import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Sparkles, Volume2, VolumeX } from 'lucide-react';
 import { MatchingPage } from './matching-page';
 import { TracingPage } from './tracing-page';
+import { NumberSearchPage } from './number-search-page';
+import { HideAndSeekPage } from './hide-and-seek-page';
+import { DiscoveryTutorial } from './discovery-tutorial';
 import { basePath, type Level } from './lessons';
 import { Tutorial } from './tutorial';
 import { useLearningAudio } from './learning-audio';
@@ -95,6 +98,45 @@ function LessonMenu() {
               </span>
             </div>
           </Link>
+          <Link className="learning-menu-card number-search" to={`${basePath}/number-search`}>
+            <div className="learning-card-top">
+              <span>BÀI 03</span>
+              <ArrowUpRight size={22} />
+            </div>
+            <div className="learning-card-art number-search-menu-art" aria-hidden="true">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+            </div>
+            <div className="learning-card-copy">
+              <h3>Tìm số sắc màu</h3>
+              <p>Tìm số đen, khám phá sắc màu.</p>
+              <span className="learning-card-cta">
+                Cùng tìm số <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </Link>
+          <Link className="learning-menu-card hide-seek" to={`${basePath}/hide-and-seek`}>
+            <div className="learning-card-top">
+              <span>BÀI 04</span>
+              <ArrowUpRight size={22} />
+            </div>
+            <div className="learning-card-art hide-seek-menu-art">
+              <img src="/images/kids-learning/scene-jungle.svg" alt="" />
+              <img
+                className="seek-preview-bird"
+                src="/images/kids-learning/bird.svg"
+                alt="Chim đang nấp trong khu rừng"
+              />
+            </div>
+            <div className="learning-card-copy">
+              <h3>Trốn tìm kỳ thú</h3>
+              <p>Các bạn nhỏ đang nấp ở đâu?</p>
+              <span className="learning-card-cta">
+                Cùng khám phá <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </Link>
         </div>
       </section>
       <div className="learning-home-note">
@@ -110,7 +152,14 @@ export default function KidsLearning() {
   const location = useLocation();
   const path = location.pathname.replace(/\/+$/, '');
   const home = path === basePath;
-  const tracing = path === basePath + '/tracing';
+  const lesson = path.endsWith('/number-search')
+    ? 'number-search'
+    : path.endsWith('/hide-and-seek')
+      ? 'hide-and-seek'
+      : path.endsWith('/tracing')
+        ? 'tracing'
+        : 'matching';
+  const discovery = lesson === 'number-search' || lesson === 'hide-and-seek';
   const [tutorial, setTutorial] = useState(false);
   const tutorialTrigger = useRef<HTMLButtonElement>(null);
   const audio = useLearningAudio();
@@ -155,17 +204,19 @@ export default function KidsLearning() {
               <Sparkles size={16} />
               <span>{rewards.ids.length}/12</span>
             </button>
-            <label className="learning-level">
-              Độ khó
-              <select
-                value={level}
-                title="Áp dụng khi tạo bài mới"
-                onChange={(e) => setLevel(e.target.value as Level)}
-              >
-                <option value="easy">Dễ</option>
-                <option value="medium">Vừa</option>
-              </select>
-            </label>
+            {!discovery && (
+              <label className="learning-level">
+                Độ khó
+                <select
+                  value={level}
+                  title="Áp dụng khi tạo bài mới"
+                  onChange={(e) => setLevel(e.target.value as Level)}
+                >
+                  <option value="easy">Dễ</option>
+                  <option value="medium">Vừa</option>
+                </select>
+              </label>
+            )}
             <button
               className="learning-icon-button"
               aria-label={audio.enabled ? 'Tắt âm thanh' : 'Bật âm thanh'}
@@ -181,6 +232,8 @@ export default function KidsLearning() {
             <Link to={basePath}>← Chọn bài</Link>
             <NavLink to={`${basePath}/matching`}>Nối số</NavLink>
             <NavLink to={`${basePath}/tracing`}>Đồ nét</NavLink>
+            <NavLink to={`${basePath}/number-search`}>Tìm số</NavLink>
+            <NavLink to={`${basePath}/hide-and-seek`}>Trốn tìm</NavLink>
           </nav>
         )}
         {!home && (
@@ -189,16 +242,13 @@ export default function KidsLearning() {
               className="learning-button"
               ref={tutorialTrigger}
               onClick={() => {
-                audio.speak(tracing ? 'tracing' : 'matching');
+                audio.speak(lesson);
                 setTutorial(true);
               }}
             >
               Xem cách chơi
             </button>
-            <button
-              className="learning-button"
-              onClick={() => audio.speak(tracing ? 'tracing' : 'matching')}
-            >
+            <button className="learning-button" onClick={() => audio.speak(lesson)}>
               Nghe hướng dẫn
             </button>
           </div>
@@ -224,6 +274,8 @@ export default function KidsLearning() {
           <Route index element={<LessonMenu />} />
           <Route path="matching" element={<MatchingPage {...props} />} />
           <Route path="tracing" element={<TracingPage {...props} />} />
+          <Route path="number-search" element={<NumberSearchPage {...props} />} />
+          <Route path="hide-and-seek" element={<HideAndSeekPage {...props} />} />
           <Route
             path="*"
             element={
@@ -239,16 +291,26 @@ export default function KidsLearning() {
           <span>♥ Dành cho những bàn tay nhỏ</span>
         </footer>
       </div>
-      {tutorial && (
-        <Tutorial
-          kind={tracing ? 'tracing' : 'matching'}
-          onClose={() => {
-            audio.stop();
-            setTutorial(false);
-          }}
-          returnFocus={tutorialTrigger.current}
-        />
-      )}
+      {tutorial &&
+        (discovery ? (
+          <DiscoveryTutorial
+            kind={lesson}
+            onClose={() => {
+              audio.stop();
+              setTutorial(false);
+            }}
+            returnFocus={tutorialTrigger.current}
+          />
+        ) : (
+          <Tutorial
+            kind={lesson}
+            onClose={() => {
+              audio.stop();
+              setTutorial(false);
+            }}
+            returnFocus={tutorialTrigger.current}
+          />
+        ))}
       {collection && (
         <Collection
           ids={rewards.ids}

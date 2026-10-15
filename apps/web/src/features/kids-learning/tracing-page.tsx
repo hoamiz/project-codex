@@ -6,6 +6,7 @@ import { createTrace, gradeTrace, tracePoints } from './tracing-core';
 import { initialTracing, tracingReducer } from './lesson-state';
 import type { LessonProps } from './matching-page';
 import { LessonAnimation } from './lesson-animation';
+import { scaleStroke } from './journey-path';
 
 export function TracingPage({ level, blocked = false, onSpeak, onComplete }: LessonProps) {
   const [state, dispatch] = useReducer(tracingReducer, undefined, () =>
@@ -14,6 +15,7 @@ export function TracingPage({ level, blocked = false, onSpeak, onComplete }: Les
   const [started, setStarted] = useReducer(() => true, false);
   const host = useRef<HTMLDivElement>(null);
   const width = useBoardWidth(host);
+  const drawnWidth = useRef(width);
   const height = 240;
   const guide = tracePoints(state.round, width, height);
   const awarded = useRef<string | null>(null);
@@ -53,6 +55,7 @@ export function TracingPage({ level, blocked = false, onSpeak, onComplete }: Les
   function submit(points: Point[]) {
     keyboardStroke.current = null;
     const grade = gradeTrace(points, guide, state.round.level);
+    drawnWidth.current = width;
     dispatch({ type: 'submit', points, grade });
     onSpeak(grade.accepted ? 'success' : 'retry');
   }
@@ -133,137 +136,141 @@ export function TracingPage({ level, blocked = false, onSpeak, onComplete }: Les
             data-level={state.round.level}
             data-phase={state.phase}
           >
-            {state.phase === 'animating' ? (
-              <LessonAnimation
-                round={state.round}
-                width={width}
-                sequence={state.sequence}
-                onDone={() =>
-                  dispatch({
-                    type: 'animationDone',
-                    roundId: state.round.id,
-                    sequence: state.sequence,
-                  })
-                }
-              />
-            ) : (
-              <>
-                <div className="tracing-companions">
-                  <div>
-                    <img src={`/images/kids-learning/${companion.id}.svg`} alt={companion.name} />
-                    <span>{companion.name}</span>
-                  </div>
-                  <p>Đến với {companion.target}</p>
-                  <div>
-                    <img
-                      src={`/images/kids-learning/${companion.destination}.svg`}
-                      alt={companion.target}
-                    />
-                    <span>{companion.target}</span>
-                  </div>
-                </div>
-                <div ref={host} className="tracing-paper">
-                  <DrawingBoard
-                    width={width}
-                    height={height}
-                    label="Bảng đồ nét, Home về đầu, Space đặt bút, phím mũi tên vẽ, Enter nộp"
-                    disabled={locked}
-                    onKeyDown={keyboard}
-                    onStart={(p) => {
-                      if (distance(p, guide[0]) > 22) return false;
-                      keyboardUsed.current = false;
-                      keyboardStroke.current = null;
-                      dispatch({ type: 'cancel' });
-                      dispatch({ type: 'start' });
-                      return true;
-                    }}
-                    onFinish={submit}
-                    onCancel={() => dispatch({ type: 'cancel' })}
-                  >
-                    <path
-                      className="tracing-guide"
-                      d={polyline(guide)}
-                      stroke="#9a947e"
-                      strokeWidth={levels[state.round.level].stroke}
-                      strokeDasharray="1 12"
-                      fill="none"
-                      strokeLinecap="round"
-                    />
-                    {state.points.length > 0 && (
-                      <path
-                        className={`tracing-attempt ${state.grade?.accepted ? 'correct' : 'wrong'}`}
-                        d={polyline(state.points)}
-                        fill="none"
-                        strokeWidth="5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+            <div ref={host}>
+              {state.phase === 'animating' ? (
+                <LessonAnimation
+                  round={state.round}
+                  width={width}
+                  points={state.points}
+                  drawnWidth={drawnWidth.current}
+                  sequence={state.sequence}
+                  onDone={() =>
+                    dispatch({
+                      type: 'animationDone',
+                      roundId: state.round.id,
+                      sequence: state.sequence,
+                    })
+                  }
+                />
+              ) : (
+                <>
+                  <div className="tracing-companions">
+                    <div>
+                      <img src={`/images/kids-learning/${companion.id}.svg`} alt={companion.name} />
+                      <span>{companion.name}</span>
+                    </div>
+                    <p>Đến với {companion.target}</p>
+                    <div>
+                      <img
+                        src={`/images/kids-learning/${companion.destination}.svg`}
+                        alt={companion.target}
                       />
-                    )}
-                    {keyboardStroke.current && (
+                      <span>{companion.target}</span>
+                    </div>
+                  </div>
+                  <div className="tracing-paper">
+                    <DrawingBoard
+                      width={width}
+                      height={height}
+                      label="Bảng đồ nét, Home về đầu, Space đặt bút, phím mũi tên vẽ, Enter nộp"
+                      disabled={locked}
+                      onKeyDown={keyboard}
+                      onStart={(p) => {
+                        if (distance(p, guide[0]) > 22) return false;
+                        keyboardUsed.current = false;
+                        keyboardStroke.current = null;
+                        dispatch({ type: 'cancel' });
+                        dispatch({ type: 'start' });
+                        return true;
+                      }}
+                      onFinish={submit}
+                      onCancel={() => dispatch({ type: 'cancel' })}
+                    >
                       <path
-                        d={polyline(keyboardStroke.current)}
+                        className="tracing-guide"
+                        d={polyline(guide)}
+                        stroke="#9a947e"
+                        strokeWidth={levels[state.round.level].stroke}
+                        strokeDasharray="1 12"
                         fill="none"
-                        stroke="#676cb5"
-                        strokeWidth="5"
                         strokeLinecap="round"
                       />
-                    )}
-                    <circle
-                      data-trace-start="true"
-                      cx={guide[0].x}
-                      cy={guide[0].y}
-                      r="22"
-                      fill="#d7e9db"
-                      stroke="#48775d"
-                      strokeWidth="2"
-                    />
-                    <circle
-                      data-trace-end="true"
-                      cx={guide.at(-1)!.x}
-                      cy={guide.at(-1)!.y}
-                      r="22"
-                      fill="#ffedba"
-                      stroke="#9c8039"
-                      strokeWidth="2"
-                    />
-                    <text
-                      x={guide[0].x}
-                      y={guide[0].y + 5}
-                      textAnchor="middle"
-                      fill="#355d41"
-                      fontSize="14"
-                      fontWeight="900"
-                    >
-                      ●
-                    </text>
-                    <text
-                      x={guide.at(-1)!.x}
-                      y={guide.at(-1)!.y + 5}
-                      textAnchor="middle"
-                      fill="#6d552c"
-                      fontSize="16"
-                      fontWeight="900"
-                    >
-                      ✓
-                    </text>
-                    <circle
-                      className="keyboard-pen"
-                      cx={cursor.x}
-                      cy={cursor.y}
-                      r="5"
-                      fill="#6e6baa"
-                      stroke="white"
-                      strokeWidth="2"
-                      pointerEvents="none"
-                    />
-                  </DrawingBoard>
-                </div>
-                <div className="tracing-foot">
-                  <span>BẮT ĐẦU →</span>
-                  <span>← VỀ ĐÍCH</span>
-                </div>
-              </>
-            )}
+                      {state.points.length > 0 && (
+                        <path
+                          className={`tracing-attempt ${state.grade?.accepted ? 'correct' : 'wrong'}`}
+                          d={polyline(scaleStroke(state.points, drawnWidth.current, width))}
+                          fill="none"
+                          strokeWidth="5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      )}
+                      {keyboardStroke.current && (
+                        <path
+                          d={polyline(keyboardStroke.current)}
+                          fill="none"
+                          stroke="#676cb5"
+                          strokeWidth="5"
+                          strokeLinecap="round"
+                        />
+                      )}
+                      <circle
+                        data-trace-start="true"
+                        cx={guide[0].x}
+                        cy={guide[0].y}
+                        r="22"
+                        fill="#d7e9db"
+                        stroke="#48775d"
+                        strokeWidth="2"
+                      />
+                      <circle
+                        data-trace-end="true"
+                        cx={guide.at(-1)!.x}
+                        cy={guide.at(-1)!.y}
+                        r="22"
+                        fill="#ffedba"
+                        stroke="#9c8039"
+                        strokeWidth="2"
+                      />
+                      <text
+                        x={guide[0].x}
+                        y={guide[0].y + 5}
+                        textAnchor="middle"
+                        fill="#355d41"
+                        fontSize="14"
+                        fontWeight="900"
+                      >
+                        ●
+                      </text>
+                      <text
+                        x={guide.at(-1)!.x}
+                        y={guide.at(-1)!.y + 5}
+                        textAnchor="middle"
+                        fill="#6d552c"
+                        fontSize="16"
+                        fontWeight="900"
+                      >
+                        ✓
+                      </text>
+                      <circle
+                        className="keyboard-pen"
+                        cx={cursor.x}
+                        cy={cursor.y}
+                        r="5"
+                        fill="#6e6baa"
+                        stroke="white"
+                        strokeWidth="2"
+                        pointerEvents="none"
+                      />
+                    </DrawingBoard>
+                  </div>
+                  <div className="tracing-foot">
+                    <span>BẮT ĐẦU →</span>
+                    <span>← VỀ ĐÍCH</span>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
           <details className="learning-pen-help">
             <summary>Dùng bàn phím để vẽ</summary>

@@ -2,6 +2,8 @@
 
 Kế hoạch ngày 2026-10-15 cho project-codex, **đã triển khai và đạt nghiệm thu trong workspace**. Đây là PJ7 đang hoạt động theo yêu cầu mới; [Scan Studio](scan-studio-plan.md) được lưu trữ, chưa tự gán thành PJ8. Trạng thái thực tế của L01–L30 nằm trong [PORTFOLIO_TASKS.md](../PORTFOLIO_TASKS.md), prompt thực hiện tại [RUN_PJ7_TASKS.md](../RUN_PJ7_TASKS.md). Đọc [AGENTS.md](../AGENTS.md) trước khi triển khai.
 
+Cập nhật tiếp theo ngày 2026-10-15: PJ7 đã mở rộng thành **bốn bài**. Bài 3 `/projects/kids-learning/number-search` và Bài 4 `/projects/kids-learning/hide-and-seek` theo [hợp đồng K01–K08](kids-learning-extensions-plan.md). L01–L30 giữ tên và nhật ký nghiệm thu ban đầu; K01–K08 bổ sung phạm vi mới, không đổi DB hoặc tạo project thứ tám.
+
 ## 1. Sản phẩm và phạm vi
 
 Tên **Bé vui học tập**, slug kids-learning. Nhóm tuổi thiết kế đề xuất 4–7 tuổi, có người lớn chọn bài/khoảng số. Giao diện tiếng Việt, sáng, vui, ít chữ, không tính giờ hoặc phạt trẻ khi sai.
@@ -75,12 +77,19 @@ Nút đếm hình và điểm nối là hai vùng thao tác riêng; đếm khôn
 
 Mỗi lượt có **một ô bài tập riêng** gồm hình start bên trái, phần vẽ ở giữa và hình end bên phải. Các cặp được định nghĩa cố định, không ghép ngẫu nhiên hai ảnh rời:
 
-| Cặp           | Hoạt cảnh khi làm đúng                   |
-| ------------- | ---------------------------------------- |
-| Ong → hoa     | Ong bay theo đường tới hoa, dừng hút mật |
-| Chó → xương   | Chó chạy tới xương, dừng gặm             |
-| Bò → cỏ       | Bò đi tới cỏ, dừng ăn                    |
-| Bạn nhỏ → nhà | Bạn nhỏ đi theo đường rồi vào nhà        |
+| Cặp                        | Hoạt cảnh khi làm đúng                   |
+| -------------------------- | ---------------------------------------- |
+| Ong → hoa                  | Ong bay theo đường tới hoa, dừng hút mật |
+| Chó → xương                | Chó chạy tới xương, dừng gặm             |
+| Bò → cỏ                    | Bò đi tới cỏ, dừng ăn                    |
+| Bạn nhỏ → nhà              | Bạn nhỏ đi theo đường rồi vào nhà        |
+| Thỏ → cà rốt               | Thỏ bước đi rồi ăn cà rốt                |
+| Mèo → cá                   | Mèo bước đi rồi ăn cá                    |
+| Vịt → ao nước              | Vịt đi tới ao rồi bơi                    |
+| Chim → tổ                  | Chim bay theo nét rồi đậu vào tổ         |
+| Ô tô gia đình → nhà        | Xe lăn bánh rồi dừng trước nhà           |
+| Bạn nhỏ → trường học       | Bạn nhỏ đi bộ rồi vào trường             |
+| Bạn nhỏ đạp xe → công viên | Đạp xe theo nét rồi dừng ở công viên     |
 
 Khi bấm Bắt đầu/Bài tiếp, chọn ngẫu nhiên một cặp và một mẫu đường: **thẳng, zigzag hoặc sóng**. Nếu có lựa chọn khác thì tránh lặp ngay toàn bộ cặp + mẫu + tham số của lượt trước; vẫn được lặp một cặp với mẫu khác. Không đổi đề khi rerender, resize, thử lại hoặc animation kết thúc. RNG có thể inject để test tái lập.
 
@@ -99,7 +108,7 @@ Khi bấm Bắt đầu/Bài tiếp, chọn ngẫu nhiên một cặp và một m
 
 ### Animation và trở lại ô bài
 
-Sau khi chấm đạt, khóa nhập và thay **chính ô bài đó** bằng hoạt cảnh; không phủ toàn trang hoặc tự đổi cặp. Nhân vật di chuyển theo hình học đường vừa học rồi thực hiện hành động của cặp trong khoảng 3 giây đề xuất.
+Sau khi chấm đạt, khóa nhập và thay **chính ô bài đó** bằng hoạt cảnh; không phủ toàn trang hoặc tự đổi cặp. Theo cập nhật ngày 2026-10-15, nhân vật di chuyển chậm trong 7,2 giây theo nét vẽ đã được chấm đúng, làm mượt nhẹ khi hiển thị và giữ nguyên điểm đầu/cuối. Sau đó có 2,4 giây cho hành động tại đích (ăn/hút mật, bơi, về tổ, vào nhà/trường hoặc đỗ xe); toàn cảnh khoảng 9,6 giây. Bước chân/nhún nhẹ, tăng và giảm tốc êm; resize giữ tiến độ, ẩn trang tạm dừng cả di chuyển lẫn động tác. Bộ chấm vẫn nhận nét gốc, không dùng nét đã làm mượt.
 
 Khi hoạt cảnh kết thúc, khôi phục ô ban đầu với **cùng cặp, cùng đường mẫu**, trạng thái Đã hoàn thành và nút Vẽ lại/Bài tiếp. Vẽ lại bỏ kết quả và cho đồ lại cùng đề; Bài tiếp mới random đề mới. Không tự phát lại hoạt cảnh khi khôi phục hoặc rerender.
 
@@ -130,7 +139,7 @@ Chốt profile vào đề khi bấm Bắt đầu/Bài tiếp; thay lựa chọn 
 
 ### Giọng hướng dẫn tiếng Việt
 
-Dùng giọng Việt rõ, chậm vừa và các clip tự host: hướng dẫn nối số, bốn câu theo cặp đồ nét, lời chúc mừng và “Con thử lại nhé”. Nội dung ngắn, không âm thanh chê. Nếu thêm lời đọc lúc đếm thì đọc đúng số vừa đếm, không tự đọc đáp án trước thao tác.
+Dùng giọng Việt rõ, chậm vừa và các clip tự host: hướng dẫn nối số, 11 câu theo cặp đồ nét, lời chúc mừng và “Con thử lại nhé”. Nội dung ngắn, không âm thanh chê. Nếu thêm lời đọc lúc đếm thì đọc đúng số vừa đếm, không tự đọc đáp án trước thao tác.
 
 Âm thanh mặc định bật nhưng chỉ phát sau thao tác chủ động như Bắt đầu, Xem cách chơi hoặc Nghe hướng dẫn, không autoplay khi vừa tải trang. Có công tắc tắt/bật rõ; tắt dừng ngay âm đang phát và giữ lựa chọn trên thiết bị khi lưu được. Một thời điểm chỉ có một giọng; lượt mới/đổi route/hide/unmount hủy audio cũ. Kết quả chỉ phát một lần, không phát theo từng pointermove/rerender.
 
@@ -151,7 +160,7 @@ React 19 + TypeScript + Tailwind; SVG viewBox + Pointer Events cho đường, CS
 Các module thực tế dưới apps/web/src/features/kids-learning:
 
 - index.tsx: chọn bài, routes, mức độ, công cụ và modal; learning.css giới hạn theme.
-- lessons.ts: kiểu, bốn cặp, ba mẫu, profile Dễ/Vừa và sticker IDs.
+- lessons.ts: kiểu, 11 cặp, ba mẫu, profile Dễ/Vừa và sticker IDs.
 - range-core.ts, matching-core.ts, drawing-core.ts, tracing-core.ts: quy tắc và hình học thuần; lesson-state.ts: reducers và token.
 - drawing-board.tsx: SVG/Pointer Events và đo kích thước; matching-page.tsx/tracing-page.tsx: bảng bài học và bút bàn phím.
 - range-settings.tsx/count-helper.tsx: draft/commit/preset và đếm hình độc lập.
@@ -171,8 +180,8 @@ L01–L30 là checklist mới; các task S01–S24 chỉ thuộc kế hoạch Sc
 
 | Task                              | Phụ thuộc                              | Phạm vi                                    | Tiêu chí và kiểm tra                                                                                                                                            |
 | --------------------------------- | -------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| L01 — Contract và dữ liệu bài học | Không                                  | Types, lessons.ts, plan                    | Chốt hai bài, bốn cặp, ba mẫu, Dễ mặc định, sáu cập nhật đã duyệt và state; giữ scope, không tự thêm loại bài                                                   |
-| L02 — Minh họa và font            | L01                                    | SVG, font, SOURCES                         | Đủ hình đếm và bốn cặp; SVG dễ nhìn, nhóm 1–10 đếm đúng; nguồn/license, xem trực quan desktop/mobile                                                            |
+| L01 — Contract và dữ liệu bài học | Không                                  | Types, lessons.ts, plan                    | Chốt hai bài, 11 cặp, ba mẫu, Dễ mặc định, sáu cập nhật đã duyệt và state; giữ scope, không tự thêm loại bài                                                    |
+| L02 — Minh họa và font            | L01                                    | SVG, font, SOURCES                         | Đủ hình đếm và 11 cặp; SVG dễ nhìn, nhóm 1–10 đếm đúng; nguồn/license, xem trực quan desktop/mobile                                                             |
 | L03 — Chuẩn hóa khoảng số         | L01                                    | range-core.ts                              | Quy tắc ô sửa sau, draft/commit, mọi cạnh 1/10, bằng nhau/rỗng/thập phân; unit đầy đủ bảng ví dụ và bất biến                                                    |
 | L04 — Sinh đề nối số              | L01, L03                               | matching-core.ts                           | Mỗi giá trị một cặp, đúng số hình, xáo phải, không đổi lúc render; test mọi khoảng hợp lệ và RNG cố định                                                        |
 | L05 — Tọa độ và đường vẽ          | L01                                    | drawing-core.ts                            | Pointer → viewBox/CSS px, khoảng cách/lấy mẫu/Bézier, giới hạn bộ nhớ; test scroll/resize/DPR và dữ liệu không hữu hạn                                          |
@@ -198,15 +207,15 @@ L01–L30 là checklist mới; các task S01–S24 chỉ thuộc kế hoạch Sc
 | L25 — Sticker và bộ sưu tập       | L02, L07, L13, L16, L17                | rewards-core.ts, collection.tsx            | 12 sticker, một phần thưởng/đề; tutorial/rerender/animation/Vẽ lại không cấp lặp; version/dedupe, reload, storage hỏng/chặn/đầy vẫn chơi                        |
 | L26 — Mobile, bàn phím và a11y    | L17, L19, L20–L25                      | CSS, controls, keyboard pen                | 360/768/1440, 10 cặp không tràn; controls mới keyboard/focus/axe, ≥44px, scroll/touch/reduced motion; xem tutorial/âm/sticker và hiệu chỉnh cả hai profile      |
 | L27 — Kiểm nghiệm nối số          | L10, L19, L20–L26                      | Unit/component/E2E matching                | Range/presets/blur, Bézier/khóa/sai thay/cancel/resize; đếm không tăng lặp hoặc tự nối; tutorial giữ state, mute/lỗi audio, sticker một lần; pointer/touch thật |
-| L28 — Kiểm nghiệm đồ nét          | L12, L16, L19, L20, L21, L23, L25, L26 | Unit/component/E2E tracing                 | Ba mẫu × bốn cặp × Dễ/Vừa; nét run đạt/đường tắt sai, bốn cảnh về cùng đề; tutorial/voice/rewards không lặp, hidden/unmount/reduced motion                      |
+| L28 — Kiểm nghiệm đồ nét          | L12, L16, L19, L20, L21, L23, L25, L26 | Unit/component/E2E tracing                 | Ba mẫu × 11 cặp × Dễ/Vừa; nét run đạt/đường tắt sai, 11 cảnh về cùng đề; tutorial/voice/rewards không lặp, hidden/unmount/reduced motion                        |
 | L29 — Hồi quy và compiled/deploy  | L18, L19, L27, L28                     | Existing checks/scripts/CI                 | Full checks/compiled/deploy/container phù hợp; DB 6→7, SVG/audio/font MIME, direct/SPA, assets tự host, preserved data/config, không gọi API trả phí            |
 | L30 — Nghiệm thu và tài liệu      | L01–L29                                | README/architecture/verification/checklist | Kết quả thực cho hai bài và sáu cập nhật, Dễ mặc định; review comment/license/audio/sticker/UI, secret/artifact, startup nếu cần; mọi tiêu chí bắt buộc đạt     |
 
 ## 7. Kế hoạch kiểm thử và nghiệm thu
 
-- Unit có ý nghĩa cho range/generation/geometry/state/grader; component test cho thứ tự commit form, locks, retry và callback animation. Kiểm hết 45 khoảng số hợp lệ, ba preset, bốn cặp × ba mẫu × hai mức, không chỉ ví dụ số 3.
+- Unit có ý nghĩa cho range/generation/geometry/state/grader; component test cho thứ tự commit form, locks, retry và callback animation. Kiểm hết 45 khoảng số hợp lệ, ba preset, 11 cặp × ba mẫu × hai mức, không chỉ ví dụ số 3.
 - Browser dùng Pointer Events thật, native mouse và touch; tạo nét qua tọa độ đo từ UI, không gọi trực tiếp hàm hoàn thành hoặc sửa state. Pen cần test logic PointerEvent, ghi rõ nếu chưa có thiết bị bút thật.
-- Chụp và xem màn chọn bài, nối sai/đúng/10 cặp, ba mẫu, bốn cảnh, hướng dẫn bàn tay và bộ sưu tập ở các viewport; axe không thay kiểm đếm hình hoặc chất lượng hoạt cảnh. Ghi rõ chưa thử Safari/iPad/Android thật nếu chỉ chạy Chromium.
+- Chụp và xem màn chọn bài, nối sai/đúng/10 cặp, ba mẫu, 11 cảnh, hướng dẫn bàn tay và bộ sưu tập ở các viewport; axe không thay kiểm đếm hình hoặc chất lượng hoạt cảnh. Ghi rõ chưa thử Safari/iPad/Android thật nếu chỉ chạy Chromium.
 - Bổ sung ca đếm không trùng, không vô tình nối khi chạm hình; tutorial không đổi tiến độ; audio native/mute/chặn autoplay/lỗi/cancel; sticker một lần/đề, đủ bộ, reload và storage hỏng/chặn/đầy. Không dùng mock play() thay kiểm native decode/phát.
 - API/DB dùng schema/fixture riêng, test nâng cấp sáu project và metadata đã chỉnh; không reset DB người dùng. Chạy suite dùng chung DB tuần tự.
 - Cuối lượt triển khai: npm run check, npm run format:check, npm run test:deploy, container checks phù hợp và git diff --check. Cập nhật counts/runtime smoke bảy project, giữ nhật ký lịch sử sáu demo.

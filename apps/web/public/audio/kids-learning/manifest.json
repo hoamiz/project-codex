@@ -2,7 +2,7 @@
   "language": "vi-VN",
   "voice": "vi-VN-HoaiMyNeural",
   "rate": "-15%",
-  "revision": 1,
+  "revision": 3,
   "created": "2026-10-15",
   "source": "Microsoft Edge Read Aloud; edge-tts 7.3.0",
   "clips": [
@@ -37,6 +37,48 @@
       "sha256": "fcb1c635221be9d82ed4c332ecfa6a4c07f9e7f6dad8f18abfab4dc010a3a513"
     },
     {
+      "id": "rabbit",
+      "transcript": "Giúp bạn thỏ tìm củ cà rốt nhé.",
+      "durationSeconds": 3.48,
+      "sha256": "5aceedc4870dc82c87091d353c28126e7a44bafd5bb61f5fe6a4fc01658b8f46"
+    },
+    {
+      "id": "cat",
+      "transcript": "Giúp bạn mèo tìm chú cá nhé.",
+      "durationSeconds": 3.144,
+      "sha256": "37abfdc02691b8baa81fe837808c50513541ba8763591ef0b3bd3a05d3374fe5"
+    },
+    {
+      "id": "duck",
+      "transcript": "Giúp bạn vịt đến ao nước nhé.",
+      "durationSeconds": 3.12,
+      "sha256": "43406c7544faf537f164fd1b40ccf83b21a560a4486c6c86ada061592d553b5b"
+    },
+    {
+      "id": "bird",
+      "transcript": "Cùng đưa bạn chim về tổ nhé.",
+      "durationSeconds": 3.216,
+      "sha256": "a64f456d1a267cefb88c7d11df5758281341c93af2170926e76d6371c9075229"
+    },
+    {
+      "id": "car",
+      "transcript": "Giúp xe ô tô gia đình về nhà nhé.",
+      "durationSeconds": 3.528,
+      "sha256": "fe63226b8d40adc43d89f9494de572717e6aae7fb9e8845dbc4987392525818c"
+    },
+    {
+      "id": "school-child",
+      "transcript": "Cùng đưa bạn nhỏ đến trường học nhé.",
+      "durationSeconds": 3.408,
+      "sha256": "f25331eaea8a13781df00d08d3133490a8b9222d6ceb452fabebed9936492dab"
+    },
+    {
+      "id": "cyclist",
+      "transcript": "Cùng bạn nhỏ đạp xe đến công viên nhé.",
+      "durationSeconds": 3.552,
+      "sha256": "a38bebe6b21e502dbdce7bce6789a91c703afd77f3093246fb5b5da211ec6944"
+    },
+    {
       "id": "success",
       "transcript": "Đúng rồi. Con giỏi quá!",
       "durationSeconds": 3.84,
@@ -59,6 +101,222 @@
       "transcript": "Đặt bút ở chấm xanh. Đi theo nét chấm đến đích nhé.",
       "durationSeconds": 5.472,
       "sha256": "b2ffb7331b0e51f116e44c3b476e177027f38fb75b76a6eef56da1acb7cd196b"
+    },
+    {
+      "id": "number-search",
+      "transcript": "Tìm từ số nhỏ đến số lớn. Chạm đủ các số giống nhau nhé.",
+      "durationSeconds": 6.336,
+      "sha256": "0d22024b6e22c370c7191afa034583719c1869948ee88db105936a88086c499c"
+    },
+    {
+      "id": "hide-and-seek",
+      "transcript": "Chọn một hình ở trên. Tìm bạn ấy trong bức tranh nhé.",
+      "durationSeconds": 5.52,
+      "sha256": "48895cc3f9c03f048e702080c909c45f704aa9d40cf2b1b9b04f684bea4189ce"
+    },
+    {
+      "id": "number-1",
+      "transcript": "Tìm tất cả số một nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "73620e8dbe8ba2533473c0ea76b82ee1fb5accf2bc107394f5eb0917fb417c51"
+    },
+    {
+      "id": "number-2",
+      "transcript": "Tìm tất cả số hai nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "0254d2f7fdf078cf4c9a80ece7024a7c736e9fa05be4c8783a06bb80d18816f5"
+    },
+    {
+      "id": "number-3",
+      "transcript": "Tìm tất cả số ba nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "1075392d14586741c9d211c77fba18b7d52f81f65236dea49a1abd571ad9681d"
+    },
+    {
+      "id": "number-4",
+      "transcript": "Tìm tất cả số bốn nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "c8dd3abe77c5a6f51f5b8d5a5377133a56d3879bf65f10e4f3cb2f7f2f557b3a"
+    },
+    {
+      "id": "number-5",
+      "transcript": "Tìm tất cả số năm nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "d92569bd2be8f8953cc06fcd1bfafa2f1034cd4d7e7504e9b29dcad94ed96f7b"
+    },
+    {
+      "id": "number-6",
+      "transcript": "Tìm tất cả số sáu nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "97883ae87460d17890b54ef5c6f5e123ee144c79ea6cd2fd97f5cf2d5f4cecbc"
+    },
+    {
+      "id": "number-7",
+      "transcript": "Tìm tất cả số bảy nhé.",
+      "durationSeconds": 2.808,
+      "sha256": "7fc282b5ced6c461b0d5e35dd04b800408d5830f71222b81cc5dd5602e7eb6f2"
+    },
+    {
+      "id": "number-8",
+      "transcript": "Tìm tất cả số tám nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "547f5f7a467877a1f369631348024c9c5a160d2772a003cc341b60a6a16bbe80"
+    },
+    {
+      "id": "number-9",
+      "transcript": "Tìm tất cả số chín nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "255ff42bc1ea200a4eaf7d9d13c6a9a47a12e8541d30f543b9f9e3ded9b1bc78"
+    },
+    {
+      "id": "number-10",
+      "transcript": "Tìm tất cả số mười nhé.",
+      "durationSeconds": 2.88,
+      "sha256": "ece05bdacb420ce8da6361d79f207bf4f2eb401bb391fefbabcd07e0ffa204a9"
+    },
+    {
+      "id": "seek-fish",
+      "transcript": "Tìm cá nhỏ trong tranh nhé.",
+      "durationSeconds": 2.928,
+      "sha256": "8f894dba93c28cc0a66178647a28c73798e4f2477dfcfeedfca6686a996728b1"
+    },
+    {
+      "id": "seek-whale",
+      "transcript": "Tìm cá voi trong tranh nhé.",
+      "durationSeconds": 2.808,
+      "sha256": "c9fe0e0cc8a39772576907642ea40683f2c15e71feba4b31b5264e37966df7da"
+    },
+    {
+      "id": "seek-octopus",
+      "transcript": "Tìm bạch tuộc trong tranh nhé.",
+      "durationSeconds": 2.76,
+      "sha256": "e371397d4b6a6a7765d5175313c7a22bd704271636b702ccfd14ce84800ef285"
+    },
+    {
+      "id": "seek-starfish",
+      "transcript": "Tìm sao biển trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "fc71aa150e303b00a4a23dc910f01c44a4a5e1bf2897ce775086c91fda903036"
+    },
+    {
+      "id": "seek-crab",
+      "transcript": "Tìm cua trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "6168626ce2ce813b6fdc876ebc6952eb55066a4747b3710aa79cbb84154a0467"
+    },
+    {
+      "id": "seek-camel",
+      "transcript": "Tìm lạc đà trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "3917b83d8fb42b4543f41c38793f67121417ff4e436cb159d76a9a62a0e207f2"
+    },
+    {
+      "id": "seek-fox",
+      "transcript": "Tìm cáo trong tranh nhé.",
+      "durationSeconds": 2.64,
+      "sha256": "98de4f7281ae0751e05f2c38034a05f6fe9ba6b1bf244a677b51fa227253ba51"
+    },
+    {
+      "id": "seek-lizard",
+      "transcript": "Tìm thằn lằn trong tranh nhé.",
+      "durationSeconds": 2.88,
+      "sha256": "7898d7a0772280e0937edbb96a40ef4b473169f9334525dfffdea9893ed0b073"
+    },
+    {
+      "id": "seek-tortoise",
+      "transcript": "Tìm rùa trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "2f6a40ed684b70af60fcd3cae3c221c87d333f7a94c6e58daf492bbd643ca413"
+    },
+    {
+      "id": "seek-snake",
+      "transcript": "Tìm rắn trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "5fdf7d54eb948f0f33dfb8ac5ed0c514241362a0b3def533fb078c74f341e3a7"
+    },
+    {
+      "id": "seek-monkey",
+      "transcript": "Tìm khỉ trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "3af60a149f0cf2c1dee92bfefc7197392d74c76b13277db7a8545ba28088a770"
+    },
+    {
+      "id": "seek-tiger",
+      "transcript": "Tìm hổ trong tranh nhé.",
+      "durationSeconds": 2.592,
+      "sha256": "a75f4a3b63cc53ff85413930f329330943b9158bd24b4f16a6746e3636540fd2"
+    },
+    {
+      "id": "seek-bird",
+      "transcript": "Tìm chim trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "9992cee51833b98f895f4623d62a377ffdbae8f057a88895ca3591e1b5cc2334"
+    },
+    {
+      "id": "seek-frog",
+      "transcript": "Tìm ếch trong tranh nhé.",
+      "durationSeconds": 2.52,
+      "sha256": "6968bb4a6c75172cfeb1879bce8fc7498e832e61c3abbad982acbd4b61571bd5"
+    },
+    {
+      "id": "seek-trex",
+      "transcript": "Tìm khủng long bạo chúa trong tranh nhé.",
+      "durationSeconds": 3.36,
+      "sha256": "3f84bfacdd1f7c1bfac94f7163513147f89d0d783bc37ccc6124810ae7c9fd83"
+    },
+    {
+      "id": "seek-triceratops",
+      "transcript": "Tìm khủng long ba sừng trong tranh nhé.",
+      "durationSeconds": 3.36,
+      "sha256": "83bff8cf3b2f8c79b2fca26188ec3e1706ba5cbca091fdf5548f59c6e870ce05"
+    },
+    {
+      "id": "seek-stegosaurus",
+      "transcript": "Tìm khủng long gai lưng trong tranh nhé.",
+      "durationSeconds": 3.288,
+      "sha256": "826402eb6cd90b5fae55303b605a3355df79c30a7801a29f54b722d67552de09"
+    },
+    {
+      "id": "seek-longneck",
+      "transcript": "Tìm khủng long cổ dài trong tranh nhé.",
+      "durationSeconds": 3.384,
+      "sha256": "d9f406ec0b8dfd120a3cfa04ba823d67e9b0c1bd5c3707b707ad074e8cd85376"
+    },
+    {
+      "id": "seek-pterodactyl",
+      "transcript": "Tìm thằn lằn bay trong tranh nhé.",
+      "durationSeconds": 3.096,
+      "sha256": "21ccbe7ad3bdcd5f9cfb49379dec897a4552fc83b8649ade9f6c9429b9f5d110"
+    },
+    {
+      "id": "seek-car",
+      "transcript": "Tìm ô tô trong tranh nhé.",
+      "durationSeconds": 2.784,
+      "sha256": "e5297a10fb57633537b966b625ba47acb709c894233f4bc1bd1f87e819198ccc"
+    },
+    {
+      "id": "seek-bus",
+      "transcript": "Tìm xe buýt trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "3f9ff8a3242f109e21dcd1ed37ceb3053ba0d1d4b0089686ddc0fb3ac325f4f4"
+    },
+    {
+      "id": "seek-train",
+      "transcript": "Tìm tàu hỏa trong tranh nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "d61d8425020208ef439d3b213bef78241876b42a67368821d6d3feade0d01382"
+    },
+    {
+      "id": "seek-plane",
+      "transcript": "Tìm máy bay trong tranh nhé.",
+      "durationSeconds": 2.808,
+      "sha256": "32801bc0408c5e9e37e8c8d1344dfad70c2f3a79c18ea5ad96f9a1d9614179ff"
+    },
+    {
+      "id": "seek-bicycle",
+      "transcript": "Tìm xe đạp trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "b6a1551d1c7e8d75edeee5de8923caf5370f7b4df1d71fb1f4a68c10d8fe0814"
     }
   ]
 }

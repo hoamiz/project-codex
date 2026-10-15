@@ -15,11 +15,15 @@ Portfolio độc lập với **React 19 + TypeScript + Vite 8 + Tailwind CSS 4**
 
 ## Bé vui học tập
 
-PJ7 có hai bài: **Nối số với hình** và **Đồ nét vui nhộn**. Giao diện tiếng Việt tươi sáng, Nunito và SVG tự host; hỗ trợ chuột, cảm ứng, bút và bàn phím. Card thứ bảy mở trang chọn bài; mỗi bài có URL riêng dưới kids-learning. Tiến độ 30 task L01–L30 tại [hợp đồng PJ7](docs/kids-learning-plan.md), [checklist](PORTFOLIO_TASKS.md) và [prompt tiếp tục](RUN_PJ7_TASKS.md).
+PJ7 có bốn bài: **Nối số với hình**, **Đồ nét vui nhộn**, **Tìm số sắc màu** và **Trốn tìm kỳ thú**. Giao diện tiếng Việt tươi sáng, Nunito và SVG tự host; hỗ trợ chuột, cảm ứng, bút và bàn phím. Card thứ bảy mở trang chọn bài; mỗi bài có URL riêng dưới kids-learning. Tiến độ 30 task L01–L30 tại [hợp đồng PJ7](docs/kids-learning-plan.md), [checklist](PORTFOLIO_TASKS.md) và [prompt tiếp tục](RUN_PJ7_TASKS.md). Hai bài mới theo [hợp đồng K01–K08](docs/kids-learning-extensions-plan.md).
 
 Bài nối số có ba cột, mỗi số trong start..end ứng với một nhóm hình xáo trộn. Giữ 1 ≤ start < end ≤ 10: sửa start sai đặt end−1, sửa end sai đặt start+1; preset 1–3/1–5/1–10 không tự bắt đầu. Kéo nối thay nét thô bằng một Bézier đầu tròn; đúng xanh/khóa, sai đỏ/được vẽ lại và xóa nét sai cũ. Chạm từng hình để đếm, không tăng trùng hoặc tự nối. Có thể chạm số rồi chạm nhóm hình; với nhiều cặp, cuộn trang để chọn đích.
 
-Bài đồ nét random một cặp ong–hoa/chó–xương/bò–cỏ/bé–nhà cùng đường thẳng/zigzag/sóng. Bộ chấm xét đường đi thực, không chỉ hai đầu mút. Đạt sẽ tạm thay ô bằng hoạt cảnh rồi trả về đúng đề cũ; Vẽ lại giữ đề, Bài tiếp mới random. **Dễ mặc định**, có mức Vừa, lựa chọn áp dụng từ đề mới. Bút bàn phím: focus bảng, Home về đầu, Space đặt/nhấc, mũi tên vẽ, Enter nộp.
+Bài đồ nét random một trong **11 cặp nhân vật–đích** cùng đường thẳng/zigzag/sóng. Có ô tô gia đình–nhà, bạn nhỏ–trường học, chim–tổ, bạn nhỏ đạp xe–công viên, ong–hoa, chó–xương, bò–cỏ, bé–nhà, thỏ–cà rốt, mèo–cá và vịt–ao nước. Nhân vật di chuyển chậm theo nét đã vẽ trong **7,2 giây**, rồi hành động tại đích **2,4 giây**; bước chân, bay hoặc bánh xe phù hợp từng cặp. Bộ chấm xét đường đi thực, không chỉ hai đầu mút. Đạt sẽ tạm thay ô bằng hoạt cảnh rồi trả về đúng đề cũ; Vẽ lại giữ đề, Bài tiếp mới random. **Dễ mặc định**, có mức Vừa, lựa chọn áp dụng từ đề mới. Bút bàn phím: focus bảng, Home về đầu, Space đặt/nhấc, mũi tên vẽ, Enter nộp.
+
+Bài 3 tại `/projects/kids-learning/number-search`: nhập start/end 1–10 hoặc preset, ba bản sao mỗi số nằm ngẫu nhiên và ban đầu màu đen. Tìm từ nhỏ đến lớn; số đúng chuyển sang màu cố định (1 xanh dương, 2 xanh lá, 3 cam…). Tìm đủ số đang yêu cầu thì chúc mừng, đọc xong rồi sáng số tiếp theo. Gợi ý khoanh một số, không tự tính đáp án.
+
+Bài 4 tại `/projects/kids-learning/hide-and-seek`: năm cảnh đại dương/sa mạc/rừng rậm/khủng long/phương tiện, mỗi cảnh có năm hình cần tìm. Chọn thẻ rồi tìm trong tranh, hình đúng có hiệu ứng và được khóa. Có gợi ý, giọng Việt và Màn tiếp ngẫu nhiên sau khi tìm đủ; không lặp ngay chủ đề trước. Hình nấp một phần sau cây/cỏ/đá phù hợp cảnh, vẫn có vùng chạm lớn.
 
 Có bàn tay hướng dẫn trên bảng mẫu riêng, giọng Việt bật/tắt/nghe lại và bộ sưu tập 12 sticker. MP3 Hoài My vi-VN tự host có transcript/checksum, không gọi TTS runtime; lỗi âm không chặn chơi. Mỗi đề hoàn thành cấp thưởng một lần; Vẽ lại/xem mẫu/phát lại không cộng thêm. Chỉ sticker và sở thích âm thanh lưu trên thiết bị, không thu hồ sơ hoặc upload nét. Storage bị chặn vẫn chơi trong phiên; reload trở về cài đặt Dễ, chưa phục hồi đề/nét.
 

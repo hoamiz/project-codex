@@ -34,6 +34,8 @@ test('Vercel routing preserves API/deep links while missing assets return404; no
   assert.equal(route('/projects/kids-learning'), '/index.html');
   assert.equal(route('/projects/kids-learning/matching'), '/index.html');
   assert.equal(route('/projects/kids-learning/tracing'), '/index.html');
+  assert.equal(route('/projects/kids-learning/number-search'), '/index.html');
+  assert.equal(route('/projects/kids-learning/hide-and-seek'), '/index.html');
   assert.equal(route('/audio/kids-learning/missing.mp3'), 404);
   assert.equal(
     route('/audio/kids-learning/matching.mp3', true),

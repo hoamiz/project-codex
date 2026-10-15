@@ -21,7 +21,8 @@ export function createTrace(
   random: () => number = Math.random,
   previous?: TraceRound,
 ): TraceRound {
-  const companion = companions[Math.min(3, Math.floor(random() * 4))];
+  const companion =
+    companions[Math.min(companions.length - 1, Math.floor(random() * companions.length))];
   let pattern = patterns[Math.min(2, Math.floor(random() * 3))];
   const variant = Math.min(1, Math.floor(random() * 2));
   if (

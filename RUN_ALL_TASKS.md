@@ -1,6 +1,6 @@
 # Prompt chạy toàn bộ task của project-codex
 
-**PJ7 hiện là Bé vui học tập**: [kế hoạch L01–L30](docs/kids-learning-plan.md) và [prompt riêng](RUN_PJ7_TASKS.md). Khi được giao PJ7, thực hiện hai bài nối số/đồ nét và sáu cập nhật đã duyệt (Dễ mặc định) theo checklist L, không chạy lại bootstrap T01–T33. Scan Studio và S01–S24 đã lưu trữ, không thuộc hàng đợi PJ7.
+**PJ7 hiện là Bé vui học tập**: [kế hoạch L01–L30 và K01–K08](docs/kids-learning-plan.md) và [prompt riêng](RUN_PJ7_TASKS.md). Khi được giao PJ7, thực hiện hai bài nối số/đồ nét và sáu cập nhật đã duyệt (Dễ mặc định) theo checklist L, không chạy lại bootstrap T01–T33. Scan Studio và S01–S24 đã lưu trữ, không thuộc hàng đợi PJ7.
 
 Dán phần trong khối bên dưới vào Codex. Prompt này giao quyền triển khai toàn bộ kế hoạch; không chỉ lập kế hoạch hoặc làm một task rồi chờ.
 

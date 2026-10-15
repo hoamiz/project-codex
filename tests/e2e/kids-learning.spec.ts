@@ -2,7 +2,32 @@ import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 const base = '/projects/kids-learning';
-const pairs = ['bee', 'dog', 'cow', 'child'];
+const pairs = [
+  'bee',
+  'dog',
+  'cow',
+  'child',
+  'rabbit',
+  'cat',
+  'duck',
+  'bird',
+  'car',
+  'school-child',
+  'cyclist',
+];
+const actions = [
+  'Ong hút mật',
+  'Chó gặm xương',
+  'Bò ăn cỏ',
+  'Bạn nhỏ vào nhà',
+  'Thỏ ăn cà rốt',
+  'Mèo ăn cá',
+  'Vịt bơi trong ao',
+  'Chim về tổ',
+  'Ô tô gia đình về đến nhà',
+  'Bạn nhỏ vào trường học',
+  'Bạn nhỏ đỗ xe ở công viên',
+];
 const patterns = ['straight', 'zigzag', 'wave'];
 test.use({ viewport: { width: 1280, height: 1100 } });
 declare global {
@@ -17,12 +42,12 @@ async function prepareTrace(page: Page, c = 0, p = 0, level = 'easy') {
   await expect(page.getByRole('heading', { name: 'Đồ nét vui nhộn', exact: true })).toBeVisible();
   await page.getByLabel('Độ khó').selectOption(level);
   await page.evaluate(
-    ([c, p]) => {
-      const sequence = [(c + 0.1) / 4, (p + 0.1) / 3, 0.1];
+    ([c, p, pairCount]) => {
+      const sequence = [(c + 0.1) / pairCount, (p + 0.1) / 3, 0.1];
       let i = 0;
       Math.random = () => sequence[i++ % 3];
     },
-    [c, p],
+    [c, p, pairs.length],
   );
   await page.getByRole('button', { name: /Bắt đầu/ }).click();
   await expect(page.locator('.tracing-card')).toHaveAttribute('data-companion', pairs[c]);
@@ -100,7 +125,7 @@ test('L19 seventh portfolio card, direct/reload/Back and lazy child feature', as
   await expect(page.locator('.project-card')).toHaveCount(7);
   expect(requests.some((u) => u.includes('features/kids-learning'))).toBe(false);
   await page.locator('.project-kids-learning').click();
-  await expect(page.locator('.learning-menu-card')).toHaveCount(2);
+  await expect(page.locator('.learning-menu-card')).toHaveCount(4);
   await page.locator('.learning-menu-card.matching').click();
   await expect(page).toHaveURL(base + '/matching');
   await page.reload();
@@ -249,13 +274,25 @@ test('L21 Easy default freezes current profile, new round changes, reload return
   await page.reload();
   await expect(page.getByLabel('Độ khó')).toHaveValue('easy');
 });
-for (let c = 0; c < 4; c++)
-  for (let p = 0; p < 3; p++)
-    for (const level of ['easy', 'medium']) {
+for (let c = 0; c < pairs.length; c++)
+  for (const p of c < 4 ? [0, 1, 2] : [c % patterns.length])
+    for (const level of c < 4 ? ['easy', 'medium'] : ['easy']) {
       test(`L28 ${pairs[c]}/${patterns[p]}/${level} real tracing, animation and same-round restoration`, async ({
         page,
       }) => {
+        await trackVoices(page);
         await prepareTrace(page, c, p, level);
+        await expect
+          .poll(() =>
+            page.evaluate(
+              (id) =>
+                window.kidsTestVoices.some(
+                  (v) => v.src.includes('/' + id + '.mp3') && !v.paused && v.currentTime > 0.05,
+                ),
+              pairs[c],
+            ),
+          )
+          .toBe(true);
         const round = await page.locator('.tracing-card').getAttribute('data-round');
         const path = await page.locator('.tracing-guide').getAttribute('d');
         if (p !== 0) {
@@ -264,8 +301,28 @@ for (let c = 0; c < 4; c++)
           await expect(page.locator('.lesson-animation')).toHaveCount(0);
         }
         await drawGuide(page);
-        await expect(page.locator('.lesson-animation')).toHaveAttribute('data-scene', pairs[c]);
-        await expect(page.locator('.tracing-card')).toHaveAttribute('data-phase', 'completed');
+        const scene = page.locator('.lesson-animation');
+        await expect(scene).toHaveAttribute('data-scene', pairs[c]);
+        const actor = scene.locator('.lesson-actor');
+        if (pairs[c] === 'car' || pairs[c] === 'cyclist') {
+          await expect(actor.locator('.actor-paws')).toHaveCount(0);
+          expect(
+            await actor
+              .locator('.actor-wheels')
+              .evaluate((el) => getComputedStyle(el, '::before').animationName),
+          ).toBe('learning-roll');
+        }
+        await expect(scene).toHaveAttribute('data-stage', 'arrived', { timeout: 12000 });
+        await expect(scene.locator('.animation-caption')).toHaveText(actions[c]);
+        if (pairs[c] === 'car' || pairs[c] === 'cyclist')
+          expect(
+            await actor
+              .locator('.actor-wheels')
+              .evaluate((el) => getComputedStyle(el, '::before').animationPlayState),
+          ).toBe('paused');
+        await expect(page.locator('.tracing-card')).toHaveAttribute('data-phase', 'completed', {
+          timeout: 15000,
+        });
         await expect(page.locator('.tracing-card')).toHaveAttribute('data-round', round!);
         await expect(page.locator('.tracing-guide')).toHaveAttribute('d', path!);
         await expect(page.getByRole('button', { name: /Bộ sưu tập 1 trên/ })).toBeVisible();
@@ -273,13 +330,117 @@ for (let c = 0; c < 4; c++)
           await page.getByRole('button', { name: 'Vẽ lại', exact: true }).click();
           await expect(page.locator('.tracing-card')).toHaveAttribute('data-round', round!);
           await drawGuide(page);
-          await expect(page.locator('.tracing-card')).toHaveAttribute('data-phase', 'completed');
+          await expect(page.locator('.tracing-card')).toHaveAttribute('data-phase', 'completed', {
+            timeout: 15000,
+          });
           await expect(page.getByRole('button', { name: /Bộ sưu tập 1 trên/ })).toBeVisible();
           await page.getByRole('button', { name: /Bài tiếp/ }).click();
           await expect(page.locator('.tracing-card')).not.toHaveAttribute('data-round', round!);
         }
       });
     }
+test('slow journey follows the accepted stroke, resizes without restarting and acts at the end', async ({
+  page,
+}) => {
+  await prepareTrace(page, 1, 0);
+  const round = await page.locator('.tracing-card').getAttribute('data-round');
+  const points = await guidePoints(page);
+  await page.mouse.move(points[0].x, points[0].y);
+  await page.mouse.down();
+  for (let i = 1; i < points.length; i++)
+    await page.mouse.move(
+      points[i].x,
+      points[i].y + 10 * Math.sin((Math.PI * i) / (points.length - 1)),
+    );
+  await page.mouse.up();
+  const scene = page.locator('.lesson-animation');
+  const actor = scene.locator('.lesson-actor');
+  await expect(scene).toHaveAttribute('data-stage', 'traveling');
+  // Nét được nhận lệch nhẹ so với mẫu thẳng: hoạt cảnh phải giữ nét của trẻ, không dùng lại mẫu.
+  expect(
+    await scene.locator('.animation-trail').evaluate((el) => {
+      const path = el as SVGPathElement;
+      return path.getPointAtLength(path.getTotalLength() / 2).y;
+    }),
+  ).toBeGreaterThan(127);
+  await expect
+    .poll(() => actor.evaluate((el) => Number(el.getAnimations()[0].currentTime)))
+    .toBeGreaterThan(3000);
+  await expect(scene).toHaveAttribute('data-stage', 'traveling');
+  const progress = await actor.evaluate((el) => parseFloat(getComputedStyle(el).offsetDistance));
+  expect(progress).toBeGreaterThan(20);
+  expect(progress).toBeLessThan(65);
+  const elapsed = await actor.evaluate((el) => Number(el.getAnimations()[0].currentTime));
+  const oldPath = await scene.locator('.animation-trail').getAttribute('d');
+  await page.setViewportSize({ width: 768, height: 1100 });
+  await expect(scene.locator('.animation-trail')).not.toHaveAttribute('d', oldPath!);
+  const resumed = await actor.evaluate((el) => Number(el.getAnimations()[0].currentTime));
+  expect(resumed).toBeGreaterThanOrEqual(elapsed - 100);
+  expect(resumed).toBeLessThan(elapsed + 1500);
+  // Kiểm tâm nhân vật thực trên motion path, thay vì chỉ kiểm CSS/keyframe đã khai báo.
+  expect(
+    await scene.evaluate((el) => {
+      const actor = el.querySelector('.lesson-actor')!;
+      const path = el.querySelector('.animation-trail') as SVGPathElement;
+      const progress = parseFloat(getComputedStyle(actor).offsetDistance) / 100;
+      const point = path.getPointAtLength(path.getTotalLength() * progress);
+      const svg = path.ownerSVGElement!.getBoundingClientRect();
+      const box = actor.getBoundingClientRect();
+      return Math.hypot(
+        box.x + box.width / 2 - svg.x - point.x,
+        box.y + box.height / 2 - svg.y - point.y,
+      );
+    }),
+  ).toBeLessThan(2);
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await expect(scene).toHaveAttribute('data-paused', 'true');
+  // pause() được trình duyệt chốt ở frame kế tiếp; đo sau ready để không tính frame đang chờ.
+  await actor.evaluate(async (el) => {
+    await el.getAnimations()[0].ready;
+  });
+  const paused = await actor.evaluate((el) => Number(el.getAnimations()[0].currentTime));
+  await page.waitForTimeout(300);
+  expect(await actor.evaluate((el) => Number(el.getAnimations()[0].currentTime))).toBeCloseTo(
+    paused,
+    0,
+  );
+  expect(await actor.locator('img').evaluate((el) => getComputedStyle(el).animationPlayState)).toBe(
+    'paused',
+  );
+  expect(
+    await actor
+      .locator('.actor-paws')
+      .evaluate((el) => getComputedStyle(el, '::before').animationPlayState),
+  ).toBe('paused');
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'hidden', { configurable: true, value: false });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await expect(scene).toHaveAttribute('data-stage', 'arrived', { timeout: 10000 });
+  await expect(scene.locator('.animation-caption')).toHaveText('Chó gặm xương');
+  await expect(actor).toHaveClass(/feeding/);
+  await page.waitForTimeout(1200);
+  await expect(scene).toHaveAttribute('data-stage', 'arrived');
+  await expect(page.locator('.tracing-card')).toHaveAttribute('data-phase', 'completed', {
+    timeout: 5000,
+  });
+  await expect(page.locator('.tracing-card')).toHaveAttribute('data-round', round!);
+  const restored = await page.locator('.tracing-attempt.correct').evaluate((el) => {
+    const path = el as SVGPathElement;
+    const box = path.getBBox();
+    return {
+      right: box.x + box.width,
+      expectedRight: path.ownerSVGElement!.viewBox.baseVal.width - 32,
+      middleY: path.getPointAtLength(path.getTotalLength() / 2).y,
+    };
+  });
+  expect(restored.right).toBeCloseTo(restored.expectedRight, 0);
+  expect(restored.middleY).toBeGreaterThan(127);
+  await expect(page.getByRole('button', { name: /Bộ sưu tập 1 trên/ })).toBeVisible();
+});
 test('L28 keyboard pen uses actual coordinates and the same grader', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await prepareTrace(page);
@@ -291,7 +452,9 @@ test('L28 keyboard pen uses actual coordinates and the same grader', async ({ pa
   await page.keyboard.press('Space');
   for (let i = 0; i < steps; i++) await page.keyboard.press('ArrowRight');
   await page.keyboard.press('Enter');
-  await expect(page.locator('.tracing-card')).toHaveAttribute('data-phase', 'completed');
+  await expect(page.locator('.tracing-card')).toHaveAttribute('data-phase', 'completed', {
+    timeout: 15000,
+  });
   await expect(page.getByRole('button', { name: 'Vẽ lại', exact: true })).toBeFocused();
 });
 test('L28 native touch follows a wave; hiding pauses a real animation; route leave cancels', async ({
@@ -315,15 +478,17 @@ test('L28 native touch follows a wave; hiding pauses a real animation; route lea
     Object.defineProperty(document, 'hidden', { configurable: true, value: false });
     document.dispatchEvent(new Event('visibilitychange'));
   });
-  await expect(page.locator('.tracing-card')).toHaveAttribute('data-phase', 'completed');
+  await expect(page.locator('.tracing-card')).toHaveAttribute('data-phase', 'completed', {
+    timeout: 15000,
+  });
   await page.getByRole('button', { name: 'Vẽ lại', exact: true }).click();
   await drawGuide(page);
   await expect(page.locator('.lesson-animation')).toBeVisible();
   await page.getByRole('link', { name: '← Chọn bài', exact: true }).click();
   await expect(page.locator('.lesson-animation')).toHaveCount(0);
-  await expect(page.locator('.learning-menu-card')).toHaveCount(2);
+  await expect(page.locator('.learning-menu-card')).toHaveCount(4);
 });
-test('L23 nine Vietnamese clips decode, play natively, never overlap, mute persists', async ({
+test('L23 fifty-two Vietnamese clips decode, play natively, never overlap, mute persists', async ({
   page,
 }) => {
   await trackVoices(page);
@@ -347,7 +512,7 @@ test('L23 nine Vietnamese clips decode, play natively, never overlap, mute persi
       await context.close();
     }
   });
-  expect(clips).toHaveLength(9);
+  expect(clips).toHaveLength(52);
   expect(clips.every((c) => c.duration > 1 && c.audible)).toBe(true);
   await page.getByRole('button', { name: /Bắt đầu/ }).click();
   await expect
@@ -388,7 +553,7 @@ test('L23 audio errors/retry never prevent drawing or lose work', async ({ page 
     )
     .toBe(true);
   await page.getByRole('link', { name: '← Chọn bài', exact: true }).click();
-  await expect(page.locator('.learning-menu-card')).toHaveCount(2);
+  await expect(page.locator('.learning-menu-card')).toHaveCount(4);
   await expect
     .poll(() => page.evaluate(() => window.kidsTestVoices.every((v) => v.paused)), {
       timeout: 1000,

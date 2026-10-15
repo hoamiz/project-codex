@@ -752,3 +752,26 @@ L28 — hoàn thành (2026-10-15): E2E bao phủ 24 tổ hợp cặp/mẫu/mức
 L29 — hoàn thành (2026-10-15): npm run check đạt 51 API, 78 web và 99 E2E (7,9 phút), kèm kiểm bản build của bảy demo. Sau sửa vùng chạm header 44 px, modal và URL có dấu / cuối, lint/typecheck/build và 40 E2E PJ7 (3,4 phút) đạt. Format, deploy manifest 5/5 và container TLS/HTTPS, khởi tạo hai lần, restart, dump/restore 7|12|1|1|6 đều đạt. Cập nhật assertion seed từ sáu thành bảy; smoke Vite dùng Accept audio cho asset thiếu vì SPA fallback trả HTML 200, còn production vẫn kiểm 404 với Accept mặc định. Khởi động lại, smoke lặp, kiểm build cuối và đối chiếu dữ liệu gốc đều đạt.
 
 L30 — hoàn thành (2026-10-15): Nghiệm thu đủ 30 task theo bằng chứng: 51 API, 78 web, 99 E2E; kiểm cuối 40 E2E PJ7 và ca resize 1/1. Build, container, deploy manifest, format, startup và đối chiếu dữ liệu gốc đạt. Đã rà comment/JSDoc, giấy phép, transcript và asset; xem UI desktop/mobile, bốn cảnh và bộ 12 sticker. Link Markdown, code fence và đồ thị phụ thuộc hợp lệ. Đã lưu và đọc lại start_skill cho bảy demo/PJ7/migration 006, giữ nguyên install/network/secrets và phần hướng dẫn cũ. Chưa xuất bản snapshot, commit/push Git hoặc deploy công khai. Giới hạn Chromium/CDP và thiết bị thật được ghi trong docs/verification.md.
+
+## PJ7 — Animation chậm và hai bài khám phá (2026-10-15)
+
+Theo yêu cầu tiếp theo, Bài 2 có 11 cặp (gồm ô tô gia đình–nhà, bé–trường, chim–tổ, bé đạp xe–công viên), đi theo nét đã chấm đúng 7,2 giây và hành động tại đích 2,4 giây. Trước khi thêm Bài 3/4: 80 unit/component, lint/type/build/format và 48 E2E PJ7 đạt (7,7 phút); đã xem 11 hoạt cảnh thực. Phép đo resize phát hiện nét trả về còn hệ tọa độ cũ, đang bổ sung chuẩn hóa và kiểm lại riêng. Không thay DB, dependency hoặc lockfile.
+
+Bài 3/4 theo [hợp đồng mở rộng](docs/kids-learning-extensions-plan.md). Giữ nguyên nhật ký và tên L01–L30 đã nghiệm thu; K01–K08 ghi bằng chứng riêng trước khi đánh dấu.
+
+- [x] K01 — Contract và dữ liệu.
+- [x] K02 — Logic tìm số.
+- [x] K03 — UI tìm số.
+- [x] K04 — Minh họa trốn tìm.
+- [x] K05 — Logic trốn tìm.
+- [x] K06 — UI trốn tìm.
+- [x] K07 — Hướng dẫn, âm và routes.
+- [x] K08 — Nghiệm thu.
+
+K01/K02/K05 — hoàn thành (2026-10-15): discovery-core kiểm đủ 45 khoảng × hai RNG, ba bản sao/số, ID/vị trí, không tính số tương lai hoặc nhấp lặp, tìm tăng dần và bỏ callback đề cũ; đủ năm chủ đề/24 hình, khóa đúng hình đã chọn, vị trí tách nhau và màn random tránh lặp. Năm unit core/catalog/asset đạt; toàn web 88/88 đạt.
+
+K03/K06/K07 — hoàn thành (2026-10-15): 12 E2E hai bài đạt 52,5 giây: số đen → màu, đủ bản sao rồi chuyển, range/preset, hint không tính hộ, hidden/tutorial và hủy timer; năm chủ đề hoàn thành/Màn tiếp, touch/keyboard/resize, bốn card/routes, focus, axe/44px ở 360/768/1440. Ba unit timer xác nhận pause/cleanup/một lần. 52 MP3 có transcript/duration/SHA256; 36 clip mới, 16 clip trước giữ nguyên.
+
+K04 — hoàn thành (2026-10-15): 18 SVG hình mới, tái dùng sáu hình, năm tranh nền nguyên bản và ghi SOURCES. Điểm giấu theo địa hình từng cảnh; che một phần bằng lá/cỏ/đá, không che vùng chạm. Native ảnh tải/giải mã và năm cảnh E2E đạt; kiểm ảnh UI tiếp tại nghiệm thu.
+
+K08 — hoàn thành (2026-10-15): 88/88 unit/component, 12/12 E2E hai bài mới và 8/8 hồi quy sau tích hợp đạt; trước đó 48/48 E2E xác nhận animation chậm và 11 cặp. Native giải mã/phát 52 MP3, xem năm cảnh và số lớn/đổi màu mobile; axe và target ≥44 px ở 360/768/1440 đạt. Lint/typecheck/format/build, deploy manifest 5/5 và compiled smoke bảy demo/năm URL PJ7 đạt. Sửa font:inherit, contrast nhãn, helper test và tọa độ nét trả về sau resize, giữ các assertion. Rà JSDoc/SOURCES/manifest, link tài liệu và dữ liệu/cấu hình/lockfile được bảo toàn; không thêm dependency/DB/API. Giới hạn thiết bị và các lệnh chưa chạy lại ghi trong docs/verification.md. Chưa commit/push/deploy lượt này.
