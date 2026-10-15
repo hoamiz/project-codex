@@ -1,6 +1,8 @@
-# PJ7 — Scan Studio 3D
+# Scan Studio 3D — kế hoạch lưu trữ
 
-Kế hoạch ngày 2026-10-14 cho project-codex; **chưa triển khai ứng dụng**. Checklist S01–S24 nằm tại [PORTFOLIO_TASKS.md](../PORTFOLIO_TASKS.md), prompt thực hiện tại [RUN_PJ7_TASKS.md](../RUN_PJ7_TASKS.md). Đọc cùng [AGENTS.md](../AGENTS.md).
+**Lưu trữ từ 2026-10-15.** PJ7 hiện là [Bé vui học tập](kids-learning-plan.md). Giữ ý tưởng/task Scan Studio để tham khảo; không thực hiện khi được giao PJ7. Card thứ bảy và migration 006 bên dưới là dự kiến tại thời điểm lập kế hoạch, cần đánh giá lại nếu khôi phục. Prompt lưu trữ: [RUN_SCAN_STUDIO_TASKS.md](../RUN_SCAN_STUDIO_TASKS.md).
+
+Kế hoạch ngày 2026-10-14 cho project-codex; **chưa triển khai ứng dụng**. Checklist S01–S24 nằm tại [PORTFOLIO_TASKS.md](../PORTFOLIO_TASKS.md), prompt thực hiện tại [RUN_SCAN_STUDIO_TASKS.md](../RUN_SCAN_STUDIO_TASKS.md). Đọc cùng [AGENTS.md](../AGENTS.md).
 
 ## 1. Mục tiêu và MVP đề xuất
 

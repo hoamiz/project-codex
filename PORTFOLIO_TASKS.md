@@ -619,9 +619,11 @@ Dev script — hoàn thành (2026-10-14): theo yêu cầu, rootdev chạy npm ru
 
 - [x] A11 — Cải thiện h/k/q/s/x (2026-10-14): đọc hờ/ca/cu/sờ/xờ theo yêu cầu. Năm clip được tạo lại bằng hai đoạn âm+từ riêng, nghỉ thêm400ms; h/s/x âm đầu-30%, k/q vàtừ-15%, âm đầu+10% volume. Không cắt đầu fricative/tiếng thở, kiểm peak phần âm đầu-7,3 đến-3,9dB không clipping.24clip còn lại/checksum giữ nguyên. Manifestv4/cacheURLv4 mới; unit9/9, E2E14/14 (1,5phút) có5nativeplayback/3s sauended,29decode/retry/keyboard/hidden/axe3viewport đạt; lint0/webtype/build/format/diff đạt. Browser startup ban đầu bịECONNREFUSED doDBlocal tắt; db:start phục hồi vàtest lại exit0. Các fingerprints dữ liệu/config cũ giữ nguyên. Logs pj6-clear-voice-unit/e2e/build; không đổi BE/schema/UI/controller.
 
-## PJ7 — Scan Studio 3D (kế hoạch 2026-10-14)
+## Scan Studio 3D — lưu trữ kế hoạch PJ7 cũ (2026-10-14)
 
-Người dùng yêu cầu plan ảnh thành model 3D và xác nhận chỉ tập trung phần chính của ảnh. MVP đề xuất một ảnh/vật thể, crop/mask/tách nền trước khi gửi AI; phần khuất do AI suy đoán. [Kế hoạch và task PJ7](docs/scan-studio-plan.md), [prompt thực hiện khi được giao](RUN_PJ7_TASKS.md). Đây là checklist S01–S24; tất cả chưa triển khai, chỉ kiểm tra tài liệu. Provider/quota/storage chưa chốt, ngân sách mặc định 0; không gọi AI hoặc tạo dịch vụ trong lượt lập kế hoạch.
+**Lưu trữ từ 2026-10-15:** người dùng đổi PJ7 sang Bé vui học tập. S01–S24 bên dưới được giữ làm lịch sử kế hoạch, không nằm trong hàng đợi triển khai PJ7 và không chiếm card/migration. Chưa gán Scan Studio thành PJ8.
+
+Người dùng yêu cầu plan ảnh thành model 3D và xác nhận chỉ tập trung phần chính của ảnh. MVP đề xuất một ảnh/vật thể, crop/mask/tách nền trước khi gửi AI; phần khuất do AI suy đoán. [Kế hoạch Scan Studio](docs/scan-studio-plan.md), [prompt lưu trữ](RUN_SCAN_STUDIO_TASKS.md). Đây là checklist S01–S24; tất cả chưa triển khai, chỉ kiểm tra tài liệu. Provider/quota/storage chưa chốt, ngân sách mặc định 0; không gọi AI hoặc tạo dịch vụ trong lượt lập kế hoạch.
 
 - [ ] S01 — Phạm vi và vật thể chính.
 - [ ] S02 — Provider, storage và ngân sách.
@@ -649,3 +651,104 @@ Người dùng yêu cầu plan ảnh thành model 3D và xác nhận chỉ tập
 - [ ] S24 — Nghiệm thu và tài liệu.
 
 Nhật ký lập kế hoạch PJ7 (2026-10-14): đã ghi yêu cầu vật thể chính, crop/mask/xem trước PNG và chỉ gửi phần chọn cho AI; kiến trúc job bất đồng bộ, storage riêng, GLB và ngân sách mặc định 0. Tạo 24 task S01–S24 với phụ thuộc, tiêu chí và prompt; tất cả chưa triển khai. Kiểm 42 link cục bộ, code fence và đồ thị phụ thuộc; Prettier và git diff --check đạt. Đã đọc tài liệu công khai Meshy/Tripo/TRELLIS.2/COLMAP; chưa xác minh giá/quota/tài khoản hoặc gọi AI. Chỉ sửa tài liệu; không sửa source/dependencies/database/migrations, không chạy tests ứng dụng hoặc commit/push PJ7.
+
+
+## PJ7 — Bé vui học tập (kế hoạch 2026-10-15)
+
+PJ7 đang hoạt động theo yêu cầu mới: Bài 1 nối số và số lượng hình trên ba cột, Bài 2 đồ nét và xem hoạt cảnh cặp hình cố định. Quy tắc start/end theo ô sửa sau, nét nối gọn/xanh khóa/đỏ thử lại, kiểm đường đồ thật và khôi phục đúng ô sau animation đã ghi trong [kế hoạch PJ7](docs/kids-learning-plan.md). [Prompt triển khai](RUN_PJ7_TASKS.md). Trạng thái triển khai và kiểm tra của L01–L30 nằm dưới đây; S01–S24 thuộc Scan Studio lưu trữ. Phạm vi bản đầu đã bao gồm sáu cập nhật được duyệt, với Dễ mặc định.
+
+- [x] L01 — Contract và dữ liệu bài học.
+- [x] L02 — Minh họa và font.
+- [x] L03 — Chuẩn hóa khoảng số.
+- [x] L04 — Sinh đề nối số.
+- [x] L05 — Tọa độ và đường vẽ.
+- [x] L06 — Chấm nối và nét chuẩn.
+- [x] L07 — State khóa và thử lại.
+- [x] L08 — Bảng SVG và Pointer Events.
+- [x] L09 — Form start/end.
+- [x] L10 — Giao diện nối số.
+- [x] L11 — Sinh mẫu đồ nét.
+- [x] L12 — Bộ chấm đồ nét.
+- [x] L13 — State bài đồ nét.
+- [x] L14 — Bảng đồ nét.
+- [x] L15 — Bốn hoạt cảnh.
+- [x] L16 — Animation và khôi phục.
+- [x] L17 — Trang chọn bài và routes.
+- [x] L18 — Migration và seed card.
+- [x] L19 — Portfolio và màn hồi phục.
+- [x] L20 — Hướng dẫn bàn tay mẫu.
+- [x] L21 — Mức Dễ mặc định.
+- [x] L22 — Chạm hình để đếm.
+- [x] L23 — Âm hướng dẫn tiếng Việt.
+- [x] L24 — Chọn nhanh khoảng số.
+- [x] L25 — Sticker và bộ sưu tập.
+- [x] L26 — Mobile, bàn phím và a11y.
+- [x] L27 — Kiểm nghiệm nối số.
+- [x] L28 — Kiểm nghiệm đồ nét.
+- [x] L29 — Hồi quy và compiled/deploy.
+- [x] L30 — Nghiệm thu và tài liệu.
+
+Nhật ký lập kế hoạch (2026-10-15): chỉ cập nhật tài liệu theo yêu cầu mới, giữ kế hoạch/prompt Scan Studio làm lưu trữ. Chốt 24 task có phụ thuộc và tiêu chí kiểm tra, hai bài cùng quy tắc nhập/vẽ/chấm/animation, UI và scope FE/API/DB. Kiểm 24 task/checkbox chưa hoàn thành, đồ thị phụ thuộc không vòng, 54 link cục bộ/code fence, giữ nguyên nhật ký trước mục lưu trữ và checklist S; Prettier và git diff --check đạt. Toàn bộ L01–L24 chưa triển khai; kiểm Markdown không thay bằng chứng tính năng. Không sửa source/dependencies/schema hoặc chạy tests ứng dụng; chưa commit/push/deploy lượt này.
+
+
+Cập nhật sáu đề xuất đã duyệt (2026-10-15): Dễ mặc định, hướng dẫn bàn tay, chạm hình đếm, giọng Việt bật/tắt, preset 1–3/1–5/1–10 và sticker đều thuộc bản đầu. L01–L19 giữ ID; thêm L20–L25, dời a11y/kiểm nghiệm/hồi quy/nghiệm thu cũ sang L26–L30 để phụ thuộc chạy thuận. Đã cập nhật contract, task và prompt; kiểm 30 task/checkbox chưa hoàn thành, phụ thuộc không vòng, đủ sáu tính năng, 54 link/code fence và bảo toàn lịch sử đạt; Prettier và git diff --check đạt. Chỉ sửa tài liệu, không sửa code/schema/dependency hoặc chạy tests ứng dụng; chưa commit/push/deploy.
+
+L01 — hoàn thành (2026-10-15): Contract gồm bốn cặp hình, ba mẫu nét, hai mức với Dễ mặc định và 12 sticker. Vitest L01 đạt 1/1; không đổi khoảng số mặc định hoặc mở rộng loại bài.
+
+L02 — hoàn thành (2026-10-15): Tạo 20 SVG nguyên bản và ảnh bìa, dùng Nunito/OFL hiện có. Chromium hiển thị đủ 20 hình; đã xem ảnh tổng hợp .local/pj7/assets.png. Nguồn ghi trong SOURCES; số lượng hình trong từng nhóm được kiểm tiếp ở L10.
+
+L03 — hoàn thành (2026-10-15): Vitest L03 đạt 10/10: chín ca quy tắc và phép kiểm 45 khoảng × 10 giá trị nhập × hai ô. Giữ bất biến 1 ≤ start < end ≤ 10 và ô đối diện; xử lý giá trị rỗng, thập phân và Infinity.
+
+L04 — hoàn thành (2026-10-15): Vitest L04 đạt 1/1 với 135 đề (45 khoảng × ba nguồn ngẫu nhiên): mỗi số và cặp xuất hiện đúng một lần, cột phải được xáo trộn, khoảng sai bị từ chối.
+
+L05 — hoàn thành (2026-10-15): Vitest L05 đạt 2/2: đổi tọa độ client/viewBox sau cuộn và co giãn, xử lý điểm ngoài bảng/NaN, nội suy điểm thưa hoặc trùng, giới hạn 8.193 điểm và tạo Bézier theo điểm neo.
+
+L06 — hoàn thành (2026-10-15): Vitest L06 đạt 1/1: chấm theo giá trị thay vì vị trí hàng; kiểm đúng, sai, đích khóa và ngoài bảng. Đường cuối chỉ có một lệnh M/C, không giữ nét thô hoặc vòng thừa.
+
+L07 — hoàn thành (2026-10-15): Vitest L07 đạt 1/1: thử lại chỉ xóa nét sai cùng nguồn và giữ các cặp đúng; khóa nguồn/đích đúng, kiểm hoàn thành và đặt lại bằng đề mới.
+
+L08 — hoàn thành (2026-10-15): Chromium kiểm chuột và kéo bằng CDP touch đạt; chạm đơn không nộp bài, pointercancel và mất capture dọn nét xem trước. Sửa import mặc định trong harness sau lỗi import CJS rồi kiểm lại đạt; không cần sửa component.
+
+L09 — hoàn thành (2026-10-15): Component/user-event L09 đạt 2/2: giữ bản nháp khi gõ 10, blur/Enter/submit không đọc state cũ, start=10 chuyển thành 9 khi end=10; ô rỗng chỉ chuẩn hóa ô đang sửa.
+
+L10 — hoàn thành (2026-10-15): Chromium kiểm sai → đúng xóa nét đỏ, ba cặp đúng được khóa và chỉ thưởng một lần. SVG hiển thị ba cột và đường đơn. Đã sửa phép đo khi bảng mount muộn cùng letterbox/preserveAspectRatio; kiểm lại đạt.
+
+L11 — hoàn thành (2026-10-15): Vitest L11 đạt 1/1: 24 tổ hợp cặp/mẫu/biến thể ở hai độ rộng, kiểm điểm đầu/cuối, giới hạn và mobile. Tránh lặp ngay đề trước; resize hoặc thử lại giữ nguyên vòng chơi.
+
+L12 — hoàn thành (2026-10-15): Vitest L12 đạt 13/13: thẳng/zigzag/sóng × hai biến thể × Dễ/Vừa. Lệch nhẹ 2 px đạt; nửa đường, vẽ ngược, nguệch ngoạc, đi tắt, NaN và chạm đơn bị từ chối. Dung sai 18/12 px, coverage/inside 90%, tỷ lệ chiều dài 0,8–2; không nới bộ chấm để test đạt.
+
+L13 — hoàn thành (2026-10-15): Vitest L13 đạt 1/1: thử lại xóa nét sai, chỉ lượt liên tục được chấm đúng mới chạy animation. Callback sai vòng/token bị bỏ qua; vẽ lại cùng vòng giữ completedOnce, đề mới đặt lại trạng thái.
+
+L14 — hoàn thành (2026-10-15): Chromium kiểm vẽ 40% mẫu bị yêu cầu thử lại, vẽ hết nét chấm chuyển sang animation và chỉ thưởng một lần; web typecheck đạt. Không ép phase hoặc gọi hàm hoàn thành để vượt bộ chấm.
+
+L15 — hoàn thành (2026-10-15): WAAPI thực chạy đủ bốn cảnh theo đường thẳng/zigzag/sóng, có hành động khi tới đích và onfinish đúng một lần mỗi cảnh. Đã xem ảnh .local/pj7/scenes.png; web typecheck đạt.
+
+L16 — hoàn thành (2026-10-15): Kiểm hoàn thành → animation → trở về cùng vòng đạt. Vẽ lại giữ mẫu và không thưởng thêm; Bài tiếp tạo vòng mới. Vitest controller đạt 3/3 cho ẩn/hiện, callback cũ sau unmount, reduced motion và watchdog. Timeline giữ currentTime khi đổi độ rộng; animation thường kết thúc sau ba giây.
+
+L17 — hoàn thành (2026-10-15): Chromium kiểm chọn hai bài, mở route trực tiếp, reload và Back đạt; không có pageerror hoặc tải Three. Đã lưu ảnh desktop 1440 px/mobile 360 px; web typecheck đạt. Card thứ bảy được bổ sung ở L18/L19.
+
+L18 — hoàn thành (2026-10-15): Fixture PostgreSQL đạt 1/1: nâng DB từ sáu lên bảy card không cần seed, chạy migrate/seed lặp lại, giữ metadata đã chỉnh của cả sáu card cũ và card mới, whitelist từ chối URL lạ, SQL lỗi được rollback. Dev migration 006 đạt; dữ liệu, cấu hình, migrations 001–005 và lockfile giữ nguyên.
+
+L19 — hoàn thành (2026-10-15): Các test public API và nâng cấp startup/PJ7 đạt 10/10. Chromium kiểm card thứ bảy → bài học, offline và phục hồi vẫn giữ cặp đúng đạt 1/1. Cập nhật whitelist, thứ tự bảy card và màn chờ đủ bảy tên; smoke toàn bộ được chạy ở L29.
+
+L20 — hoàn thành (2026-10-15): Chromium kiểm hướng dẫn tự kết thúc, Escape và reduced motion đều giữ vòng chơi/nét đúng, trả focus đạt. Mẫu hướng dẫn có state riêng và không gọi onComplete. Đã sửa destructor trả boolean thành block; typecheck đạt.
+
+L21 — hoàn thành (2026-10-15): Chromium kiểm Dễ mặc định khi vào/reload; chọn Vừa không đổi đề hoặc profile đang chơi, Bài tiếp mới áp dụng Vừa. Unit đạt 1/1: lệch 15 px được Dễ chấp nhận và Vừa từ chối. Kiểm chống đi tắt ở cả hai mức đã đạt tại L12.
+
+L22 — hoàn thành (2026-10-15): Component đạt 1/1 cho chạm lặp và đặt lại từng nhóm độc lập. Chromium kiểm chạm hình không tự nối; đặt lại bộ đếm sau cặp đúng không đổi nét hoặc khóa. Đề mới remount bộ đếm theo roundId.
+
+L24 — hoàn thành (2026-10-15): Component/user-event đạt 1/1: preset 3/5/10 cập nhật hai ô đồng thời, bản nháp start=9 và blur trễ không ghi đè preset; chưa tự sinh đề. Sửa start=10 sau preset chuyển thành 9 đúng quy tắc; Start dùng khoảng 1–10.
+
+L23 — hoàn thành (2026-10-15): Tự lưu trữ chín MP3 giọng HoàiMy vi-VN, tốc độ -15%, kèm manifest revision 1, transcript và SHA256. Vitest đạt 2/2 và typecheck đạt. Trình duyệt giải mã đủ chín clip có mẫu âm, thời lượng trên một giây; phát thực, không chồng tiếng, nhớ mute, lỗi không chặn chơi và dọn audio khi đổi route đều đạt. Sửa đường dẫn file trong test dùng cwd và kiểm promise cũ.
+
+L25 — hoàn thành (2026-10-15): Unit phần thưởng đạt 2/2. Trình duyệt kiểm hoàn thành đề chỉ nhận một sticker, lưu/khôi phục sau reload; lỗi Security/Quota vẫn chơi và nhận thưởng trong phiên. Unit kiểm đủ bộ 12, ID, version, loại trùng và vòng chơi. Đã phân biệt hình panda/penguin/owl/whale; sửa tùy chọn exact của Testing Library và typecheck đạt.
+
+L26 — hoàn thành (2026-10-15): Playwright L26 đạt 3/3 ở 360/768/1440 px: menu, 10 cặp, đồ nét, hướng dẫn và bộ sưu tập không tràn ngang; axe không có vi phạm. Đã xem ảnh mobile, sửa hai màu nhãn thiếu tương phản rồi kiểm lại với nguyên assertion. Bàn phím vẽ qua cùng bộ chấm; E2E chức năng chạy ở L28.
+
+L27 — hoàn thành (2026-10-15): E2E L27 đạt 4/4: 10 nhóm đếm đúng, quy tắc ô sửa sau/preset/bản nháp, nét nhiễu chuyển thành một Bézier, thử lại/khóa/hủy, đếm và hướng dẫn giữ state, CDP touch/pen thực. Toàn bộ 44 unit/component của PJ7 đạt; không ép state để test qua.
+
+L28 — hoàn thành (2026-10-15): E2E bao phủ 24 tổ hợp cặp/mẫu/mức cùng bàn phím, touch, ẩn trang và vẽ lại. Batch 37 test có 35 đạt; một ca gặp Vite reload khi sửa README (thời điểm khớp) và một assertion audio đọc trước cleanup. Giữ bộ chấm/assertion; chờ menu và yêu cầu audio pause dưới một giây trước khi clip kết thúc. Hai ca chạy lặp ba lần đạt 6/6; bộ đầy đủ xác nhận ở L29.
+
+L29 — hoàn thành (2026-10-15): npm run check đạt 51 API, 78 web và 99 E2E (7,9 phút), kèm kiểm bản build của bảy demo. Sau sửa vùng chạm header 44 px, modal và URL có dấu / cuối, lint/typecheck/build và 40 E2E PJ7 (3,4 phút) đạt. Format, deploy manifest 5/5 và container TLS/HTTPS, khởi tạo hai lần, restart, dump/restore 7|12|1|1|6 đều đạt. Cập nhật assertion seed từ sáu thành bảy; smoke Vite dùng Accept audio cho asset thiếu vì SPA fallback trả HTML 200, còn production vẫn kiểm 404 với Accept mặc định. Khởi động lại, smoke lặp, kiểm build cuối và đối chiếu dữ liệu gốc đều đạt.
+
+L30 — hoàn thành (2026-10-15): Nghiệm thu đủ 30 task theo bằng chứng: 51 API, 78 web, 99 E2E; kiểm cuối 40 E2E PJ7 và ca resize 1/1. Build, container, deploy manifest, format, startup và đối chiếu dữ liệu gốc đạt. Đã rà comment/JSDoc, giấy phép, transcript và asset; xem UI desktop/mobile, bốn cảnh và bộ 12 sticker. Link Markdown, code fence và đồ thị phụ thuộc hợp lệ. Đã lưu và đọc lại start_skill cho bảy demo/PJ7/migration 006, giữ nguyên install/network/secrets và phần hướng dẫn cũ. Chưa xuất bản snapshot, commit/push Git hoặc deploy công khai. Giới hạn Chromium/CDP và thiết bị thật được ghi trong docs/verification.md.

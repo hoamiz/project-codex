@@ -109,6 +109,7 @@ test.each(['three', 'four', 'five', 'edited-room', 'edited-brick', 'edited-alpha
         'room-studio',
         'brick-playground',
         'vietnamese-alphabet',
+        'kids-learning',
       ]);
       expect(data.find((project: { slug: string }) => project.slug === 'room-studio').url).toBe(
         '/projects/room-studio',

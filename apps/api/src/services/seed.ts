@@ -17,6 +17,15 @@ export const examples = [
 export async function seed(pool: Pool) {
   const projects = [
     [
+      'kids-learning',
+      'Bé vui học tập',
+      'Mỗi nét vẽ. Một khám phá.',
+      'Nối số, tập đếm và đồ nét qua những chuyến đi nhỏ vui nhộn.',
+      ['React', 'SVG', 'Vietnamese audio'],
+      '/projects/kids-learning',
+      '/images/kids-learning.svg',
+    ],
+    [
       'vietnamese-alphabet',
       'Bé vui học chữ',
       'Chữ nhỏ. Thế giới to.',

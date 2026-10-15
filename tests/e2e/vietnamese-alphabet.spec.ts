@@ -32,7 +32,7 @@ test('sixth portfolio card, direct URL/reload,29 ordered letters and matching im
   page,
 }) => {
   await page.goto('/');
-  await expect(page.locator('.project-card')).toHaveCount(6);
+  await expect(page.locator('.project-card')).toHaveCount(7);
   await page.locator('.project-vietnamese-alphabet').click();
   await expect(page).toHaveURL(path);
   await expect(page.locator('.alphabet-card')).toHaveCount(29);
@@ -52,7 +52,7 @@ test('sixth portfolio card, direct URL/reload,29 ordered letters and matching im
   await page.reload();
   await expect(page.locator('.alphabet-card')).toHaveCount(29);
   await page.getByRole('link', { name: 'Portfolio', exact: true }).click();
-  await expect(page.locator('.project-card')).toHaveCount(6);
+  await expect(page.locator('.project-card')).toHaveCount(7);
 });
 
 test('all29 bundled Vietnamese recordings really decode and illustrations/font load locally', async ({
@@ -235,7 +235,7 @@ test('leaving the route or hiding the tab cancels the voice and popup', async ({
     history.pushState(null, '', '/');
     window.dispatchEvent(new PopStateEvent('popstate'));
   });
-  await expect(page.locator('.project-card')).toHaveCount(6);
+  await expect(page.locator('.project-card')).toHaveCount(7);
   expect(await page.evaluate(() => window.alphabetTestAudios.every((audio) => audio.paused))).toBe(
     true,
   );

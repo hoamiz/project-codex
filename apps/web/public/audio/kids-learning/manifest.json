@@ -1,0 +1,64 @@
+{
+  "language": "vi-VN",
+  "voice": "vi-VN-HoaiMyNeural",
+  "rate": "-15%",
+  "revision": 1,
+  "created": "2026-10-15",
+  "source": "Microsoft Edge Read Aloud; edge-tts 7.3.0",
+  "clips": [
+    {
+      "id": "matching",
+      "transcript": "Nối số với nhóm hình tương ứng nhé.",
+      "durationSeconds": 3.432,
+      "sha256": "3907c17d262ee7e5eb5a3be959effd564bdd78e64675871a74573ffb0e123479"
+    },
+    {
+      "id": "bee",
+      "transcript": "Giúp bạn ong đến bông hoa nhé.",
+      "durationSeconds": 3.144,
+      "sha256": "758c84fbc1d74c2ca87e18202992c80f85a5f4c4e828efa92ead1557cf1ee56a"
+    },
+    {
+      "id": "dog",
+      "transcript": "Giúp bạn chó tìm khúc xương nhé.",
+      "durationSeconds": 3.168,
+      "sha256": "c9782249b0f6f944e924f8befb5448baa94b9887dc15421dd6aa315395f177ea"
+    },
+    {
+      "id": "cow",
+      "transcript": "Giúp bạn bò đến bãi cỏ nhé.",
+      "durationSeconds": 3.144,
+      "sha256": "c95e5d31cb2e2ff5dbdb78fba986bcbe72ff096e2774073be7c03b5c075a2e3c"
+    },
+    {
+      "id": "child",
+      "transcript": "Cùng đưa bạn nhỏ về nhà nhé.",
+      "durationSeconds": 3.216,
+      "sha256": "fcb1c635221be9d82ed4c332ecfa6a4c07f9e7f6dad8f18abfab4dc010a3a513"
+    },
+    {
+      "id": "success",
+      "transcript": "Đúng rồi. Con giỏi quá!",
+      "durationSeconds": 3.84,
+      "sha256": "11e55f30af2a9c04e058657cda9d6ecca613331c9a063ca1a00e5714491a8fa6"
+    },
+    {
+      "id": "retry",
+      "transcript": "Con thử lại nhé.",
+      "durationSeconds": 2.376,
+      "sha256": "1941e936a46a023c57882efa399c4b9cf357ef38a83ce0516a9346bf5335e35c"
+    },
+    {
+      "id": "complete",
+      "transcript": "Hoàn thành rồi. Con giỏi quá!",
+      "durationSeconds": 4.2,
+      "sha256": "f0c8d0a76babe34451666c9ae7b19204a27eb7af0dde9327f0894b7a2650d984"
+    },
+    {
+      "id": "tracing",
+      "transcript": "Đặt bút ở chấm xanh. Đi theo nét chấm đến đích nhé.",
+      "durationSeconds": 5.472,
+      "sha256": "b2ffb7331b0e51f116e44c3b476e177027f38fb75b76a6eef56da1acb7cd196b"
+    }
+  ]
+}

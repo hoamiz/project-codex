@@ -4,17 +4,26 @@ Portfolio độc lập với **React 19 + TypeScript + Vite 8 + Tailwind CSS 4**
 
 | Trang               | Đường dẫn                       | Chức năng                                                       |
 | ------------------- | ------------------------------- | --------------------------------------------------------------- |
-| Portfolio           | `/`                             | Giới thiệu, stack và sáu project từ PostgreSQL                  |
+| Portfolio           | `/`                             | Giới thiệu, stack và bảy project từ PostgreSQL                  |
 | AutoHub             | `/projects/autohub`             | Lọc/chi tiết xe, yêu thích, so sánh tối đa 3 xe, tư vấn/lái thử |
 | Memory Match        | `/projects/memory-match`        | 6/8/12 cặp, phục hồi sau reload, kết quả và leaderboard         |
 | Control Center      | `/projects/admin`               | Đăng nhập, dashboard, CRUD/archive xe và quản lý yêu cầu        |
 | Room Studio 3D      | `/projects/room-studio`         | Custom phòng 3D, nội thất, màu/ánh sáng, lưu và chia sẻ         |
 | Brick Playground 3D | `/projects/brick-playground`    | Lắp gạch, chọn màu, kéo thả/xếp chồng, thùng rác và chia sẻ     |
 | Bé vui học chữ      | `/projects/vietnamese-alphabet` | 29 chữ tiếng Việt, minh họa và popup đọc chữ/từ ví dụ           |
+| Bé vui học tập      | `/projects/kids-learning`       | Nối số, tập đếm, đồ nét và sticker vui nhộn                     |
 
-## PJ7 — Scan Studio 3D (kế hoạch)
+## Bé vui học tập
 
-PJ7 **Scan Studio 3D** đang ở bước lập kế hoạch: một ảnh → chọn vật thể chính/tách nền → tạo model 3D → xem và tải GLB. Có 24 task tại [kế hoạch PJ7](docs/scan-studio-plan.md), [checklist](PORTFOLIO_TASKS.md) và [prompt triển khai](RUN_PJ7_TASKS.md). Portfolio hiện có sáu demo; card, route và API PJ7 sẽ được thêm khi triển khai. AI dựng model cần dịch vụ hoặc GPU phù hợp; hosting FE/BE/DB miễn phí không cung cấp sẵn khả năng này.
+PJ7 có hai bài: **Nối số với hình** và **Đồ nét vui nhộn**. Giao diện tiếng Việt tươi sáng, Nunito và SVG tự host; hỗ trợ chuột, cảm ứng, bút và bàn phím. Card thứ bảy mở trang chọn bài; mỗi bài có URL riêng dưới kids-learning. Tiến độ 30 task L01–L30 tại [hợp đồng PJ7](docs/kids-learning-plan.md), [checklist](PORTFOLIO_TASKS.md) và [prompt tiếp tục](RUN_PJ7_TASKS.md).
+
+Bài nối số có ba cột, mỗi số trong start..end ứng với một nhóm hình xáo trộn. Giữ 1 ≤ start < end ≤ 10: sửa start sai đặt end−1, sửa end sai đặt start+1; preset 1–3/1–5/1–10 không tự bắt đầu. Kéo nối thay nét thô bằng một Bézier đầu tròn; đúng xanh/khóa, sai đỏ/được vẽ lại và xóa nét sai cũ. Chạm từng hình để đếm, không tăng trùng hoặc tự nối. Có thể chạm số rồi chạm nhóm hình; với nhiều cặp, cuộn trang để chọn đích.
+
+Bài đồ nét random một cặp ong–hoa/chó–xương/bò–cỏ/bé–nhà cùng đường thẳng/zigzag/sóng. Bộ chấm xét đường đi thực, không chỉ hai đầu mút. Đạt sẽ tạm thay ô bằng hoạt cảnh rồi trả về đúng đề cũ; Vẽ lại giữ đề, Bài tiếp mới random. **Dễ mặc định**, có mức Vừa, lựa chọn áp dụng từ đề mới. Bút bàn phím: focus bảng, Home về đầu, Space đặt/nhấc, mũi tên vẽ, Enter nộp.
+
+Có bàn tay hướng dẫn trên bảng mẫu riêng, giọng Việt bật/tắt/nghe lại và bộ sưu tập 12 sticker. MP3 Hoài My vi-VN tự host có transcript/checksum, không gọi TTS runtime; lỗi âm không chặn chơi. Mỗi đề hoàn thành cấp thưởng một lần; Vẽ lại/xem mẫu/phát lại không cộng thêm. Chỉ sticker và sở thích âm thanh lưu trên thiết bị, không thu hồ sơ hoặc upload nét. Storage bị chặn vẫn chơi trong phiên; reload trở về cài đặt Dễ, chưa phục hồi đề/nét.
+
+[Ý tưởng Scan Studio 3D](docs/scan-studio-plan.md) và [prompt cũ](RUN_SCAN_STUDIO_TASKS.md) được lưu trữ theo thay đổi PJ7 ngày 2026-10-15, chưa gán số project mới hoặc triển khai.
 
 ## Bé vui học chữ
 

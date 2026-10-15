@@ -23,6 +23,7 @@ const categories: Record<string, string> = {
   'room-studio': 'KHÔNG GIAN / SÁNG TẠO',
   'brick-playground': 'LẮP GHÉP / SÂN CHƠI 3D',
   'vietnamese-alphabet': 'HỌC TẬP / KHÁM PHÁ',
+  'kids-learning': 'HỌC TẬP / KHÉO TAY',
 };
 export function Portfolio() {
   const projects = useQuery({
@@ -48,14 +49,14 @@ export function Portfolio() {
         </div>
         <div className="hero-line">
           <span>REACT / TYPESCRIPT / NODE.JS</span>
-          <span>SELECTED WORK · 01—06</span>
+          <span>SELECTED WORK · 01—07</span>
         </div>
       </section>
       <section id="projects" className="section">
         <div className="section-heading">
           <div>
             <div className="eyebrow">KHÁM PHÁ</div>
-            <h2>Sáu project. Sáu trải nghiệm.</h2>
+            <h2>Bảy project. Bảy trải nghiệm.</h2>
           </div>
           <span className="muted">Xây dựng cùng một nền tảng.</span>
         </div>
@@ -84,6 +85,8 @@ export function Portfolio() {
                       src={p.imagePath}
                       alt="Thẻ chữ cái và con vật minh họa cho Bé vui học chữ"
                     />
+                  ) : p.slug === 'kids-learning' ? (
+                    <img src={p.imagePath} alt="Số ba nối với ba ngôi sao trong Bé vui học tập" />
                   ) : p.slug === 'memory-match' ? (
                     <div className="memory-art" aria-hidden="true">
                       {['✦', '◈', '◈', '✦', '✧', '✧'].map((s, j) => (

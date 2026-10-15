@@ -1,5 +1,7 @@
 # Triển khai Vercel + Render Free + Neon Free
 
+PJ7 bổ sung demo thứ bảy Bé vui học tập và migration006. Khởi tạo/nâng cấp giữ checksum001–005; compiled/public smoke kiểm cả ba URL kids-learning và assets tiếng Việt. Ảnh, audio, font, sticker đều nằm trong web build, không cần API key hoặc dịch vụ mới cho PJ7. Quy trình hosting/public phía dưới vẫn cần thực hiện riêng; tính năng local không tự tạo release trên Vercel/Render/Neon.
+
 Ngày2026-10-13. Người dùng đã giao triển khai và push GitHub. Code/UI/config đã có; trạng thái kiểm tra và các bước public nằm trong [checklist D01–D14](../PORTFOLIO_TASKS.md), bằng chứng ở [verification](verification.md). Không coi file manifest hoặc kiểm tra container cục bộ là website đã được xuất bản.
 
 ## Kiến trúc và cấu hình

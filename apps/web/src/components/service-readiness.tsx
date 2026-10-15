@@ -78,7 +78,7 @@ export function ServiceReadiness({ children }: { children: ReactNode }) {
               <span className="service-brand">
                 <Layers size={22} /> project<span>codex.</span>
               </span>
-              <span className="service-tag">PORTFOLIO / NĂM TRẢI NGHIỆM</span>
+              <span className="service-tag">PORTFOLIO / BẢY TRẢI NGHIỆM</span>
             </header>
             <section className="service-wait-content">
               <div className="service-eyebrow">CHUẨN BỊ KHÁM PHÁ</div>
@@ -130,6 +130,8 @@ export function ServiceReadiness({ children }: { children: ReactNode }) {
                 'Control Center',
                 'Room Studio 3D',
                 'Brick Playground',
+                'Bé vui học chữ',
+                'Bé vui học tập',
               ].map((name, index) => (
                 <span key={name}>
                   <small>0{index + 1}</small>

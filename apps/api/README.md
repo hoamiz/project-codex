@@ -1,5 +1,7 @@
 # API
 
+PJ7 thêm migration006_kids_learning.sql, card thứ bảy /projects/kids-learning và seed ON CONFLICT DO NOTHING. Không thêm API hoặc bảng lưu nét/hồ sơ trẻ; trình duyệt tự chấm. Migration001–005 giữ nguyên. kids-learning-upgrade.test.ts kiểm DB sáu project có metadata đã chỉnh → bảy project, migrate/seed lặp, whitelist và rollback; portfolio-upgrade tiếp tục kiểm startup không seed từ các bản cũ.
+
 PJ6 không có endpoint hoặc bảng dữ liệu trẻ. Migration005 mở whitelist `/projects/vietnamese-alphabet` và đăng ký card thứ sáu bằng ON CONFLICT DO NOTHING; seed cũng thêm khi thiếu. Thứ tự API đặt Alphabet sau Brick Playground. Nâng cấp DB5 project không cần seed và giữ metadata đã chỉnh; âm thanh/minh họa là asset tĩnh trong web build. Migration001–004 giữ nguyên.
 
 Express 5/TypeScript, pg, Zod, session PostgreSQL, scrypt và rate limit. Root `.env` đọc im lặng; không dùng cấu hình dự án khác. DB phải tên `project_codex_dev` hoặc `project_codex_test`. API mặc định bind loopback 4100. Xem [root README](../../README.md) để setup DB/admin.
@@ -20,4 +22,4 @@ Brick Playground: `services/brick-geometry.ts` chứa catalog/kiểu/geometry th
 
 `bricks-validation.test.ts`, `bricks-service.test.ts`, `bricks.test.ts` kiểm tra schema, database thật, concurrency, rollback/retry và HTTP errors/rate limit. SQL luôn tham số hóa; snapshot không chứa camera/selection/history/key.
 
-Server áp dụng migration trước listen, kể cả source/dev hoặc dist/start. Migration003 thêm Room Studio,004 thêm Brick Playground,005 thêm Bé vui học chữ, ON CONFLICT giữ metadata đã chỉnh. `portfolio-upgrade.test.ts` tạo schema fixture từ bản ba/bốn/năm project hoặc metadata Room/Brick/Alphabet đã chỉnh, khởi động server thật không seed, kiểm tra API trả6 project và giữ dữ liệu. Migration001–003 không bị sửa trong PJ5.
+Server áp dụng migration trước listen, kể cả source/dev hoặc dist/start. Migration003 thêm Room Studio,004 thêm Brick Playground,005 thêm Bé vui học chữ, ON CONFLICT giữ metadata đã chỉnh. `portfolio-upgrade.test.ts` tạo schema fixture từ bản ba/bốn/năm project hoặc metadata Room/Brick/Alphabet đã chỉnh, khởi động server thật không seed, kiểm tra API trả7 project và giữ dữ liệu. Migration001–003 không bị sửa trong PJ5.

@@ -42,6 +42,7 @@ export async function smokeDeployment(base, { tlsFixture = false, roomId, brickI
         'room-studio',
         'brick-playground',
         'vietnamese-alphabet',
+        'kids-learning',
       ],
     );
     assert(Array.isArray((await json('/cars')).data));
@@ -55,6 +56,10 @@ export async function smokeDeployment(base, { tlsFixture = false, roomId, brickI
     const voice = await http.get('/audio/vietnamese-alphabet/a.mp3');
     assert.equal(voice.status(), 200);
     assert.match(voice.headers()['content-type'], /audio\/mpeg/);
+    const learningVoice = await http.get('/audio/kids-learning/matching.mp3');
+    assert.equal(learningVoice.status(), 200);
+    assert.match(learningVoice.headers()['content-type'], /audio\/mpeg/);
+    assert.equal((await http.get('/audio/kids-learning/missing.mp3')).status(), 404);
     browser = await chromium.launch({
       executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium',
     });
@@ -64,7 +69,7 @@ export async function smokeDeployment(base, { tlsFixture = false, roomId, brickI
     page.on('pageerror', (error) => errors.push(error.message));
     await page.goto(origin.origin);
     await page.locator('.project-card').last().waitFor();
-    assert.equal(await page.locator('.project-card').count(), 6);
+    assert.equal(await page.locator('.project-card').count(), 7);
     for (const [path, heading] of [
       ['/projects/autohub', 'Chặng đường mới.'],
       ['/projects/memory-match', 'Chậm lại.'],
@@ -72,6 +77,9 @@ export async function smokeDeployment(base, { tlsFixture = false, roomId, brickI
       ['/projects/rooms', 'Room Studio 3D'],
       ['/projects/brick-playground', 'Brick Playground'],
       ['/projects/vietnamese-alphabet', 'Chữ nhỏ.'],
+      ['/projects/kids-learning', 'Chơi một chút.'],
+      ['/projects/kids-learning/matching', 'Nối số với hình'],
+      ['/projects/kids-learning/tracing', 'Đồ nét vui nhộn'],
     ]) {
       await page.goto(origin.origin + path);
       await page.getByRole('heading').filter({ hasText: heading }).waitFor();
@@ -113,7 +121,7 @@ export async function smokeDeployment(base, { tlsFixture = false, roomId, brickI
       }
     assert.deepEqual(errors, []);
     console.log(
-      `Deployment read-only smoke passed: six demos, Vietnamese audio, alias, direct/reload, DB-backed health and API/assets404; viewers ${roomId && brickId ? 'verified' : 'not supplied'}.`,
+      `Deployment read-only smoke passed: seven demos, Vietnamese audio, alias, direct/reload, DB-backed health and API/assets404; viewers ${roomId && brickId ? 'verified' : 'not supplied'}.`,
     );
   } finally {
     if (browser) await browser.close();

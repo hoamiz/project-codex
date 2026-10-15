@@ -24,6 +24,7 @@ export async function smoke(
     'admin',
     'autohub',
     'brick-playground',
+    'kids-learning',
     'memory-match',
     'room-studio',
     'vietnamese-alphabet',
@@ -40,6 +41,18 @@ export async function smoke(
   assert.equal((await json('/bricks/catalog')).data.kinds.length, 10);
   assert.equal((await fetch(`${apiOrigin}/api/admin/cars`)).status, 401);
   assert.equal((await fetch(`${apiOrigin}/api/missing`)).status, 404);
+  const learningVoice = await fetch(`${webOrigin}/audio/kids-learning/matching.mp3`);
+  assert.equal(learningVoice.status, 200, 'PJ7 voice is included in static build');
+  assert.match(learningVoice.headers.get('content-type') || '', /audio\/mpeg/);
+  // Vite dev dùng SPA fallback cho Accept */*; hỏi đúng media type. Smoke production vẫn kiểm404 với request mặc định.
+  assert.equal(
+    (
+      await fetch(`${webOrigin}/audio/kids-learning/missing.mp3`, {
+        headers: { Accept: 'audio/mpeg' },
+      })
+    ).status,
+    404,
+  );
   const database = new URL(process.env.DATABASE_URL);
   assert(
     ['127.0.0.1', 'localhost'].includes(database.hostname) &&
@@ -64,6 +77,7 @@ export async function smoke(
             ),
           )
         : null;
+    const kidsChunk = manifest ? '/' + manifest['src/features/kids-learning/index.tsx'].file : null;
     const roomChunk = manifest ? '/' + manifest['src/features/room-studio/index.tsx'].file : null;
     const brickChunks = manifest
       ? [
@@ -82,7 +96,9 @@ export async function smoke(
     page.on('pageerror', (error) => errors.push(error.message));
     await page.goto(webOrigin);
     await page.locator('.project-card').last().waitFor();
-    assert.equal(await page.locator('.project-card').count(), 6);
+    assert.equal(await page.locator('.project-card').count(), 7);
+    if (kidsChunk)
+      assert(!assets.has(kidsChunk), 'Portfolio must not load the kids learning bundle');
     if (roomChunk) assert(!assets.has(roomChunk), 'Portfolio must not load the 3D bundle');
     for (const chunk of [...brickChunks, ...threeChunks])
       assert(!assets.has(chunk), 'Portfolio must not load PJ5/Three bundle');
@@ -94,6 +110,9 @@ export async function smoke(
       ['/projects/rooms', 'Room Studio 3D'],
       ['/projects/brick-playground', 'Brick Playground'],
       ['/projects/vietnamese-alphabet', 'Chữ nhỏ.'],
+      ['/projects/kids-learning', 'Chơi một chút.'],
+      ['/projects/kids-learning/matching', 'Nối số với hình'],
+      ['/projects/kids-learning/tracing', 'Đồ nét vui nhộn'],
     ]) {
       await page.goto(webOrigin + route);
       await page.getByRole('heading').filter({ hasText: heading }).waitFor();
@@ -143,7 +162,7 @@ export async function smoke(
     }
   }
   console.log(
-    'HTTP/DB, admin 401, six rendered demos, immutable PJ5 viewer, lazy bundles and direct reload verified.',
+    'HTTP/DB, admin 401, seven rendered demos, immutable PJ5 viewer, lazy bundles and direct reload verified.',
   );
 }
 if (process.argv[1] && import.meta.url === new URL(process.argv[1], 'file:').href) {

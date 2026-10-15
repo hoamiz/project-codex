@@ -18,6 +18,7 @@ import { ServiceReadiness } from './components/service-readiness';
 const RoomStudio = lazy(() => import('./features/room-studio'));
 const BrickPlayground = lazy(() => import('./features/brick-playground'));
 const VietnameseAlphabet = lazy(() => import('./features/vietnamese-alphabet'));
+const KidsLearning = lazy(() => import('./features/kids-learning'));
 const client = new QueryClient({
   defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } },
 });
@@ -25,14 +26,27 @@ function App() {
   const location = useLocation();
   const home = location.pathname === '/';
   const alphabet = location.pathname === '/projects/vietnamese-alphabet';
+  const learning =
+    location.pathname === '/projects/kids-learning' ||
+    location.pathname.startsWith('/projects/kids-learning/');
   const autoHub =
     location.pathname === '/projects/autohub' || location.pathname.startsWith('/projects/autohub/');
   return (
-    <div className={autoHub ? 'autohub-page' : alphabet ? 'alphabet-shell' : undefined}>
+    <div
+      className={
+        autoHub
+          ? 'autohub-page'
+          : alphabet
+            ? 'alphabet-shell'
+            : learning
+              ? 'learning-shell'
+              : undefined
+      }
+    >
       <a className="skip-link" href="#main">
         Đến nội dung
       </a>
-      {alphabet ? null : autoHub ? (
+      {alphabet || learning ? null : autoHub ? (
         <AutoHubHeader />
       ) : (
         <header className="site-header">
@@ -67,6 +81,14 @@ function App() {
       <main id="main">
         <Routes>
           <Route path="/" element={<Portfolio />} />
+          <Route
+            path="/projects/kids-learning/*"
+            element={
+              <Suspense fallback={<State loading />}>
+                <KidsLearning />
+              </Suspense>
+            }
+          />
           <Route path="/projects/autohub" element={<AutoHub />} />
           <Route path="/projects/autohub/cars/:slug" element={<CarDetail />} />
           <Route path="/projects/autohub/compare" element={<Compare />} />
@@ -145,7 +167,7 @@ function App() {
           />
         </Routes>
       </main>
-      {alphabet ? null : autoHub ? (
+      {alphabet || learning ? null : autoHub ? (
         <AutoHubFooter />
       ) : (
         <footer className="site-footer">

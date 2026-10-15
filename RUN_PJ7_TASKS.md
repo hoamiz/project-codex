@@ -1,31 +1,46 @@
-# Prompt triển khai PJ7 — Scan Studio 3D
+# Prompt triển khai PJ7 — Bé vui học tập
 
-**Hiện mới có kế hoạch.** Chạy prompt khi người dùng giao triển khai PJ7. Hợp đồng và task: [docs/scan-studio-plan.md](docs/scan-studio-plan.md). Checklist S01–S24: [PORTFOLIO_TASKS.md](PORTFOLIO_TASKS.md).
+**Prompt triển khai hoặc tiếp tục PJ7.** Kiểm trạng thái thực trong checklist; giữ phần đã đạt và tiếp tục task chưa có bằng chứng, không chạy lại bootstrap. Đọc [kế hoạch và tiêu chí](docs/kids-learning-plan.md) và checklist L01–L30 trong [PORTFOLIO_TASKS.md](PORTFOLIO_TASKS.md). Scan Studio và S01–S24 đã lưu trữ, không nằm trong lượt làm PJ7.
 
 ```text
-Đọc /workspace/project-codex/RUN_PJ7_TASKS.md và triển khai Scan Studio 3D theo S01–S24 trong docs/scan-studio-plan.md, đến nghiệm thu hoặc blocker bên ngoài đã chứng minh.
+Đọc /workspace/project-codex/RUN_PJ7_TASKS.md và triển khai PJ7 Bé vui học tập theo L01–L30 trong docs/kids-learning-plan.md đến nghiệm thu hoặc blocker bên ngoài đã chứng minh.
 
 TRƯỚC KHI LÀM
-Đọc AGENTS.md, README.md, PORTFOLIO_TASKS.md, kế hoạch PJ7 và Git status. Chỉ làm trong project-codex, giữ thay đổi người dùng và sáu demo hiện có. Không tự tạo worktree, reset DB hoặc sửa migration 001–005. Các task T/R/B/A/D/C đã hoàn thành là lịch sử; không chạy lại bootstrap. Đọc nhật ký thực tế để tiếp tục đúng khi bị gián đoạn.
+Đọc AGENTS.md, README.md, PORTFOLIO_TASKS.md, kế hoạch PJ7 và Git status thực tế. Chỉ sửa project-codex, giữ thay đổi người dùng và sáu demo hiện có. Không tạo worktree, reset DB hoặc sửa migration 001–005. Các task lịch sử đã xong không chạy lại; S01–S24/Scan Studio lưu trữ, không tự triển khai hoặc gọi AI. Kiểm tra số migration tiếp theo thay vì dùng mù tên dự kiến 006.
 
-PHẠM VI
-Một ảnh, chỉ vật thể chính: chọn ảnh → crop/mask/tách nền → preview PNG → xác nhận → job AI → model GLB có texture → viewer xoay/zoom/reset/wireframe → tải GLB/lịch sử/chia sẻ opt-in. Ảnh gốc chỉ giữ trong trình duyệt; chỉ prepared PNG được upload và gửi provider. Thêm route scan-studio, job riêng, public share token và card thứ bảy. Tách nền tự động, nhiều ảnh, AR và nhập Room Studio là mở rộng, không tự thêm. Model từ một ảnh suy đoán phần khuất; không quảng cáo độ chính xác đo đạc.
+BÀI 1 — NỐI SỐ
+Ba cột: số | bảng trắng vẽ | nhóm hình. Tạo đủ mỗi số và nhóm hình trong khoảng start..end, gồm cả hai đầu; cột phải xáo trộn, số lượng hình chính xác. Giữ 1 <= start < end <= 10. Khi commit start sai, chỉ đặt start=end-1; khi commit end sai, chỉ đặt end=start+1. Áp dụng cả rỗng, ngoài 1..10 và thập phân; không sửa giữa lúc đang gõ 10 hoặc đọc state form cũ khi Bắt đầu.
 
-KIẾN TRÚC
-Dùng React/TS/Tailwind và Three/Fiber hiện có, Node/Express điều phối, PostgreSQL lưu jobs/quota và object storage private. Không chạy inference GPU trên Render Free hoặc lưu GLB lâu dài trên filesystem tạm/DB binary. Giữ body JSON gateway/API 32 KB; ảnh/GLB truyền trực tiếp storage bằng URL có chữ ký. AI thật cần provider/account/quota/storage đã xác minh; ngân sách mặc định 0. Tái dùng auth admin cho người tạo, khách xem model mẫu có nhãn rõ; không coi mẫu là kết quả ảnh khách.
+Bắt đầu từ nguồn chưa khóa, kéo tới đích. Nét thô chỉ preview; khi thả đúng điểm nối thì bỏ toàn bộ raw/vòng thừa và thay bằng đúng một Bézier đầu tròn. Chấm theo giá trị, không theo nét đẹp. Đúng: xanh lá, tick, chúc mừng một lần, khóa hai đầu. Sai: đỏ, không khóa; bắt đầu vẽ lại nguồn đó thì xóa nét sai trước. Giữ nguyên cặp đúng, cho phép các nét cắt nhau. Pointercancel/thả ngoài/đích khóa không để nét rác. Chỉ nút tạo đề mới bỏ khóa/sinh đề.
 
-QUYỀN VÀ CẤU HÌNH
-Khi được giao triển khai, tự sửa file/dependency/root lockfile, thêm migration mới, chuẩn bị DB dev/test và fixtures riêng, chạy dịch vụ và tests. Không tự mua credit, thêm thẻ, nâng gói hoặc bật inference trả phí. Commit/push/deploy khi có yêu cầu áp dụng trong phiên. Credential qua Settings phù hợp, không xin hoặc ghi secret trong chat/log/VITE. Kiểm binding và thao tác đọc trước khi kết luận thiếu quyền. Các task hosting D09–D14 là workflow riêng.
+BÀI 2 — ĐỒ NÉT
+Mỗi lượt random một cặp cố định: ong-hoa, chó-xương, bò-cỏ hoặc bé-nhà; cùng một mẫu thẳng/zigzag/sóng. Không random lúc render, retry, resize hoặc animation kết thúc. Nét chấm chỉ dẫn start tới end. Chấm đường đi thật bằng đầu/cuối, hành lang, độ phủ, thứ tự và chiều dài; không chỉ so hai điểm, không thay nét bằng mẫu trước chấm. Nhận run tay hợp lý nhưng từ chối đường tắt/thiếu/nguệch ngoạc/nhiều nét rời.
 
-THỰC HIỆN VÀ TEST
-Chạy theo phụ thuộc; sau mỗi task, test phù hợp, chẩn đoán/sửa lỗi, kiểm lại phần bị ảnh hưởng rồi ghi file/lệnh/kết quả/pass/fail/skip/hạn chế trước khi đánh dấu [x]. Tự chuyển task tiếp theo, không hỏi có tiếp tục không hoặc dừng tại một mốc. Thiếu quyền/ngân sách ở S02 thì ghi bằng chứng và làm hết phần độc lập qua contracts/fixtures/FE. Giữ S22/S24 chưa hoàn thành khi chưa kiểm nghiệm AI thật; không dùng demo/stub để đánh dấu đạt. Chỉ cần người dùng can thiệp khi đã hết phần độc lập và có blocker thực sự.
+Khi đạt, khóa nhập và tạm thay chính ô bài bằng hoạt cảnh tương ứng. Nhân vật đi theo đường rồi hút mật/gặm xương/ăn cỏ/vào nhà. Kết thúc về cùng cặp/cùng đường, trạng thái hoàn thành; Vẽ lại giữ đề, Bài tiếp mới random. Chỉ phát một lần, cleanup callback lượt cũ; hidden tạm dừng, unmount hủy, có reduced motion và watchdog có giới hạn.
 
-COMMENT
-Thêm comment/JSDoc tiếng Việt cho hàm có logic cần giải thích: mask/tọa độ/alpha, validation binary/hash, signed upload/ownership/ngân sách, lease/state/idempotency/unknown submission, import/disposal GLB và poll/khôi phục. Giải thích mục đích/quy tắc và giả định; không nhắc lại code hiển nhiên. Cập nhật comment khi đổi hành vi.
+SÁU CẬP NHẬT ĐÃ DUYỆT — BẮT BUỘC
+1. Xem cách chơi bằng bàn tay trên state mẫu tách biệt; có bỏ qua/xem lại, kết thúc về nguyên đề/tiến độ, không cấp thưởng. Reduced motion dùng các khung tĩnh.
+2. Dễ là mặc định khi vào/reload, có chọn Vừa. Điều chỉnh độ rộng nét/dung sai, vẫn bắt đồ đúng đường ở cả hai. Chốt profile khi tạo đề, không đổi khoảng start/end hoặc chấm lại nét hiện tại.
+3. Chạm hình để đếm: mỗi hình tính một lần, có Đếm lại từng nhóm; không tự chọn đích/nối hoặc thay khóa. Phân biệt vùng đếm và điểm nối.
+4. Giọng hướng dẫn tiếng Việt tự host, câu ngắn/rõ, có bật/tắt và nghe lại. Chỉ phát sau thao tác, một giọng, mute/đổi bài/hide/unmount dừng âm cũ; lỗi tải/phát không chặn chơi. Transcript/nguồn/license/duration/SHA/revision đầy đủ, không TTS runtime hoặc giọng Anh.
+5. Preset 1–3 / 1–5 / 1–10 đặt cả hai ô nguyên tử, không tự bắt đầu; blur bản nháp cũ không ghi đè preset. Sau đó sửa từng ô vẫn theo quy tắc đã chốt.
+6. Hoàn thành cả đề nối số hoặc đồ đạt mở một sticker mới trong bộ 12. Chỉ một lần mỗi roundId; Vẽ lại/tutorial/rerender/animation không cấp thêm. Bộ sưu tập lưu localStorage version/dedupe, lỗi/chặn/đầy vẫn dùng trong phiên. Không tính tốc độ, xếp hạng hoặc trừ điểm.
 
-KIỂM CHỨNG
-Dùng unit có ý nghĩa, PostgreSQL/storage integration thật, provider HTTP fixture trong test và browser WebGL/pointer/touch/keyboard/axe. Runtime không giả inference; model mẫu/relief không chứng minh model tạo từ ảnh. Không tự gửi lại POST provider khi chưa biết đã nhận/tính credit; lưu unknown và đối chiếu. Không tắt TLS/checksum/assertions hoặc reset data để test đạt. Fixtures dùng schema/prefix/process riêng; CI mặc định không gọi AI tốn credit.
+KIẾN TRÚC VÀ GIAO DIỆN
+Dùng React/TypeScript/Tailwind, SVG/Pointer Events và CSS/SVG hoặc Web Animations API. Logic thuần tách React, RNG inject trong test. Không cần Three.js, AI, API trả phí hoặc thư viện canvas nặng. UI sáng/vui/đơn giản, font Nunito tiếng Việt tự host, SVG đếm được rõ. Touch/mouse/pen, target >=44px, keyboard, aria-live, reduced motion, 360/768/1440 px; không khóa cuộn/zoom toàn trang.
+
+Node/PostgreSQL thêm card thứ bảy bằng migration/seed an toàn; không thêm hồ sơ trẻ hoặc API lưu nét cho MVP. Tái dùng ServiceReadiness và cập nhật đủ tên demo; mất mạng khi đã vào bài giữ nguyên state. Lượt hiện tại ở bộ nhớ; chỉ lưu bộ sticker và lựa chọn âm thanh trên thiết bị. Reload chưa phục hồi đề/nét và vẫn mặc định Dễ. Scan Studio không chiếm card/migration hiện tại.
+
+QUYỀN VÀ CÁCH LÀM
+Khi được giao triển khai, tự sửa file, cài dependency cần thiết với một root lockfile, tạo migration mới, chuẩn bị DB dev/test riêng, chạy dịch vụ và tests. Không mở rộng sang repo khác hoặc xóa dữ liệu. Commit/push/deploy theo yêu cầu áp dụng trong phiên, không tự mua dịch vụ.
+
+Làm lần lượt theo phụ thuộc L01–L30; test mỗi task, chẩn đoán/sửa lỗi và kiểm lại phần bị ảnh hưởng. Ghi file/lệnh/pass/fail/skip/hạn chế trước khi đánh dấu [x]. Tự chuyển task tiếp theo, không hỏi có tiếp tục không hoặc dừng sau một task. Chỉ cần người dùng can thiệp khi có blocker thực sự và đã làm hết phần độc lập.
+
+COMMENT VÀ TEST
+Comment/JSDoc tiếng Việt cho quy tắc range theo ô sửa sau, RNG, tọa độ/pointer capture, chuẩn hóa Bézier, khóa/retry, resampling/chấm đồ nét, animation/token/cleanup, profile, đếm một lần, audio lifecycle, preset nguyên tử, sticker/storage và migration cần giải thích. Nêu mục đích, giả định và quyết định; không diễn lại code hiển nhiên.
+
+Kiểm 45 khoảng hợp lệ và bảng range lỗi, bốn cặp x ba mẫu x hai mức. Kiểm ba preset, tutorial giữ state, đếm không lặp, native audio/mute/lỗi phát, sticker một lần và storage hỏng/chặn/đầy. Test logic pure/component, DB upgrade fixture, browser native pointer/touch/keyboard, axe, ảnh UI và từng hoạt cảnh. Không gọi hàm hoàn thành hoặc sửa state để E2E đạt; không bỏ assertion, reset dữ liệu hoặc tắt TLS/checksum. Dùng fixture/schema riêng, tránh suite chung DB chạy đồng thời. Ghi rõ thiết bị thật chưa thử; không coi axe là bằng chứng hình đếm/hoạt cảnh đúng.
 
 NGHIỆM THU
-S22 phải có ba prepared PNG và ba GLB mới từ engine thật, bằng chứng nguồn/hash/task/time/cost/chất lượng; kiểm xoay, tải, mở lại và chọn một vật thể từ ảnh nhiều vật thể. Chạy npm run check, format:check, test:deploy và container checks phù hợp; kiểm secret/artifact, bảy card/routes/lazy và sáu demo cũ, worker restart/nâng cấp DB/bảo toàn dữ liệu. Cập nhật README/architecture/API/verification/checklist và startup instructions khi cần. Báo rõ đã chạy/chưa chạy, mẫu/live và blocker; không kết luận hoàn thành nếu S22 chưa đạt. Git/publish tuân theo quyền đã được giao trong phiên.
+Chạy npm run check, npm run format:check, npm run test:deploy và container checks bị ảnh hưởng; verify compiled/direct/reload/lazy/card7/readiness/DB6->7, sáu demo cũ và bảo toàn data/config. Xem trực quan 10 cặp, nét đúng/sai, ba mẫu, bốn cảnh, tutorial, Dễ mặc định và bộ sticker. Rà license/comment/audio/secret/artifact. Cập nhật README/architecture/verification/checklist và startup instructions nếu cần. Chỉ kết luận hoàn thành khi có bằng chứng mọi tiêu chí bắt buộc; nêu rõ đã chạy/chưa chạy và hạn chế.
 ```
