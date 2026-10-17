@@ -87,8 +87,8 @@ test('every illustration/audio exists with matching Vietnamese transcript and in
   ]) {
     const clip = manifest.clips.find((item: { id: string }) => item.id === id);
     expect(clip.transcript).toBe(expected);
-    expect(clip.pauseMs).toBe(400);
   }
+  expect(manifest.clips.every((clip: { pauseMs: number }) => clip.pauseMs === 2000)).toBe(true);
   // Hoài My đọc "hờ" ở -30% nghe gần "hà"; giữ tốc độ -15% như các chữ khác.
   expect(manifest.clips.find((clip: { id: string }) => clip.id === 'h').soundRate).toBe('-15%');
   // TTS đọc "sờ" gần như không có âm xát (nghe thành "trờ"); "sở" cho tiếng "sh" đúng.

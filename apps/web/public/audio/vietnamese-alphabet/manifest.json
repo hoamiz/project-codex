@@ -4,7 +4,7 @@
   "voice": "vi-VN-HoaiMyNeural",
   "rate": "-15%",
   "created": "2026-10-14",
-  "revision": 7,
+  "revision": 8,
   "pronunciationOverrides": {
     "k": "ca",
     "q": "cu"
@@ -14,202 +14,226 @@
     {
       "id": "a",
       "transcript": "a. cái ca.",
-      "durationSeconds": 2.304,
-      "sha256": "2971921bbdb3205e31bd969e4150eca03b019f927ce913eab240cf4c76b518aa"
+      "durationSeconds": 4.032,
+      "sha256": "634b8512095297b020bf0f010082829dd09a600bb0eba62545ba37d672381604",
+      "pauseMs": 2000
     },
     {
       "id": "a-breve",
       "transcript": "á. cặp sách.",
-      "durationSeconds": 1.968,
-      "sha256": "612abb82f99e03dec0cd3028f63958547114ffa8f851b89f515737edb98ded00"
+      "durationSeconds": 3.912,
+      "sha256": "343123130a830ca45d759ca04b406318e6e165771c1c8505514a1d72b668bd3f",
+      "pauseMs": 2000
     },
     {
       "id": "a-circumflex",
       "transcript": "ớ. con gấu.",
-      "durationSeconds": 2.112,
-      "sha256": "eef96e4798ee3fadc63343df1708d02ba557598d4caa1b3e1ce33d981e1a4ed9"
+      "durationSeconds": 4.056,
+      "sha256": "74dff0e7d561cf097925854844be7b699a3e725df23829dc20dd47c57024a428",
+      "pauseMs": 2000
     },
     {
       "id": "b",
       "transcript": "bờ. con bò.",
-      "durationSeconds": 3.192,
-      "sha256": "5a202e4783780e89f8d72ecdb46f420a6a59c23153d97d0b1a953a1e1060c73c"
+      "durationSeconds": 4.152,
+      "sha256": "be7ba8c929372e7d88df19c3c01013dde6385602c9aec8b6b8e8b4b57ff22b72",
+      "pauseMs": 2000
     },
     {
       "id": "c",
       "transcript": "cờ. con cá.",
-      "durationSeconds": 3.168,
-      "sha256": "ee87a909cf441c16aa73d9b730e6f3e283d34ea8b4717e5f586c07eee095a870"
+      "durationSeconds": 4.104,
+      "sha256": "b7b002fe0741f130c950ca08408e957373e7c6be38f8252778c9ff3c761a8314",
+      "pauseMs": 2000
     },
     {
       "id": "d",
       "transcript": "dờ. dưa hấu.",
-      "durationSeconds": 3.096,
-      "sha256": "594ae68635f3729e4b6c27a382d6acec01986b4640eb542972cd8100ffc2fa4c"
+      "durationSeconds": 4.08,
+      "sha256": "74630197691200d1949133e2282ce145ad0bf6f86026ccab11017ac4a8b051f6",
+      "pauseMs": 2000
     },
     {
       "id": "d-stroke",
       "transcript": "đờ. cái đèn.",
-      "durationSeconds": 3.168,
-      "sha256": "cb3e69b9769c1c558d4b8f2a93c49c7343ad63f0d508cab007261353a2b02f78"
+      "durationSeconds": 4.104,
+      "sha256": "c2f19454ff140e276e4513ed34eac8447436f256c52ca3620e614ba490c6184c",
+      "pauseMs": 2000
     },
     {
       "id": "e",
       "transcript": "e. con ve.",
-      "durationSeconds": 2.376,
-      "sha256": "20ccc4f2fbf812364b847b74c61ab9b66ce965641bd123b4fc297dba1a9687bd"
+      "durationSeconds": 4.104,
+      "sha256": "add2e59474378c0c8587074143cab9289b09b8d4c9e358c0b765dd9f124c6058",
+      "pauseMs": 2000
     },
     {
       "id": "e-circumflex",
       "transcript": "ê. con dê.",
-      "durationSeconds": 2.352,
-      "sha256": "0a3f8372de79c26a2e876b3644ae212eddb6477daea1a4cbfb25815945db7d62"
+      "durationSeconds": 4.08,
+      "sha256": "9a018ec2fb66a99b0d372b8f633f692c94cf1501012ccedd1185c40a2e110fb2",
+      "pauseMs": 2000
     },
     {
       "id": "g",
       "transcript": "gờ. con gà.",
-      "durationSeconds": 3.216,
-      "sha256": "ea8281cf56e17513040a49ce1d7efb24ea9334151d34a48d8ba0a09f900bf4ae"
+      "durationSeconds": 4.152,
+      "sha256": "6877dd3d1e4aeb43754800a12e4c9a7256341ab04363c76f659d128948cc80a3",
+      "pauseMs": 2000
     },
     {
       "id": "h",
       "transcript": "hờ. con hổ.",
-      "durationSeconds": 4.2,
-      "sha256": "79a9b44cc582a37889b8ab4c9a48b9d381566e8fd9582a66b0facc223653086e",
+      "durationSeconds": 4.128,
+      "sha256": "a33b96ada0e29999e0fc045a46eab7210114c2d9d6d746fb6a74966cac91e75a",
       "soundRate": "-15%",
       "soundVolume": "+0%",
       "normalizedPeakDb": -6,
       "exampleRate": "-15%",
-      "pauseMs": 400,
+      "pauseMs": 2000,
       "synthesis": "separate sound and example"
     },
     {
       "id": "i",
       "transcript": "i. con chim.",
-      "durationSeconds": 2.376,
-      "sha256": "3f82b7ce63b7bc1b086146a5b4adb47f09f07a5539e8901da01259601260ad53"
+      "durationSeconds": 4.08,
+      "sha256": "9340deaa01aadd8763ca3b8819b1b89058f0acf8309b8efd06f30a2fd5938d50",
+      "pauseMs": 2000
     },
     {
       "id": "k",
       "transcript": "ca. cái kẹo.",
-      "durationSeconds": 4.2,
-      "sha256": "68273bb3a0ec647d4f722c45c01953483d12d6212f1e6de4571b613e8acd4644",
+      "durationSeconds": 4.224,
+      "sha256": "70fdfb3173e4a373244d91fce8cd44043ab91f0b4e668ca144b1cfba0f3bcc63",
       "soundRate": "-15%",
       "soundVolume": "+10%",
       "exampleRate": "-15%",
-      "pauseMs": 400,
+      "pauseMs": 2000,
       "synthesis": "separate sound and example"
     },
     {
       "id": "l",
       "transcript": "lờ. con lợn.",
-      "durationSeconds": 3.288,
-      "sha256": "421a954136f3a88d08247436bc7a33ab56e42773e490869deece72f25a7f68f1"
+      "durationSeconds": 4.224,
+      "sha256": "e3ebfeb49606aefaee6a655b754b1cb49509a66f75cb9c59d56fda8bbf26ff1e",
+      "pauseMs": 2000
     },
     {
       "id": "m",
       "transcript": "mờ. con mèo.",
-      "durationSeconds": 3.264,
-      "sha256": "b2c8be9286f5f106d5bd4d38e4dde7708996de5181cb2eae34626ccbb07880da"
+      "durationSeconds": 4.2,
+      "sha256": "ffe3d37e60f13a60e6b848815d885957a12d83397b4c183324614c17027abcd7",
+      "pauseMs": 2000
     },
     {
       "id": "n",
       "transcript": "nờ. cái nón.",
-      "durationSeconds": 3.216,
-      "sha256": "cd9980b70b28af818af0aaf54c7a5bbb5c3278c12f3983db94f9800d55201b7f"
+      "durationSeconds": 4.152,
+      "sha256": "c46beea87501530914a6840ec342be67ad43abfdfa19c986b6f67c45e664085e",
+      "pauseMs": 2000
     },
     {
       "id": "o",
       "transcript": "o. con ong.",
-      "durationSeconds": 2.4,
-      "sha256": "e05aa35852b6f06f9a7cfdf72a1a35049bbc66dc9262acb63d455d0572623602"
+      "durationSeconds": 4.104,
+      "sha256": "39a2b2c341bdcdb9ed06629fd8960d4b3146d678de34a408f037c5ded2c5ee9d",
+      "pauseMs": 2000
     },
     {
       "id": "o-circumflex",
       "transcript": "ô. cái ô.",
-      "durationSeconds": 2.328,
-      "sha256": "2fe8648b0cb79674c5b24abc1d5d006d093e168452be717927c6c6db795bcade"
+      "durationSeconds": 4.056,
+      "sha256": "700270f7c9ecd95a98b4d5b31e613b90ff5fc70c256c011539096b6e0fe9ec45",
+      "pauseMs": 2000
     },
     {
       "id": "o-horn",
       "transcript": "ơ. lá cờ.",
-      "durationSeconds": 2.208,
-      "sha256": "807827e79f3cdd950b9fdf0c27e966196ece1fb7b8182986749981a6a0fe7bd5"
+      "durationSeconds": 4.152,
+      "sha256": "07aad08b2f99e2684bfd10244262dcc4979d55e4463c6a122ccb64d2e5857a70",
+      "pauseMs": 2000
     },
     {
       "id": "p",
       "transcript": "pờ. cục pin.",
-      "durationSeconds": 3.096,
-      "sha256": "74c603b90d34f89bffd2cdea0eba118f64fc8dd7623b007326041066bdcdae53"
+      "durationSeconds": 4.056,
+      "sha256": "968c434edb48e50fc54718cfbc06f1de39ec0a649045a037a7e36f13c97c4e87",
+      "pauseMs": 2000
     },
     {
       "id": "q",
       "transcript": "cu. quả quýt.",
-      "durationSeconds": 4.2,
-      "sha256": "fed8a9aa6878aae608cb4a1f01e826f7c944a92a2bd4e1a5e4a4c1a780f34e9b",
+      "durationSeconds": 4.152,
+      "sha256": "e328d777e27dca833598e556251a47da6ddba477f5f131c954e0c026889436f6",
       "soundRate": "-15%",
       "soundVolume": "+10%",
       "exampleRate": "-15%",
-      "pauseMs": 400,
+      "pauseMs": 2000,
       "synthesis": "separate sound and example"
     },
     {
       "id": "r",
       "transcript": "rờ. con rùa.",
-      "durationSeconds": 3.216,
-      "sha256": "9ba50ccfb1df7a9aed0d8e9510105ec8877d7ef520b6718b64ca31f3eb825ea1"
+      "durationSeconds": 4.176,
+      "sha256": "5aba49fb228a5cbf8c785e1382d67ab25eaddb5966565750d0b11715c3eb7782",
+      "pauseMs": 2000
     },
     {
       "id": "s",
       "transcript": "sờ. con sóc.",
-      "durationSeconds": 4.2,
-      "sha256": "a604da5277a56a0de77598f16c822de886d7ba0e55394bc86779def8929a5441",
+      "durationSeconds": 4.248,
+      "sha256": "ea58adeca6f4d269070adb57d652b99fb050e294e645ff7ac059fd773fab1b23",
       "soundText": "sở",
       "soundRate": "-15%",
       "soundVolume": "+0%",
       "exampleRate": "-15%",
-      "pauseMs": 400,
+      "pauseMs": 2000,
       "synthesis": "separate sound and example"
     },
     {
       "id": "t",
       "transcript": "tờ. con thỏ.",
-      "durationSeconds": 3.264,
-      "sha256": "e2d6bb8fe29fc00bcc6fc8e469713dbbba95c46baa43c6214e729ce1cb2cce2e"
+      "durationSeconds": 4.2,
+      "sha256": "a89e098eb64f76a227ed9e92c6c993ad2e31f5882129233931e8e5900fbe6f0f",
+      "pauseMs": 2000
     },
     {
       "id": "u",
       "transcript": "u. con cua.",
-      "durationSeconds": 2.304,
-      "sha256": "3f7f5d53ec7a8fcd79d25816484b342656905f4b4d9886c37e418897657049fb"
+      "durationSeconds": 4.056,
+      "sha256": "65a626ec16d34529e5560dcd11e56902dbe022768ea89ba615cdcb6e5db25665",
+      "pauseMs": 2000
     },
     {
       "id": "u-horn",
       "transcript": "ư. sư tử.",
-      "durationSeconds": 2.136,
-      "sha256": "e1a6cb466783b69edd4ab5965ade9da18b396ebe1ef9d3425592e813e7aff757"
+      "durationSeconds": 4.104,
+      "sha256": "20e65b74c7ea4f2839ac7969a7b5d09eed9e4aaae4eed61161d6702eef61d76a",
+      "pauseMs": 2000
     },
     {
       "id": "v",
       "transcript": "vờ. con vịt.",
-      "durationSeconds": 3.12,
-      "sha256": "757004a62c1e848ea1476511275c8bba7a2acf434dce1fe3a3e57a74385787e3"
+      "durationSeconds": 4.056,
+      "sha256": "5b9f3c999ece9400a844c61112fa290ade565d405b1c18f1dad39b19bc97bdaf",
+      "pauseMs": 2000
     },
     {
       "id": "x",
       "transcript": "xờ. xe đạp.",
-      "durationSeconds": 3.36,
-      "sha256": "976a96339816d4f30e87aefdc97359463ba69675912356f63485e9772c0198f2",
+      "durationSeconds": 4.32,
+      "sha256": "fbcf452925064b94877bf7f56f6c34ddee7f77c08cde289492e2917dbc4aa0d3",
       "soundSource": "Google Translate TTS via gTTS 2.5.4, vi, slow",
       "exampleRate": "-15%",
-      "pauseMs": 400,
+      "pauseMs": 2000,
       "synthesis": "separate sound and example"
     },
     {
       "id": "y",
       "transcript": "i. cái cây.",
-      "durationSeconds": 2.064,
-      "sha256": "bb1a8787cb691774cc8eb8eb0db6e3d64db92985267d599366fefe7ad2e56db1"
+      "durationSeconds": 4.032,
+      "sha256": "51208921603fe6e30362e0590dac9ae4b5546dc9b2a9456662028deeac1077e4",
+      "pauseMs": 2000
     }
   ]
 }

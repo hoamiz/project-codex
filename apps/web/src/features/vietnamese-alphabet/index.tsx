@@ -225,15 +225,15 @@ export default function VietnameseAlphabet() {
           <span className="alphabet-spark spark-two">✧</span>
           <div className="alphabet-mini-card mini-a">
             <span>Aa</span>
-            <img src="/images/alphabet/a.svg" alt="" />
+            <img src={illustrationUrl({ id: 'a' })} alt="" />
           </div>
           <div className="alphabet-mini-card mini-m">
             <span>Mm</span>
-            <img src="/images/alphabet/m.svg" alt="" />
+            <img src={illustrationUrl({ id: 'm' })} alt="" />
           </div>
           <div className="alphabet-mini-card mini-b">
             <span>Bb</span>
-            <img src="/images/alphabet/b.svg" alt="" />
+            <img src={illustrationUrl({ id: 'b' })} alt="" />
           </div>
           <span className="alphabet-art-label">
             <Volume2 size={17} /> Chạm là nghe!

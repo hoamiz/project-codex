@@ -1,6 +1,6 @@
 # Giọng đọc tiếng Việt
 
-29 fileMP3 cập nhật ngày2026-10-14 từ Microsoft Edge Read Aloud, giọng nữ **vi-VN-HoaiMyNeural**, bằng edge-tts7.3.0. Chỉ đọc âm rồi từ, như `a. cái ca.`, không đọc lời dẫn “Chữ” hoặc “Ví dụ”. `manifest.json` lưu transcript/thời lượng/SHA256, readingMode=phonics/revision7 và lựa chọn k=ca/q=cu.
+29 fileMP3 cập nhật ngày2026-10-14 từ Microsoft Edge Read Aloud, giọng nữ **vi-VN-HoaiMyNeural**, bằng edge-tts7.3.0. Chỉ đọc âm rồi từ, như `a. cái ca.`, không đọc lời dẫn “Chữ” hoặc “Ví dụ”. `manifest.json` lưu transcript/thời lượng/SHA256, readingMode=phonics/revision8 và lựa chọn k=ca/q=cu. Khoảng nghỉ giữa chữ và từ ví dụ là 2 giây.
 
 Bảng đọc hiện tại: a, á, ớ, bờ, cờ, dờ, đờ, e, ê, gờ, hờ, i, ca, lờ, mờ, nờ, o, ô, ơ, pờ, cu, rờ, sờ, tờ, u, ư, vờ, xờ, i. K đọc “ca”, q đọc “cu” theo yêu cầu người dùng; i/y cùng âm i.
 
@@ -11,6 +11,8 @@ Revision5 (2026-10-14): Hoài My đọc “sờ” gần như không có âm xá
 Revision6 (2026-10-14): Hoài My đọc “xờ” không có âm xát (chỉ nghe “ờ”); thử các cách viết khác và ghép tiếng xì vào nguyên âm đều nghe rời. Phần âm của x vì vậy lấy từ Google Translate TTS (gTTS2.5.4, `vi`, chế độ chậm), có âm xát s thật, chuẩn hóa đỉnh về-6dB; nghỉ400ms rồi “xe đạp.” giọng Hoài My-15%. Clip này đổi giọng giữa âm và từ, được người dùng nghe duyệt. Google Translate TTS là dịch vụ không chính thức; nên thay bằng bản thu giọng thật trước khi phát hành công khai.
 
 Revision7 (2026-10-14): “hờ” đọc ở-30% nghe gần “hà”. Phần âm của h tạo lại bằng Hoài My ở-15% (như phần lớn các chữ), nghỉ400ms rồi “con hổ.”-15%; cả hai phần chuẩn hóa đỉnh về-6dB (trường `normalizedPeakDb`), được người dùng nghe duyệt.
+
+Revision8 (2026-10-15): cả 29 clip giữ nguyên giọng đã thu, chỉ chỉnh khoảng nghỉ giữa chữ và từ ví dụ về đúng 2 giây. Trước đó nguyên âm chỉ nghỉ khoảng 0,1–0,3 giây, phụ âm khoảng 1,1 giây, còn h/k/q/s đã gần 2 giây. `pauseMs` của mọi clip là 2000. Cache audio tăng lên `v=8`.
 
 File phục vụ cùng origin từ `/audio/vietnamese-alphabet/`; khi sử dụng không gọi dịch vụTTS, không lấy giọng mặc định máy, không gửi dữ liệu trẻ. Âm thanh bắt đầu từ click/tap của người dùng. `ended` mới bắt đầu thời gian đóng3 giây. Nếu trình duyệt chặn phát hoặc file không tải được, hiện lỗi và nút thử lại.
 
