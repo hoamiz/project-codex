@@ -1437,9 +1437,10 @@
   min-height: 78px;
   border: 2px solid transparent;
   background: transparent;
-  border-radius: 18px;
+  border-radius: 40px;
   font:
-    900 52px/1 Nunito,
+    900 52px/1 'Nunito Learning',
+    'Trebuchet MS',
     sans-serif;
   cursor: pointer;
 }
@@ -1453,10 +1454,11 @@
 }
 .number-found-mark {
   position: absolute;
-  right: 4px;
-  top: 3px;
+  right: 16px;
+  top: 8px;
   font:
-    900 14px Nunito,
+    900 14px 'Nunito Learning',
+    'Trebuchet MS',
     sans-serif;
 }
 .discovery-hint {
@@ -1481,6 +1483,17 @@
 }
 .discovery-complete p {
   margin: 12px 0 18px;
+}
+.seek-preview {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.learning-empty .seek-preview img {
+  width: 72px;
+  height: 72px;
+  margin: 0;
 }
 .seek-setup {
   display: flex;
@@ -1511,7 +1524,7 @@
 }
 .seek-targets {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin-bottom: 18px;
 }
@@ -1527,7 +1540,8 @@
   border-radius: 18px;
   background: #fffefa;
   font:
-    800 13px Nunito,
+    800 13px/1.25 'Nunito Learning',
+    'Trebuchet MS',
     sans-serif;
   color: #3e5446;
   cursor: pointer;
@@ -1561,6 +1575,78 @@
   overflow: hidden;
   border: 2px solid #d4dfcc;
   background: #c8ded1;
+}
+/* Một màn: danh sách sát mép trên, tranh chiếm phần cao còn lại. */
+.seek-stage {
+  scroll-margin-top: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  height: 100dvh;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+.seek-stage .seek-targets {
+  flex: 0 0 auto;
+  margin-bottom: 0;
+  gap: 8px;
+}
+.seek-stage .seek-targets button {
+  min-height: 0;
+  padding: 6px 4px 4px;
+  gap: 2px;
+}
+.seek-stage .seek-heading {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px 12px;
+  gap: 10px;
+  border-radius: 16px;
+}
+.seek-stage .seek-heading h2 {
+  font-size: clamp(16px, 2vw, 20px);
+}
+.seek-stage .seek-board {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  aspect-ratio: auto;
+}
+.seek-stage .learning-feedback {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px 12px;
+  min-height: 0;
+}
+/* Nút màn tiếp nằm đúng giữa tranh để trẻ bấm ngay chỗ vừa chơi. */
+.seek-next {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: #f4f1e6d6;
+}
+.seek-next .discovery-complete {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: calc(50% + 44px);
+  margin: 0;
+  padding: 0 8px 8px;
+  background: transparent;
+}
+.seek-next .discovery-complete p {
+  margin: 8px 0 0;
+}
+.seek-next .learning-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 56px;
+  min-width: min(72%, 220px);
+  font-size: 22px;
 }
 .seek-background {
   position: absolute;
@@ -1676,11 +1762,14 @@
     font-size: 17px;
   }
   .seek-targets {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
   }
   .seek-board {
     aspect-ratio: 1;
+  }
+  .seek-stage .seek-board {
+    aspect-ratio: auto;
   }
   .seek-heading h2 {
     font-size: 20px;
@@ -1698,11 +1787,28 @@
 .seek-heading .learning-eyebrow {
   color: #4e603f;
 }
+@media (max-height: 560px) {
+  .seek-stage .seek-targets img {
+    width: 32px;
+    height: 32px;
+  }
+  .seek-stage .seek-targets button {
+    padding: 4px 2px 2px;
+  }
+  .seek-stage .seek-heading {
+    padding: 4px 8px;
+  }
+  .seek-stage .learning-feedback {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+}
+/* Che khoảng bốn phần năm hình. Phần đầu vẫn lộ để nhận ra; vùng bấm vẫn là cả nút. */
 .seek-cover {
-  bottom: -2%;
-  left: -8%;
-  width: 108%;
-  height: 48%;
+  bottom: -10%;
+  left: -18%;
+  width: 136%;
+  height: 82%;
   border-radius: 0;
   background: none;
   color: var(--scene-cover);

@@ -2,11 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import { journeyPath, scaleStroke } from './journey-path';
 import type { Point } from './lessons';
 import { tracePoints, type TraceRound } from './tracing-core';
+import { learningImage } from './learning-assets';
 
 const travelDuration = 7200;
 const arrivalDuration = 2400;
+const reducedFadeIn = 220;
 
-/** Chậm theo nét đã vẽ, rồi hành động tại đích; timeline chỉ sống trong vòng/token hiện tại. */
+/**
+ * Chậm theo nét đã vẽ, rồi hành động tại đích; timeline chỉ sống trong vòng/token hiện tại.
+ * Giảm chuyển động: bỏ đoạn đi đường nhưng vẫn giữ cảnh đến nơi đủ arrivalDuration để bé kịp xem.
+ */
 export function LessonAnimation({
   round,
   width,
@@ -38,7 +43,7 @@ export function LessonAnimation({
     if (!el) return;
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const reduced = media.matches;
-    const duration = reduced ? 220 : travelDuration + arrivalDuration;
+    const duration = reduced ? arrivalDuration : travelDuration + arrivalDuration;
     const token = `${round.id}:${sequence}`;
     if (savedToken.current !== token) savedTime.current = 0;
     savedToken.current = token;
@@ -59,8 +64,9 @@ export function LessonAnimation({
       animation = el.animate(
         reduced
           ? [
-              { offsetDistance: '100%', opacity: 0 },
-              { offsetDistance: '100%', opacity: 1 },
+              { offsetDistance: '100%', opacity: 0, offset: 0 },
+              { offsetDistance: '100%', opacity: 1, offset: reducedFadeIn / duration },
+              { offsetDistance: '100%', opacity: 1, offset: 1 },
             ]
           : [
               { offsetDistance: '0%', offset: 0, easing: 'cubic-bezier(0.2, 0, 0.8, 1)' },
@@ -97,7 +103,9 @@ export function LessonAnimation({
       }
     };
     const motion = () => {
-      if (media.matches) finish();
+      // Bật giảm chuyển động giữa chừng: nhảy tới đích nhưng vẫn diễn đủ cảnh đến nơi.
+      if (!reduced && media.matches && Number(animation.currentTime || 0) < travelDuration)
+        animation.currentTime = travelDuration;
     };
     let previousFeeding: boolean | null = null;
     const tick = () => {
@@ -153,7 +161,7 @@ export function LessonAnimation({
         </svg>
         <img
           className="animation-destination"
-          src={`/images/kids-learning/${companion.destination}.svg`}
+          src={learningImage(companion.destination)}
           alt={companion.target}
           style={{ left: guide.at(-1)!.x, top: guide.at(-1)!.y }}
         />
@@ -166,7 +174,7 @@ export function LessonAnimation({
             offsetAnchor: '50% 50%',
           }}
         >
-          <img src={`/images/kids-learning/${companion.id}.svg`} alt={companion.name} />
+          <img src={learningImage(companion.id)} alt={companion.name} />
           {companion.movement === 'walk' && <span className="actor-paws" aria-hidden="true" />}
           {(companion.movement === 'drive' || companion.movement === 'cycle') && (
             <span className="actor-wheels" aria-hidden="true" />

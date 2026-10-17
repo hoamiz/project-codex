@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { learningImage } from './learning-assets';
 /** ID hình trong một nhóm chỉ được đếm một lần; không phát sự kiện chọn đích nối số. */
 export function CountHelper({ count, shape }: { count: number; shape: string }) {
   const [counted, setCounted] = useState<Set<number>>(() => new Set());
@@ -16,7 +17,7 @@ export function CountHelper({ count, shape }: { count: number; shape: string }) 
               setCounted((previous) => (previous.has(i) ? previous : new Set([...previous, i])));
             }}
           >
-            <img src={`/images/kids-learning/${shape}.svg`} alt="" />
+            <img src={learningImage(shape)} alt="" />
             {counted.has(i) && <span aria-hidden="true">✓</span>}
           </button>
         ))}

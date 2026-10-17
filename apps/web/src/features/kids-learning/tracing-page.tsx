@@ -7,6 +7,7 @@ import { initialTracing, tracingReducer } from './lesson-state';
 import type { LessonProps } from './matching-page';
 import { LessonAnimation } from './lesson-animation';
 import { scaleStroke } from './journey-path';
+import { learningImage } from './learning-assets';
 
 export function TracingPage({ level, blocked = false, onSpeak, onComplete }: LessonProps) {
   const [state, dispatch] = useReducer(tracingReducer, undefined, () =>
@@ -110,7 +111,7 @@ export function TracingPage({ level, blocked = false, onSpeak, onComplete }: Les
       </div>
       {!started ? (
         <div className="learning-empty">
-          <img src="/images/kids-learning/bee.svg" alt="" />
+          <img src={learningImage('bee')} alt="" />
           <h2>Một chuyến đi nhỏ xinh</h2>
           <p>Giữ bút, đi theo nét chấm và khám phá điều bất ngờ.</p>
           <button
@@ -156,15 +157,12 @@ export function TracingPage({ level, blocked = false, onSpeak, onComplete }: Les
                 <>
                   <div className="tracing-companions">
                     <div>
-                      <img src={`/images/kids-learning/${companion.id}.svg`} alt={companion.name} />
+                      <img src={learningImage(companion.id)} alt={companion.name} />
                       <span>{companion.name}</span>
                     </div>
                     <p>Đến với {companion.target}</p>
                     <div>
-                      <img
-                        src={`/images/kids-learning/${companion.destination}.svg`}
-                        alt={companion.target}
-                      />
+                      <img src={learningImage(companion.destination)} alt={companion.target} />
                       <span>{companion.target}</span>
                     </div>
                   </div>

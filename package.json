@@ -15,6 +15,7 @@
     "dev:api": "npm run dev -w @project-codex/api",
     "build": "npm run build --workspaces",
     "build:alphabet": "npm run build:alphabet -w @project-codex/web",
+    "build:kids": "npm run build:kids -w @project-codex/web",
     "typecheck": "npm run typecheck --workspaces",
     "lint": "eslint apps --max-warnings 0",
     "test": "npm run test --workspaces",

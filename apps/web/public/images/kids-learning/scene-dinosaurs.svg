@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700"><title>dinosaurs</title><rect width="1000" height="700" fill="#d7e4ce"/><path d="m290 360 230-290 240 290Z" fill="#b2b8a0"/><path d="m460 145 60-75 60 75Z" fill="#e4d9bd"/><path d="M0 350q240-80 460 0t540 0v350H0Z" fill="#a9bd8e"/><path d="M0 550q270-140 550 20t450-20v150H0Z" fill="#91ae7c"/><path d="M140 610V270m690 350V220" stroke="#aa9977" stroke-width="28"/><path d="M140 310Q10 230 15 170q140 10 130 115 30-130 160-120-10 100-150 145M830 270Q700 170 710 120q140 5 130 115 50-130 150-100-30 100-140 145" fill="#85a87b"/><g fill="#b0aa8c"><ellipse cx="370" cy="600" rx="80" ry="45"/><ellipse cx="650" cy="610" rx="50" ry="30"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <title>dinosaurs</title>
+  <defs>
+    <linearGradient id="dinoSky" x1="0" y1="0" x2="0" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f3e2b8"/>
+      <stop offset="1" stop-color="#d5e6c0"/>
+    </linearGradient>
+    <linearGradient id="dinoHill" x1="0" y1="320" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b7d09a"/>
+      <stop offset="1" stop-color="#7ea86e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="700" fill="url(#dinoSky)"/>
+  <circle cx="140" cy="90" r="40" fill="#fff1b8"/>
+  <path d="M260 340 470 70 700 340z" fill="#c5c2a4"/>
+  <path d="M430 150 490 70 550 150z" fill="#f4ead0"/>
+  <path d="M620 120c20 40 10 70-10 90" fill="none" stroke="#e7e2d4" stroke-width="8" opacity=".6" stroke-linecap="round"/>
+  <path d="M0 360c200-90 420 10 640-20s240 10 360-10v370H0z" fill="url(#dinoHill)"/>
+  <path d="M0 540c220-120 460 30 700-10s200-10 300 10v160H0z" fill="#6f9a62"/>
+  <path d="M160 620V300" stroke="#b89a74" stroke-width="22" stroke-linecap="round"/>
+  <path d="M160 340c-80-20-90-90-20-120 80 16 90 80 20 120z" fill="#8ec87a"/>
+  <path d="M780 600V260" stroke="#a88868" stroke-width="20" stroke-linecap="round"/>
+  <path d="M780 300c70-16 90-80 20-110-70 10-90 70-20 110z" fill="#79b86a"/>
+  <ellipse cx="360" cy="600" rx="70" ry="28" fill="#cbb892"/>
+  <ellipse cx="640" cy="630" rx="48" ry="20" fill="#bca67e"/>
+  <path d="M40 500c30-40 16-80 40-120M900 520c-20-36 10-70 4-110" fill="none" stroke="#5f8a52" stroke-width="8" stroke-linecap="round"/>
+</svg>

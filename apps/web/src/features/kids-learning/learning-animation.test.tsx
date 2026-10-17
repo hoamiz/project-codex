@@ -6,6 +6,7 @@ import { createTrace, tracePoints } from './tracing-core';
 const original = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'animate');
 const hiddenDescriptor = Object.getOwnPropertyDescriptor(document, 'hidden');
 let reduced = false;
+let motionListener: (() => void) | null = null;
 let animation: {
   currentTime: number;
   onfinish: null | (() => void);
@@ -21,9 +22,14 @@ function sceneProps() {
 beforeEach(() => {
   vi.useFakeTimers();
   reduced = false;
+  motionListener = null;
   vi.stubGlobal('matchMedia', () => ({
-    matches: reduced,
-    addEventListener: vi.fn(),
+    get matches() {
+      return reduced;
+    },
+    addEventListener: (_: string, listener: () => void) => {
+      motionListener = listener;
+    },
     removeEventListener: vi.fn(),
   }));
   Object.defineProperty(document, 'hidden', { configurable: true, value: false });
@@ -74,15 +80,44 @@ test('L16 unmount cancels timeline and stale callbacks', () => {
   expect(animation.cancel).toHaveBeenCalledOnce();
   expect(done).not.toHaveBeenCalled();
 });
-test('L16 reduced motion has no travel and lost finish has a bounded watchdog', () => {
+test('L16 reduced motion skips travel but keeps the arrival scene, with a bounded watchdog', () => {
   reduced = true;
   const done = vi.fn();
-  render(<LessonAnimation {...sceneProps()} onDone={done} />);
-  expect(animate.mock.calls[0][0]).toEqual([
-    { offsetDistance: '100%', opacity: 0 },
-    { offsetDistance: '100%', opacity: 1 },
-  ]);
-  act(() => vi.advanceTimersByTime(3220));
+  const view = render(<LessonAnimation {...sceneProps()} onDone={done} />);
+  const [keyframes, options] = animate.mock.calls[0];
+  expect(keyframes.every((k: { offsetDistance: string }) => k.offsetDistance === '100%')).toBe(
+    true,
+  );
+  expect(options.duration).toBe(2400);
+  expect(view.container.querySelector('.lesson-animation')).toHaveAttribute(
+    'data-stage',
+    'arrived',
+  );
+  act(() => {
+    motionListener?.();
+    vi.advanceTimersByTime(2400);
+  });
+  expect(animation.currentTime).toBe(0);
+  expect(done).not.toHaveBeenCalled();
+  act(() => vi.advanceTimersByTime(3000));
+  expect(done).toHaveBeenCalledOnce();
+});
+test('turning on reduced motion mid-journey jumps to the arrival scene instead of ending it', () => {
+  const done = vi.fn();
+  const view = render(<LessonAnimation {...sceneProps()} onDone={done} />);
+  animation.currentTime = 2000;
+  act(() => {
+    reduced = true;
+    motionListener?.();
+    vi.advanceTimersByTime(32);
+  });
+  expect(animation.currentTime).toBe(7200);
+  expect(view.container.querySelector('.lesson-animation')).toHaveAttribute(
+    'data-stage',
+    'arrived',
+  );
+  expect(done).not.toHaveBeenCalled();
+  act(() => animation.onfinish?.());
   expect(done).toHaveBeenCalledOnce();
 });
 test('L16 unavailable animation API restores a static scene without an uncaught error', () => {

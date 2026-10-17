@@ -22,6 +22,7 @@ test('L25 malformed/unknown-version/storage-blocked and quota failure fall back 
   expect(readStickers('{broken')).toEqual([]);
   expect(readStickers('{"version":2,"ids":["bee"]}')).toEqual([]);
   expect(readStickers('{"version":1,"ids":["bee","bee","evil",2]}')).toEqual(['bee']);
+  expect(readStickers('{"version":1,"ids":["fox","frog"]}')).toEqual(['kangaroo', 'elephant']);
   const book = createRewardBook({
     getItem: () => {
       throw Error('blocked');

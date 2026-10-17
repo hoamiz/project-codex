@@ -1,4 +1,5 @@
 import { LearningDialog } from './learning-dialog';
+import { learningImage } from './learning-assets';
 import type { DiscoveryKind } from './discovery-lessons';
 
 /** Mẫu đọc/chạm riêng, không nhận callback bài học hoặc phần thưởng nên không thể đổi tiến độ thật. */
@@ -27,9 +28,9 @@ export function DiscoveryTutorial({
           </>
         ) : (
           <>
-            <img src="/images/kids-learning/bird.svg" alt="" />
+            <img src={learningImage('bird')} alt="" />
             <span>→</span>
-            <img src="/images/kids-learning/scene-jungle.svg" alt="" />
+            <img src={learningImage('scene-jungle')} alt="" />
           </>
         )}
       </div>

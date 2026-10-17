@@ -2,7 +2,7 @@
   "language": "vi-VN",
   "voice": "vi-VN-HoaiMyNeural",
   "rate": "-15%",
-  "revision": 3,
+  "revision": 12,
   "created": "2026-10-15",
   "source": "Microsoft Edge Read Aloud; edge-tts 7.3.0",
   "clips": [
@@ -211,10 +211,10 @@
       "sha256": "3917b83d8fb42b4543f41c38793f67121417ff4e436cb159d76a9a62a0e207f2"
     },
     {
-      "id": "seek-fox",
-      "transcript": "Tìm cáo trong tranh nhé.",
-      "durationSeconds": 2.64,
-      "sha256": "98de4f7281ae0751e05f2c38034a05f6fe9ba6b1bf244a677b51fa227253ba51"
+      "id": "seek-kangaroo",
+      "transcript": "Tìm chuột túi trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "7f83c7d13eee7c634d596a53c49f32f3363da32d7ec2b9f73c531e286c91a7f6"
     },
     {
       "id": "seek-lizard",
@@ -253,10 +253,16 @@
       "sha256": "9992cee51833b98f895f4623d62a377ffdbae8f057a88895ca3591e1b5cc2334"
     },
     {
-      "id": "seek-frog",
-      "transcript": "Tìm ếch trong tranh nhé.",
-      "durationSeconds": 2.52,
-      "sha256": "6968bb4a6c75172cfeb1879bce8fc7498e832e61c3abbad982acbd4b61571bd5"
+      "id": "seek-elephant",
+      "transcript": "Tìm voi trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "9f8db462f682888ca927bcb8d4b544441dc24ff22d5b940e2708f1046f18f1d2"
+    },
+    {
+      "id": "seek-hippopotamus",
+      "transcript": "Tìm hà mã trong tranh nhé.",
+      "durationSeconds": 2.88,
+      "sha256": "f3e53b6b4c502e62c15842ffa860ec7b332c16ad687f1022fd9f854280a26fe4"
     },
     {
       "id": "seek-trex",
@@ -317,6 +323,1284 @@
       "transcript": "Tìm xe đạp trong tranh nhé.",
       "durationSeconds": 2.832,
       "sha256": "b6a1551d1c7e8d75edeee5de8923caf5370f7b4df1d71fb1f4a68c10d8fe0814"
+    },
+    {
+      "id": "seek-dolphin",
+      "transcript": "Tìm cá heo trong tranh nhé.",
+      "durationSeconds": 2.784,
+      "sha256": "9f753ddd40785b0bdb016e0784eed05cec9fb600b18498005f3db48b42ebf2d2"
+    },
+    {
+      "id": "seek-seal",
+      "transcript": "Tìm hải cẩu trong tranh nhé.",
+      "durationSeconds": 2.928,
+      "sha256": "76bcbc105e20eb4aa3d099cc9894939a614801ff8ac4a61f4b64a524ebc201fa"
+    },
+    {
+      "id": "seek-blowfish",
+      "transcript": "Tìm cá nóc trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "0138fc3f390b27e3d3db35445f36deb624848b12199ff3271512b546299583b5"
+    },
+    {
+      "id": "seek-shark",
+      "transcript": "Tìm cá mập trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "4bd91148451c8852c563054933cb6e79fff7bee670d40e5a82f83167e732f5b4"
+    },
+    {
+      "id": "seek-jellyfish",
+      "transcript": "Tìm sứa trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "eaefdd0007c234ffcf47122275be77a2a4fee734dff34d56053750615f8d77fe"
+    },
+    {
+      "id": "seek-lobster",
+      "transcript": "Tìm tôm hùm trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "931f46ee910ba7a4291d62dccb1e84e6212dbe76af60fdd684d7b96538876396"
+    },
+    {
+      "id": "seek-shrimp",
+      "transcript": "Tìm tôm trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "37922d588f3c58ce5ba78af8628c9ca4d9440c8ea26942aaa7477f2f8c6470a8"
+    },
+    {
+      "id": "seek-squid",
+      "transcript": "Tìm mực trong tranh nhé.",
+      "durationSeconds": 2.472,
+      "sha256": "6540c835f44dec570f91ebecd7a5b5d0917b6663bd51acb45cbd9ff55ceb96c0"
+    },
+    {
+      "id": "seek-otter",
+      "transcript": "Tìm rái cá trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "68cf9c33584e9b6c947202ab5d880ddc6b3ecb79a389d974e470397099b0d8ad"
+    },
+    {
+      "id": "seek-scorpion",
+      "transcript": "Tìm bọ cạp trong tranh nhé.",
+      "durationSeconds": 2.88,
+      "sha256": "e0ef018b11bf71077f5321f95f15364767f09b3effb6da7f8333b043d0de02c4"
+    },
+    {
+      "id": "seek-gorilla",
+      "transcript": "Tìm khỉ đột trong tranh nhé.",
+      "durationSeconds": 2.808,
+      "sha256": "b3ee8628d9e2d0f4edde652e05e72183d38ad7df810adbbbc4127dd9f4656aae"
+    },
+    {
+      "id": "seek-orangutan",
+      "transcript": "Tìm đười ươi trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "36952aae4e4ad0b716bb5e676ac48704bdb1bfe63574bd4beb50074367f1df98"
+    },
+    {
+      "id": "seek-sloth",
+      "transcript": "Tìm con lười trong tranh nhé.",
+      "durationSeconds": 2.88,
+      "sha256": "c3cdb18d7891e440b69860ece3f429b0476a11ef03d813f4aa2d68fd57106025"
+    },
+    {
+      "id": "seek-leopard",
+      "transcript": "Tìm báo trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "c41cdbdc1be23352fc69068f9fce9e9c2b6babca526074557c47c1d175094568"
+    },
+    {
+      "id": "seek-giraffe",
+      "transcript": "Tìm hươu cao cổ trong tranh nhé.",
+      "durationSeconds": 3.168,
+      "sha256": "11bedfb4435f141032b78c246444e2bf2cdcfe0692bb461dc996a9a936ace618"
+    },
+    {
+      "id": "seek-rhinoceros",
+      "transcript": "Tìm tê giác trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "d923c3fe2d254de33ade8fd5954e1bd844529c3c31766fcf2aa196bc891f79ac"
+    },
+    {
+      "id": "seek-zebra",
+      "transcript": "Tìm ngựa vằn trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "84958ffdb267409711c887a45a6280d8d96fc4ce62d6ad139d8061724b219034"
+    },
+    {
+      "id": "seek-crocodile",
+      "transcript": "Tìm cá sấu trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "e1fb39ff27d0803798f77a3b904355b2f7b942886dd1403abcd7eaef3c24e643"
+    },
+    {
+      "id": "seek-parrot",
+      "transcript": "Tìm vẹt trong tranh nhé.",
+      "durationSeconds": 2.544,
+      "sha256": "576e96e2433e3401d2e340aa2668977da4d3907daa9cd6929154ef6243e6bc0d"
+    },
+    {
+      "id": "seek-chipmunk",
+      "transcript": "Tìm sóc trong tranh nhé.",
+      "durationSeconds": 2.52,
+      "sha256": "33d3d2827fc6ce782d39945197eec11983d95172121cbfede6ab4617c2e05e0b"
+    },
+    {
+      "id": "seek-beaver",
+      "transcript": "Tìm hải ly trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "39d93f531b45c9bbbc4416948a3138baebe7150cf34baaaa1a89d544fb4661eb"
+    },
+    {
+      "id": "seek-deer",
+      "transcript": "Tìm hươu trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "9ea23facd42c821d002483431cf4071a3a1a09a9606f15cedd53377260d2c84a"
+    },
+    {
+      "id": "seek-badger",
+      "transcript": "Tìm lửng trong tranh nhé.",
+      "durationSeconds": 2.544,
+      "sha256": "75382318aa008ab4906a7e64a188666ec26df25c748b6c4c1a2dcc76826bec8a"
+    },
+    {
+      "id": "seek-skunk",
+      "transcript": "Tìm chồn hôi trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "4e4e952029e24bcf50bf262bbd0401ed74a34f8212459c2f1a0246852c4f21d5"
+    },
+    {
+      "id": "seek-bison",
+      "transcript": "Tìm bò rừng trong tranh nhé.",
+      "durationSeconds": 2.88,
+      "sha256": "52f3db9b6fc4c07ebc0aa651db77a1eb53433e8bc2b45fc233357ebf88e47d37"
+    },
+    {
+      "id": "seek-snail",
+      "transcript": "Tìm ốc sên trong tranh nhé.",
+      "durationSeconds": 2.784,
+      "sha256": "3eece517c74f7b626062cfd6ef6d0bd9cc570ea3b170995f8a95d95583dcad72"
+    },
+    {
+      "id": "seek-butterfly",
+      "transcript": "Tìm bướm trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "70e4efdd9b33def47efa761045058bb78e8aa1c221b480289a46429ed3c400ed"
+    },
+    {
+      "id": "seek-caterpillar",
+      "transcript": "Tìm sâu bướm trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "1837020b4f7d699cf15f8ee9cea7364c29336caa0b7bb8ecaa758c78ef6a0da9"
+    },
+    {
+      "id": "seek-ant",
+      "transcript": "Tìm kiến trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "64e28d445c95c031a8ec1c048ab448a0c38afa06e829bc1bc5d232dfcf635f3c"
+    },
+    {
+      "id": "seek-ladybug",
+      "transcript": "Tìm bọ rùa trong tranh nhé.",
+      "durationSeconds": 2.88,
+      "sha256": "a276605c5f9e058b10a600ce2ebef1786c9d64d244b231196bd2746506ef69a2"
+    },
+    {
+      "id": "seek-cricket",
+      "transcript": "Tìm dế trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "fc5a8788c84c86c386001e5f110054a76fd7433195b31e4261ae9a7a5111afc6"
+    },
+    {
+      "id": "seek-cockroach",
+      "transcript": "Tìm gián trong tranh nhé.",
+      "durationSeconds": 2.664,
+      "sha256": "179d53c4c925c0ea4953b6f2e54da4d73d71e8afb687853902b82b60287ab486"
+    },
+    {
+      "id": "seek-spider",
+      "transcript": "Tìm nhện trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "4124167cb477acf5e603ce8bd1e0c82e8353fc278ecd61aaf3bec4004c1f3b8d"
+    },
+    {
+      "id": "seek-mosquito",
+      "transcript": "Tìm muỗi trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "b12febb29c4c944318a25b7bf0010bb6da58140c00b75defdfba3d176af1459b"
+    },
+    {
+      "id": "seek-fly",
+      "transcript": "Tìm ruồi trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "04af6a6beec0a581958d2fb83bcff1ec096a4a180605e3683fa722f114d29f9d"
+    },
+    {
+      "id": "seek-worm",
+      "transcript": "Tìm giun trong tranh nhé.",
+      "durationSeconds": 2.52,
+      "sha256": "c656153cf9cd9fba0ffcfb6af6c9d94596dc1480f3dbf3825cc436fe9dc4f647"
+    },
+    {
+      "id": "seek-pig",
+      "transcript": "Tìm lợn trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "8daded6356615fde6cae9919adda450491107d877d55fe9919a76e79561e7e03"
+    },
+    {
+      "id": "seek-goat",
+      "transcript": "Tìm dê trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "881efa84476485d11be78d1c2367b1e3e829eecbdefe98d33a4903bd2346a458"
+    },
+    {
+      "id": "seek-sheep",
+      "transcript": "Tìm cừu trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "36d8eb23d3a97c4ddf5af565e43a581b40b4949675faa94ff2ca67e7fd732336"
+    },
+    {
+      "id": "seek-horse",
+      "transcript": "Tìm ngựa trong tranh nhé.",
+      "durationSeconds": 2.592,
+      "sha256": "5f74576c6aa3dbc56b2a982f753c98c4a9974635a13c01d1af03dd4c881b7a73"
+    },
+    {
+      "id": "seek-donkey",
+      "transcript": "Tìm lừa trong tranh nhé.",
+      "durationSeconds": 2.616,
+      "sha256": "269fa4d022a739de99ac21d5b4741c5d845c6ba6f8304b0a5b863b48692b3ba5"
+    },
+    {
+      "id": "seek-buffalo",
+      "transcript": "Tìm trâu trong tranh nhé.",
+      "durationSeconds": 2.592,
+      "sha256": "fa8bdedbc34f158fd5822b92cc1e6e89fe75fcbb909b12dd201bc2826cc9336e"
+    },
+    {
+      "id": "seek-turkey",
+      "transcript": "Tìm gà tây trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "faf30537a9e2db87849b241194354ed81a2548225fc5e572be313ea231a715de"
+    },
+    {
+      "id": "seek-chick",
+      "transcript": "Tìm gà con trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "ed36c470c520449b135f887c6aef74d9adcbb9adc4fc977fd8d8b6a944a4f6e7"
+    },
+    {
+      "id": "seek-rooster",
+      "transcript": "Tìm gà trống trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "1a64671f2b1849775a9c00ff85018bb542f1b28b848ef06953580f464a29d20d"
+    },
+    {
+      "id": "seek-llama",
+      "transcript": "Tìm lạc đà không bướu trong tranh nhé.",
+      "durationSeconds": 3.336,
+      "sha256": "e13bebd942ed7e5103371aedec8a085f652c1716042a1adea3aff3c772457ba8"
+    },
+    {
+      "id": "seek-mouse",
+      "transcript": "Tìm chuột trong tranh nhé.",
+      "durationSeconds": 2.544,
+      "sha256": "d3c4011222e64ebc6a1a52c0de662bfe332d5c503fe603fd961301b5a709c674"
+    },
+    {
+      "id": "seek-peacock",
+      "transcript": "Tìm công trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "dadf0923d5f2cdc069ab31a115dead2777785ae59fd1c25db32d6001016fa546"
+    },
+    {
+      "id": "seek-goose",
+      "transcript": "Tìm ngỗng trong tranh nhé.",
+      "durationSeconds": 2.544,
+      "sha256": "e33e1a4f2986d81b0afdee227c02df19c07588b01926caac9b4a03db0c852a3c"
+    },
+    {
+      "id": "seek-hedgehog",
+      "transcript": "Tìm nhím trong tranh nhé.",
+      "durationSeconds": 2.568,
+      "sha256": "ca4cc628c61723838f1faae018cf722ff7e8c52560ed845afed2fc62caa8d1cd"
+    },
+    {
+      "id": "seek-bat",
+      "transcript": "Tìm dơi trong tranh nhé.",
+      "durationSeconds": 2.592,
+      "sha256": "5e3a9d6a0389e587d2fb3171c6b4b5b2e1528249e98f64c9a5f8125344d407b8"
+    },
+    {
+      "id": "seek-dove",
+      "transcript": "Tìm bồ câu trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "2c4e168ad70dd0f5d53ecde27c4282031253265f6bedfb201d90c2ddcaf70a3c"
+    },
+    {
+      "id": "seek-eagle",
+      "transcript": "Tìm đại bàng trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "b9f36ce72f5934c9e8a9dab44066eae229d3ea1fa05b94e37abac83d858e0be5"
+    },
+    {
+      "id": "seek-swan",
+      "transcript": "Tìm thiên nga trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "add384a8ef7653af35a391b0c04a201d64dd0e6949aea8318fbdd2ef988ca05f"
+    },
+    {
+      "id": "seek-flamingo",
+      "transcript": "Tìm hồng hạc trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "9d0b39c97089a9cb2d96cc1ff42803ec571288f1573fc78e2b274740e4e6c970"
+    },
+    {
+      "id": "seek-spinosaurus",
+      "transcript": "Tìm khủng long buồm trong tranh nhé.",
+      "durationSeconds": 3.096,
+      "sha256": "db8170eabf638fc5ca3b69c2b46636189774f03e2f8255d227cc21378a79876a"
+    },
+    {
+      "id": "seek-ankylosaurus",
+      "transcript": "Tìm khủng long giáp trong tranh nhé.",
+      "durationSeconds": 3.096,
+      "sha256": "97ed1d733ca475b53f1d7d0cd6453db452c891c9eef6631f046cdd8f19834075"
+    },
+    {
+      "id": "seek-parasaurolophus",
+      "transcript": "Tìm khủng long mào trong tranh nhé.",
+      "durationSeconds": 3.096,
+      "sha256": "9b871e51e2e459b81428ba7891046ba38c4b9af2a9af23acef1ad8e38e2c919d"
+    },
+    {
+      "id": "seek-fire-engine",
+      "transcript": "Tìm xe cứu hỏa trong tranh nhé.",
+      "durationSeconds": 3.168,
+      "sha256": "03cf516ba43c1473fa55a0eacf6b2c2807a2d0923c62fc4d01a97331edecbeb1"
+    },
+    {
+      "id": "seek-ambulance",
+      "transcript": "Tìm xe cứu thương trong tranh nhé.",
+      "durationSeconds": 3.144,
+      "sha256": "15eeeb6b11387b320d839edcf8b57920b1595c4f252ce70a958543f210ce81b5"
+    },
+    {
+      "id": "seek-tractor",
+      "transcript": "Tìm máy kéo trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "00fc61186a5c04d051e2d5117c1026425157a1fec04224895057a475a5a85b41"
+    },
+    {
+      "id": "seek-motorcycle",
+      "transcript": "Tìm xe máy trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "5e05c17146e3927b47d850a1d17547d13b5412dad675e2819c3144d24c99de90"
+    },
+    {
+      "id": "seek-scooter",
+      "transcript": "Tìm xe scooter trong tranh nhé.",
+      "durationSeconds": 3.144,
+      "sha256": "b15b25d9fc8848ba1c9a8749e2a8595a9de01cba7abdbe4207cdf25b18664bcc"
+    },
+    {
+      "id": "seek-truck",
+      "transcript": "Tìm xe tải trong tranh nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "81424ec9b72055b5264fed64b578815ddaab9e7e8344f3f8efeccca111eef500"
+    },
+    {
+      "id": "seek-sailboat",
+      "transcript": "Tìm thuyền buồm trong tranh nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "06e46e70dec5069d77122e49d57c8536d46eec519d37185b3bccd7fad7d3de3d"
+    },
+    {
+      "id": "seek-ship",
+      "transcript": "Tìm tàu thủy trong tranh nhé.",
+      "durationSeconds": 2.88,
+      "sha256": "be609c137df1de7e3bf19d0128377accac979e5819e6c6d20d67ec030cc70de5"
+    },
+    {
+      "id": "seek-speedboat",
+      "transcript": "Tìm ca nô trong tranh nhé.",
+      "durationSeconds": 2.784,
+      "sha256": "1ffca0640291bbdab1eac02dfe30130e16a1dd428e54c228044c91de3068daae"
+    },
+    {
+      "id": "seek-helicopter",
+      "transcript": "Tìm trực thăng trong tranh nhé.",
+      "durationSeconds": 2.784,
+      "sha256": "b80fd7f27a03a34eeae4bd782cbdc35c68a5438a5a6f66071ce7a3dc50b3d1f0"
+    },
+    {
+      "id": "seek-rocket",
+      "transcript": "Tìm tên lửa trong tranh nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "0ba9b784ec79085f1b45094c04d6ee77f7330aca642ad2efba865d3c94ef4f41"
+    },
+    {
+      "id": "seek-rickshaw",
+      "transcript": "Tìm xe lam trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "6155d6799cea95d69a3bbaacc13328a0aff26014d3774bdf771c687e04e2bc3f"
+    },
+    {
+      "id": "seek-velociraptor",
+      "transcript": "Tìm khủng long tốc độ trong tranh nhé.",
+      "durationSeconds": 3.336,
+      "sha256": "b14b2dbcf6bd9a22d0b4fd796d9b8c12b34d662c75534b04fa60f23d177c1642"
+    },
+    {
+      "id": "seek-domehead",
+      "transcript": "Tìm khủng long đầu cứng trong tranh nhé.",
+      "durationSeconds": 3.336,
+      "sha256": "6a9f14b4fdb48c8094fc152bc55c74e96e9ab38f91783f6f647bb4d4651d64fd"
+    },
+    {
+      "id": "seek-therizinosaurus",
+      "transcript": "Tìm khủng long vuốt dài trong tranh nhé.",
+      "durationSeconds": 3.408,
+      "sha256": "754ec9507e595d72b756d3b2a5fec18164b0f8f2b9d22007c9d4c24c578ff076"
+    },
+    {
+      "id": "seek-gallimimus",
+      "transcript": "Tìm khủng long đà điểu trong tranh nhé.",
+      "durationSeconds": 3.336,
+      "sha256": "2e31f9abf1dc3011f76333945c8e73b391507066967369b638919644bc1e4da6"
+    },
+    {
+      "id": "seek-carnotaurus",
+      "transcript": "Tìm khủng long sừng bò trong tranh nhé.",
+      "durationSeconds": 3.384,
+      "sha256": "3a5999ecb0003ab2a874280244b6307f2f80f0caa17bb743a6530d33532b7459"
+    },
+    {
+      "id": "seek-amargasaurus",
+      "transcript": "Tìm khủng long gai cổ trong tranh nhé.",
+      "durationSeconds": 3.384,
+      "sha256": "7b4129e3f3ccc48133ccb27e47398f6481cc7629866da92c09a0d4ddb15096b1"
+    },
+    {
+      "id": "seek-fennec",
+      "transcript": "Tìm cáo tai to trong tranh nhé.",
+      "durationSeconds": 3.144,
+      "sha256": "09c9858b096748851ee221684a902732eedd2a0de3529fc5563678a6d812d0e0"
+    },
+    {
+      "id": "seek-meerkat",
+      "transcript": "Tìm chồn đất trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "7ce49ffa504525c1fa346742d12944a6e59041b66236a090acd49e9bb59a4ae7"
+    },
+    {
+      "id": "seek-ostrich",
+      "transcript": "Tìm đà điểu trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "2512fdd516791299275c13b3af86f9ff2c7d078469e58a3d299a5b73fdf85ffc"
+    },
+    {
+      "id": "seek-oryx",
+      "transcript": "Tìm linh dương trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "919692e58a4f9bd9e5f3a1ef30c7f690c33fbb86167d15cc6b6310f030f373e3"
+    },
+    {
+      "id": "seek-hyena",
+      "transcript": "Tìm linh cẩu trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "7b2bdd829918ab59bfafd68f2d43fb70d4779a17ac6da0c62091010b14303901"
+    },
+    {
+      "id": "seek-vulture",
+      "transcript": "Tìm kền kền trong tranh nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "315be37dda4a0d0890ce485fbf153d93049aefc65f479239e47a0f54e2607680"
+    },
+    {
+      "id": "seek-penguin",
+      "transcript": "Tìm cánh cụt trong tranh nhé.",
+      "durationSeconds": 2.856,
+      "sha256": "900416d7a6602310ea762894c7bf10639550e1bd9d6dd6b35fc356fe8369264d"
+    },
+    {
+      "id": "seek-polarbear",
+      "transcript": "Tìm gấu bắc cực trong tranh nhé.",
+      "durationSeconds": 3.072,
+      "sha256": "774bc147b96eb5ca73627cb463b6cbcef3bf44eb3e31c8c8fbaa6c5ec0c5e383"
+    },
+    {
+      "id": "seek-sealion",
+      "transcript": "Tìm sư tử biển trong tranh nhé.",
+      "durationSeconds": 3.144,
+      "sha256": "5f9b392538059151fc736dae43901c58429171a836a6853b376d58e309dca194"
+    },
+    {
+      "id": "seek-reindeer",
+      "transcript": "Tìm tuần lộc trong tranh nhé.",
+      "durationSeconds": 2.832,
+      "sha256": "84262e2bddd57264f27d51173aa97ca70f328520750131a3c55a9f0d93791b13"
+    },
+    {
+      "id": "seek-arcticfox",
+      "transcript": "Tìm cáo tuyết trong tranh nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "b6abcf3baa522813cc87843907cafb29d4ab613d3dc5e30effcdb4a7beab1151"
+    },
+    {
+      "id": "seek-snowyowl",
+      "transcript": "Tìm cú tuyết trong tranh nhé.",
+      "durationSeconds": 2.88,
+      "sha256": "80a57eda6d9ac8fbfda0a8455ff41a6ac8bdc4fb4d768c55ca6f2ac8f9787f05"
+    },
+    {
+      "id": "seek-walrus",
+      "transcript": "Tìm hải mã trong tranh nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "99604825c28f7b6fee2bd5ddb2ff5ad5da322a94920072c775f16140076fa0a2"
+    },
+    {
+      "id": "seek-puffin",
+      "transcript": "Tìm hải âu trong tranh nhé.",
+      "durationSeconds": 2.808,
+      "sha256": "e460ab9bd689b64eed5e9a170505a00fb492f8188d416472872001a17fd52f08"
+    },
+    {
+      "id": "seek-narwhal",
+      "transcript": "Tìm kỳ lân biển trong tranh nhé.",
+      "durationSeconds": 3.144,
+      "sha256": "8df03aa1fd692507e725751124ca5768e9a474bc7010cff58527772b3acd9097"
+    },
+    {
+      "id": "seek-muskox",
+      "transcript": "Tìm bò xạ hương trong tranh nhé.",
+      "durationSeconds": 3.12,
+      "sha256": "47d7b6d650fce8c04700a25c7f43b8c83507d4a4c1ba3aaf44ba3bd4c8180732"
+    },
+    {
+      "id": "seek-ermine",
+      "transcript": "Tìm chồn trắng trong tranh nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "b39e08a8bc19f5a5b3bf76126d22146bc346fdf0f66190def330d6a1f6f14cea"
+    },
+    {
+      "id": "seek-snowwolf",
+      "transcript": "Tìm sói tuyết trong tranh nhé.",
+      "durationSeconds": 2.904,
+      "sha256": "0deb5a423872bda2baad762a777d779380e7bf1821c578b75c91d1f574963ed0"
+    },
+    {
+      "id": "miss-fish",
+      "transcript": "Sai rồi, đây là cá nhỏ mà.",
+      "durationSeconds": 3.672,
+      "sha256": "bd10d4a848bd7b07b7b1e9d87a0e7131377361637c294426ff229916ccc1d268"
+    },
+    {
+      "id": "miss-whale",
+      "transcript": "Sai rồi, đây là cá voi mà.",
+      "durationSeconds": 3.648,
+      "sha256": "0ceb6ac27e9023ffd33c2852a3870d3f7a67054ad6ec640573b64a4a29f34cb7"
+    },
+    {
+      "id": "miss-octopus",
+      "transcript": "Sai rồi, đây là bạch tuộc mà.",
+      "durationSeconds": 3.6,
+      "sha256": "e019850e21e3f7c3991332a29858308767a07c9865d75bbff71da003f236d13a"
+    },
+    {
+      "id": "miss-starfish",
+      "transcript": "Sai rồi, đây là sao biển mà.",
+      "durationSeconds": 3.624,
+      "sha256": "90282ea360a361e7f7be7c02498d121a071d51b5b36931f48d663a03bbf8d31f"
+    },
+    {
+      "id": "miss-crab",
+      "transcript": "Sai rồi, đây là cua mà.",
+      "durationSeconds": 3.384,
+      "sha256": "b24a44f1e6eb0fa26b392a769935fb2271f0e4e946f39ecc2c1fefa0b8cb9a04"
+    },
+    {
+      "id": "miss-camel",
+      "transcript": "Sai rồi, đây là lạc đà mà.",
+      "durationSeconds": 3.6,
+      "sha256": "e4b0815a7626b766c7b6a9f3d833d384b6bb9494b46212a6d2358cba8485982b"
+    },
+    {
+      "id": "miss-kangaroo",
+      "transcript": "Sai rồi, đây là chuột túi mà.",
+      "durationSeconds": 3.624,
+      "sha256": "6bc6b183266fc86d34702d3abe709c5de92ec4965fa302d139c39db5f47c92b2"
+    },
+    {
+      "id": "miss-lizard",
+      "transcript": "Sai rồi, đây là thằn lằn mà.",
+      "durationSeconds": 3.696,
+      "sha256": "0dde57905c101b5a2ccc10c6920b9304155e82a4a74d4f2517b5c73429e5cd16"
+    },
+    {
+      "id": "miss-tortoise",
+      "transcript": "Sai rồi, đây là rùa mà.",
+      "durationSeconds": 3.408,
+      "sha256": "2d8a00384d4ff6b1d961b56740f4980f9ceccd6f70320cff7c3b05554cc4e48c"
+    },
+    {
+      "id": "miss-snake",
+      "transcript": "Sai rồi, đây là rắn mà.",
+      "durationSeconds": 3.384,
+      "sha256": "288fe565de67d71e0e404b30b8a5782b3eaa2579130e44f286eac8b6adc5b228"
+    },
+    {
+      "id": "miss-monkey",
+      "transcript": "Sai rồi, đây là khỉ mà.",
+      "durationSeconds": 3.36,
+      "sha256": "1ebe1ee44f4b716c13d1bbd7078c8bb14e9612f16a04442939e79f06836eca97"
+    },
+    {
+      "id": "miss-tiger",
+      "transcript": "Sai rồi, đây là hổ mà.",
+      "durationSeconds": 3.36,
+      "sha256": "07cc8f7c343db8c3d38b7d41a186113158ce0459c070a715150ebc6beec4a644"
+    },
+    {
+      "id": "miss-bird",
+      "transcript": "Sai rồi, đây là chim mà.",
+      "durationSeconds": 3.336,
+      "sha256": "852123eaaad856ed2b8075ef6c9652b964301626156655dedf61f6f242600d16"
+    },
+    {
+      "id": "miss-elephant",
+      "transcript": "Sai rồi, đây là voi mà.",
+      "durationSeconds": 3.408,
+      "sha256": "a4597b762dca4ff87f44b0e265000e91e24ad846e18039d2c664e3d9ecf8ca16"
+    },
+    {
+      "id": "miss-hippopotamus",
+      "transcript": "Sai rồi, đây là hà mã mà.",
+      "durationSeconds": 3.648,
+      "sha256": "20da329b68b78870a4e60b1af50c9d1b00bda6d6625b8cd62a5ff3eb72cc3440"
+    },
+    {
+      "id": "miss-trex",
+      "transcript": "Sai rồi, đây là khủng long bạo chúa mà.",
+      "durationSeconds": 4.104,
+      "sha256": "4f8cab786bc230eeb161311a059d758ae2d8485bbe419e46b5e09dc3ee0c9c80"
+    },
+    {
+      "id": "miss-triceratops",
+      "transcript": "Sai rồi, đây là khủng long ba sừng mà.",
+      "durationSeconds": 4.152,
+      "sha256": "1d4e6c4a0db21d3772436f53cee8657acf04afdc4a4193435a8517be3fd13f63"
+    },
+    {
+      "id": "miss-stegosaurus",
+      "transcript": "Sai rồi, đây là khủng long gai lưng mà.",
+      "durationSeconds": 4.104,
+      "sha256": "1eb7ff3531581e44a0a9aa107fbcfbd62217accf05e47c3646820731eaf6aee9"
+    },
+    {
+      "id": "miss-longneck",
+      "transcript": "Sai rồi, đây là khủng long cổ dài mà.",
+      "durationSeconds": 4.2,
+      "sha256": "49aefc2cd42ee13d2b17e3efce8a3deed55d68cd38570c2052000ecd8ebdd10c"
+    },
+    {
+      "id": "miss-pterodactyl",
+      "transcript": "Sai rồi, đây là thằn lằn bay mà.",
+      "durationSeconds": 3.96,
+      "sha256": "6ff91f6f2cd8e18a2b6aa38d4d84de93d62b2f7e677f209fe7cce501e27add8e"
+    },
+    {
+      "id": "miss-car",
+      "transcript": "Sai rồi, đây là ô tô mà.",
+      "durationSeconds": 3.672,
+      "sha256": "13c9f11ba11e976c4c68970ac325720f4e3e4bdc6e878d85f366fd22cc46de56"
+    },
+    {
+      "id": "miss-bus",
+      "transcript": "Sai rồi, đây là xe buýt mà.",
+      "durationSeconds": 3.576,
+      "sha256": "dfb1e38bd726a5732b507d1de7bad76c7a4c0a9356c4c8cda0860997a7334a2c"
+    },
+    {
+      "id": "miss-train",
+      "transcript": "Sai rồi, đây là tàu hỏa mà.",
+      "durationSeconds": 3.696,
+      "sha256": "7d20b62cdfd6f8b4b8058192d28cbd3ca1861b3473107b87a841e78059ed1276"
+    },
+    {
+      "id": "miss-plane",
+      "transcript": "Sai rồi, đây là máy bay mà.",
+      "durationSeconds": 3.6,
+      "sha256": "a08cc10b2669f30ca85279ac67b6b85cf810f0aea68053784a459295c2f56531"
+    },
+    {
+      "id": "miss-bicycle",
+      "transcript": "Sai rồi, đây là xe đạp mà.",
+      "durationSeconds": 3.624,
+      "sha256": "ae65cf7e52a3e52d42d7470c0c67c29bf14187f58c810e57096dbacf22ad34d1"
+    },
+    {
+      "id": "miss-dolphin",
+      "transcript": "Sai rồi, đây là cá heo mà.",
+      "durationSeconds": 3.624,
+      "sha256": "47172b9339381ac19f53b6da0eb9835ec16cd7dc9638b79db2d1c722b093fe9a"
+    },
+    {
+      "id": "miss-seal",
+      "transcript": "Sai rồi, đây là hải cẩu mà.",
+      "durationSeconds": 3.648,
+      "sha256": "b13c929a1c92b5ab56e625d6ccfc14388144b74553e4c0331455c4858945e7aa"
+    },
+    {
+      "id": "miss-blowfish",
+      "transcript": "Sai rồi, đây là cá nóc mà.",
+      "durationSeconds": 3.6,
+      "sha256": "41923680f9cea9be610cbadc476d1051e85c3720843e671e8f7e08f4a438fce9"
+    },
+    {
+      "id": "miss-shark",
+      "transcript": "Sai rồi, đây là cá mập mà.",
+      "durationSeconds": 3.624,
+      "sha256": "3efeba81ff43f954b8caf9df5b9ee1d5a7a69c97f7e7aa96801c5896fcee1f25"
+    },
+    {
+      "id": "miss-jellyfish",
+      "transcript": "Sai rồi, đây là sứa mà.",
+      "durationSeconds": 3.384,
+      "sha256": "4c493508aaef4ebc201c4391b0441a1e982ea0831a59d556776d9166924ef94f"
+    },
+    {
+      "id": "miss-lobster",
+      "transcript": "Sai rồi, đây là tôm hùm mà.",
+      "durationSeconds": 3.672,
+      "sha256": "5f973ee159ef9f7cffa3276729a49e390c159945e1f35684e28ed99e0dce42f8"
+    },
+    {
+      "id": "miss-shrimp",
+      "transcript": "Sai rồi, đây là tôm mà.",
+      "durationSeconds": 3.408,
+      "sha256": "87d977277c7f78ca999e39782dfdaf65aecdde84813e0d2e3a2b50c11fc1a41d"
+    },
+    {
+      "id": "miss-squid",
+      "transcript": "Sai rồi, đây là mực mà.",
+      "durationSeconds": 3.408,
+      "sha256": "a9d092954771e4b3ebed4cf9478b9fbee5c29977c462fc6325b1f49d117cc73e"
+    },
+    {
+      "id": "miss-otter",
+      "transcript": "Sai rồi, đây là rái cá mà.",
+      "durationSeconds": 3.6,
+      "sha256": "469491d957421bc9e449ec7a156db648d14c27677769f25e9fe9501d26ada8c2"
+    },
+    {
+      "id": "miss-scorpion",
+      "transcript": "Sai rồi, đây là bọ cạp mà.",
+      "durationSeconds": 3.672,
+      "sha256": "b072a4eb9dfdc0359cdcd52249a132dd4ec4134efcbd2e831adca258178ebcbb"
+    },
+    {
+      "id": "miss-gorilla",
+      "transcript": "Sai rồi, đây là khỉ đột mà.",
+      "durationSeconds": 3.6,
+      "sha256": "d18185f54b7ae4ac035306ebf94cc7e3c6456c45e2571c1325f7501b00cb47b0"
+    },
+    {
+      "id": "miss-orangutan",
+      "transcript": "Sai rồi, đây là đười ươi mà.",
+      "durationSeconds": 3.744,
+      "sha256": "5f04f2e448d62e7a7c541fde330e1fb30cf0df032c40ec10031ad31657176be1"
+    },
+    {
+      "id": "miss-sloth",
+      "transcript": "Sai rồi, đây là con lười mà.",
+      "durationSeconds": 3.696,
+      "sha256": "183a41bae441fbd70161e411ec4724aa532ced398a8b0d29e25ecac6b2415d0c"
+    },
+    {
+      "id": "miss-leopard",
+      "transcript": "Sai rồi, đây là báo mà.",
+      "durationSeconds": 3.384,
+      "sha256": "03479b1439e3b932f58ed1cf2453872e075a0c457f9766b0a4c587002a8ff24a"
+    },
+    {
+      "id": "miss-giraffe",
+      "transcript": "Sai rồi, đây là hươu cao cổ mà.",
+      "durationSeconds": 3.936,
+      "sha256": "08a3e0adfbada91db07790232ad40d4bf9fcb1f4a091a874d6df88ac04ad4b8d"
+    },
+    {
+      "id": "miss-rhinoceros",
+      "transcript": "Sai rồi, đây là tê giác mà.",
+      "durationSeconds": 3.624,
+      "sha256": "941345c54269357a13b02937e2dbcbd6e5b3d3f923dd7f5b63adef8a4cf4093c"
+    },
+    {
+      "id": "miss-zebra",
+      "transcript": "Sai rồi, đây là ngựa vằn mà.",
+      "durationSeconds": 3.72,
+      "sha256": "5beacf9d5137b6b4a78ff64a4684a8b8e7bf2eaf072125358e8d37571cc447f2"
+    },
+    {
+      "id": "miss-crocodile",
+      "transcript": "Sai rồi, đây là cá sấu mà.",
+      "durationSeconds": 3.672,
+      "sha256": "a0c127753b754e6044ef46cb24dbdf1417dafa726074beca1f370fa76b969b9f"
+    },
+    {
+      "id": "miss-parrot",
+      "transcript": "Sai rồi, đây là vẹt mà.",
+      "durationSeconds": 3.408,
+      "sha256": "389b37925874ef51a448d7e5f6eb560393fbb34b6fbcad1c36be4b112f6ecd4d"
+    },
+    {
+      "id": "miss-chipmunk",
+      "transcript": "Sai rồi, đây là sóc mà.",
+      "durationSeconds": 3.336,
+      "sha256": "76df35a29504477e181330dcceeca5f8ed79c7b8b1cbc3210fa3473a73d8aaeb"
+    },
+    {
+      "id": "miss-beaver",
+      "transcript": "Sai rồi, đây là hải ly mà.",
+      "durationSeconds": 3.648,
+      "sha256": "70018b76f96c24c3eea8dba875b4c3adb68b8e081faa5be1566c68adf0078e62"
+    },
+    {
+      "id": "miss-deer",
+      "transcript": "Sai rồi, đây là hươu mà.",
+      "durationSeconds": 3.384,
+      "sha256": "a9b2380d33cb59bf3b298981a2cd7620d062e8f76f76c815399e0385921c5ab7"
+    },
+    {
+      "id": "miss-badger",
+      "transcript": "Sai rồi, đây là lửng mà.",
+      "durationSeconds": 3.408,
+      "sha256": "58f6c3acbf467bd3fdaf938adf3fc88ce9cbd0afc7a876897444df1e08a650ce"
+    },
+    {
+      "id": "miss-skunk",
+      "transcript": "Sai rồi, đây là chồn hôi mà.",
+      "durationSeconds": 3.72,
+      "sha256": "8dd47ba0775f94b9fa36387db8d1c959c4a04bb705fe6b46318f7ce9df94dba9"
+    },
+    {
+      "id": "miss-bison",
+      "transcript": "Sai rồi, đây là bò rừng mà.",
+      "durationSeconds": 3.672,
+      "sha256": "354346b98f517b8f110deacbcb4ccda42bd348f24e020cec40f980beb49e626a"
+    },
+    {
+      "id": "miss-snail",
+      "transcript": "Sai rồi, đây là ốc sên mà.",
+      "durationSeconds": 3.6,
+      "sha256": "66c8e21cb01f0d2cbe6ff434f62ce66ab00534167cd880071da50441bd1dae14"
+    },
+    {
+      "id": "miss-butterfly",
+      "transcript": "Sai rồi, đây là bướm mà.",
+      "durationSeconds": 3.408,
+      "sha256": "45dcc661fc8d7088721c2da5462fa486553ff707553635a2625d509d96f4db69"
+    },
+    {
+      "id": "miss-caterpillar",
+      "transcript": "Sai rồi, đây là sâu bướm mà.",
+      "durationSeconds": 3.672,
+      "sha256": "e71146f585f8ec1263753532a7a0b8ee7dd14fd39e2c6d4b9330c121ab0ec907"
+    },
+    {
+      "id": "miss-ant",
+      "transcript": "Sai rồi, đây là kiến mà.",
+      "durationSeconds": 3.408,
+      "sha256": "df7129554bc9c75ab984048329e02e84f41526c58129f42709af12754c591966"
+    },
+    {
+      "id": "miss-ladybug",
+      "transcript": "Sai rồi, đây là bọ rùa mà.",
+      "durationSeconds": 3.696,
+      "sha256": "e4e3e8dd417ceb7e5428f72a4a0eba02cf2c15685cbb2c8b794b1c2e47b1135c"
+    },
+    {
+      "id": "miss-cricket",
+      "transcript": "Sai rồi, đây là dế mà.",
+      "durationSeconds": 3.384,
+      "sha256": "7321c1446427e5d6b70dc7eafce56dca76d288e75ae484e62df6f36f2ffd806a"
+    },
+    {
+      "id": "miss-cockroach",
+      "transcript": "Sai rồi, đây là gián mà.",
+      "durationSeconds": 3.36,
+      "sha256": "426a594780813b3d8ae48e79e74657d721e41cedee433401ca4c0dd51b3cf415"
+    },
+    {
+      "id": "miss-spider",
+      "transcript": "Sai rồi, đây là nhện mà.",
+      "durationSeconds": 3.384,
+      "sha256": "3bc79d081e5c9d868a4a6b1c34af273e990c798ccfd1861c3317b34da52a2058"
+    },
+    {
+      "id": "miss-mosquito",
+      "transcript": "Sai rồi, đây là muỗi mà.",
+      "durationSeconds": 3.384,
+      "sha256": "5fa4604eda71815908ef039d801ef3b362a6a8d7a74c54bdad208aac9de75e93"
+    },
+    {
+      "id": "miss-fly",
+      "transcript": "Sai rồi, đây là ruồi mà.",
+      "durationSeconds": 3.456,
+      "sha256": "0ec8f0f701606c6c43807a94311dc8a890196acc6df2b3cd4b5ec7fca5e6d9b5"
+    },
+    {
+      "id": "miss-worm",
+      "transcript": "Sai rồi, đây là giun mà.",
+      "durationSeconds": 3.36,
+      "sha256": "8d689b1a800b1563700eaaffb08defc5bd52475c8aef0bc6aae41cd50e14a3dd"
+    },
+    {
+      "id": "miss-pig",
+      "transcript": "Sai rồi, đây là lợn mà.",
+      "durationSeconds": 3.408,
+      "sha256": "58dbafc4594ceedaf0101a2d984f27cdc6301f44f982cdfaa405a8b52bc5480f"
+    },
+    {
+      "id": "miss-goat",
+      "transcript": "Sai rồi, đây là dê mà.",
+      "durationSeconds": 3.432,
+      "sha256": "53dcb5bde881ed97f12ac7cbe441163b955d812677936515e141a1e273eaf5fb"
+    },
+    {
+      "id": "miss-sheep",
+      "transcript": "Sai rồi, đây là cừu mà.",
+      "durationSeconds": 3.408,
+      "sha256": "38e911a04ba5d78c4c33bce32cb9f0b4a4b8035240b0dbac781d4f49bd95e024"
+    },
+    {
+      "id": "miss-horse",
+      "transcript": "Sai rồi, đây là ngựa mà.",
+      "durationSeconds": 3.48,
+      "sha256": "aab3a9291b1e5fbbb52e1739d9adaf1c01397f778020fdb5caf502830b2e5a7d"
+    },
+    {
+      "id": "miss-donkey",
+      "transcript": "Sai rồi, đây là lừa mà.",
+      "durationSeconds": 3.408,
+      "sha256": "b47bfb9b260f9adac3d64b1f26cbc762d9910c89f6dc3dd300f0db964c5e344a"
+    },
+    {
+      "id": "miss-buffalo",
+      "transcript": "Sai rồi, đây là trâu mà.",
+      "durationSeconds": 3.432,
+      "sha256": "e85e2937cfefbe7f885f070bbe5f07726cbb247a4ffbfa6a326c8b1c67a56218"
+    },
+    {
+      "id": "miss-turkey",
+      "transcript": "Sai rồi, đây là gà tây mà.",
+      "durationSeconds": 3.648,
+      "sha256": "afc9d5924256789e584c085a1811e0ae2a52b7b07f370fcda8d439ec01c7d72d"
+    },
+    {
+      "id": "miss-chick",
+      "transcript": "Sai rồi, đây là gà con mà.",
+      "durationSeconds": 3.672,
+      "sha256": "74740b2d9ab45bd556987241bfdf143dc57facb129e4267b54aa7fd614f9e2af"
+    },
+    {
+      "id": "miss-rooster",
+      "transcript": "Sai rồi, đây là gà trống mà.",
+      "durationSeconds": 3.648,
+      "sha256": "b28dc11f1639c9fcfd680e7ba24d55d12d1af0b076d15aeaf0100595221681bf"
+    },
+    {
+      "id": "miss-llama",
+      "transcript": "Sai rồi, đây là lạc đà không bướu mà.",
+      "durationSeconds": 4.128,
+      "sha256": "fd4f48de9a2f94ca529ff32e7b452a3ead0e0c639ca5036d67f98979273ad588"
+    },
+    {
+      "id": "miss-mouse",
+      "transcript": "Sai rồi, đây là chuột mà.",
+      "durationSeconds": 3.408,
+      "sha256": "3099d9335635fc98ae30f382fad265d5d50165d9e3bdb760f10282a1d689ed73"
+    },
+    {
+      "id": "miss-peacock",
+      "transcript": "Sai rồi, đây là công mà.",
+      "durationSeconds": 3.408,
+      "sha256": "0cd763ea34398e9aad5a042816231e6cece11853722d631fd519eee8dc485cd9"
+    },
+    {
+      "id": "miss-goose",
+      "transcript": "Sai rồi, đây là ngỗng mà.",
+      "durationSeconds": 3.408,
+      "sha256": "ac8b274f6bbdf2264ef97df988426bfa974288cee34a6a8adcbc64e6c4dd4179"
+    },
+    {
+      "id": "miss-hedgehog",
+      "transcript": "Sai rồi, đây là nhím mà.",
+      "durationSeconds": 3.312,
+      "sha256": "d8b70ae61589c9427259ddcfcf8fa1e064f0b106b4961932bdec07fe12f33744"
+    },
+    {
+      "id": "miss-bat",
+      "transcript": "Sai rồi, đây là dơi mà.",
+      "durationSeconds": 3.408,
+      "sha256": "1cc90bd75234e033a0d806e7f45f3dcb05afdcf5c33b57ba13de721353287711"
+    },
+    {
+      "id": "miss-dove",
+      "transcript": "Sai rồi, đây là bồ câu mà.",
+      "durationSeconds": 3.672,
+      "sha256": "7f9e6ad62c83e2b4b29ed40e1d27b5cfbc1e7054893ffe4c3d8ef937df72ec0d"
+    },
+    {
+      "id": "miss-eagle",
+      "transcript": "Sai rồi, đây là đại bàng mà.",
+      "durationSeconds": 3.624,
+      "sha256": "689c75f51f892565e39a87d1f265cc04e8630e1a9fb9345a30d84058800e76e2"
+    },
+    {
+      "id": "miss-swan",
+      "transcript": "Sai rồi, đây là thiên nga mà.",
+      "durationSeconds": 3.72,
+      "sha256": "1003400e3af373eab33c2f6e539e1516e969aa5c9db8c0fc6f204fbffca2c580"
+    },
+    {
+      "id": "miss-flamingo",
+      "transcript": "Sai rồi, đây là hồng hạc mà.",
+      "durationSeconds": 3.672,
+      "sha256": "8264270898976b2f40c28fe040eba4d21a6b345c1109cdd1940a9886a1a621d0"
+    },
+    {
+      "id": "miss-spinosaurus",
+      "transcript": "Sai rồi, đây là khủng long buồm mà.",
+      "durationSeconds": 3.888,
+      "sha256": "257c6105e5c6291422c6b9a680ca8be80cdd67846e9b2045f648f8343245ffd0"
+    },
+    {
+      "id": "miss-ankylosaurus",
+      "transcript": "Sai rồi, đây là khủng long giáp mà.",
+      "durationSeconds": 3.864,
+      "sha256": "366c3a0dc391ecf515d6e94a83826c5a51392f7713829bf4443d498c96931d51"
+    },
+    {
+      "id": "miss-parasaurolophus",
+      "transcript": "Sai rồi, đây là khủng long mào mà.",
+      "durationSeconds": 3.936,
+      "sha256": "6ed2b3947c6d412440010a5ca2910a0d1aa68e65cf18832665810e4cb39041a5"
+    },
+    {
+      "id": "miss-fire-engine",
+      "transcript": "Sai rồi, đây là xe cứu hỏa mà.",
+      "durationSeconds": 3.912,
+      "sha256": "53c88298e10199702ca1b1b673a3ac84d23c8832e962b05db6b891225b8d37e5"
+    },
+    {
+      "id": "miss-ambulance",
+      "transcript": "Sai rồi, đây là xe cứu thương mà.",
+      "durationSeconds": 3.912,
+      "sha256": "6dff2a1284e77157b517f05cfbd613dace0c269e008cc12762b8dfad412615a5"
+    },
+    {
+      "id": "miss-tractor",
+      "transcript": "Sai rồi, đây là máy kéo mà.",
+      "durationSeconds": 3.624,
+      "sha256": "bc0793cd15e35118a82b8666c277c9455b81caa3ef589eba760d2863ed00dc0b"
+    },
+    {
+      "id": "miss-motorcycle",
+      "transcript": "Sai rồi, đây là xe máy mà.",
+      "durationSeconds": 3.648,
+      "sha256": "d8814707f53511de2690befb2c1a9a80202f71a1a6017ca3afcf4e5618de53c1"
+    },
+    {
+      "id": "miss-scooter",
+      "transcript": "Sai rồi, đây là xe scooter mà.",
+      "durationSeconds": 3.936,
+      "sha256": "fca455cd196c39a212456870b191bad7ed7df2cdf475122b57322bd7895a9849"
+    },
+    {
+      "id": "miss-truck",
+      "transcript": "Sai rồi, đây là xe tải mà.",
+      "durationSeconds": 3.648,
+      "sha256": "0a582868599d0e1ae2de4b4fc2278a9d7a0155d1765ba9027762f52eb9817fa9"
+    },
+    {
+      "id": "miss-sailboat",
+      "transcript": "Sai rồi, đây là thuyền buồm mà.",
+      "durationSeconds": 3.672,
+      "sha256": "6f426a85ae66ce99c9db7a2e233cba2b4ad0f1d97ecaa15162a71a2ae743369c"
+    },
+    {
+      "id": "miss-ship",
+      "transcript": "Sai rồi, đây là tàu thủy mà.",
+      "durationSeconds": 3.696,
+      "sha256": "4830a18cad8ac19a191364d8dc890a72fdf0fb073c0e46035d1641da30ead72a"
+    },
+    {
+      "id": "miss-speedboat",
+      "transcript": "Sai rồi, đây là ca nô mà.",
+      "durationSeconds": 3.672,
+      "sha256": "eb9a200d59f8dd18debeaedadd38ebdc2189b2dd9cc85bb9bad482cb093a9d26"
+    },
+    {
+      "id": "miss-helicopter",
+      "transcript": "Sai rồi, đây là trực thăng mà.",
+      "durationSeconds": 3.6,
+      "sha256": "3e51b8bfdedb206855cbeaf986ecf1efa803fb452552089049e32a9da1e4a6fa"
+    },
+    {
+      "id": "miss-rocket",
+      "transcript": "Sai rồi, đây là tên lửa mà.",
+      "durationSeconds": 3.696,
+      "sha256": "ef24f93e7cf45333619e10cdd5b9afd72e57e3fb8924c5deb02dd97d6c0ac409"
+    },
+    {
+      "id": "miss-rickshaw",
+      "transcript": "Sai rồi, đây là xe lam mà.",
+      "durationSeconds": 3.672,
+      "sha256": "7ff2d95d2865e56bcf4f12e967bfecf05318ade10a7efa9a09e3d65d4e3c9ac9"
+    },
+    {
+      "id": "miss-velociraptor",
+      "transcript": "Sai rồi, đây là khủng long tốc độ mà.",
+      "durationSeconds": 4.152,
+      "sha256": "11395ed2c94d5d996a136942007045a16aba8f1aa129289de12fb34b89ccede8"
+    },
+    {
+      "id": "miss-domehead",
+      "transcript": "Sai rồi, đây là khủng long đầu cứng mà.",
+      "durationSeconds": 4.08,
+      "sha256": "55aa8b06a95bbd836fecba240cb0d07162d8a577833a67c0990f015dbdc1a0b8"
+    },
+    {
+      "id": "miss-therizinosaurus",
+      "transcript": "Sai rồi, đây là khủng long vuốt dài mà.",
+      "durationSeconds": 4.128,
+      "sha256": "369134c41bd80f0863fa6b8a2d4cc0f465e498495c39aba4179575c41a018b45"
+    },
+    {
+      "id": "miss-gallimimus",
+      "transcript": "Sai rồi, đây là khủng long đà điểu mà.",
+      "durationSeconds": 4.128,
+      "sha256": "0d109d9033368d168fae03a9bbea14e408c701a59916c850d4de36b5c6608536"
+    },
+    {
+      "id": "miss-carnotaurus",
+      "transcript": "Sai rồi, đây là khủng long sừng bò mà.",
+      "durationSeconds": 4.152,
+      "sha256": "0f69c6fb0aedfe0b84a56cfa47e36f7b06904cd3685a47aa343759fd68cc50c3"
+    },
+    {
+      "id": "miss-amargasaurus",
+      "transcript": "Sai rồi, đây là khủng long gai cổ mà.",
+      "durationSeconds": 4.152,
+      "sha256": "43e17c002a4da7c3ad577bb508f9f775a1f1e35652d7fe388a75d93de6815021"
+    },
+    {
+      "id": "miss-fennec",
+      "transcript": "Sai rồi, đây là cáo tai to mà.",
+      "durationSeconds": 3.912,
+      "sha256": "710b0c26b91a0b1227e9cc132f9f29ff1111e0dadacdc9769a2b05d3427f97a3"
+    },
+    {
+      "id": "miss-meerkat",
+      "transcript": "Sai rồi, đây là chồn đất mà.",
+      "durationSeconds": 3.6,
+      "sha256": "f1e94f904afa71a1ecb4128cdd731e993d0dfd3378924d23199794d2f19dbcee"
+    },
+    {
+      "id": "miss-ostrich",
+      "transcript": "Sai rồi, đây là đà điểu mà.",
+      "durationSeconds": 3.624,
+      "sha256": "90e0c292879afcb6b830ee57bc5d7b72a3f8d2e4043c40050584c6cc5cf4d349"
+    },
+    {
+      "id": "miss-oryx",
+      "transcript": "Sai rồi, đây là linh dương mà.",
+      "durationSeconds": 3.624,
+      "sha256": "d9898f468708ea777410db17ccc7bb1510cd4a4728668751509a4bccdfdb27d0"
+    },
+    {
+      "id": "miss-hyena",
+      "transcript": "Sai rồi, đây là linh cẩu mà.",
+      "durationSeconds": 3.6,
+      "sha256": "60aaa02308c11fc1c3920b23de352f83cb204b8de95dc127ef98468147d216f3"
+    },
+    {
+      "id": "miss-vulture",
+      "transcript": "Sai rồi, đây là kền kền mà.",
+      "durationSeconds": 3.744,
+      "sha256": "be92d7af52e10c6d7efcfe8bff4f43eff709a15a28cda81949bf5f82853a1ced"
+    },
+    {
+      "id": "miss-penguin",
+      "transcript": "Sai rồi, đây là cánh cụt mà.",
+      "durationSeconds": 3.624,
+      "sha256": "d9ef3c94b651980fe6dcde874d317c8cc0512fadd29a1eb793d01c26c43bcd81"
+    },
+    {
+      "id": "miss-polarbear",
+      "transcript": "Sai rồi, đây là gấu bắc cực mà.",
+      "durationSeconds": 3.912,
+      "sha256": "d051a9db2dd4ad96a054b418ccc4607689206d450b16a2dbde4ff4c9f1fcc90a"
+    },
+    {
+      "id": "miss-sealion",
+      "transcript": "Sai rồi, đây là sư tử biển mà.",
+      "durationSeconds": 3.912,
+      "sha256": "3ffe09ac9322aa10541a388de42b08527d023fb3116297e585350d75788f9a58"
+    },
+    {
+      "id": "miss-reindeer",
+      "transcript": "Sai rồi, đây là tuần lộc mà.",
+      "durationSeconds": 3.672,
+      "sha256": "2a96c477091d55ffa00352bfa94f7956b1045bc403917397e1e65f48e610fcd5"
+    },
+    {
+      "id": "miss-arcticfox",
+      "transcript": "Sai rồi, đây là cáo tuyết mà.",
+      "durationSeconds": 3.624,
+      "sha256": "3de1daa3e0a399fe6c0b567bcaf79349121d164ad82407b91fc76679b72b7d7d"
+    },
+    {
+      "id": "miss-snowyowl",
+      "transcript": "Sai rồi, đây là cú tuyết mà.",
+      "durationSeconds": 3.6,
+      "sha256": "4dd419ed8cdcb06539ad486baf74cded92438fd338ba4aab70905120da77f5d3"
+    },
+    {
+      "id": "miss-walrus",
+      "transcript": "Sai rồi, đây là hải mã mà.",
+      "durationSeconds": 3.624,
+      "sha256": "7d2bb6550861142c08944b9c9c46d7356f9a73f0068ca9d2a1d26df3c5ee04d5"
+    },
+    {
+      "id": "miss-puffin",
+      "transcript": "Sai rồi, đây là hải âu mà.",
+      "durationSeconds": 3.72,
+      "sha256": "48632d13632f30e38b8efcfce0873656354974711b74c71a79e537b6e12a9b16"
+    },
+    {
+      "id": "miss-narwhal",
+      "transcript": "Sai rồi, đây là kỳ lân biển mà.",
+      "durationSeconds": 3.888,
+      "sha256": "059be2018541ebfd69f1decda9182a96679e30ea5667e7a1ee3a8668958bec9b"
+    },
+    {
+      "id": "miss-muskox",
+      "transcript": "Sai rồi, đây là bò xạ hương mà.",
+      "durationSeconds": 3.912,
+      "sha256": "7ddbb7b6a6175670c996af461a64835b0a6935bb30ea42a700b552321eee7d6e"
+    },
+    {
+      "id": "miss-ermine",
+      "transcript": "Sai rồi, đây là chồn trắng mà.",
+      "durationSeconds": 3.672,
+      "sha256": "b480ae44cbd142c7885beeedad5d21b520931a533eb4b4f59abbbf0f1474525e"
+    },
+    {
+      "id": "miss-snowwolf",
+      "transcript": "Sai rồi, đây là sói tuyết mà.",
+      "durationSeconds": 3.624,
+      "sha256": "bfa474bc2f06b6a41389fac0f646d534ad3d6fe70bfc8c4c291dd49cbe4df530"
     }
   ]
 }

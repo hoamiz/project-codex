@@ -10,6 +10,7 @@ import {
   findSeek,
 } from './discovery-core';
 import { seekThemes, seekObjects, numberColors } from './discovery-lessons';
+import { learningImage } from './learning-assets';
 
 test('K01/K02 all 45 ranges contain exactly three copies per value, unique IDs and safe jitter', () => {
   for (let start = 1; start < 10; start++)
@@ -52,12 +53,16 @@ test('K02 future/duplicate clicks never count and only all copies advance in asc
   expect(state.found).toHaveLength(9);
   expect(nextNumber(state, state.round.id)).toBe(state);
 });
-test('K01/K05 every theme contains five real objects with distinct bounded places', () => {
+test('K01/K05 every theme draws eight of its own objects into distinct bounded places', () => {
   for (const theme of seekThemes)
     for (const rng of [() => 0, () => 0.99]) {
       const state = createSeek(theme.id, rng);
+      const ids = state.placements.map((p) => p.id);
       expect(state.theme.id).toBe(theme.id);
-      expect(new Set(state.placements.map((p) => p.id))).toEqual(new Set(theme.objects));
+      expect(theme.objects.length).toBeGreaterThanOrEqual(8);
+      expect(ids).toHaveLength(8);
+      expect(new Set(ids).size).toBe(ids.length);
+      expect(theme.objects).toEqual(expect.arrayContaining(ids));
       expect(
         state.placements.every(
           (p) =>
@@ -68,12 +73,15 @@ test('K01/K05 every theme contains five real objects with distinct bounded place
         for (const b of state.placements)
           if (a !== b) expect(Math.hypot((a.x - b.x) * 3, (a.y - b.y) * 3)).toBeGreaterThan(65);
     }
+  const oceanA = createSeek('ocean', () => 0).placements.map((p) => p.id);
+  const oceanB = createSeek('ocean', () => 0.99).placements.map((p) => p.id);
+  expect(oceanA).not.toEqual(oceanB);
   const before = createSeek('random', () => 0);
   const after = createSeek('random', () => 0, before);
   expect(after.theme.id).not.toBe(before.theme.id);
   expect(after.id).not.toBe(before.id);
 });
-test('K05 only selected hidden target counts, found locks, and all five can finish in chosen order', () => {
+test('K05 only selected hidden target counts, found locks, and all eight can finish in chosen order', () => {
   let state = createSeek('ocean', () => 0.5);
   const other = state.placements[2].id;
   expect(findSeek(state, other)).toBe(state);
@@ -82,19 +90,24 @@ test('K05 only selected hidden target counts, found locks, and all five can fini
   expect(state.found).toEqual([other]);
   expect(findSeek(state, other)).toBe(state);
   expect(selectSeek(state, other)).toBe(state);
-  while (state.found.length < 5) state = findSeek(state, state.selected);
-  expect(new Set(state.found).size).toBe(5);
+  while (state.found.length < 8) state = findSeek(state, state.selected);
+  expect(new Set(state.found).size).toBe(8);
   expect(findSeek(state, state.selected)).toBe(state);
 });
 
-test('K01/K04 every target and all five scenes have original SVG assets', () => {
+test('K01/K04 every target and every scene have a local illustration', () => {
   for (const asset of [
     ...seekObjects.map((item) => item.asset),
     ...seekThemes.map((theme) => `scene-${theme.id}`),
   ]) {
-    const svg = readFileSync(resolve('public/images/kids-learning', asset + '.svg'), 'utf8');
-    expect(svg).toContain('<svg');
-    expect(svg).toContain('<title>');
-    expect(svg).not.toContain('<image');
+    const file = learningImage(asset).replace(/^\//, '');
+    const bytes = readFileSync(resolve('public', file));
+    if (file.endsWith('.png')) expect(bytes.subarray(0, 4).toString('hex')).toBe('89504e47');
+    else {
+      const svg = bytes.toString('utf8');
+      expect(svg).toContain('<svg');
+      expect(svg).toContain('<title>');
+      expect(svg).not.toContain('<image');
+    }
   }
 });

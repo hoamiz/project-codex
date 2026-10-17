@@ -9,24 +9,29 @@ export const stickerNames: Record<StickerId, string> = {
   cat: 'Mèo',
   rabbit: 'Thỏ',
   bear: 'Gấu',
-  fox: 'Cáo',
+  kangaroo: 'Chuột túi',
   panda: 'Gấu trúc',
-  frog: 'Ếch',
+  elephant: 'Voi',
   penguin: 'Cánh cụt',
   owl: 'Cú',
   whale: 'Cá voi',
 };
 type Store = Pick<Storage, 'getItem' | 'setItem'>;
-/** Chỉ đọc key/version của PJ7 và ID trong whitelist; dữ liệu hỏng không ảnh hưởng storage của demo khác. */
+const renamedStickers: Record<string, StickerId> = { fox: 'kangaroo', frog: 'elephant' };
+
+/** Chỉ đọc key/version của PJ7 và ID trong whitelist; dữ liệu hỏng không ảnh hưởng storage của demo khác. Cáo và ếch đã đổi thành chuột túi và voi. */
 export function readStickers(raw: string | null): StickerId[] {
   try {
     const parsed = JSON.parse(raw || 'null');
     if (parsed?.version !== 1 || !Array.isArray(parsed.ids)) return [];
     return [
       ...new Set<StickerId>(
-        parsed.ids.filter(
-          (id: unknown) => typeof id === 'string' && stickerIds.includes(id as StickerId),
-        ),
+        parsed.ids.flatMap((id: unknown) => {
+          const next = typeof id === 'string' ? (renamedStickers[id] ?? id) : id;
+          return typeof next === 'string' && stickerIds.includes(next as StickerId)
+            ? [next as StickerId]
+            : [];
+        }),
       ),
     ].slice(0, 12);
   } catch {

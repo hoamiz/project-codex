@@ -3,6 +3,7 @@ import { LearningDialog } from './learning-dialog';
 import { polyline } from './drawing-core';
 import { tracePoints } from './tracing-core';
 import { companions } from './lessons';
+import { learningImage } from './learning-assets';
 /** Ví dụ có dữ liệu riêng; timeline không bao giờ dispatch vào bài thật hoặc gọi callback thưởng. */
 export function Tutorial({
   kind,
@@ -80,7 +81,7 @@ export function Tutorial({
             [0, 1, 2].map((i) => (
               <image
                 key={i}
-                href="/images/kids-learning/star.svg"
+                href={learningImage('star')}
                 x={246 + i * 12}
                 y={52 + i * 10}
                 width="24"
@@ -88,7 +89,7 @@ export function Tutorial({
               />
             ))
           ) : (
-            <image href="/images/kids-learning/flower.svg" x="251" y="61" width="36" height="42" />
+            <image href={learningImage('flower')} x="251" y="61" width="36" height="42" />
           )}
           {!reduced && (
             <g ref={hand}>

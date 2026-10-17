@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><title>Bạn nhỏ đi học</title><rect x="17" y="56" width="24" height="31" rx="7" fill="#edb867" stroke="#b28949" stroke-width="3"/><rect x="30" y="55" width="43" height="33" rx="10" fill="#9bc6ad" stroke="#588b72" stroke-width="3"/><path d="m42 84-3 12m23-12 4 12" stroke="#4f7787" stroke-width="8" stroke-linecap="round"/><path d="m35 63 16 8 16-8" fill="none" stroke="#fff4d5" stroke-width="4"/><path d="m49 68 3 13 5-13" fill="#e2a09a"/><circle cx="52" cy="33" r="25" fill="#f8cdab" stroke="#b88469" stroke-width="3"/><path d="M27 31q-4-28 25-28 29 2 25 28L61 19 49 28l-8-9Z" fill="#6e4c3c"/><circle cx="43" cy="35" r="3" fill="#253e39"/><circle cx="61" cy="35" r="3" fill="#253e39"/><path d="M45 45q8 6 15 0" fill="none" stroke="#aa6460" stroke-width="3" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Bạn nhỏ đi học</title>
+  <ellipse cx="52" cy="96" rx="24" ry="3" fill="#5c4638" opacity=".1"/>
+  <rect x="16" y="58" width="22" height="28" rx="6" fill="#f0b45a" stroke="#c48a38" stroke-width="2"/>
+  <path d="M20 64h14M18 70h16" stroke="#fff6d8" stroke-width="2" stroke-linecap="round"/>
+  <path d="M32 56h40c6 0 10 6 10 14v16c0 6-6 8-12 8H34c-8 0-10-4-10-10V64c0-6 2-8 8-8z" fill="#8ec9aa" stroke="#4f8a6a" stroke-width="2"/>
+  <path d="M40 84 36 96M62 84l6 12" stroke="#5f86b0" stroke-width="7" stroke-linecap="round"/>
+  <path d="M40 64 52 72 64 64" fill="none" stroke="#fff6d8" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="52" cy="32" r="20" fill="#ffd3b0" stroke="#d09a78" stroke-width="2"/>
+  <path d="M32 30c0-16 10-22 20-20 12-2 20 6 20 20-6-8-14-6-20-2-6-6-14-6-20 2z" fill="#6a4638"/>
+  <ellipse cx="46" cy="34" rx="3.8" ry="4.6" fill="#fff"/>
+  <ellipse cx="62" cy="34" rx="3.8" ry="4.6" fill="#fff"/>
+  <circle cx="47" cy="35" r="2" fill="#2e3d38"/>
+  <circle cx="63" cy="35" r="2" fill="#2e3d38"/>
+  <path d="M48 42q5 4 10 0" fill="none" stroke="#c46a62" stroke-width="1.8" stroke-linecap="round"/>
+  <ellipse cx="40" cy="40" rx="3" ry="1.8" fill="#f6a8b4" opacity=".8"/>
+  <ellipse cx="66" cy="40" rx="3" ry="1.8" fill="#f6a8b4" opacity=".8"/>
+</svg>

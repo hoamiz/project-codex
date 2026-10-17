@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { RangeSettings } from './range-settings';
 import { CountHelper } from './count-helper';
+import { HideAndSeekPage } from './hide-and-seek-page';
 
 test('L09 drafting 10 and blur/Enter never submits stale range', async () => {
   const starts: unknown[] = [];
@@ -67,6 +68,22 @@ test('L24 presets atomically replace a dirty field and do not start a round', as
   }
   await userEvent.click(screen.getByRole('button', { name: /Bắt đầu/ }));
   expect(starts).toEqual([{ start: 1, end: 10 }]);
+});
+test('hide-and-seek preview shows the animals of the chosen theme', async () => {
+  render(<HideAndSeekPage level="easy" onSpeak={() => {}} onComplete={() => {}} />);
+  expect(screen.getByRole('img', { name: 'Chim' })).toBeInTheDocument();
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Chủ đề' }), 'dinosaurs');
+  expect(screen.getByRole('img', { name: 'Khủng long bạo chúa' })).toHaveAttribute(
+    'src',
+    '/images/kids-learning/trex.png',
+  );
+  expect(screen.queryByRole('img', { name: 'Sao biển' })).not.toBeInTheDocument();
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Chủ đề' }), 'ocean');
+  expect(screen.getByRole('img', { name: 'Sao biển' })).toHaveAttribute(
+    'src',
+    '/images/kids-learning/starfish.png',
+  );
+  expect(screen.queryByRole('img', { name: 'Khủng long bạo chúa' })).not.toBeInTheDocument();
 });
 test('L09 invalid blank only changes the edited field', async () => {
   render(<RangeSettings onStart={() => {}} />);

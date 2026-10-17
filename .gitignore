@@ -1,6 +1,7 @@
 node_modules/
 dist/
 dist-alphabet/
+dist-kids/
 coverage/
 .env
 .env.*

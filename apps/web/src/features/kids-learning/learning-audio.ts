@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { assetUrl } from './asset-url';
 import { companions } from './lessons';
 import { discoveryVoiceIds } from './discovery-lessons';
 export const voiceIds = [
@@ -46,7 +47,7 @@ export function createLearningAudio(
     last = id;
     notify(null);
     const generation = token;
-    const voice = factory(`/audio/kids-learning/${id}.mp3?v=1`);
+    const voice = factory(assetUrl(`/audio/kids-learning/${id}.mp3?v=1`));
     current = voice;
     const fail = () => {
       if (generation === token) {

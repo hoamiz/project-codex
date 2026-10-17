@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <title>insects</title>
+  <defs>
+    <linearGradient id="iSky" x1="0" y1="0" x2="0" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7f6c8" />
+      <stop offset="1" stop-color="#c9e39a" />
+    </linearGradient>
+    <linearGradient id="iGround" x1="0" y1="470" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b6d36a" />
+      <stop offset="1" stop-color="#7eaa45" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="700" fill="url(#iSky)" />
+  <circle cx="140" cy="90" r="34" fill="#fff4b8" />
+  <ellipse cx="250" cy="80" rx="90" ry="28" fill="#ffffff" opacity=".7" />
+  <ellipse cx="320" cy="90" rx="70" ry="22" fill="#ffffff" opacity=".55" />
+  <path d="M0 520c160-70 300 10 480-20s300 10 520 30v170H0z" fill="url(#iGround)" />
+  <g fill="#6fa34a">
+    <ellipse cx="80" cy="560" rx="70" ry="22" />
+    <ellipse cx="260" cy="590" rx="90" ry="24" />
+    <ellipse cx="620" cy="570" rx="110" ry="26" />
+    <ellipse cx="900" cy="600" rx="80" ry="22" />
+  </g>
+  <g fill="#f2d36b">
+    <circle cx="180" cy="500" r="16" />
+    <circle cx="430" cy="470" r="14" />
+    <circle cx="760" cy="510" r="18" />
+  </g>
+  <g fill="#f4a0b4">
+    <circle cx="210" cy="488" r="8" />
+    <circle cx="400" cy="520" r="7" />
+    <circle cx="800" cy="490" r="9" />
+  </g>
+  <path
+    d="M120 700c10-80 40-120 20-180M480 700c-20-90 30-140 10-210M840 700c20-70 50-130 20-190"
+    fill="none"
+    stroke="#5d8f3e"
+    stroke-width="8"
+    stroke-linecap="round"
+  />
+  <path d="M150 430c-30-20-20-50 8-48 10 24 8 40-8 48z" fill="#8ec46a" />
+  <path d="M820 400c40-16 36-52-4-46-16 22-18 38 4 46z" fill="#9ed47a" />
+</svg>

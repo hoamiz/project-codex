@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <title>flying</title>
+  <defs>
+    <linearGradient id="ySky" x1="0" y1="0" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9fd4f5" />
+      <stop offset="1" stop-color="#e7f6ff" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="700" fill="url(#ySky)" />
+  <circle cx="760" cy="120" r="46" fill="#fff3b0" />
+  <g fill="#ffffff">
+    <ellipse cx="180" cy="150" rx="90" ry="36" />
+    <ellipse cx="250" cy="160" rx="70" ry="28" />
+    <ellipse cx="430" cy="90" rx="80" ry="30" />
+    <ellipse cx="500" cy="100" rx="60" ry="24" />
+    <ellipse cx="860" cy="220" rx="100" ry="34" />
+    <ellipse cx="780" cy="230" rx="70" ry="26" />
+  </g>
+  <path d="M0 620c160-80 280-20 460-50s300 20 540-10v140H0z" fill="#b7d98a" />
+  <path d="M0 650c200-30 360 10 560-16s280 8 440 16v50H0z" fill="#8fbf6e" />
+  <circle cx="120" cy="250" r="3" fill="#fff" />
+  <circle cx="300" cy="300" r="2.5" fill="#fff" />
+  <circle cx="640" cy="260" r="3" fill="#fff" />
+  <circle cx="900" cy="340" r="2.5" fill="#fff" />
+</svg>

@@ -1,1 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700"><title>transport</title><rect width="1000" height="700" fill="#d3e4df"/><circle cx="850" cy="90" r="50" fill="#efdb9e"/><path d="M0 350h1000v350H0Z" fill="#acc4aa"/><g stroke="#8fa8a5" stroke-width="4"><path d="M60 170h180v240H60Z" fill="#d7c8b3"/><path d="M290 100h170v310H290Z" fill="#b5ccd0"/><path d="M560 190h170v220H560Z" fill="#e3cdb0"/><path d="M780 240h160v170H780Z" fill="#bdc9aa"/></g><g fill="#e9eee1"><path d="M90 210h40v40H90Zm80 0h40v40h-40Zm-80 80h40v40H90Zm80 0h40v40h-40Zm150-140h40v50h-40Zm80 0h40v50h-40Zm-80 100h40v50h-40Zm80 0h40v50h-40Zm190-15h40v50h-40Zm80 0h40v50h-40Zm160 40h40v40h-40Z"/></g><path d="M0 470h1000v150H0Z" fill="#9baaa8"/><path d="M0 545h1000" stroke="#f5e6bd" stroke-width="10" stroke-dasharray="50 45"/><path d="M80 640h840" stroke="#d4cfb7" stroke-width="16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <title>transport</title>
+  <defs>
+    <linearGradient id="tSky" x1="0" y1="0" x2="0" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#cfeaf8"/>
+      <stop offset="1" stop-color="#eef8f4"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="470" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b7c4c2"/>
+      <stop offset="1" stop-color="#8ea09c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="700" fill="url(#tSky)"/>
+  <circle cx="860" cy="90" r="48" fill="#ffe7a0"/>
+  <path d="M80 120c50 18 90 8 120-12-30 30-80 28-120 12z" fill="#fff" opacity=".8"/>
+  <path d="M360 70c40 14 70 6 90-10-24 24-64 22-90 10z" fill="#fff" opacity=".7"/>
+  <path d="M0 360c200-80 380 10 600-16s260 8 400-20v80c-160 30-300-10-460 16S180 450 0 400z" fill="#c5ddb4"/>
+  <g stroke="#9aabb0" stroke-width="3">
+    <path d="M70 190h160v170H70z" fill="#f3e6d2"/>
+    <path d="M70 160 150 110l80 50z" fill="#e08a7c"/>
+    <path d="M280 140h180v220H280z" fill="#d5ebe8"/>
+    <path d="M280 110h180v30H280z" fill="#7eb8c4"/>
+    <path d="M520 200h170v160H520z" fill="#f6ead4"/>
+    <path d="M520 168 605 120l85 48z" fill="#e7b08a"/>
+    <path d="M760 230h170v130H760z" fill="#d7e4c4"/>
+  </g>
+  <g fill="#fffaf2">
+    <rect x="90" y="214" width="28" height="28" rx="4"/>
+    <rect x="132" y="214" width="28" height="28" rx="4"/>
+    <rect x="174" y="214" width="28" height="28" rx="4"/>
+    <rect x="90" y="258" width="28" height="28" rx="4"/>
+    <rect x="132" y="258" width="28" height="28" rx="4"/>
+    <rect x="174" y="258" width="28" height="28" rx="4"/>
+    <rect x="304" y="170" width="36" height="40" rx="4"/>
+    <rect x="360" y="170" width="36" height="40" rx="4"/>
+    <rect x="416" y="170" width="24" height="40" rx="4"/>
+    <rect x="304" y="230" width="36" height="40" rx="4"/>
+    <rect x="360" y="230" width="36" height="40" rx="4"/>
+    <rect x="416" y="230" width="24" height="40" rx="4"/>
+    <rect x="548" y="228" width="30" height="30" rx="4"/>
+    <rect x="596" y="228" width="30" height="30" rx="4"/>
+    <rect x="644" y="228" width="24" height="30" rx="4"/>
+    <rect x="788" y="258" width="34" height="28" rx="4"/>
+    <rect x="840" y="258" width="34" height="28" rx="4"/>
+    <rect x="892" y="258" width="20" height="28" rx="4"/>
+  </g>
+  <path d="M0 430h1000v270H0z" fill="url(#road)"/>
+  <path d="M0 470h1000" stroke="#dfe8df" stroke-width="10"/>
+  <path d="M40 560h920" stroke="#f6e7c0" stroke-width="10" stroke-dasharray="46 36" stroke-linecap="round"/>
+  <path d="M0 680h1000" stroke="#d5d0bc" stroke-width="16"/>
+</svg>

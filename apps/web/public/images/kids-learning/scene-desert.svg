@@ -1,1 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700"><title>desert</title><rect width="1000" height="700" fill="#f4e3bc"/><circle cx="840" cy="90" r="55" fill="#efd291"/><path d="M0 300q250-140 520 30t480-10v380H0Z" fill="#e6c998"/><path d="M0 480q300-150 600 0t400-20v240H0Z" fill="#d8b982"/><path d="m450 350 140-200 150 200Z" fill="#d3b17c"/><path d="m590 150 30 200h120Z" fill="#c8a574"/><path d="M150 580V380m0 100-50-30v-60m50 70 50-35v-55m650 210V440m0 60 50-20v-50" fill="none" stroke="#9fb184" stroke-width="24" stroke-linecap="round"/><g fill="#bfa889"><ellipse cx="340" cy="580" rx="45" ry="25"/><ellipse cx="740" cy="630" rx="60" ry="30"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <title>desert</title>
+  <defs>
+    <linearGradient id="desertSky" x1="0" y1="0" x2="0" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7d7a2"/>
+      <stop offset="1" stop-color="#f8e7c4"/>
+    </linearGradient>
+    <linearGradient id="duneA" x1="0" y1="280" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f3d7a4"/>
+      <stop offset="1" stop-color="#e4b56e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="700" fill="url(#desertSky)"/>
+  <circle cx="820" cy="110" r="70" fill="#ffe7a8" opacity=".45"/>
+  <circle cx="820" cy="110" r="46" fill="#fff1c4"/>
+  <path d="M120 90c40 16 70 8 90-8-20 28-60 28-90 8z" fill="#fff" opacity=".55"/>
+  <path d="M300 60c30 12 56 6 70-8-16 22-48 22-70 8z" fill="#fff" opacity=".4"/>
+  <path d="M180 250 340 120 470 250z" fill="#e7c48a" opacity=".7"/>
+  <path d="M300 170 390 90 470 170z" fill="#f6e2bc" opacity=".8"/>
+  <path d="M0 340c180-120 360 20 560-20s300 10 440-30v410H0z" fill="url(#duneA)"/>
+  <path d="M0 500c220-140 420 10 640-30s260 0 360-20v250H0z" fill="#e8c07a"/>
+  <path d="M120 560V390" stroke="#7eaa6a" stroke-width="16" stroke-linecap="round"/>
+  <path d="M120 470c-40-16-36-50-8-70M120 430c36-10 40-40 12-62" fill="none" stroke="#8fbe78" stroke-width="14" stroke-linecap="round"/>
+  <path d="M820 600V470" stroke="#6f9a5e" stroke-width="14" stroke-linecap="round"/>
+  <path d="M820 540c30-8 34-36 10-52M820 500c-28-6-30-34-8-50" fill="none" stroke="#9ccc86" stroke-width="12" stroke-linecap="round"/>
+  <ellipse cx="260" cy="560" rx="40" ry="18" fill="#d2a56c"/>
+  <ellipse cx="640" cy="620" rx="54" ry="20" fill="#c99662"/>
+  <path d="M40 430c80-16 120 8 180-4" fill="none" stroke="#fff6df" stroke-width="6" stroke-linecap="round" opacity=".35"/>
+</svg>

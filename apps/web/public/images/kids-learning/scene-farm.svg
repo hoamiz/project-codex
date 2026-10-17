@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <title>farm</title>
+  <defs>
+    <linearGradient id="fSky" x1="0" y1="0" x2="0" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d9ecff" />
+      <stop offset="1" stop-color="#f8e7b0" />
+    </linearGradient>
+    <linearGradient id="fField" x1="0" y1="430" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e6c85a" />
+      <stop offset="1" stop-color="#c49a3a" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="700" fill="url(#fSky)" />
+  <circle cx="820" cy="90" r="40" fill="#ffe08a" />
+  <ellipse cx="180" cy="110" rx="80" ry="24" fill="#fff" opacity=".75" />
+  <path d="M620 430V250h220v180" fill="#c45b4a" />
+  <path d="M600 260l130-90 130 90z" fill="#8d3d34" />
+  <rect x="700" y="320" width="48" height="70" rx="6" fill="#f4e2b0" />
+  <rect x="860" y="160" width="22" height="50" fill="#d8d2c4" />
+  <path d="M0 500c180-40 320 20 520-10s300 0 480 20v190H0z" fill="url(#fField)" />
+  <path d="M40 560h920" stroke="#f3e2a0" stroke-width="10" stroke-linecap="round" opacity=".7" />
+  <path d="M40 620h920" stroke="#efd48a" stroke-width="10" stroke-linecap="round" opacity=".55" />
+  <g fill="#8d6a3a">
+    <rect x="70" y="470" width="10" height="90" rx="3" />
+    <rect x="150" y="490" width="10" height="70" rx="3" />
+    <rect x="230" y="480" width="10" height="80" rx="3" />
+  </g>
+  <path d="M70 500h170" stroke="#c9844a" stroke-width="6" stroke-linecap="round" />
+  <path d="M70 530h170" stroke="#c9844a" stroke-width="6" stroke-linecap="round" />
+</svg>

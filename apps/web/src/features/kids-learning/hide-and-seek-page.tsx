@@ -1,8 +1,20 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import type { LessonProps } from './matching-page';
 import { createSeek, selectSeek, findSeek, type SeekState } from './discovery-core';
 import { seekObject, seekThemes, type SeekThemeId, type SeekObjectId } from './discovery-lessons';
 import { useVisibleDelay } from './use-visible-delay';
+import { learningImage } from './learning-assets';
+
+/** Đưa danh sách cần tìm sát mép trên, chừa một khoảng nhỏ, để cả bảng chọn và tranh nằm trong một màn. */
+function focusSeekStage(node: HTMLElement | null) {
+  if (!node) return;
+  const top = node.getBoundingClientRect().top;
+  if (Math.abs(top) < 4) return;
+  const reduce =
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: window.scrollY + top, behavior: reduce ? 'auto' : 'smooth' });
+}
 
 export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: LessonProps) {
   const [theme, setTheme] = useState<SeekThemeId | 'random'>('random');
@@ -10,7 +22,11 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
   const [hint, setHint] = useState<SeekObjectId | null>(null);
   const [feedback, setFeedback] = useState('');
   const awarded = useRef('');
+  const stageRef = useRef<HTMLDivElement>(null);
   const complete = Boolean(state && state.found.length === state.placements.length);
+  useLayoutEffect(() => {
+    if (state) focusSeekStage(stageRef.current);
+  }, [state?.id]);
   useVisibleDelay(Boolean(hint) && !blocked, 2400, `${state?.id}:${hint}`, () => setHint(null));
   useEffect(() => {
     if (!state) return;
@@ -27,6 +43,9 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
     setHint(null);
     setFeedback('');
   }
+  // Màn trống hiện đúng các hình của chủ đề đang chọn; ngẫu nhiên giữ chim.
+  const previewIds =
+    theme === 'random' ? ['bird' as const] : seekThemes.find((item) => item.id === theme)!.objects;
   return (
     <section className="learning-lesson" aria-labelledby="hide-seek-title">
       <div className="learning-section-title">
@@ -40,9 +59,16 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
         <legend className="sr-only">Chọn chủ đề và tìm hình trong tranh</legend>
         {!state ? (
           <div className="learning-empty">
-            <img src="/images/kids-learning/bird.svg" alt="" />
+            <div className="seek-preview">
+              {previewIds.map((id) => (
+                <img key={id} src={learningImage(id)} alt={seekObject(id).name} />
+              ))}
+            </div>
             <h2>Cùng khám phá những nơi thật vui!</h2>
-            <p>Đại dương, sa mạc, rừng rậm, khủng long và phương tiện.</p>
+            <p>
+              Đại dương, sa mạc, rừng rậm, khủng long, phương tiện, côn trùng, nông trại, động vật
+              bay và băng tuyết.
+            </p>
             <div className="seek-setup">
               <label>
                 Chủ đề
@@ -68,7 +94,37 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
             </div>
           </div>
         ) : (
-          <>
+          <div className="seek-stage" ref={stageRef}>
+            <div className="seek-targets" role="group" aria-label="Các hình cần tìm">
+              {state.placements.map((item) => {
+                const object = seekObject(item.id),
+                  found = state.found.includes(item.id);
+                return (
+                  <button
+                    type="button"
+                    key={item.id}
+                    className={state.selected === item.id && !complete ? 'selected' : ''}
+                    aria-pressed={state.selected === item.id && !complete}
+                    disabled={found}
+                    aria-label={`${found ? 'Đã tìm' : 'Tìm'} ${object.name.toLowerCase()}`}
+                    onClick={() => {
+                      setState(selectSeek(state, item.id));
+                      setHint(null);
+                      setFeedback('');
+                      focusSeekStage(stageRef.current);
+                    }}
+                  >
+                    <img src={learningImage(object.asset)} alt="" />
+                    <span>{object.name}</span>
+                    {found && (
+                      <span className="seek-check" aria-hidden="true">
+                        ✓
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
             <div className="seek-heading">
               <div>
                 <span className="learning-eyebrow">{state.theme.name}</span>
@@ -96,35 +152,6 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
                 Gợi ý
               </button>
             </div>
-            <div className="seek-targets" role="group" aria-label="Các hình cần tìm">
-              {state.placements.map((item) => {
-                const object = seekObject(item.id),
-                  found = state.found.includes(item.id);
-                return (
-                  <button
-                    type="button"
-                    key={item.id}
-                    className={state.selected === item.id && !complete ? 'selected' : ''}
-                    aria-pressed={state.selected === item.id && !complete}
-                    disabled={found}
-                    aria-label={`${found ? 'Đã tìm' : 'Tìm'} ${object.name.toLowerCase()}`}
-                    onClick={() => {
-                      setState(selectSeek(state, item.id));
-                      setHint(null);
-                      setFeedback('');
-                    }}
-                  >
-                    <img src={`/images/kids-learning/${object.asset}.svg`} alt="" />
-                    <span>{object.name}</span>
-                    {found && (
-                      <span className="seek-check" aria-hidden="true">
-                        ✓
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
             <div
               className={`seek-board ${state.theme.id}`}
               data-round={state.id}
@@ -135,7 +162,7 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
             >
               <img
                 className="seek-background"
-                src={`/images/kids-learning/scene-${state.theme.id}.svg`}
+                src={learningImage(`scene-${state.theme.id}`)}
                 alt=""
               />
               {state.placements.map((item) => {
@@ -159,10 +186,11 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
                     }
                     onClick={() => {
                       const next = findSeek(state, item.id);
+                      // Bấm nhầm thì đọc tên hình vừa chạm; hình đang tìm không đổi.
                       if (next === state) {
-                        setFeedback(
-                          `Mình đang tìm ${seekObject(state.selected).name.toLowerCase()} nhé. Con có thể chọn hình khác trong bảng.`,
-                        );
+                        const heard = object.name.toLowerCase();
+                        setFeedback(`Sai rồi, đây là ${heard} mà.`);
+                        onSpeak(`miss-${item.id}`);
                         return;
                       }
                       setState(next);
@@ -170,7 +198,7 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
                       setFeedback(`Tìm thấy ${object.name.toLowerCase()} rồi! Giỏi quá!`);
                     }}
                   >
-                    <img src={`/images/kids-learning/${object.asset}.svg`} alt="" />
+                    <img src={learningImage(object.asset)} alt="" />
                     {!found && (
                       <svg
                         className="seek-cover"
@@ -185,7 +213,11 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
                               ? 'M0 50 5 25 25 13 52 15 69 6 96 28 100 50Z'
                               : state.theme.id === 'ocean'
                                 ? 'M0 50Q15 40 9 5Q30 13 30 42Q35 18 50 9Q65 19 57 43Q73 18 93 15Q92 40 100 50Z'
-                                : 'M0 50Q-5 20 24 24Q30-4 54 15Q80 0 90 27Q110 30 100 50Z'
+                                : state.theme.id === 'flying'
+                                  ? 'M0 50Q8 22 28 30Q42 8 58 26Q74 8 88 28Q102 20 100 50Z'
+                                  : state.theme.id === 'snow'
+                                    ? 'M0 50Q12 32 28 36Q46 14 58 30Q74 12 90 32Q104 22 100 50Z'
+                                    : 'M0 50Q-5 20 24 24Q30-4 54 15Q80 0 90 27Q110 30 100 50Z'
                           }
                         />
                       </svg>
@@ -198,24 +230,26 @@ export function HideAndSeekPage({ blocked = false, onSpeak, onComplete }: Lesson
                   </button>
                 );
               })}
+              {complete && (
+                <div className="seek-next">
+                  <div className="discovery-complete" role="status">
+                    <strong>Chúc mừng nhà thám hiểm nhỏ! Con tìm đủ cả 8 hình rồi.</strong>
+                    <p>Một chuyến khám phá mới đang chờ con.</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="learning-button primary"
+                    onClick={() => start('random')}
+                  >
+                    Màn tiếp →
+                  </button>
+                </div>
+              )}
             </div>
             <p className="learning-feedback" role="status">
               {feedback || 'Các bạn đang nấp sau cây, đá và những góc nhỏ. Con nhìn kỹ nhé.'}
             </p>
-            {complete && (
-              <div className="discovery-complete" role="status">
-                <strong>Chúc mừng nhà thám hiểm nhỏ! Con tìm đủ cả 5 hình rồi.</strong>
-                <p>Một chuyến khám phá mới đang chờ con.</p>
-                <button
-                  type="button"
-                  className="learning-button primary"
-                  onClick={() => start('random')}
-                >
-                  Màn tiếp →
-                </button>
-              </div>
-            )}
-          </>
+          </div>
         )}
       </fieldset>
     </section>

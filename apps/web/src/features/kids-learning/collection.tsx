@@ -1,4 +1,5 @@
 import { stickerIds } from './lessons';
+import { learningImage } from './learning-assets';
 import { LearningDialog } from './learning-dialog';
 import { stickerNames, type StickerId } from './rewards-core';
 export function Collection({
@@ -26,7 +27,7 @@ export function Collection({
           >
             {ids.includes(id) ? (
               <>
-                <img src={`/images/kids-learning/${id}.svg`} alt={stickerNames[id]} />
+                <img src={learningImage(id)} alt={stickerNames[id]} />
                 <span>{stickerNames[id]}</span>
               </>
             ) : (

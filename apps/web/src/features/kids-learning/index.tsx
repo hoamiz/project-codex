@@ -12,6 +12,8 @@ import { useLearningAudio } from './learning-audio';
 import { useRewards } from './rewards-core';
 import { Collection } from './collection';
 import { stickerNames } from './rewards-core';
+import { assetUrl } from './asset-url';
+import { learningImage } from './learning-assets';
 import './learning.css';
 
 function LessonMenu() {
@@ -37,8 +39,8 @@ function LessonMenu() {
         </div>
         <div className="learning-hero-art" aria-hidden="true">
           <span className="learning-orbit" />
-          <img className="hero-star" src="/images/kids-learning/star.svg" alt="" />
-          <img className="hero-bee" src="/images/kids-learning/bee.svg" alt="" />
+          <img className="hero-star" src={learningImage('star')} alt="" />
+          <img className="hero-bee" src={learningImage('bee')} alt="" />
           <span className="hero-three">3</span>
           <span className="hero-squiggle">~</span>
         </div>
@@ -55,7 +57,7 @@ function LessonMenu() {
               <ArrowUpRight size={22} />
             </div>
             <div className="learning-card-art">
-              <img src="/images/kids-learning.svg" alt="Số ba nối tới ba ngôi sao" />
+              <img src={assetUrl('/images/kids-learning.svg')} alt="Số ba nối tới ba ngôi sao" />
             </div>
             <div className="learning-card-copy">
               <h3>Nối số với hình</h3>
@@ -80,14 +82,8 @@ function LessonMenu() {
                   strokeDasharray="1 12"
                   strokeLinecap="round"
                 />
-                <image href="/images/kids-learning/bee.svg" x="20" y="50" width="90" height="90" />
-                <image
-                  href="/images/kids-learning/flower.svg"
-                  x="398"
-                  y="48"
-                  width="80"
-                  height="100"
-                />
+                <image href={learningImage('bee')} x="20" y="50" width="90" height="90" />
+                <image href={learningImage('flower')} x="398" y="48" width="80" height="100" />
               </svg>
             </div>
             <div className="learning-card-copy">
@@ -122,10 +118,10 @@ function LessonMenu() {
               <ArrowUpRight size={22} />
             </div>
             <div className="learning-card-art hide-seek-menu-art">
-              <img src="/images/kids-learning/scene-jungle.svg" alt="" />
+              <img src={learningImage('scene-jungle')} alt="" />
               <img
                 className="seek-preview-bird"
-                src="/images/kids-learning/bird.svg"
+                src={learningImage('bird')}
                 alt="Chim đang nấp trong khu rừng"
               />
             </div>
@@ -185,7 +181,7 @@ export default function KidsLearning() {
             <ArrowLeft size={14} /> Portfolio
           </Link>
           <Link className="learning-brand" to={basePath}>
-            <img src="/images/kids-learning/star.svg" alt="" />
+            <img src={learningImage('star')} alt="" />
             <span>
               Bé vui <strong>học tập</strong>
               <small>GÓC KHÁM PHÁ NHỎ XINH</small>
@@ -263,7 +259,7 @@ export default function KidsLearning() {
         )}
         {rewards.recent && (
           <div className="learning-reward" role="status">
-            <img src={`/images/kids-learning/${rewards.recent}.svg`} alt="" />
+            <img src={learningImage(rewards.recent)} alt="" />
             <span>Con đã có thêm bạn {stickerNames[rewards.recent].toLowerCase()}!</span>
             <button className="learning-button" onClick={() => setCollection(true)}>
               Xem sticker

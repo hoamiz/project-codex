@@ -6,6 +6,7 @@ import { checkConnection, createMatching } from './matching-core';
 import { initialMatching, matchingReducer } from './lesson-state';
 import { RangeSettings } from './range-settings';
 import { CountHelper } from './count-helper';
+import { learningImage } from './learning-assets';
 export interface LessonProps {
   level: Level;
   blocked?: boolean;
@@ -80,7 +81,7 @@ export function MatchingPage({ level, blocked = false, onSpeak, onComplete }: Le
         />
         {!started ? (
           <div className="learning-empty">
-            <img src="/images/kids-learning/star.svg" alt="" />
+            <img src={learningImage('star')} alt="" />
             <h2>Những con số đang đợi con!</h2>
             <p>Chọn khoảng số, rồi bấm Bắt đầu nhé.</p>
           </div>

@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { createLearningAudio, voiceIds } from './learning-audio';
 import { companions } from './lessons';
+import { learningImage } from './learning-assets';
 import { seekObjects } from './discovery-lessons';
 class TestVoice extends EventTarget {
   currentTime = 0;
@@ -16,7 +17,7 @@ test('L23 static Vietnamese clips have transcripts, real MP3 bytes and matching 
   const manifest = JSON.parse(readFileSync(resolve(root, 'manifest.json'), 'utf8'));
   expect(manifest.language).toBe('vi-VN');
   expect(manifest.voice).toBe('vi-VN-HoaiMyNeural');
-  expect(manifest.revision).toBe(3);
+  expect(manifest.revision).toBe(12);
   expect(manifest.clips.map((c: { id: string }) => c.id)).toEqual(voiceIds);
   for (const [i, word] of [
     'một',
@@ -38,15 +39,19 @@ test('L23 static Vietnamese clips have transcripts, real MP3 bytes and matching 
     expect(manifest.clips.find((c: { id: string }) => c.id === `seek-${item.id}`)?.transcript).toBe(
       `Tìm ${item.name.toLowerCase()} trong tranh nhé.`,
     );
+    expect(manifest.clips.find((c: { id: string }) => c.id === `miss-${item.id}`)?.transcript).toBe(
+      `Sai rồi, đây là ${item.name.toLowerCase()} mà.`,
+    );
   }
   for (const companion of companions) {
     expect(manifest.clips.find((c: { id: string }) => c.id === companion.id)?.transcript).toBe(
       companion.instruction,
     );
     for (const id of [companion.id, companion.destination]) {
-      const svg = readFileSync(resolve('public/images/kids-learning', id + '.svg'), 'utf8');
-      expect(svg).toContain('<svg');
-      expect(svg).toContain('<title>');
+      const file = learningImage(id).replace(/^\//, '');
+      const bytes = readFileSync(resolve('public', file));
+      if (file.endsWith('.png')) expect(bytes.subarray(0, 4).toString('hex')).toBe('89504e47');
+      else expect(bytes.toString('utf8')).toContain('<svg');
     }
   }
   for (const clip of manifest.clips) {

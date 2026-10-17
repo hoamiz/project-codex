@@ -88,44 +88,30 @@ export interface SeekState {
   selected: SeekObjectId;
   found: SeekObjectId[];
 }
+const seekSlots = [
+  { x: 16, y: 26 },
+  { x: 39, y: 22 },
+  { x: 62, y: 26 },
+  { x: 85, y: 22 },
+  { x: 16, y: 74 },
+  { x: 39, y: 78 },
+  { x: 62, y: 74 },
+  { x: 85, y: 78 },
+];
 const themeSlots: Record<SeekThemeId, { x: number; y: number }[]> = {
-  ocean: [
-    { x: 18, y: 25 },
-    { x: 74, y: 20 },
-    { x: 46, y: 47 },
-    { x: 80, y: 77 },
-    { x: 22, y: 79 },
-  ],
-  desert: [
-    { x: 16, y: 52 },
-    { x: 77, y: 48 },
-    { x: 47, y: 66 },
-    { x: 80, y: 83 },
-    { x: 19, y: 85 },
-  ],
-  jungle: [
-    { x: 16, y: 42 },
-    { x: 80, y: 40 },
-    { x: 48, y: 60 },
-    { x: 82, y: 82 },
-    { x: 19, y: 83 },
-  ],
-  dinosaurs: [
-    { x: 16, y: 48 },
-    { x: 79, y: 46 },
-    { x: 47, y: 65 },
-    { x: 81, y: 84 },
-    { x: 19, y: 85 },
-  ],
-  transport: [
-    { x: 16, y: 62 },
-    { x: 50, y: 62 },
-    { x: 84, y: 62 },
-    { x: 32, y: 85 },
-    { x: 68, y: 85 },
-  ],
+  ocean: seekSlots,
+  desert: seekSlots,
+  jungle: seekSlots,
+  dinosaurs: seekSlots,
+  transport: seekSlots,
+  insects: seekSlots,
+  farm: seekSlots,
+  flying: seekSlots,
+  snow: seekSlots,
 };
-/** Cảnh chỉ chứa đúng hình của chủ đề; vị trí đổi trong các ô tách nhau, màn random tránh lặp chủ đề trước. */
+/** Mỗi lượt giấu 8 hình, rút ngẫu nhiên từ đủ bộ của chủ đề. */
+const seekRoundSize = 8;
+/** Vị trí đổi trong các ô tách nhau; màn random tránh lặp chủ đề liền trước. */
 export function createSeek(
   theme: SeekThemeId | 'random' = 'random',
   random = Math.random,
@@ -139,8 +125,9 @@ export function createSeek(
   if (theme === 'random' && seekThemes[index].id === previous?.theme.id)
     index = (index + 1) % seekThemes.length;
   const selected = seekThemes[index];
+  const chosen = shuffled(selected.objects, random).slice(0, seekRoundSize);
   const locations = shuffled(themeSlots[selected.id], random);
-  const placements = selected.objects.map((id, i) => ({
+  const placements = chosen.map((id, i) => ({
     id,
     x: locations[i].x + random() * 6 - 3,
     y: locations[i].y + random() * 6 - 3,
